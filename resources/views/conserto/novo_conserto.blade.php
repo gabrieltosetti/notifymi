@@ -1,6 +1,6 @@
 @extends('layouts.principal')
 
-@section('title', 'Consertos')
+@section('title', 'Novo Conserto')
 
 @section('content')
             <div class="wrapper wrapper-content animated fadeInRight">
@@ -8,10 +8,10 @@
                     <div class="col-lg-12">
                         <div class="text-center m-t-lg">
                             <h1>
-                                Lista de concertos
+                                Novo concerto
                             </h1>
                             <small>
-                                Tabela abaixo
+                                Formulário abaixo
                             </small>
                         </div>
                     </div>

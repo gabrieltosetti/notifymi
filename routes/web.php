@@ -15,10 +15,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 //Concertos
-Route::get('consertos/', 'ConsertoController@lista');
-Route::get('consertos/novo', 'ConsertoController@novo');
+Route::get('/consertos', 'ConsertoController@lista');
+Route::get('/consertos/novo', 'ConsertoController@novo');
+
+
+Auth::routes();
