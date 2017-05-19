@@ -1,8 +1,8 @@
 <div class="footer">
     <div class="pull-right">
-        Example text
+        Online
     </div>
     <div>
-        <strong>Copyright</strong> Example Company &copy; 2014-2017
+        <strong>Copyright</strong> Notify-Mi Company &copy; 2017
     </div>
 </div>

@@ -9,6 +9,8 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
 
+    @yield('css')
+
     <link href="css/animate.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
@@ -26,12 +28,19 @@
 
             <!-- Page wrapper -->
             @include('layouts.topnavbar')
+            <!-- END Page wrapper -->
+
+            <!-- Breadcrumb -->
+            @include('layouts.breadcrumb')
+            <!-- END Breadcrumb -->
 
             <!-- Main view  -->
             @yield('content')
+            <!-- END Main view  -->
 
             <!-- Footer -->
             @include('layouts.footer')
+            <!-- END Footer -->
 
         </div>
         <!-- End page wrapper-->
@@ -39,7 +48,15 @@
     </div>
     <!-- End wrapper-->
 
-<script src="{!! asset('js/app.js') !!}" type="text/javascript"></script>
+    <!-- Mainly scripts -->
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="js/inspinia.js"></script>
+    <script src="js/plugins/pace/pace.min.js"></script>
 
 @section('scripts')
 @show
