@@ -3,7 +3,7 @@
             <ul class="nav metismenu" id="side-menu">
                 <li class="nav-header">
                     <div class="dropdown profile-element"> <span>
-                            <img alt="image" class="img-circle" src="img/profile_small.jpg" />
+                            <img alt="image" class="img-circle" src="{{ asset('/media/profile_small.jpg') }}" />
                              </span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">David Williams</strong>
@@ -21,7 +21,7 @@
                     </div>
                 </li>
                 <li class="{{ Request::path() === 'home' ? 'active' : '' }}" >
-                    <a href="/home"><i class="fa fa-home"></i> <span class="nav-label">Página Inicial</span></a>
+                    <a href="{{ url('home') }}"><i class="fa fa-home"></i> <span class="nav-label">Página Inicial</span></a>
                 </li>
                 <li class="{{ Request::segment(1) === 'consertos' ? 'active' : '' }}" >
                     <a href="index.html"><i class="fa fa-wrench"></i> <span class="nav-label">Concertos</span> <span class="fa arrow"></span></a>
