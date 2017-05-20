@@ -1,17 +1,23 @@
 @extends('layouts.principal')
 
-@section('title', 'Página Inicial')
-<!--ACHO QUE A HOME NAO DEVERIA TER OS BREADCRUMBS E SER PERSONALIZADA COMO UMA DASHBOARD...-->
+@section('title', 'Novo Cliente')
+
+@section('content_title', 'Novo Cliente')
+
+@section('breadcrumbs')
+    {!! Breadcrumbs::render('novo_cliente') !!}
+@endsection
+
 @section('content')
             <div class="wrapper wrapper-content animated fadeInRight">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="text-center m-t-lg">
                             <h1>
-                                Welcome in INSPINIA Laravel Starter Project
+                                Novo Cliente
                             </h1>
                             <small>
-                                It is an application skeleton for a typical web app. You can use it to quickly bootstrap your webapp projects.
+                                Formulário abaixo
                             </small>
                         </div>
                     </div>

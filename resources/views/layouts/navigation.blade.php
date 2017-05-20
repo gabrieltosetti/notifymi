@@ -21,13 +21,20 @@
                     </div>
                 </li>
                 <li class="{{ Request::path() === 'home' ? 'active' : '' }}" >
-                    <a href="{{ url('home') }}"><i class="fa fa-home"></i> <span class="nav-label">Página Inicial</span></a>
+                    <a href="{{ route('home') }}"><i class="fa fa-home"></i> <span class="nav-label">Página Inicial</span></a>
                 </li>
                 <li class="{{ Request::segment(1) === 'consertos' ? 'active' : '' }}" >
-                    <a href="index.html"><i class="fa fa-wrench"></i> <span class="nav-label">Concertos</span> <span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-wrench"></i> <span class="nav-label">Concertos</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
-                        <li class="{{ Request::path() === 'consertos' ? 'active' : '' }}" ><a href="{{ url('/consertos') }}">Ver todos</a></li>
-                        <li class="{{ Request::path() === 'consertos/novo' ? 'active' : '' }}" ><a href="{{ url('/consertos/novo') }}">Novo</a></li>
+                        <li class="{{ Request::path() === 'consertos' ? 'active' : '' }}" ><a href="{{ route('consertos') }}">Ver todos</a></li>
+                        <li class="{{ Request::path() === 'consertos/novo' ? 'active' : '' }}" ><a href="{{ route('novo_conserto') }}">Novo</a></li>
+                    </ul>
+                </li>
+                <li class="{{ Request::segment(1) === 'clientes' ? 'active' : '' }}" >
+                    <a href="#"><i class="fa fa-user-o"></i> <span class="nav-label">Clientes</span> <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li class="{{ Request::path() === 'clientes' ? 'active' : '' }}" ><a href="{{ route('clientes') }}">Ver todos</a></li>
+                        <li class="{{ Request::path() === 'clientes/novo' ? 'active' : '' }}" ><a href="{{ route('novo_cliente') }}">Novo</a></li>
                     </ul>
                 </li>
             </ul>

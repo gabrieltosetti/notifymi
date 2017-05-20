@@ -23,5 +23,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/consertos', 'ConsertoController@lista')->name('consertos');
 Route::get('/consertos/novo', 'ConsertoController@novo')->name('novo_conserto');
 
+//Concertos
+Route::get('/clientes', 'ClienteController@lista')->name('clientes');
+Route::get('/clientes/novo', 'ClienteController@novo')->name('novo_cliente');
+
 
 Auth::routes();

@@ -3,7 +3,7 @@
 // Home
 Breadcrumbs::register('home', function($breadcrumbs)
 {
-    $breadcrumbs->push('Home', route('home'));
+    $breadcrumbs->push('Página Inicial', route('home'));
 });
 
 // Home > Consertos
@@ -18,6 +18,20 @@ Breadcrumbs::register('novo_conserto', function($breadcrumbs)
 {
     $breadcrumbs->parent('consertos');
     $breadcrumbs->push('Novo', route('novo_conserto'));
+});
+
+// Home > Clientes
+Breadcrumbs::register('clientes', function($breadcrumbs)
+{
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Clientes', route('clientes'));
+});
+
+// Home > Clientes > Novo
+Breadcrumbs::register('novo_cliente', function($breadcrumbs)
+{
+    $breadcrumbs->parent('clientes');
+    $breadcrumbs->push('Novo', route('novo_cliente'));
 });
 
 /*// Home > Blog
