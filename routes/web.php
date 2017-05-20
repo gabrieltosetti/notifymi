@@ -19,11 +19,16 @@
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
 
-//Concertos
+//Consertos
 Route::get('/consertos', 'ConsertoController@lista')->name('consertos');
 Route::get('/consertos/novo', 'ConsertoController@novo')->name('novo_conserto');
 
-//Concertos
+//login
+Route::get('/entrar', 'LoginController@login')->name('entrar');
+Route::get('/entrar/cadastro', 'LoginController@cadastro')->name('cadastro');
+
+
+//Consertos
 Route::get('/clientes', 'ClienteController@lista')->name('clientes');
 Route::get('/clientes/novo', 'ClienteController@novo')->name('novo_cliente');
 
