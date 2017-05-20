@@ -6,12 +6,14 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Conserto' => $baseDir . '/app/Conserto.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
     'App\\Http\\Controllers\\Auth\\LoginController' => $baseDir . '/app/Http/Controllers/Auth/LoginController.php',
     'App\\Http\\Controllers\\Auth\\RegisterController' => $baseDir . '/app/Http/Controllers/Auth/RegisterController.php',
     'App\\Http\\Controllers\\Auth\\ResetPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ResetPasswordController.php',
+    'App\\Http\\Controllers\\ConsertoController' => $baseDir . '/app/Http/Controllers/ConsertoController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
@@ -41,6 +43,13 @@ return array(
     'Cron\\MonthField' => $vendorDir . '/mtdowling/cron-expression/src/Cron/MonthField.php',
     'Cron\\YearField' => $vendorDir . '/mtdowling/cron-expression/src/Cron/YearField.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
+    'DaveJamesMiller\\Breadcrumbs\\CurrentRoute' => $vendorDir . '/davejamesmiller/laravel-breadcrumbs/src/CurrentRoute.php',
+    'DaveJamesMiller\\Breadcrumbs\\Exception' => $vendorDir . '/davejamesmiller/laravel-breadcrumbs/src/Exception.php',
+    'DaveJamesMiller\\Breadcrumbs\\Facade' => $vendorDir . '/davejamesmiller/laravel-breadcrumbs/src/Facade.php',
+    'DaveJamesMiller\\Breadcrumbs\\Generator' => $vendorDir . '/davejamesmiller/laravel-breadcrumbs/src/Generator.php',
+    'DaveJamesMiller\\Breadcrumbs\\Manager' => $vendorDir . '/davejamesmiller/laravel-breadcrumbs/src/Manager.php',
+    'DaveJamesMiller\\Breadcrumbs\\ServiceProvider' => $vendorDir . '/davejamesmiller/laravel-breadcrumbs/src/ServiceProvider.php',
+    'DaveJamesMiller\\Breadcrumbs\\View' => $vendorDir . '/davejamesmiller/laravel-breadcrumbs/src/View.php',
     'DeepCopy\\DeepCopy' => $vendorDir . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
     'DeepCopy\\Exception\\CloneException' => $vendorDir . '/myclabs/deep-copy/src/DeepCopy/Exception/CloneException.php',
     'DeepCopy\\Filter\\Doctrine\\DoctrineCollectionFilter' => $vendorDir . '/myclabs/deep-copy/src/DeepCopy/Filter/Doctrine/DoctrineCollectionFilter.php',

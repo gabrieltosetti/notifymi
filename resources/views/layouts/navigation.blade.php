@@ -26,8 +26,8 @@
                 <li class="{{ Request::segment(1) === 'consertos' ? 'active' : '' }}" >
                     <a href="index.html"><i class="fa fa-wrench"></i> <span class="nav-label">Concertos</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
-                        <li class="{{ Request::path() === 'consertos' ? 'active' : '' }}" ><a href="/consertos">Ver todos</a></li>
-                        <li class="{{ Request::path() === 'consertos/novo' ? 'active' : '' }}" ><a href="/consertos/novo">Novo</a></li>
+                        <li class="{{ Request::path() === 'consertos' ? 'active' : '' }}" ><a href="{{ url('/consertos') }}">Ver todos</a></li>
+                        <li class="{{ Request::path() === 'consertos/novo' ? 'active' : '' }}" ><a href="{{ url('/consertos/novo') }}">Novo</a></li>
                     </ul>
                 </li>
             </ul>

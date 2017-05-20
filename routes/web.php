@@ -20,8 +20,8 @@ Route::get('/', function () {
 Route::get('/home', 'HomeController@index')->name('home');
 
 //Concertos
-Route::get('/consertos', 'ConsertoController@lista');
-Route::get('/consertos/novo', 'ConsertoController@novo');
+Route::get('/consertos', 'ConsertoController@lista')->name('consertos');
+Route::get('/consertos/novo', 'ConsertoController@novo')->name('novo_conserto');
 
 
 Auth::routes();

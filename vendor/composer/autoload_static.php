@@ -83,6 +83,7 @@ class ComposerStaticInit42dd67b073849a0914a2f1b2e0791ade
             'Dotenv\\' => 7,
             'Doctrine\\Instantiator\\' => 22,
             'DeepCopy\\' => 9,
+            'DaveJamesMiller\\Breadcrumbs\\' => 28,
         ),
         'C' => 
         array (
@@ -218,6 +219,10 @@ class ComposerStaticInit42dd67b073849a0914a2f1b2e0791ade
         array (
             0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
         ),
+        'DaveJamesMiller\\Breadcrumbs\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/davejamesmiller/laravel-breadcrumbs/src',
+        ),
         'Cron\\' => 
         array (
             0 => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron',
@@ -272,12 +277,14 @@ class ComposerStaticInit42dd67b073849a0914a2f1b2e0791ade
     );
 
     public static $classMap = array (
+        'App\\Conserto' => __DIR__ . '/../..' . '/app/Conserto.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
+        'App\\Http\\Controllers\\ConsertoController' => __DIR__ . '/../..' . '/app/Http/Controllers/ConsertoController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
@@ -307,6 +314,13 @@ class ComposerStaticInit42dd67b073849a0914a2f1b2e0791ade
         'Cron\\MonthField' => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron/MonthField.php',
         'Cron\\YearField' => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron/YearField.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
+        'DaveJamesMiller\\Breadcrumbs\\CurrentRoute' => __DIR__ . '/..' . '/davejamesmiller/laravel-breadcrumbs/src/CurrentRoute.php',
+        'DaveJamesMiller\\Breadcrumbs\\Exception' => __DIR__ . '/..' . '/davejamesmiller/laravel-breadcrumbs/src/Exception.php',
+        'DaveJamesMiller\\Breadcrumbs\\Facade' => __DIR__ . '/..' . '/davejamesmiller/laravel-breadcrumbs/src/Facade.php',
+        'DaveJamesMiller\\Breadcrumbs\\Generator' => __DIR__ . '/..' . '/davejamesmiller/laravel-breadcrumbs/src/Generator.php',
+        'DaveJamesMiller\\Breadcrumbs\\Manager' => __DIR__ . '/..' . '/davejamesmiller/laravel-breadcrumbs/src/Manager.php',
+        'DaveJamesMiller\\Breadcrumbs\\ServiceProvider' => __DIR__ . '/..' . '/davejamesmiller/laravel-breadcrumbs/src/ServiceProvider.php',
+        'DaveJamesMiller\\Breadcrumbs\\View' => __DIR__ . '/..' . '/davejamesmiller/laravel-breadcrumbs/src/View.php',
         'DeepCopy\\DeepCopy' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
         'DeepCopy\\Exception\\CloneException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/CloneException.php',
         'DeepCopy\\Filter\\Doctrine\\DoctrineCollectionFilter' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Filter/Doctrine/DoctrineCollectionFilter.php',
