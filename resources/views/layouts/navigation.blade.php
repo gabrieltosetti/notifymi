@@ -20,23 +20,42 @@
                         IN+
                     </div>
                 </li>
-                <li class="{{ Request::path() === 'home' ? 'active' : '' }}" >
+                <li class="{{ Request::fullUrl() === route('home') ? 'active' : '' }}" >
                     <a href="{{ route('home') }}"><i class="fa fa-home"></i> <span class="nav-label">Página Inicial</span></a>
                 </li>
+                <!--
+                                            CONSERTOS
+                -->
                 <li class="{{ Request::segment(1) === 'consertos' ? 'active' : '' }}" >
                     <a href="#"><i class="fa fa-wrench"></i> <span class="nav-label">Concertos</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
-                        <li class="{{ Request::path() === 'consertos' ? 'active' : '' }}" ><a href="{{ route('consertos') }}">Ver todos</a></li>
-                        <li class="{{ Request::path() === 'consertos/novo' ? 'active' : '' }}" ><a href="{{ route('novo_conserto') }}">Novo</a></li>
+                        <li class="{{ Request::fullUrl() === route('consertos') ? 'active' : '' }}" ><a href="{{ route('consertos') }}">Ver todos</a></li>
+                        <li class="{{ Request::fullUrl() === route('novo_conserto') ? 'active' : '' }}" ><a href="{{ route('novo_conserto') }}">Novo</a></li>
                     </ul>
                 </li>
+                <!--/CONSERTOS-->
+                <!--
+                                            CLIENTES
+                -->
                 <li class="{{ Request::segment(1) === 'clientes' ? 'active' : '' }}" >
                     <a href="#"><i class="fa fa-user-o"></i> <span class="nav-label">Clientes</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
-                        <li class="{{ Request::path() === 'clientes' ? 'active' : '' }}" ><a href="{{ route('clientes') }}">Ver todos</a></li>
-                        <li class="{{ Request::path() === 'clientes/novo' ? 'active' : '' }}" ><a href="{{ route('novo_cliente') }}">Novo</a></li>
+                        <li class="{{ Request::fullUrl() === route('clientes') ? 'active' : '' }}" ><a href="{{ route('clientes') }}">Ver todos</a></li>
+                        <li class="{{ Request::fullUrl() === route('novo_cliente') ? 'active' : '' }}" ><a href="{{ route('novo_cliente') }}">Novo</a></li>
                     </ul>
                 </li>
+                <!--/CLIENTES-->
+                 <!--
+                                            FUNCIONARIOS
+                -->
+                <li class="{{ Request::segment(1) === 'funcionarios' ? 'active' : '' }}" >
+                    <a href="#"><i class="fa fa-user-o"></i> <span class="nav-label">Funcionarios</span> <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li class="{{ Request::fullUrl() === route('funcionarios') ? 'active' : '' }}" ><a href="{{ route('funcionarios') }}">Ver todos</a></li>
+                        <li class="{{ Request::fullUrl() === route('novo_funcionario') ? 'active' : '' }}" ><a href="{{ route('novo_funcionario') }}">Novo</a></li>
+                    </ul>
+                </li>
+                <!--/FUNCIONARIOS-->
             </ul>
 
         </div>

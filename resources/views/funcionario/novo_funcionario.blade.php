@@ -1,11 +1,11 @@
 @extends('layouts.principal')
 
-@section('title', 'Novo Conserto')
+@section('title', 'Novo Funcionário')
 
-@section('content_title', 'Novo Conserto')
+@section('content_title', 'Novo Funcionário')
 
 @section('breadcrumbs')
-    {!! Breadcrumbs::render('novo_conserto') !!}
+    {!! Breadcrumbs::render('novo_funcionario') !!}
 @endsection
 
 @section('content')
@@ -14,7 +14,7 @@
                     <div class="col-lg-12">
                         <div class="text-center m-t-lg">
                             <h1>
-                                Novo conserto
+                                Novo Funcionário
                             </h1>
                             <small>
                                 Formulário abaixo

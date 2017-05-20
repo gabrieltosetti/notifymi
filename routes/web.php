@@ -27,5 +27,8 @@ Route::get('/consertos/novo', 'ConsertoController@novo')->name('novo_conserto');
 Route::get('/clientes', 'ClienteController@lista')->name('clientes');
 Route::get('/clientes/novo', 'ClienteController@novo')->name('novo_cliente');
 
+//funcionarios
+Route::get('/funcionarios', 'FuncionarioController@lista')->name('funcionarios');
+Route::get('/funcionarios/novo', 'FuncionarioController@novo')->name('novo_funcionario');
 
 Auth::routes();

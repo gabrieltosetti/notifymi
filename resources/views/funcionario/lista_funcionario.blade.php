@@ -1,23 +1,23 @@
 @extends('layouts.principal')
 
-@section('title', 'Novo Conserto')
+@section('title', 'Funcionários')
 
-@section('content_title', 'Novo Conserto')
+@section('content_title', 'Lista de Funcionários')
 
 @section('breadcrumbs')
-    {!! Breadcrumbs::render('novo_conserto') !!}
+    {!! Breadcrumbs::render('funcionarios') !!}
 @endsection
 
 @section('content')
-            <div class="wrapper wrapper-content animated fadeInRight">
+    <div class="wrapper wrapper-content animated fadeInRight">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="text-center m-t-lg">
                             <h1>
-                                Novo conserto
+                                Tabela de funcionários
                             </h1>
                             <small>
-                                Formulário abaixo
+                                Tabela abaixo
                             </small>
                         </div>
                     </div>
