@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 class ConsertoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function lista()
     {
         return view('conserto/lista_conserto');
