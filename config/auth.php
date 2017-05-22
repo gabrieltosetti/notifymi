@@ -82,7 +82,7 @@ return [
         ],
         'usuarioscomuns' => [
             'driver' => 'eloquent',
-            'model' => App\Usuarios::class,
+            'model' => App\Usuario::class,
         ],
 
         // 'users' => [
