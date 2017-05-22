@@ -18,6 +18,11 @@ return [
         'passwords' => 'users',
     ],
 
+    'autenticacaocomum' => [
+        'guard' => 'usuariocumum',
+        'passwords' => 'users',
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Authentication Guards
@@ -40,6 +45,12 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'usuariocumum' => [
+            'driver' => 'session',
+            'provider' => 'usuarioscumuns',
+        ],
+
 
         'api' => [
             'driver' => 'token',
@@ -68,6 +79,10 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
+        ],
+        'usuarioscomuns' => [
+            'driver' => 'eloquent',
+            'model' => App\Usuarios::class,
         ],
 
         // 'users' => [
