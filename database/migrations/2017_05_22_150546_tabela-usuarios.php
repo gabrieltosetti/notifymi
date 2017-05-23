@@ -13,13 +13,29 @@ class TabelaUsuarios extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('usuarios', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password');
+            $table->char('nome', 50);
+            $table->char('email', 50)->unique();
+            $table->char('telefone', 13); //(19)9999-9999
+            $table->char('celular', 14); //(19)99999-9999
+            $table->char('cpf', 14)->unique(); //999.999.999-99
+            $table->char('rg', 12)->unique(); //99.999.999-9
+            $table->char('cidade', 30);
+            $table->char('bairro', 40);
+            $table->char('rua', 40);
+            $table->smallInteger('numero');
+            $table->char('completemento', 40);
+            $table->smallInteger('permissao');
+            $table->char('password', 100);
             $table->rememberToken();
             $table->timestamps();
+
+            $table->integer('id_cargo');
+            $table->integer('id_assistencia');
+
+            $table->foreign('id_cargo')->references('id')->on('cargos');
+            $table->integer('id_assistencia')->references('id')->on('assistencias');
         });
     }
 
@@ -30,6 +46,6 @@ class TabelaUsuarios extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('usuarios');
     }
 }
