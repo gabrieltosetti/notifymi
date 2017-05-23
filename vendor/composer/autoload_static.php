@@ -3189,6 +3189,7 @@ class ComposerStaticInit42dd67b073849a0914a2f1b2e0791ade
         'Symfony\\Component\\Yaml\\Yaml' => __DIR__ . '/..' . '/symfony/yaml/Yaml.php',
         'Symfony\\Polyfill\\Mbstring\\Mbstring' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/Mbstring.php',
         'TabelaAssistencias' => __DIR__ . '/../..' . '/database/migrations/2017_05_23_221112_tabela-assistencias.php',
+        'TabelaCargos' => __DIR__ . '/../..' . '/database/migrations/2017_05_23_223855_tabela-cargos.php',
         'TabelaClientes' => __DIR__ . '/../..' . '/database/migrations/2017_05_23_215414_tabela-clientes.php',
         'TabelaClientesAssistencias' => __DIR__ . '/../..' . '/database/migrations/2017_05_23_220707_tabela-clientes-assistencias.php',
         'TabelaConsertos' => __DIR__ . '/../..' . '/database/migrations/2017_05_23_223103_tabela-consertos.php',

@@ -2918,6 +2918,7 @@ return array(
     'Symfony\\Component\\Yaml\\Yaml' => $vendorDir . '/symfony/yaml/Yaml.php',
     'Symfony\\Polyfill\\Mbstring\\Mbstring' => $vendorDir . '/symfony/polyfill-mbstring/Mbstring.php',
     'TabelaAssistencias' => $baseDir . '/database/migrations/2017_05_23_221112_tabela-assistencias.php',
+    'TabelaCargos' => $baseDir . '/database/migrations/2017_05_23_223855_tabela-cargos.php',
     'TabelaClientes' => $baseDir . '/database/migrations/2017_05_23_215414_tabela-clientes.php',
     'TabelaClientesAssistencias' => $baseDir . '/database/migrations/2017_05_23_220707_tabela-clientes-assistencias.php',
     'TabelaConsertos' => $baseDir . '/database/migrations/2017_05_23_223103_tabela-consertos.php',
