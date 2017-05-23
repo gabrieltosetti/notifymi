@@ -2920,6 +2920,7 @@ return array(
     'TabelaAssistencias' => $baseDir . '/database/migrations/2017_05_23_221112_tabela-assistencias.php',
     'TabelaClientes' => $baseDir . '/database/migrations/2017_05_23_215414_tabela-clientes.php',
     'TabelaClientesAssistencias' => $baseDir . '/database/migrations/2017_05_23_220707_tabela-clientes-assistencias.php',
+    'TabelaConsertos' => $baseDir . '/database/migrations/2017_05_23_223103_tabela-consertos.php',
     'TabelaUsuarios' => $baseDir . '/database/migrations/2017_05_22_150546_tabela-usuarios.php',
     'Tests\\CreatesApplication' => $baseDir . '/tests/CreatesApplication.php',
     'Tests\\Feature\\ExampleTest' => $baseDir . '/tests/Feature/ExampleTest.php',
