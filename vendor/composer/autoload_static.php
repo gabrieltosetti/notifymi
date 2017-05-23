@@ -3188,6 +3188,7 @@ class ComposerStaticInit42dd67b073849a0914a2f1b2e0791ade
         'Symfony\\Component\\Yaml\\Unescaper' => __DIR__ . '/..' . '/symfony/yaml/Unescaper.php',
         'Symfony\\Component\\Yaml\\Yaml' => __DIR__ . '/..' . '/symfony/yaml/Yaml.php',
         'Symfony\\Polyfill\\Mbstring\\Mbstring' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/Mbstring.php',
+        'TabelaAssistencias' => __DIR__ . '/../..' . '/database/migrations/2017_05_23_221112_tabela-assistencias.php',
         'TabelaClientes' => __DIR__ . '/../..' . '/database/migrations/2017_05_23_215414_tabela-clientes.php',
         'TabelaClientesAssistencias' => __DIR__ . '/../..' . '/database/migrations/2017_05_23_220707_tabela-clientes-assistencias.php',
         'TabelaUsuarios' => __DIR__ . '/../..' . '/database/migrations/2017_05_22_150546_tabela-usuarios.php',
