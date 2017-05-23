@@ -13,14 +13,14 @@ class TabelaClientesAssistencias extends Migration
      */
     public function up()
     {
-        Schema::create('clietes_assistencias', function (Blueprint $table) {
+        Schema::create('clientes_assistencias', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_cliente');
-            $table->integer('id_assistencia');
+            $table->integer('id_cliente')->unsigned();
+            $table->integer('id_assistencia')->unsigned();
             $table->timestamps();
 
-            $table->foreign('id_cliente')->references('id')->on('clientes');
-            $table->integer('id_assistencia')->references('id')->on('assistencias');
+            // $table->foreign('id_cliente')->references('id')->on('clientes');
+            // $table->foreign('id_assistencia')->references('id')->on('assistencias');
         });
     }
 

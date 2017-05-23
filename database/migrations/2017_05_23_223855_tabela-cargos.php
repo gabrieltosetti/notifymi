@@ -17,9 +17,9 @@ class TabelaCargos extends Migration
             $table->increments('id');
             $table->char('cargo', 30);
 
-            $table->integer('id_assistencia');
+            $table->integer('id_assistencia')->unsigned();
 
-            $table->foreign('id_assistencia')->references('id')->on('assistencias');
+            // $table->foreign('id_assistencia')->references('id')->on('assistencias');
             $table->timestamps();
         });
     }

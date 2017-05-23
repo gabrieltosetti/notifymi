@@ -29,9 +29,9 @@ class TabelaAssistencias extends Migration
             $table->smallInteger('numero');
             $table->char('completemento', 40);
 
-            $table->integer('id_usuario');
+            $table->integer('id_usuario')->unsigned();
 
-            $table->foreign('id_usuario')->references('id')->on('usuarios');
+            // $table->foreign('id_usuario')->references('id')->on('usuarios');
             $table->timestamps();
         });
     }

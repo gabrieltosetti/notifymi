@@ -31,11 +31,11 @@ class TabelaUsuarios extends Migration
             $table->rememberToken();
             $table->timestamps();
 
-            $table->integer('id_cargo');
-            $table->integer('id_assistencia');
+            $table->integer('id_cargo')->unsigned();
+            $table->integer('id_assistencia')->unsigned();
 
-            $table->foreign('id_cargo')->references('id')->on('cargos');
-            $table->integer('id_assistencia')->references('id')->on('assistencias');
+            // $table->foreign('id_cargo')->references('id')->on('cargos');
+            // $table->foreign('id_assistencia')->references('id')->on('assistencias');
         });
     }
 
