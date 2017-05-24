@@ -116,17 +116,6 @@
                                                 </div>
                                             </div> 
                                             <!--/BAIRRO-->
-                                            <!--COMPLEMENTO-->
-                                            <div class="form-group {{ $errors->has('complemento') ? 'has-error' : ''}}">
-                                                <label for="complemento" class="col-sm-3 control-label">Complemento</label>
-                                                <div class="col-sm-9">
-                                                    <textarea class="form-control"  placeholder="Opcional" name="complemento" id="complemento">{{ old('complemento') }}</textarea>
-                                                    <span class="help-block"><?php echo $errors->first('complemento'); ?></span>
-                                                </div>
-                                            </div>
-                                            <!--/COMPLEMENTO-->
-                                        </div> <!--/col xs 12-->
-                                        <div class="col-xs-12 col-sm-6">
                                             <!--RUA-->
                                             <div class="form-group  {{ $errors->has('rua') ? 'has-error' : ''}}">
                                                 <label class="col-sm-3 control-label" for="rua">Rua</label>
@@ -135,7 +124,9 @@
                                                     <span class="help-block"><?php echo $errors->first('rua'); ?></span>
                                                 </div>
                                             </div> 
-                                            <!--/RUA-->
+                                            <!--/RUA-->                                            
+                                        </div> <!--/col xs 12-->
+                                        <div class="col-xs-12 col-sm-6">                                            
                                             <!--NUMERO-->
                                             <div class="form-group  {{ $errors->has('numero') ? 'has-error' : ''}}">
                                                 <label class="col-sm-3 control-label" for="numero">Número</label>
@@ -145,6 +136,15 @@
                                                 </div>
                                             </div> 
                                             <!--/NUMERO-->
+                                            <!--COMPLEMENTO-->
+                                            <div class="form-group {{ $errors->has('complemento') ? 'has-error' : ''}}">
+                                                <label for="complemento" class="col-sm-3 control-label">Complemento</label>
+                                                <div class="col-sm-9">
+                                                    <textarea class="form-control"  placeholder="Opcional" name="complemento" id="complemento">{{ old('complemento') }}</textarea>
+                                                    <span class="help-block"><?php echo $errors->first('complemento'); ?></span>
+                                                </div>
+                                            </div>
+                                            <!--/COMPLEMENTO-->
                                         </div> <!--/col xs 12-->
                                     </div> <!--/row 4-->
                     <!--divisoria--><div class="hr-line-dashed"></div> <!--divisoria-->
