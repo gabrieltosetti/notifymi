@@ -1,11 +1,11 @@
 @extends('layouts.principal')
 
-@section('title', 'Novo Funcionário')
+@section('title', 'Novo Usuário')
 
-@section('content_title', 'Novo Funcionário')
+@section('content_title', 'Novo Usuário')
 
 @section('breadcrumbs')
-    {!! Breadcrumbs::render('novo_funcionario') !!}
+    {!! Breadcrumbs::render('novo_usuario') !!}
 @endsection
 
 @section('css')
@@ -24,7 +24,7 @@
                                 <form class="form-horizontal" action="#" method="post">
                                     {{ csrf_field() }}
                                     <div class="row">
-                                        <div class="col-xs-12"><p>Informações básicas sobre o novo funcionário.</p></div>
+                                        <div class="col-xs-12"><p>Informações básicas sobre o novo usuário.</p></div>
                                     </div>
                                     <div class="row"> <!--row 2-->
                                         
@@ -191,7 +191,7 @@
                                     <div class="row">
                                         <div class="col-xs-12">
                                             <p>O Notify-Mi permite criar usuários com diferentes níveis de privilégios. 
-                                            Favor, escolha a opção mais adequada para este novo funcionário:</p>
+                                            Favor, escolha a opção mais adequada para este novo usuário:</p>
                                         </div>
                                     </div>
                                     <div class="row"> <!--row 6-->
@@ -205,20 +205,20 @@
                                                 <div class="i-checks"><label> <input type="radio" value="permissao2" name="permissao"> <i></i>Nível 2</label></div>
                                                 <ul>
                                                     <li>Tudo anterior;</li>
-                                                    <li>+ Cadastra funcionários até nível 1;</li>
+                                                    <li>+ Cadastra usuários até nível 1;</li>
                                                     <li>+ Pode lançar acompanhamentos nos consertos;</li>
                                                 </ul>
                                                 <div class="i-checks"><label> <input type="radio" value="permissao3" name="permissao"> <i></i>Nível 3</label></div>
                                                 <ul>
                                                     <li>Tudo anterior;</li>
-                                                    <li>+ Cadastra funcionários até nível 2;</li>
+                                                    <li>+ Cadastra usuários até nível 2;</li>
                                                     <li>+ Visualiza avaliações;</li>
                                                     <li>+ Gera relatórios;</li>
                                                 </ul>
                                                 <div class="i-checks"><label> <input type="radio" value="permissao4" name="permissao"> <i></i>Nível 4</label></div>
                                                 <ul>
                                                     <li>Tudo anterior;</li>
-                                                    <li>+ Cadastra funcionários até nível 3;</li>
+                                                    <li>+ Cadastra usuários até nível 3;</li>
                                                 </ul>
                                             <!--/PERMISSAO-->
                                         </div> <!--/col xs 12-->

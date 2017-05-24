@@ -32,8 +32,12 @@ Route::get('/entrar/cadastro', 'LoginController@cadastro')->name('cadastro');
 Route::get('/clientes', 'ClienteController@lista')->name('clientes');
 Route::get('/clientes/novo', 'ClienteController@novo')->name('novo_cliente');
 
-//funcionarios
-Route::get('/funcionarios', 'FuncionarioController@lista')->name('funcionarios');
-Route::get('/funcionarios/novo', 'FuncionarioController@novo')->name('novo_funcionario');
+//usuarios
+Route::get('/usuarios', 'UsuarioController@lista')->name('usuarios');
+Route::get('/usuarios/novo', 'UsuarioController@novo')->name('novo_usuario');
+
+Route::get('/usuarios/detalhes/{id}', 'UsuarioController@detalhes')->name('detalhes_usuario');
+Route::post('/usuarios/adiciona', 'UsuarioController@adiciona')->name('novo_usuario_post');
+Route::get('/usuarios/remove/{id}', 'UsuarioController@remove')->name('remove_usuario');
 
 Auth::routes();

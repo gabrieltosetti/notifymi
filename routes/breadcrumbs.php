@@ -34,18 +34,18 @@ Breadcrumbs::register('novo_cliente', function($breadcrumbs)
     $breadcrumbs->push('Novo', route('novo_cliente'));
 });
 
-// Home > Funcionarios
-Breadcrumbs::register('funcionarios', function($breadcrumbs)
+// Home > Usuario
+Breadcrumbs::register('usuarios', function($breadcrumbs)
 {
     $breadcrumbs->parent('home');
-    $breadcrumbs->push('Funcionarios', route('funcionarios'));
+    $breadcrumbs->push('Usuários', route('usuarios'));
 });
 
-// Home > Funcionarios > Novo
-Breadcrumbs::register('novo_funcionario', function($breadcrumbs)
+// Home > Usuario > Novo
+Breadcrumbs::register('novo_usuario', function($breadcrumbs)
 {
-    $breadcrumbs->parent('funcionarios');
-    $breadcrumbs->push('Novo', route('novo_funcionario'));
+    $breadcrumbs->parent('usuarios');
+    $breadcrumbs->push('Novo', route('novo_usuario'));
 });
 
 /*// Home > Blog

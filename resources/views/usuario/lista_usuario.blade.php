@@ -1,11 +1,11 @@
 @extends('layouts.principal')
 
-@section('title', 'Funcionários')
+@section('title', 'Usuários')
 
-@section('content_title', 'Lista de Funcionários')
+@section('content_title', 'Lista de Usuários')
 
 @section('breadcrumbs')
-    {!! Breadcrumbs::render('funcionarios') !!}
+    {!! Breadcrumbs::render('usuarios') !!}
 @endsection
 
 @section('content')

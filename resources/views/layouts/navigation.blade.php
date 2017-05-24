@@ -49,16 +49,16 @@
                 </li>
                 <!--/CLIENTES-->
                  <!--
-                                            FUNCIONARIOS
+                                            USUARIOS
                 -->
-                <li class="{{ Request::segment(1) === 'funcionarios' ? 'active' : '' }}" >
-                    <a href="#"><i class="fa fa-id-card-o"></i> <span class="nav-label">Funcionários</span> <span class="fa arrow"></span></a>
+                <li class="{{ Request::segment(1) === 'usuarios' ? 'active' : '' }}" >
+                    <a href="#"><i class="fa fa-id-card-o"></i> <span class="nav-label">Usuários</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
-                        <li class="{{ Request::fullUrl() === route('funcionarios') ? 'active' : '' }}" ><a href="{{ route('funcionarios') }}">Ver todos</a></li>
-                        <li class="{{ Request::fullUrl() === route('novo_funcionario') ? 'active' : '' }}" ><a href="{{ route('novo_funcionario') }}">Novo</a></li>
+                        <li class="{{ Request::fullUrl() === route('usuarios') ? 'active' : '' }}" ><a href="{{ route('usuarios') }}">Ver todos</a></li>
+                        <li class="{{ Request::fullUrl() === route('novo_usuario') ? 'active' : '' }}" ><a href="{{ route('novo_usuario') }}">Novo</a></li>
                     </ul>
                 </li>
-                <!--/FUNCIONARIOS-->
+                <!--/USUARIOS-->
             </ul>
 
         </div>
