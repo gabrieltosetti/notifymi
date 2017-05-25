@@ -24,6 +24,7 @@ class Usuario extends Model
         'cpf',
         'cidade',
         'telefone',
+        'celular',
         'cidade',
         'bairro',
         'rua',
@@ -32,6 +33,8 @@ class Usuario extends Model
         'email',
         'senha',
         'permissao',
+        'id_cargo',
+        'id_assistencia',
   ];
 
   protected $guarded = ['id'];

@@ -25,15 +25,16 @@ class UsuarioRequest extends FormRequest
     {
         return [
             'nome' => 'required|max:50',
-            'email' => 'required|max:60',
-            'cpf' => 'required|',
-            'cidade' => 'max:50',
-            'bairro' => 'max:50',
-            'rua' => 'max:50',
-            'celular' => 'required|max:15',
-            'telefone' => 'max:15',
-            'observacao' => 'max:255',
-            'cargo' => 'max:20',
+            'email' => 'required|max:50',
+            'celular' => 'required|max:14',
+            'telefone' => 'max:13',
+            /*'rg' => 'required',*/
+            'cpf' => 'required',
+            'cidade' => 'required|max:30',
+            'bairro' => 'required|max:40',
+            'rua' => 'required|max:40',
+            'numero' => 'required',
+            'complemento' => 'max:40',
         ];
     }
 
@@ -42,7 +43,6 @@ class UsuarioRequest extends FormRequest
         return [
             'required'  => 'O campo :attribute não pode ser vazio.',
             'max'       => 'O campo :attribute não pode passar de :max caracteres.',
-            'observacao.max'       => 'O campo Observação não pode passar de :max caracteres.'
         ];
     }
 }
