@@ -25,7 +25,7 @@ class TabelaUsuarios extends Migration
             $table->char('bairro', 40);
             $table->char('rua', 40);
             $table->smallInteger('numero');
-            $table->char('completemento', 40);
+            $table->char('complemento', 40);
             $table->smallInteger('permissao');
             $table->char('senha', 100);
             $table->rememberToken();

@@ -21,8 +21,9 @@
                                 <h5>Cadastro</h5>
                             </div> <!--/ibox title-->
                             <div class="ibox-content">
-                                <form class="form-horizontal" action="#" method="post">
+                                <form class="form-horizontal" action="{{ route('novo_usuario_post') }}" method="post">
                                     {{ csrf_field() }}
+                                    <input type="hidden" value="1" name="id_assistencia" />
                                     <div class="row">
                                         <div class="col-xs-12"><p>Informações básicas sobre o novo usuário.</p></div>
                                     </div>
@@ -195,34 +196,51 @@
                                         </div>
                                     </div>
                                     <div class="row"> <!--row 6-->
-                                        <div class="col-xs-12"> 
+                                        <div class="col-xs-12 col-sm-6 b-r"> 
                                             <!--PERMISSAO-->
-                                                <div class="i-checks"><label> <input type="radio" value="permissao1" name="permissao"> <i></i>Nível 1</label></div>
-                                                <ul>
-                                                    <li>Cadastra e visualiza consertos;</li>
-                                                    <li>Cadastra e visualiza clientes;</li>
-                                                </ul>
-                                                <div class="i-checks"><label> <input type="radio" value="permissao2" name="permissao"> <i></i>Nível 2</label></div>
-                                                <ul>
-                                                    <li>Tudo anterior;</li>
-                                                    <li>+ Cadastra usuários até nível 1;</li>
-                                                    <li>+ Pode lançar acompanhamentos nos consertos;</li>
-                                                </ul>
-                                                <div class="i-checks"><label> <input type="radio" value="permissao3" name="permissao"> <i></i>Nível 3</label></div>
-                                                <ul>
-                                                    <li>Tudo anterior;</li>
-                                                    <li>+ Cadastra usuários até nível 2;</li>
-                                                    <li>+ Visualiza avaliações;</li>
-                                                    <li>+ Gera relatórios;</li>
-                                                </ul>
-                                                <div class="i-checks"><label> <input type="radio" value="permissao4" name="permissao"> <i></i>Nível 4</label></div>
-                                                <ul>
-                                                    <li>Tudo anterior;</li>
-                                                    <li>+ Cadastra usuários até nível 3;</li>
-                                                </ul>
+                                            <div class="i-checks"><label> <input type="radio" value="1" name="permissao"> <i></i>Nível 1</label></div>
+                                            <ul>
+                                                <li>Cadastra e visualiza consertos;</li>
+                                                <li>Cadastra e visualiza clientes;</li>
+                                            </ul>
+                                            <div class="i-checks"><label> <input type="radio" value="2" name="permissao"> <i></i>Nível 2</label></div>
+                                            <ul>
+                                                <li>Tudo anterior;</li>
+                                                <li>+ Cadastra usuários até nível 1;</li>
+                                                <li>+ Pode lançar acompanhamentos nos consertos;</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6"> 
+                                            <div class="i-checks"><label> <input type="radio" value="3" name="permissao"> <i></i>Nível 3</label></div>
+                                            <ul>
+                                                <li>Tudo anterior;</li>
+                                                <li>+ Cadastra usuários até nível 2;</li>
+                                                <li>+ Visualiza avaliações;</li>
+                                                <li>+ Gera relatórios;</li>
+                                            </ul>
+                                            <div class="i-checks"><label> <input type="radio" value="4" name="permissao"> <i></i>Nível 4</label></div>
+                                            <ul>
+                                                <li>Tudo anterior;</li>
+                                                <li>+ Cadastra usuários até nível 3;</li>
+                                            </ul>
                                             <!--/PERMISSAO-->
                                         </div> <!--/col xs 12-->
                                     </div> <!--/row 6-->
+                                    <div class="row m-t-md"><!--row 7-->
+                                        <div class="col-xs-12"><p>Para uma melhor personalização, é possível escolher o cargo no usuário:</p></div>
+                                    </div><!--/row 7-->
+                                    <div class="row"><!--row 8-->
+                                        <div class="col-xs-10 col-sm-5 col-md-4 col-lg-2">
+                                            <!--CARGOS-->
+                                            <select class="form-control" id="cargo" name="id_cargo">
+                                                @foreach($cargos as $cargo)
+                                                    <option value="{{$cargo->id}}">{{$cargo->cargo}}</option>
+                                                @endforeach
+                                            </select>
+                                            <span class="help-block"><?php echo $errors->first('cargo'); ?></span>
+                                            <!--/CARGOS-->
+                                        </div>
+                                    </div><!--/row 8-->
                     <!--divisoria--><div class="hr-line-dashed"></div> <!--divisoria-->
                                     <div class="row">
                                         <div class="col-xs-12"><p>Tudo certo? Vamos finalizar !</p></div>
@@ -230,7 +248,7 @@
                                     <div class="row"> <!--row 7-->
                                         <div class="col-xs-12">
                                             <button class="btn btn-primary" type="submit">Criar !</button>
-                                            <button class="btn btn-danger" type="submit">Cancelar</button>                                            
+                                            <a class="btn btn-danger" href="{{ route('usuarios') }}">Cancelar</a>                                            
                                         </div>
                                     </div> <!--/row 7-->
                                     

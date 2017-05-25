@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Usuario;
+use App\Cargo;
 use App\Http\Requests\UsuarioRequest;
 
 class UsuarioController extends Controller
@@ -23,7 +24,7 @@ class UsuarioController extends Controller
 
     public function novo()
     {
-        return view('usuario/novo_usuario');
+        return view('usuario/novo_usuario')->with('cargos', Cargo::all());
     }
 
     //rota: novo_usuario_post

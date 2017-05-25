@@ -19,7 +19,7 @@ class Usuario extends Model
    * @var array
    */
   protected $fillable = [
-        'name', 
+        'nome', 
         'rg', 
         'cpf',
         'cidade',
@@ -30,7 +30,7 @@ class Usuario extends Model
         'numero',
         'complemento',
         'email',
-        'password',
+        'senha',
         'permissao',
   ];
 
@@ -42,11 +42,11 @@ class Usuario extends Model
    * @var array
    */
   protected $hidden = [
-      'password', 'remember_token',
+      'remember_token',
   ];
 
     public function cargos()
     {
-        /*return $this->hasMany('App\Pedido');*/
+        return $this->belongsTo('App\Cargo');
     }
 }
