@@ -39,5 +39,6 @@ Route::get('/usuarios/novo', 'UsuarioController@novo')->name('novo_usuario');
 Route::get('/usuarios/detalhes/{id}', 'UsuarioController@detalhes')->name('detalhes_usuario');
 Route::post('/usuarios/adiciona', 'UsuarioController@adiciona')->name('novo_usuario_post');
 Route::get('/usuarios/remove/{id}', 'UsuarioController@remove')->name('remove_usuario');
+Route::get('/usuarios/edita/{id}', 'UsuarioController@edita')->name('edita_usuario');
 
 Auth::routes();
