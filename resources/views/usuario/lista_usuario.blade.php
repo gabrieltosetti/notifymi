@@ -17,7 +17,7 @@
                             <a href="{{ route('detalhes_usuario', ['id' => $usuario->id]) }}">
                                 <div class="col-sm-4">
                                     <div class="text-center">
-                                        <img alt="image" class="img-circle m-t-xs img-responsive center-block" src="img/a2.jpg">
+                                        <img alt="image" class="img-circle m-t-xs img-responsive center-block" src="{{ asset('img/a2.jpg') }}">
                                         <div class="m-t-xs font-bold">{{$usuario->cargo->cargo}}</div>
                                     </div>
                                 </div>
