@@ -18,7 +18,7 @@ class UsuarioController extends Controller
     {
         $usuarios = Usuario::all();
 
-        return view('Usuario/lista_usuario')->with('usuarios', $usuarios);
+        return view('usuario/lista_usuario')->with('usuarios', $usuarios);
         /*return view('usuario/lista_usuario');*/
     }
 

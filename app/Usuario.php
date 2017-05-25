@@ -48,8 +48,13 @@ class Usuario extends Model
       'remember_token',
   ];
 
-    public function cargos()
+    public function cargo()
     {
-        return $this->belongsTo('App\Cargo');
+        return $this->belongsTo('App\Cargo', 'id_cargo');
+    }
+
+    public function assistencia()
+    {
+        return $this->belongsTo('App\Assistencia', 'id_assistencia');
     }
 }
