@@ -70,8 +70,8 @@
     <script src="{{ asset('js/inspinia.js') }}"></script>
     <script src="{{ asset('js/plugins/pace/pace.min.js') }}"></script>
 
-@section('scripts')
-@show
+@yield('scripts')
+
 
 </body>
 </html>

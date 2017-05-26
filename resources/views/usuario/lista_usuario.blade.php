@@ -54,10 +54,10 @@
                                     </form>
                                 </div>
                                 <div class="col-xs-8 col-sm-3 p-w-xs hidden-xs">
-                                    <a class="btn btn-xs btn-info center-block" href="{{ route('detalhes_usuario', ['id' => $usuario->id]) }}">Info</a>
+                                    <a class="btn btn-xs btn-info btn-block" href="{{ route('detalhes_usuario', ['id' => $usuario->id]) }}">Info</a>
                                 </div>
                                 <div class="col-xs-12 col-sm-5 p-w-xs hidden-xs">
-                                    <a class="btn btn-xs btn-warning center-block" href="{{ route('edita_usuario', ['id' => $usuario->id]) }}">Editar</a>
+                                    <a class="btn btn-xs btn-warning btn-block" href="{{ route('edita_usuario', ['id' => $usuario->id]) }}">Editar</a>
                                 </div>
                                 <!--CELULAR-->
                                 <div class="col-xs-4 col-sm-4 visible-xs-block">

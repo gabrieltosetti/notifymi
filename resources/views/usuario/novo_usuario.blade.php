@@ -10,6 +10,10 @@
 
 @section('css')
 <link href="{{ asset('css/plugins/iCheck/custom.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/plugins/dropzone/basic.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/plugins/dropzone/dropzone.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/plugins/jasny/jasny-bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/plugins/codemirror/codemirror.css') }}" rel="stylesheet">
 @stop
 
 @section('content')
@@ -63,6 +67,27 @@
                                             <!--/CPF-->
                                         </div> <!--/col xs 12-->
                                     </div> <!--/row 2-->
+                                    <div class="row m-t-md"><!--row FOTO-->
+                                        <div class="col-xs-12"><p>Quer escolher uma foto de perfil ?</p></div>
+                                    </div><!--/row 7-->
+                                    <div class="row"><!--row 8-->
+                                        <div class="col-xs-12 col-sm-10 col-md-10 col-lg-5">
+                                            <!--FOTO-->
+                                             <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                                                <div class="form-control" data-trigger="fileinput">
+                                                    <i class="glyphicon glyphicon-file fileinput-exists"></i> 
+                                                    <span class="fileinput-filename"></span>
+                                                </div>
+                                                <span class="input-group-addon btn btn-default btn-file">
+                                                    <span class="fileinput-new">Selecionar Arquivo</span>
+                                                    <span class="fileinput-exists">Alterar</span>
+                                                    <input type="file" name="...">
+                                                </span>
+                                                <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remover</a>
+                                            </div>
+                                            <!--/FOTO-->
+                                        </div>
+                                    </div><!--/row FOTO-->
                     <!--divisoria--><div class="hr-line-dashed"></div> <!--divisoria-->
                                     <div class="row">
                                         <div class="col-xs-12"><p>Nos passe o seu contato !</p></div>
@@ -266,12 +291,21 @@
 
 <!-- iCheck -->
     <script src="{{ asset('js/plugins/iCheck/icheck.min.js') }}"></script>
-        <script>
-            $(document).ready(function () {
-                $('.i-checks').iCheck({
-                    checkboxClass: 'icheckbox_square-green',
-                    radioClass: 'iradio_square-green',
-                });
+    <script>
+        $(document).ready(function () {
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
             });
-        </script>
+        });
+    </script>
+
+        <!-- DROPZONE -->
+    <script src="{{ asset('js/plugins/dropzone/dropzone.js') }}"></script>
+
+    <!-- CodeMirror -->
+    <script src="{{ asset('js/plugins/codemirror/codemirror.js') }}"></script>
+    <script src="{{ asset('js/plugins/codemirror/mode/xml/xml.js') }}"></script>
+
+
 @stop
