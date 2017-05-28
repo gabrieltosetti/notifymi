@@ -10,10 +10,10 @@
 
 @section('css')
 <link href="{{ asset('css/plugins/iCheck/custom.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/plugins/dropzone/basic.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/plugins/dropzone/dropzone.css') }}" rel="stylesheet">
+    <!--<link href="{{ asset('css/plugins/dropzone/basic.css') }}" rel="stylesheet">-->
+    <!--<link href="{{ asset('css/plugins/dropzone/dropzone.css') }}" rel="stylesheet">-->
     <link href="{{ asset('css/plugins/jasny/jasny-bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/plugins/codemirror/codemirror.css') }}" rel="stylesheet">
+    <!--<link href="{{ asset('css/plugins/codemirror/codemirror.css') }}" rel="stylesheet">-->
 @stop
 
 @section('content')
@@ -25,7 +25,7 @@
                                 <h5>Cadastro</h5>
                             </div> <!--/ibox title-->
                             <div class="ibox-content">
-                                <form class="form-horizontal" action="{{ route('novo_usuario_post') }}" method="post">
+                                <form class="form-horizontal" action="{{ route('novo_usuario_post') }}" method="post" enctype="multipart/form-data">
                                     {{ csrf_field() }}
                                     <input type="hidden" value="1" name="id_assistencia" />
                                     <div class="row">
@@ -81,7 +81,7 @@
                                                 <span class="input-group-addon btn btn-default btn-file">
                                                     <span class="fileinput-new">Selecionar Arquivo</span>
                                                     <span class="fileinput-exists">Alterar</span>
-                                                    <input type="file" name="...">
+                                                    <input type="file" name="foto">
                                                 </span>
                                                 <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remover</a>
                                             </div>
@@ -299,13 +299,5 @@
             });
         });
     </script>
-
-        <!-- DROPZONE -->
-    <script src="{{ asset('js/plugins/dropzone/dropzone.js') }}"></script>
-
-    <!-- CodeMirror -->
-    <script src="{{ asset('js/plugins/codemirror/codemirror.js') }}"></script>
-    <script src="{{ asset('js/plugins/codemirror/mode/xml/xml.js') }}"></script>
-
 
 @stop
