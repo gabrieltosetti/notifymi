@@ -10,8 +10,8 @@ class Usuario extends Model
   /*use Notifiable;*/
 
   public $timestamps = true;
-
-    protected $table = 'usuarios';
+  
+  protected $table = 'usuarios';
 
   /**
    * The attributes that are mass assignable.

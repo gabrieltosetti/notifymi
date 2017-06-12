@@ -40,7 +40,8 @@ class UsuarioController extends Controller
     //rota: detalhes_usuario
     public function detalhes($id)
     {
-        return view('usuario/detalhes_usuario')->with('usuario', Usuario::find($id));
+        $usuario = Usuario::find($id);
+        return view('usuario/detalhes_usuario')->with('usuario', $usuario);
     }
 
     //rota: remove_usuario

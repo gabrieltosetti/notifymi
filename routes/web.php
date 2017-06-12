@@ -28,9 +28,14 @@ Route::get('/entrar', 'LoginController@login')->name('entrar');
 Route::get('/entrar/cadastro', 'LoginController@cadastro')->name('cadastro');
 
 
-//Consertos
+//Cliente
 Route::get('/clientes', 'ClienteController@lista')->name('clientes');
 Route::get('/clientes/novo', 'ClienteController@novo')->name('novo_cliente');
+
+Route::get('/clientes/detalhes/{id}/', 'ClienteController@detalhes')->name('detalhes_cliente');
+Route::post('/clientes/adiciona', 'ClienteController@adiciona')->name('novo_cliente_post');
+Route::get('/clientes/remove/{id}', 'ClienteController@remove')->name('remove_cliente');
+Route::get('/clientes/edita/{id}', 'ClienteController@edita')->name('edita_cliente');
 
 //usuarios
 Route::get('/usuarios', 'UsuarioController@lista')->name('usuarios');

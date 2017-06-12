@@ -178,7 +178,7 @@
                                         <div class="col-xs-12"><p>Entrando no sistema...</p></div>
                                     </div>
                                     <div class="row"> <!--row 5-->
-                                        <div class="col-xs-12 col-sm-6 b-r"> 
+                                        <div class="col-xs-12 col-sm-6"> 
                                             <!--EMAIL-->
                                             <div class="form-group  {{ $errors->has('email') ? 'has-error' : ''}}">
                                                 <label class="col-sm-3 control-label" for="email">Email</label>
@@ -190,7 +190,7 @@
                                             </div> 
                                             <!--/EMAIL-->
                                         </div> <!--/col xs 12-->
-                                        <div class="col-xs-12 col-sm-6">
+                                        <div class="col-xs-12 col-sm-6 border-left">
                                             <p>Não se preocupe, esta senha poderá ser alterada a qualquer momento depois de criada !</p>
                                             <!--SENHA-->
                                             <div class="form-group  {{ $errors->has('senha') ? 'has-error' : ''}}">
@@ -221,7 +221,7 @@
                                         </div>
                                     </div>
                                     <div class="row"> <!--row 6-->
-                                        <div class="col-xs-12 col-sm-6 b-r"> 
+                                        <div class="col-xs-12 col-sm-6"> 
                                             <!--PERMISSAO-->
                                             <div class="i-checks"><label> <input type="radio" value="1" name="permissao"> <i></i>Nível 1</label></div>
                                             <ul>
@@ -235,7 +235,7 @@
                                                 <li>+ Pode lançar acompanhamentos nos consertos;</li>
                                             </ul>
                                         </div>
-                                        <div class="col-xs-12 col-sm-6"> 
+                                        <div class="col-xs-12 col-sm-6 border-left"> 
                                             <div class="i-checks"><label> <input type="radio" value="3" name="permissao"> <i></i>Nível 3</label></div>
                                             <ul>
                                                 <li>Tudo anterior;</li>
