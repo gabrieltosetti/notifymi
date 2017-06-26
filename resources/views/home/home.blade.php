@@ -16,7 +16,7 @@
 
                               O projeto Notify-Mi tem objetivo de agilizar o acompanhamento do usuário a seus bens que foram levados a manutenção. Notify-Mi foi baseado em HTML, CSS, PHP,
                               Laravel, JS e AJAX utilizando o padrão de arquitetura de software MVC. O sistema tem como fundamentos as pesquisas realizadas com o público e as
-                              próprias experiências vivenciadas que nos trouxeram a base das principais ferramentas que precisamos no dia-a- dia.
+                              próprias experiências vivenciadas que nos trouxeram a base das principais ferramentas que precisamos no dia-a-dia.
 
                         </div>
                         <div class="ibox-content">
