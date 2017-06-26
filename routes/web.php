@@ -18,6 +18,7 @@
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/2', 'HomeController@index2')->name('home');
 
 //Consertos
 Route::get('/consertos', 'ConsertoController@lista')->name('consertos');
@@ -26,6 +27,7 @@ Route::get('/consertos/novo', 'ConsertoController@novo')->name('novo_conserto');
 //login
 Route::get('/entrar', 'LoginController@login')->name('entrar');
 Route::get('/entrar/cadastro', 'LoginController@cadastro')->name('cadastro');
+
 
 
 //Consertos
