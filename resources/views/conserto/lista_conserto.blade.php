@@ -14,7 +14,7 @@
                     <div class="col-lg-12">
                         <div class="text-center m-t-lg">
                             <h1>
-                                Tabela de concertos
+                                Tabela de consertos
                             </h1>
                             <small>
                                 Tabela abaixo
