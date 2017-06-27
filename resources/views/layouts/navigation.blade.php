@@ -5,19 +5,19 @@
                     <div class="dropdown profile-element">
 
 
-                      <span><img alt="image" class="img-circle" src="{{ asset('/media/profile_small.jpg') }}" /></span>
-                      
+                      <span><img alt="image" class="img-circle" src="{{ asset('/media/Auth::user()->avatar') }}" /></span>
+
 
 
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">{{ Auth::user()->name }}</strong></span>
-                  <!--            <span class="clear"> <span class="block m-t-xs"> {{ Auth::user()->name }}</span>-->
+
                     <span class="clear"> <span class="block m-t-xs"> Profissão aqui</span>
 
                           </a>
 
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                            <li><a href="profile.html">Profile</a></li>
+                            <li><a href="{{ route('perfil') }}">Profile</a></li>
                             <li><a href="contacts.html">Contacts</a></li>
                             <li><a href="mailbox.html">Mailbox</a></li>
                             <li class="divider"></li>
