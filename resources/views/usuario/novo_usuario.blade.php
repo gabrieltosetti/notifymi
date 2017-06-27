@@ -75,7 +75,7 @@
                                             <!--FOTO-->
                                              <div class="fileinput fileinput-new input-group" data-provides="fileinput">
                                                 <div class="form-control" data-trigger="fileinput">
-                                                    <i class="glyphicon glyphicon-file fileinput-exists"></i> 
+                                                    <i class="glyphicon glyphicon-file fileinput-exists"></i>
                                                     <span class="fileinput-filename"></span>
                                                 </div>
                                                 <span class="input-group-addon btn btn-default btn-file">
@@ -179,7 +179,7 @@
                                     </div>
                                     <div class="row"> <!--row 5-->
 
-                                        <div class="col-xs-12 col-sm-6"> 
+                                        <div class="col-xs-12 col-sm-6">
 
                                             <!--EMAIL-->
                                             <div class="form-group  {{ $errors->has('email') ? 'has-error' : ''}}">
@@ -226,7 +226,7 @@
                                     </div>
                                     <div class="row"> <!--row 6-->
 
-                                        <div class="col-xs-12 col-sm-6"> 
+                                        <div class="col-xs-12 col-sm-6">
                                             <!--PERMISSAO-->
                                             <div class="i-checks"><label> <input type="radio" value="1" name="permissao"> <i></i>Nível 1</label></div>
                                             <ul>
@@ -240,7 +240,7 @@
                                                 <li>+ Pode lançar acompanhamentos nos consertos;</li>
                                             </ul>
                                         </div>
-                                        <div class="col-xs-12 col-sm-6 border-left"> 
+                                        <div class="col-xs-12 col-sm-6 border-left">
                                             <div class="i-checks"><label> <input type="radio" value="3" name="permissao"> <i></i>Nível 3</label></div>
                                             <ul>
                                                 <li>Tudo anterior;</li>
@@ -280,7 +280,7 @@
                                         <div class="col-xs-12">
 
                                             <button class="btn btn-primary" type="submit">Criar !</button>
-                                            <a class="btn btn-danger" href="{{ route('usuarios') }}">Cancelar</a>                                            
+                                            <a class="btn btn-danger" href="{{ route('usuarios') }}">Cancelar</a>
 
                                         </div>
                                     </div> <!--/row 7-->
@@ -310,4 +310,3 @@
     </script>
 
 @stop
-aster

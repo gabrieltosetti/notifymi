@@ -19,11 +19,11 @@
                           </a>
 
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                            <li><a href="{{ route('perfil') }}">Profile</a></li>
-                            <li><a href="contacts.html">Contacts</a></li>
-                            <li><a href="mailbox.html">Mailbox</a></li>
+                            <li><a href="{{ route('perfil') }}">Perfil</a></li>
+                            <li><a href="contacts.html">Contatos</a></li>
+                            <li><a href="mailbox.html">Caixa de Mensagens</a></li>
                             <li class="divider"></li>
-                            <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
+                            <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Log out</a></li>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 {{ csrf_field() }}
                             </form>
@@ -40,7 +40,7 @@
                                             CONSERTOS
                 -->
                 <li class="{{ Request::segment(1) === 'consertos' ? 'active' : '' }}" >
-                    <a href="#"><i class="fa fa-wrench"></i> <span class="nav-label">Concertos</span> <span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-wrench"></i> <span class="nav-label">Consertos</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
                         <li class="{{ Request::fullUrl() === route('consertos') ? 'active' : '' }}" ><a href="{{ route('consertos') }}">Ver todos</a></li>
                         <li class="{{ Request::fullUrl() === route('novo_conserto') ? 'active' : '' }}" ><a href="{{ route('novo_conserto') }}">Novo</a></li>
