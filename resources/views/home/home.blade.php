@@ -7,6 +7,7 @@
 
 
             <div class="wrapper wrapper-content animated fadeInRight">
+
                 <div class="row">
                   <div class="ibox float-e-margins">
                       <div class="ibox-content">
@@ -33,7 +34,8 @@
                                   <div class="sk-cube"></div>
                                   <div class="sk-cube"></div>
                                   <div class="sk-cube"></div>
-                              </div>
+                                </div>
+                            
                           </div>
                         </div>
                     </div>
