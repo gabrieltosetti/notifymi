@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Usuario;
+use App\Cargo;
 use App\Http\Requests\UsuarioRequest;
 
 class UsuarioController extends Controller
@@ -17,18 +18,20 @@ class UsuarioController extends Controller
     {
         $usuarios = Usuario::all();
 
-        return view('Usuario/lista_usuario')->with('usuarios', $usuarios);
+        return view('usuario/lista_usuario')->with('usuarios', $usuarios);
         /*return view('usuario/lista_usuario');*/
     }
 
     public function novo()
     {
-        return view('usuario/novo_usuario');
+        return view('usuario/novo_usuario')->with('cargos', Cargo::all());
     }
 
     //rota: novo_usuario_post
     public function adiciona(UsuarioRequest $request)
     {
+
+        request()->file('foto')->store('perfil');
         Usuario::create($request->all());
 
         return redirect('/usuarios')->withInput();
@@ -38,7 +41,6 @@ class UsuarioController extends Controller
     public function detalhes($id)
     {
         $usuario = Usuario::find($id);
-
         return view('usuario/detalhes_usuario')->with('usuario', $usuario);
     }
 

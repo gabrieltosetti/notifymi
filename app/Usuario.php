@@ -10,8 +10,8 @@ class Usuario extends Model
   /*use Notifiable;*/
 
   public $timestamps = true;
-
-    protected $table = 'usuarios';
+  
+  protected $table = 'usuarios';
 
   /**
    * The attributes that are mass assignable.
@@ -19,19 +19,22 @@ class Usuario extends Model
    * @var array
    */
   protected $fillable = [
-        'name', 
+        'nome', 
         'rg', 
         'cpf',
         'cidade',
         'telefone',
+        'celular',
         'cidade',
         'bairro',
         'rua',
         'numero',
         'complemento',
         'email',
-        'password',
+        'senha',
         'permissao',
+        'id_cargo',
+        'id_assistencia',
   ];
 
   protected $guarded = ['id'];
@@ -42,11 +45,16 @@ class Usuario extends Model
    * @var array
    */
   protected $hidden = [
-      'password', 'remember_token',
+      'remember_token',
   ];
 
-    public function cargos()
+    public function cargo()
     {
-        /*return $this->hasMany('App\Pedido');*/
+        return $this->belongsTo('App\Cargo', 'id_cargo');
+    }
+
+    public function assistencia()
+    {
+        return $this->belongsTo('App\Assistencia', 'id_assistencia');
     }
 }

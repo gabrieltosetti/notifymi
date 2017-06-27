@@ -10,6 +10,10 @@
 
 @section('css')
 <link href="{{ asset('css/plugins/iCheck/custom.css') }}" rel="stylesheet">
+    <!--<link href="{{ asset('css/plugins/dropzone/basic.css') }}" rel="stylesheet">-->
+    <!--<link href="{{ asset('css/plugins/dropzone/dropzone.css') }}" rel="stylesheet">-->
+    <link href="{{ asset('css/plugins/jasny/jasny-bootstrap.min.css') }}" rel="stylesheet">
+    <!--<link href="{{ asset('css/plugins/codemirror/codemirror.css') }}" rel="stylesheet">-->
 @stop
 
 @section('content')
@@ -21,8 +25,9 @@
                                 <h5>Cadastro</h5>
                             </div> <!--/ibox title-->
                             <div class="ibox-content">
-                                <form class="form-horizontal" action="#" method="post">
+                                <form class="form-horizontal" action="{{ route('novo_usuario_post') }}" method="post" enctype="multipart/form-data">
                                     {{ csrf_field() }}
+                                    <input type="hidden" value="1" name="id_assistencia" />
                                     <div class="row">
                                         <div class="col-xs-12"><p>Quais seus dados?</p></div>
                                     </div>
@@ -62,6 +67,27 @@
                                             <!--/CPF-->
                                         </div> <!--/col xs 12-->
                                     </div> <!--/row 2-->
+                                    <div class="row m-t-md"><!--row FOTO-->
+                                        <div class="col-xs-12"><p>Quer escolher uma foto de perfil ?</p></div>
+                                    </div><!--/row 7-->
+                                    <div class="row"><!--row 8-->
+                                        <div class="col-xs-12 col-sm-10 col-md-10 col-lg-5">
+                                            <!--FOTO-->
+                                             <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                                                <div class="form-control" data-trigger="fileinput">
+                                                    <i class="glyphicon glyphicon-file fileinput-exists"></i> 
+                                                    <span class="fileinput-filename"></span>
+                                                </div>
+                                                <span class="input-group-addon btn btn-default btn-file">
+                                                    <span class="fileinput-new">Selecionar Arquivo</span>
+                                                    <span class="fileinput-exists">Alterar</span>
+                                                    <input type="file" name="foto">
+                                                </span>
+                                                <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remover</a>
+                                            </div>
+                                            <!--/FOTO-->
+                                        </div>
+                                    </div><!--/row FOTO-->
                     <!--divisoria--><div class="hr-line-dashed"></div> <!--divisoria-->
                                     <div class="row">
                                         <div class="col-xs-12"><p>Como podemos entrar em contato?</p></div>
@@ -152,7 +178,9 @@
                                         <div class="col-xs-12"><p>Use estes dados para entrar no sistema:</p></div>
                                     </div>
                                     <div class="row"> <!--row 5-->
-                                        <div class="col-xs-12 col-sm-6 b-r">
+
+                                        <div class="col-xs-12 col-sm-6"> 
+
                                             <!--EMAIL-->
                                             <div class="form-group  {{ $errors->has('email') ? 'has-error' : ''}}">
                                                 <label class="col-sm-3 control-label" for="email">Email</label>
@@ -164,8 +192,10 @@
                                             </div>
                                             <!--/EMAIL-->
                                         </div> <!--/col xs 12-->
-                                        <div class="col-xs-12 col-sm-6">
-                                            <p>Não se preocupe, esta senha poderá ser alterada a qualquer momento depois de criada!</p>
+
+                                        <div class="col-xs-12 col-sm-6 border-left">
+                                            <p>Não se preocupe, esta senha poderá ser alterada a qualquer momento depois de criada !</p>
+
                                             <!--SENHA-->
                                             <div class="form-group  {{ $errors->has('senha') ? 'has-error' : ''}}">
                                                 <label class="col-sm-3 control-label" for="senha">Senha</label>
@@ -195,42 +225,63 @@
                                         </div>
                                     </div>
                                     <div class="row"> <!--row 6-->
-                                        <div class="col-xs-12">
+
+                                        <div class="col-xs-12 col-sm-6"> 
                                             <!--PERMISSAO-->
-                                                <div class="i-checks"><label> <input type="radio" value="permissao1" name="permissao" checked="checked"> <i></i>Nível 1</label></div>
-                                                <ul>
-                                                    <li>Cadastra e visualiza consertos;</li>
-                                                    <li>Cadastra e visualiza clientes;</li>
-                                                </ul>
-                                                <div class="i-checks"><label> <input type="radio" value="permissao2" name="permissao"> <i></i>Nível 2</label></div>
-                                                <ul>
-                                                    <li>Tudo anterior;</li>
-                                                    <li>+ Cadastra usuários até nível 1;</li>
-                                                    <li>+ Pode lançar acompanhamentos nos consertos;</li>
-                                                </ul>
-                                                <div class="i-checks"><label> <input type="radio" value="permissao3" name="permissao"> <i></i>Nível 3</label></div>
-                                                <ul>
-                                                    <li>Tudo anterior;</li>
-                                                    <li>+ Cadastra usuários até nível 2;</li>
-                                                    <li>+ Visualiza avaliações;</li>
-                                                    <li>+ Gera relatórios;</li>
-                                                </ul>
-                                                <div class="i-checks"><label> <input type="radio" value="permissao4" name="permissao"> <i></i>Nível 4</label></div>
-                                                <ul>
-                                                    <li>Tudo anterior;</li>
-                                                    <li>+ Cadastra usuários até nível 3;</li>
-                                                </ul>
+                                            <div class="i-checks"><label> <input type="radio" value="1" name="permissao"> <i></i>Nível 1</label></div>
+                                            <ul>
+                                                <li>Cadastra e visualiza consertos;</li>
+                                                <li>Cadastra e visualiza clientes;</li>
+                                            </ul>
+                                            <div class="i-checks"><label> <input type="radio" value="2" name="permissao"> <i></i>Nível 2</label></div>
+                                            <ul>
+                                                <li>Tudo anterior;</li>
+                                                <li>+ Cadastra usuários até nível 1;</li>
+                                                <li>+ Pode lançar acompanhamentos nos consertos;</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 border-left"> 
+                                            <div class="i-checks"><label> <input type="radio" value="3" name="permissao"> <i></i>Nível 3</label></div>
+                                            <ul>
+                                                <li>Tudo anterior;</li>
+                                                <li>+ Cadastra usuários até nível 2;</li>
+                                                <li>+ Visualiza avaliações;</li>
+                                                <li>+ Gera relatórios;</li>
+                                            </ul>
+                                            <div class="i-checks"><label> <input type="radio" value="4" name="permissao"> <i></i>Nível 4</label></div>
+                                            <ul>
+                                                <li>Tudo anterior;</li>
+                                                <li>+ Cadastra usuários até nível 3;</li>
+                                            </ul>
+
                                             <!--/PERMISSAO-->
                                         </div> <!--/col xs 12-->
                                     </div> <!--/row 6-->
+                                    <div class="row m-t-md"><!--row 7-->
+                                        <div class="col-xs-12"><p>Para uma melhor personalização, é possível escolher o cargo no usuário:</p></div>
+                                    </div><!--/row 7-->
+                                    <div class="row"><!--row 8-->
+                                        <div class="col-xs-10 col-sm-5 col-md-4 col-lg-2">
+                                            <!--CARGOS-->
+                                            <select class="form-control" id="cargo" name="id_cargo">
+                                                @foreach($cargos as $cargo)
+                                                    <option value="{{$cargo->id}}">{{$cargo->cargo}}</option>
+                                                @endforeach
+                                            </select>
+                                            <span class="help-block"><?php echo $errors->first('cargo'); ?></span>
+                                            <!--/CARGOS-->
+                                        </div>
+                                    </div><!--/row 8-->
                     <!--divisoria--><div class="hr-line-dashed"></div> <!--divisoria-->
                                     <div class="row">
                                         <div class="col-xs-12"><p>Tudo certo? Vamos finalizar!</p></div>
                                     </div>
                                     <div class="row"> <!--row 7-->
                                         <div class="col-xs-12">
-                                            <button class="btn btn-primary" type="submit">Criar!</button>
-                                            <button class="btn btn-danger" type="submit">Cancelar</button>
+
+                                            <button class="btn btn-primary" type="submit">Criar !</button>
+                                            <a class="btn btn-danger" href="{{ route('usuarios') }}">Cancelar</a>                                            
+
                                         </div>
                                     </div> <!--/row 7-->
 
@@ -248,12 +299,15 @@
 
 <!-- iCheck -->
     <script src="{{ asset('js/plugins/iCheck/icheck.min.js') }}"></script>
-        <script>
-            $(document).ready(function () {
-                $('.i-checks').iCheck({
-                    checkboxClass: 'icheckbox_square-green',
-                    radioClass: 'iradio_square-green',
-                });
+    <script>
+        $(document).ready(function () {
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
             });
-        </script>
+
+        });
+    </script>
+
 @stop
+aster

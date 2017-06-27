@@ -1,13 +1,24 @@
-@extends('layouts.principal')
+@extends('layouts.principal', ['breadcrumb' => 'false'])
 
-@section('title', 'Detalhes Usuário')
+@section('content_title', 'Detalhes Usuário')
 
-@section('content_title', 'Lista de Usuários')
+@section('css')
+<link href="{{ asset('css/plugins/iCheck/custom.css') }}" rel="stylesheet">
+    <!--<link href="{{ asset('css/plugins/dropzone/basic.css') }}" rel="stylesheet">-->
+    <!--<link href="{{ asset('css/plugins/dropzone/dropzone.css') }}" rel="stylesheet">-->
+    <link href="{{ asset('css/plugins/jasny/jasny-bootstrap.min.css') }}" rel="stylesheet">
+    <!--<link href="{{ asset('css/plugins/codemirror/codemirror.css') }}" rel="stylesheet">-->
+@stop
 
-@section('breadcrumbs')
-    {!! Breadcrumbs::render('usuarios') !!}
-@endsection
-
+@section('title', 'Detalhes')
+<!--ACHO QUE A HOME NAO DEVERIA TER OS BREADCRUMBS E SER PERSONALIZADA COMO UMA DASHBOARD...-->
 @section('content')
-    detalhes usuario
+
+        oi
+
 @endsection
+
+@section('scripts')
+<!-- Input Mask-->
+    <script src="{{ asset('js/plugins/jasny/jasny-bootstrap.min.js') }}"></script>
+@stop
