@@ -33,18 +33,16 @@
 </head>
 
 <body>
-
-
-<div class="container">
+  <div class="container">
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
         <div class="panel-body">
-          <img src="{{ asset('img/logoh.png')}}" width="475" title="Notify-Mi" alt="Notify-Mi" class="img-responsive center-block" />
+
         </div>
         <div class="login-panel panel panel-default">
-
-          <div class="panel-heading">Registrar</div>
           <div class="panel-body">
+              <img src="{{ asset('img/logocad.png')}}" width="475" title="Notify-Mi" alt="Notify-Mi" class="img-responsive center-block" />
+              <!--<div class="panel-heading">Registrar</div>!-->
             <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
               {{ csrf_field() }}
 
