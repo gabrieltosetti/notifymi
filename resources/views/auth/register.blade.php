@@ -105,7 +105,7 @@
                   </button>
 
 
-                    <a class="btn btn-danger" href="/notifymi/login/">
+                    <a class="btn btn-danger" href="/login/">
                       Cancelar
                     </a>
 
