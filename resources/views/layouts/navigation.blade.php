@@ -30,7 +30,7 @@
                         </ul>
                     </div>
                     <div class="logo-element">
-                        IN+
+                <span><img alt="image" class="img-circle" src="/img/logob.png" style="width:50px; height:50px;"/></span>
                     </div>
                 </li>
                 <li class="{{ Request::fullUrl() === route('home') ? 'active' : '' }}" >
