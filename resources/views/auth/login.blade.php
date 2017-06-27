@@ -38,7 +38,7 @@
             <div class="col-md-6 col-md-offset-3">
                 <div class="login-panel panel panel-default">
                     <div class="panel-body">
-                        <img src="{{ asset('img/logoh.png')}}" width="475" title="Notify-Mi" alt="Notify-Mi" class="img-responsive center-block" />
+                        <img src="{{ asset('img/logolog.png')}}" width="475" title="Notify-Mi" alt="Notify-Mi" class="img-responsive center-block" />
                     </div>
                     <div class="panel-body">
                     @if(isset($erro))
@@ -48,7 +48,7 @@
                             <fieldset>
                                 {{ csrf_field() }}
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Usuário ou E-mail" name="email" type="email" autofocus>
+                                    <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
                                 </div>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Senha" name="password" type="password" value="">

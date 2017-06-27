@@ -29,11 +29,11 @@
                                     {{ csrf_field() }}
                                     <input type="hidden" value="1" name="id_assistencia" />
                                     <div class="row">
-                                        <div class="col-xs-12"><p>Informações básicas sobre o novo usuário.</p></div>
+                                        <div class="col-xs-12"><p>Quais seus dados?</p></div>
                                     </div>
                                     <div class="row"> <!--row 2-->
-                                        
-                                        <div class="col-xs-12 col-sm-6 b-r"> 
+
+                                        <div class="col-xs-12 col-sm-6 b-r">
                                             <!--nome completo-->
                                             <div class="form-group  {{ $errors->has('nome') ? 'has-error' : ''}}">
                                                 <label class="col-sm-3 control-label" for="nome">Nome Completo</label>
@@ -41,7 +41,7 @@
                                                     <input type="text" class="form-control" name="nome" value="{{ old('nome') }}" id="nome">
                                                     <span class="help-block"><?php echo $errors->first('nome'); ?></span>
                                                 </div>
-                                            </div> 
+                                            </div>
                                             <!--/nome completo-->
                                             <!--RG-->
                                             <div class="form-group  {{ $errors->has('rg') ? 'has-error' : ''}}">
@@ -51,7 +51,7 @@
                                                     <span class="help-block"><?php echo $errors->first('rg'); ?></span>
                                                     <span class="help-block">Exemplo: 99.999.999-99</span>
                                                 </div>
-                                            </div> 
+                                            </div>
                                             <!--/RG-->
                                         </div> <!--/col xs 12-->
                                         <div class="col-xs-12 col-sm-6">
@@ -63,7 +63,7 @@
                                                     <span class="help-block"><?php echo $errors->first('cpf'); ?></span>
                                                     <span class="help-block">Exemplo: 999.999.999-99</span>
                                                 </div>
-                                            </div> 
+                                            </div>
                                             <!--/CPF-->
                                         </div> <!--/col xs 12-->
                                     </div> <!--/row 2-->
@@ -90,10 +90,10 @@
                                     </div><!--/row FOTO-->
                     <!--divisoria--><div class="hr-line-dashed"></div> <!--divisoria-->
                                     <div class="row">
-                                        <div class="col-xs-12"><p>Nos passe o seu contato !</p></div>
+                                        <div class="col-xs-12"><p>Como podemos entrar em contato?</p></div>
                                     </div>
                                     <div class="row"> <!--row 3-->
-                                        <div class="col-xs-12 col-sm-6 b-r"> 
+                                        <div class="col-xs-12 col-sm-6 b-r">
                                             <!--CELULAR-->
                                             <div class="form-group  {{ $errors->has('celular') ? 'has-error' : ''}}">
                                                 <label class="col-sm-3 control-label" for="celular">Celular</label>
@@ -102,7 +102,7 @@
                                                     <span class="help-block"><?php echo $errors->first('celular'); ?></span>
                                                     <span class="help-block">Exemplo: (99)99999-9999</span>
                                                 </div>
-                                            </div> 
+                                            </div>
                                             <!--/CELULAR-->
                                         </div> <!--/col xs 12-->
                                         <div class="col-xs-12 col-sm-6">
@@ -114,16 +114,16 @@
                                                     <span class="help-block"><?php echo $errors->first('telefone'); ?></span>
                                                     <span class="help-block">Exemplo: (99)9999-9999</span>
                                                 </div>
-                                            </div> 
+                                            </div>
                                             <!--/TELEFONE-->
                                         </div> <!--/col xs 12-->
                                     </div> <!--/row 3-->
                     <!--divisoria--><div class="hr-line-dashed"></div> <!--divisoria-->
                                     <div class="row">
-                                        <div class="col-xs-12"><p>Onde podemos te encontrar ?</p></div>
+                                        <div class="col-xs-12"><p>Onde podemos te encontrar?</p></div>
                                     </div>
                                     <div class="row"> <!--row 4-->
-                                        <div class="col-xs-12 col-sm-6 b-r"> 
+                                        <div class="col-xs-12 col-sm-6 b-r">
                                             <!--CIDADE-->
                                             <div class="form-group  {{ $errors->has('cidade') ? 'has-error' : ''}}">
                                                 <label class="col-sm-3 control-label" for="cidade">Cidade</label>
@@ -131,7 +131,7 @@
                                                     <input type="text" class="form-control" name="cidade" value="{{ old('cidade') }}" id="cidade">
                                                     <span class="help-block"><?php echo $errors->first('cidade'); ?></span>
                                                 </div>
-                                            </div> 
+                                            </div>
                                             <!--/CIDADE-->
                                             <!--BAIRRO-->
                                             <div class="form-group  {{ $errors->has('bairro') ? 'has-error' : ''}}">
@@ -140,7 +140,7 @@
                                                     <input type="text" class="form-control" name="bairro" value="{{ old('bairro') }}" id="bairro">
                                                     <span class="help-block"><?php echo $errors->first('bairro'); ?></span>
                                                 </div>
-                                            </div> 
+                                            </div>
                                             <!--/BAIRRO-->
                                             <!--RUA-->
                                             <div class="form-group  {{ $errors->has('rua') ? 'has-error' : ''}}">
@@ -149,10 +149,10 @@
                                                     <input type="text" class="form-control" name="rua" value="{{ old('rua') }}" id="rua">
                                                     <span class="help-block"><?php echo $errors->first('rua'); ?></span>
                                                 </div>
-                                            </div> 
-                                            <!--/RUA-->                                            
+                                            </div>
+                                            <!--/RUA-->
                                         </div> <!--/col xs 12-->
-                                        <div class="col-xs-12 col-sm-6">                                            
+                                        <div class="col-xs-12 col-sm-6">
                                             <!--NUMERO-->
                                             <div class="form-group  {{ $errors->has('numero') ? 'has-error' : ''}}">
                                                 <label class="col-sm-3 control-label" for="numero">Número</label>
@@ -160,7 +160,7 @@
                                                     <input type="text" class="form-control" name="numero" value="{{ old('numero') }}" id="numero">
                                                     <span class="help-block"><?php echo $errors->first('numero'); ?></span>
                                                 </div>
-                                            </div> 
+                                            </div>
                                             <!--/NUMERO-->
                                             <!--COMPLEMENTO-->
                                             <div class="form-group {{ $errors->has('complemento') ? 'has-error' : ''}}">
@@ -175,10 +175,12 @@
                                     </div> <!--/row 4-->
                     <!--divisoria--><div class="hr-line-dashed"></div> <!--divisoria-->
                                     <div class="row">
-                                        <div class="col-xs-12"><p>Entrando no sistema...</p></div>
+                                        <div class="col-xs-12"><p>Use estes dados para entrar no sistema:</p></div>
                                     </div>
                                     <div class="row"> <!--row 5-->
+
                                         <div class="col-xs-12 col-sm-6"> 
+
                                             <!--EMAIL-->
                                             <div class="form-group  {{ $errors->has('email') ? 'has-error' : ''}}">
                                                 <label class="col-sm-3 control-label" for="email">Email</label>
@@ -187,11 +189,13 @@
                                                     <span class="help-block"><?php echo $errors->first('email'); ?></span>
                                                     <!--<span class="help-block">Este email será usado para login no sistema</span>-->
                                                 </div>
-                                            </div> 
+                                            </div>
                                             <!--/EMAIL-->
                                         </div> <!--/col xs 12-->
+
                                         <div class="col-xs-12 col-sm-6 border-left">
                                             <p>Não se preocupe, esta senha poderá ser alterada a qualquer momento depois de criada !</p>
+
                                             <!--SENHA-->
                                             <div class="form-group  {{ $errors->has('senha') ? 'has-error' : ''}}">
                                                 <label class="col-sm-3 control-label" for="senha">Senha</label>
@@ -199,7 +203,7 @@
                                                     <input type="password" class="form-control" name="senha" value="{{ old('senha') }}" id="senha">
                                                     <span class="help-block"><?php echo $errors->first('senha'); ?></span>
                                                 </div>
-                                            </div> 
+                                            </div>
                                             <!--/SENHA-->
                                             <!--CONFIRMAR SENHA-->
                                             <div class="form-group  {{ $errors->has('confirmar') ? 'has-error' : ''}}">
@@ -208,19 +212,20 @@
                                                     <input type="password" class="form-control" name="confirmar" value="{{ old('confirmar') }}" id="confirmar">
                                                     <span class="help-block"><?php echo $errors->first('confirmar'); ?></span>
                                                 </div>
-                                            </div> 
+                                            </div>
                                             <!--/CONFIRMAR SENHA-->
                                         </div> <!--/col xs 12-->
                                     </div> <!--/row 5-->
-                                    
+
                     <!--divisoria--><div class="hr-line-dashed"></div> <!--divisoria-->
                                     <div class="row">
                                         <div class="col-xs-12">
-                                            <p>O Notify-Mi permite criar usuários com diferentes níveis de privilégios. 
+                                            <p>O Notify-Mi permite criar usuários com diferentes níveis de privilégios.
                                             Favor, escolha a opção mais adequada para este novo usuário:</p>
                                         </div>
                                     </div>
                                     <div class="row"> <!--row 6-->
+
                                         <div class="col-xs-12 col-sm-6"> 
                                             <!--PERMISSAO-->
                                             <div class="i-checks"><label> <input type="radio" value="1" name="permissao"> <i></i>Nível 1</label></div>
@@ -248,6 +253,7 @@
                                                 <li>Tudo anterior;</li>
                                                 <li>+ Cadastra usuários até nível 3;</li>
                                             </ul>
+
                                             <!--/PERMISSAO-->
                                         </div> <!--/col xs 12-->
                                     </div> <!--/row 6-->
@@ -268,15 +274,17 @@
                                     </div><!--/row 8-->
                     <!--divisoria--><div class="hr-line-dashed"></div> <!--divisoria-->
                                     <div class="row">
-                                        <div class="col-xs-12"><p>Tudo certo? Vamos finalizar !</p></div>
+                                        <div class="col-xs-12"><p>Tudo certo? Vamos finalizar!</p></div>
                                     </div>
                                     <div class="row"> <!--row 7-->
                                         <div class="col-xs-12">
+
                                             <button class="btn btn-primary" type="submit">Criar !</button>
                                             <a class="btn btn-danger" href="{{ route('usuarios') }}">Cancelar</a>                                            
+
                                         </div>
                                     </div> <!--/row 7-->
-                                    
+
                                 </form>
                             </div> <!--/ibox content-->
                         </div> <!--/ibox-->
@@ -297,7 +305,9 @@
                 checkboxClass: 'icheckbox_square-green',
                 radioClass: 'iradio_square-green',
             });
+
         });
     </script>
 
 @stop
+aster
