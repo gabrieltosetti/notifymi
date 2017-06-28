@@ -5,7 +5,7 @@
                     <div class="dropdown profile-element">
 
 
-                      <span><img alt="image" class="img-circle" src="/media/{{ Auth::user()->avatar }}" style="width:150px; height:150px;"/></span>
+                      <span><img alt="image" class="img-circle" src="/media/avatars/{{ Auth::user()->avatar }}" style="width:150px; height:150px;"/></span>
 
 
 

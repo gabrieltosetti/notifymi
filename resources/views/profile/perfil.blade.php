@@ -7,7 +7,7 @@
         <div class="col-md-8 col-md-offset-2">
 
           <div align="center" >
-          <img class="img-circle" src="/media/{{ $users ->avatar }}" style="padding-bottom:20px; width:350px; height:350px" >
+          <img class="img-circle" src="/media/avatars/{{ $users ->avatar }}" style="padding-bottom:20px; width:350px; height:350px" >
         </div>
 
         </div>
