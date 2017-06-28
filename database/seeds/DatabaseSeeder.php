@@ -51,17 +51,66 @@ class DatabaseSeeder extends Seeder
 
         //Cargos Teste
         DB::table('cargos')->insert([
-          'cargo' => 'Técnico',
-          'id_assistencia' => '1',
+          'id' => '1',
+          'cargo' => 'Atendente',
+        'id_assistencia' => '1',
         ]);
         DB::table('cargos')->insert([
-          'cargo' => 'Gerente',
-          'id_assistencia' => '1',
-        ]);
-        DB::table('cargos')->insert([
+          'id' => '2',
           'cargo' => 'Assistente Técnico',
-          'id_assistencia' => '1',
+        'id_assistencia' => '1',
         ]);
+        DB::table('cargos')->insert([
+          'id' => '3',
+          'cargo' => 'Técnico',
+        'id_assistencia' => '1',
+        ]);
+        DB::table('cargos')->insert([
+          'id' => '4',
+          'cargo' => 'Gerente',
+        'id_assistencia' => '1',
+        ]);
+        DB::table('cargos')->insert([
+          'id' => '5',
+          'cargo' => 'Chefe',
+          'id_assistencia' => '1',
+            ]);
+
+            DB::table('cargos')->insert([
+              'id' => '6',
+              'cargo' => 'Admins',
+                      'id_assistencia' => '1',
+                ]);
+
+
+
+        /*
+        DB::table('permissoes')->insert([
+          'name' => 'Cadastra e visualiza consertos',
+        ]);
+        DB::table('permissoes')->insert([
+          'name' => 'Cadastra e visualiza clientes',
+        ]);
+        DB::table('permissoes')->insert([
+          'name' => 'Pode lançar acompanhamentos nos consertos',
+        ]);
+        DB::table('permissoes')->insert([
+          'name' => 'Cadastra usuários até nível 1',
+        ]);
+        DB::table('permissoes')->insert([
+          'name' => 'Cadastra usuários até nível 2',
+        ]);
+        DB::table('permissoes')->insert([
+          'name' => 'Visualiza avaliações',
+        ]);
+        DB::table('permissoes')->insert([
+          'name' => 'Gera relatórios;',
+        ]);
+        DB::table('permissoes')->insert([
+          'name' => 'Cadastra usuários até nível 3',
+        ]);
+*/
+
 
     }
 }
