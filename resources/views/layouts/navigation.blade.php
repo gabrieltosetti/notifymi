@@ -50,6 +50,7 @@
                 <!--
                                             CLIENTES
                 -->
+
                 <li class="{{ Request::segment(1) === 'clientes' ? 'active' : '' }}" >
                     <a href="#"><i class="fa fa-user-o"></i> <span class="nav-label">Clientes</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
@@ -57,9 +58,27 @@
                         <li class="{{ Request::fullUrl() === route('novo_cliente') ? 'active' : '' }}" ><a href="{{ route('novo_cliente') }}">Novo</a></li>
                     </ul>
                 </li>
-                <!--/CLIENTES-->
-                 <!--
-                                            USUARIOS
+
+                <!-- permissao-->
+                <li class="{{ Request::segment(1) === 'permissoes' ? 'active' : '' }}" >
+                    <a href="#"><i class="fa fa-user-o"></i> <span class="nav-label">Permissões</span> <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li class="{{ Request::fullUrl() === route('permissoes') ? 'active' : '' }}" ><a href="{{ route('permissoes') }}">Ver todos</a></li>
+                        <li class="{{ Request::fullUrl() === route('novo_permissoes') ? 'active' : '' }}" ><a href="{{ route('novo_permissoes') }}">Novo</a></li>
+                    </ul>
+                </li>
+
+
+                <!--cargos-->
+                <li class="{{ Request::segment(1) === 'cargos' ? 'active' : '' }}" >
+                    <a href="#"><i class="fa fa-user-o"></i> <span class="nav-label">Cargos</span> <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li class="{{ Request::fullUrl() === route('cargos') ? 'active' : '' }}" ><a href="{{ route('cargos') }}">Ver todos</a></li>
+                        <li class="{{ Request::fullUrl() === route('novo_cargos') ? 'active' : '' }}" ><a href="{{ route('novo_cargos') }}">Novo</a></li>
+                    </ul>
+                </li>
+
+                                        <!--    USUARIOS
                 -->
                 <li class="{{ Request::segment(1) === 'usuarios' ? 'active' : '' }}" >
                     <a href="#"><i class="fa fa-id-card-o"></i> <span class="nav-label">Usuários</span> <span class="fa arrow"></span></a>

@@ -45,6 +45,14 @@ Route::get('/clientes/edita/{id}', 'ClienteController@edita')->name('edita_clien
 Route::get('/usuarios', 'UsuarioController@lista')->name('usuarios');
 Route::get('/usuarios/novo', 'UsuarioController@novo')->name('novo_usuario');
 
+//permissoes
+Route::get('/permissoes', 'PermissoesController@permissoes')->name('permissoes');
+Route::get('/novopermissoes', 'PermissoesController@novo')->name('novo_permissoes');
+//cargos
+Route::get('/cargos', 'CargosController@cargos')->name('cargos');
+Route::get('/novocargos', 'CargosController@novo')->name('novo_cargos');
+
+
 Route::get('/usuarios/detalhes/{id}/', 'UsuarioController@detalhes')->name('detalhes_usuario');
 Route::post('/usuarios/adiciona', 'UsuarioController@adiciona')->name('novo_usuario_post');
 Route::get('/usuarios/remove/{id}', 'UsuarioController@remove')->name('remove_usuario');

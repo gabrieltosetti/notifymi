@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Http\Request
+
 
 class ClienteController extends Controller
 {
@@ -13,9 +14,9 @@ class ClienteController extends Controller
 
     public function lista()
     {
-        $clientes = Cliente::all();
+      $clientes = Cliente::all();
 
-        return view('cliente/lista_cliente')->with('clientes', $clientes);
+        return view('cliente/lista_cliente');->with('clientes', $clientes);
     }
 
     public function novo()
