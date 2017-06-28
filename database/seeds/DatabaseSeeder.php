@@ -16,8 +16,8 @@ class DatabaseSeeder extends Seeder
         //Usuarios padroes
         DB::table('users')->insert([
           'name' => 'Matheus Luz',
-          'email' => 'ml@notify.com',
-          'password' => Hash::make('123123'),
+          'email' => 'matheusluz@gmail.com',
+          'password' => Hash::make('123456'),
         ]);
         DB::table('users')->insert([
           'name' => 'Gabriel Tosetti',
