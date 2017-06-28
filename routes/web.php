@@ -30,7 +30,7 @@ Route::get('/entrar/cadastro', 'LoginController@cadastro')->name('cadastro');
 
 //profile
 Route::get('/profile', 'ProfileController@perfil')->name('perfil');
-Route::post('profile', 'ProfileController@mudaravatar')->name('perfil_post');
+Route::post('/profile', 'ProfileController@mudaravatar')->name('perfil_post');
 
 //Cliente
 Route::get('/clientes', 'ClienteController@lista')->name('clientes');

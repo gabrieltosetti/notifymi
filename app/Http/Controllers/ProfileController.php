@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
 
+
 class ProfileController extends Controller
 {
   public function __construct()
@@ -18,6 +19,14 @@ class ProfileController extends Controller
       return view('profile/perfil', array('users'=> Auth::user()));
     }
     public function mudaravatar(Request $request){
-
+      if($request->hasFile('avatar')){
+        $avatar = $request->file('avatar');
+        $filename = time() . '.' . $avatar->getClientOriginalExtension();
+        Image::make($avatar) -> resize(300, 300)->save(public_path('/uploads/avatars/' . $filename ) );
+        $user = Auth::user();
+        $user->avatar = $filename;
+        $user->save();
+      }
+      return view('profile/perfil', array('users'=> Auth::user()));
     }
 }

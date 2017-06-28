@@ -31,16 +31,15 @@
             <b>Celular:</b>  {{$users->email }}
 
         </div>
-        <div class="col-xs-14 col-sm-6 b-r">
-          <form enctype="multipart/form-data" action="/profile" method="post">
-            <label>Alterar Perfil</label>
-            <input type="file" name="avatar">
-            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            <input type="submit" class="pull-right btn btn-sm btn-primary "
 
-
-        </div>
-
+                <div class="col-xs-14 col-sm-6 b-r">
+                  <form enctype="multipart/form-data" action="/profile" method="post">
+                    <label>Alterar Perfil</label>
+                    <input type="file" name="avatar">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <input type="submit" class="pull-right btn btn-sm btn-primary ">
+                </div>
+  </div>
 
     </div>
 </div>
