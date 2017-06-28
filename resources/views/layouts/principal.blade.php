@@ -37,11 +37,7 @@
                         <h2>@yield('content_title')</h2>
                         @yield('breadcrumbs')
                     </div>
-                    <div class="col-sm-8">
-                        <div class="title-action">
-                            <a href="" class="btn btn-primary">This is action area</a>
-                        </div>
-                    </div>
+
                 </div>
             @endif
             <!-- END Breadcrumb -->

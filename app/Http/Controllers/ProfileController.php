@@ -17,4 +17,7 @@ class ProfileController extends Controller
     {
       return view('profile/perfil', array('users'=> Auth::user()));
     }
+    public function mudaravatar(Request $request){
+
+    }
 }
