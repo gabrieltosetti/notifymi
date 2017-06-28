@@ -33,7 +33,7 @@ class UsuarioRequest extends FormRequest
             'cidade' => 'required|max:30',
             'bairro' => 'required|max:40',
             'rua' => 'required|max:40',
-            'numero' => 'required',
+            'numero' => 'required|max:6',
             'complemento' => 'max:40',
         ];
     }

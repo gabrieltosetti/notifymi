@@ -38,7 +38,7 @@
                                             <div class="form-group  {{ $errors->has('nome') ? 'has-error' : ''}}">
                                                 <label class="col-sm-3 control-label" for="nome">Nome Completo</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" name="nome" value="{{ old('nome') }}" id="nome">
+                                                    <input type="text" class="form-control" name="nome" value="{{ old('nome') }}" id="nome" maxlength="50">
                                                     <span class="help-block"><?php echo $errors->first('nome'); ?></span>
                                                 </div>
                                             </div>
@@ -68,11 +68,14 @@
                                         </div> <!--/col xs 12-->
                                     </div> <!--/row 2-->
                                     <div class="row m-t-md"><!--row FOTO-->
-                                        <div class="col-xs-12"><p>Quer escolher uma foto de perfil ?</p></div>
+                                    <!--divisoria--><div class="hr-line-dashed"></div> <!--divisoria-->
+                                        <div class="col-xs-12"><p>Quer escolher uma foto de perfil?</p></div>
                                     </div><!--/row 7-->
                                     <div class="row"><!--row 8-->
-                                        <div class="col-xs-12 col-sm-10 col-md-10 col-lg-5">
+                                        <div class="col-xs-12 col-sm-6">
                                             <!--FOTO-->
+                                            <label class="col-sm-3 control-label" for="cpf">Foto</label>
+
                                              <div class="fileinput fileinput-new input-group" data-provides="fileinput">
                                                 <div class="form-control" data-trigger="fileinput">
                                                     <i class="glyphicon glyphicon-file fileinput-exists"></i>
@@ -128,7 +131,7 @@
                                             <div class="form-group  {{ $errors->has('cidade') ? 'has-error' : ''}}">
                                                 <label class="col-sm-3 control-label" for="cidade">Cidade</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" name="cidade" value="{{ old('cidade') }}" id="cidade">
+                                                    <input type="text" class="form-control" name="cidade" value="{{ old('cidade') }}" id="cidade" maxlength="30">
                                                     <span class="help-block"><?php echo $errors->first('cidade'); ?></span>
                                                 </div>
                                             </div>
@@ -137,7 +140,7 @@
                                             <div class="form-group  {{ $errors->has('bairro') ? 'has-error' : ''}}">
                                                 <label class="col-sm-3 control-label" for="bairro">Bairro</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" name="bairro" value="{{ old('bairro') }}" id="bairro">
+                                                    <input type="text" class="form-control" name="bairro" value="{{ old('bairro') }}" id="bairro" maxlength="40">
                                                     <span class="help-block"><?php echo $errors->first('bairro'); ?></span>
                                                 </div>
                                             </div>
@@ -146,7 +149,7 @@
                                             <div class="form-group  {{ $errors->has('rua') ? 'has-error' : ''}}">
                                                 <label class="col-sm-3 control-label" for="rua">Rua</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" name="rua" value="{{ old('rua') }}" id="rua">
+                                                    <input type="text" class="form-control" name="rua" value="{{ old('rua') }}" id="rua"  maxlength="40">
                                                     <span class="help-block"><?php echo $errors->first('rua'); ?></span>
                                                 </div>
                                             </div>
@@ -157,7 +160,7 @@
                                             <div class="form-group  {{ $errors->has('numero') ? 'has-error' : ''}}">
                                                 <label class="col-sm-3 control-label" for="numero">Número</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" name="numero" value="{{ old('numero') }}" id="numero">
+                                                    <input type="number" class="form-control" name="numero" value="{{ old('numero') }}" id="numero" min="0">
                                                     <span class="help-block"><?php echo $errors->first('numero'); ?></span>
                                                 </div>
                                             </div>
@@ -166,7 +169,7 @@
                                             <div class="form-group {{ $errors->has('complemento') ? 'has-error' : ''}}">
                                                 <label for="complemento" class="col-sm-3 control-label">Complemento</label>
                                                 <div class="col-sm-9">
-                                                    <textarea class="form-control"  placeholder="Opcional" name="complemento" id="complemento">{{ old('complemento') }}</textarea>
+                                                    <textarea class="form-control"  placeholder="Opcional" name="complemento" id="complemento"  maxlength="40">{{ old('complemento') }}</textarea>
                                                     <span class="help-block"><?php echo $errors->first('complemento'); ?></span>
                                                 </div>
                                             </div>
@@ -185,7 +188,7 @@
                                             <div class="form-group  {{ $errors->has('email') ? 'has-error' : ''}}">
                                                 <label class="col-sm-3 control-label" for="email">Email</label>
                                                 <div class="col-sm-9">
-                                                    <input type="email" class="form-control" name="email" value="{{ old('email') }}" id="email">
+                                                    <input type="email" class="form-control" name="email" value="{{ old('email') }}" id="email" maxlength="50">
                                                     <span class="help-block"><?php echo $errors->first('email'); ?></span>
                                                     <!--<span class="help-block">Este email será usado para login no sistema</span>-->
                                                 </div>
@@ -194,7 +197,7 @@
                                         </div> <!--/col xs 12-->
 
                                         <div class="col-xs-12 col-sm-6 border-left">
-                                            <p>Não se preocupe, esta senha poderá ser alterada a qualquer momento depois de criada !</p>
+                                            <p>Não se preocupe, esta senha poderá ser alterada a qualquer momento depois de criada!</p>
 
                                             <!--SENHA-->
                                             <div class="form-group  {{ $errors->has('senha') ? 'has-error' : ''}}">
@@ -228,7 +231,7 @@
 
                                         <div class="col-xs-12 col-sm-6">
                                             <!--PERMISSAO-->
-                                            <div class="i-checks"><label> <input type="radio" value="1" name="permissao"> <i></i>Nível 1</label></div>
+                                            <div class="i-checks"><label> <input type="radio" value="1" name="permissao" checked="checked"> <i></i>Nível 1</label></div>
                                             <ul>
                                                 <li>Cadastra e visualiza consertos;</li>
                                                 <li>Cadastra e visualiza clientes;</li>
