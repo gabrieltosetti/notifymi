@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request
+use App\Cliente;
+use Illuminate\Http\Request;
 
 
 class ClienteController extends Controller
@@ -16,7 +16,7 @@ class ClienteController extends Controller
     {
       $clientes = Cliente::all();
 
-        return view('cliente/lista_cliente');->with('clientes', $clientes);
+        return view('cliente/lista_cliente')->with('clientes', $clientes);
     }
 
     public function novo()
