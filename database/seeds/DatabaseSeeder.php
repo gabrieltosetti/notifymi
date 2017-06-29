@@ -41,11 +41,12 @@ class DatabaseSeeder extends Seeder
           'telefone1' => '(19)3232-3232',
           'telefone2' => '(19)2323-2323',
           'celular' => '(19)98989-9898',
-          'cidade' => 'Campinas',
+          'cidade' => 'Testinas',
           'bairro' => 'Vila dos Testes',
           'rua' => 'Rua dos Testes',
           'numero' => '969',
           'completemento' => 'Sala 69',
+
 
         ]);
 
@@ -71,7 +72,6 @@ class DatabaseSeeder extends Seeder
         'id_assistencia' => '1',
         ]);
         DB::table('cargos')->insert([
-         Cargo
           'id' => '5',
           'cargo' => 'Chefe',
 
@@ -83,6 +83,31 @@ class DatabaseSeeder extends Seeder
               'cargo' => 'Admins',
                       'id_assistencia' => '1',
                 ]);
+
+
+        //Usuario Teste
+
+
+        DB::table('usuarios')->insert([
+
+          'nome' => 'Testônio dos Testes',
+          'email' => 'testonio@mail.com',
+          'telefone' => '(19)3232-4242',
+          'celular' => '(19)98765-4321',
+          'cpf' => '123.456.789-01',
+          'rg' => '12.345.678-9',
+          'cidade' => 'Testinas',
+          'bairro' => 'Vila dos Testes',
+          'rua' => 'Rua dos Testes',
+          'numero' => '969',
+          'permissao' => '1',
+          'senha' => Hash::make('123456'),
+          'id_cargo' => '1',
+          'id_assistencia' => '1',
+        ]);
+
+
+
 
 
 
