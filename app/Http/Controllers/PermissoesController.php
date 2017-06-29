@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Permissoes;
 use Illuminate\Http\Request;
+use App\Http\Requests\PermissoesRequest;
+use App\Usuario;
+use App\Cargo;
 
 class PermissoesController extends Controller
 {
@@ -13,11 +16,14 @@ class PermissoesController extends Controller
 
     public function lista()
     {
-        return view('conserto/lista_conserto');
+          $permissoes = Permissoes::all();
+
+
+        return view('permissoes/lista_permissoes')->with('lista_permissoes', $permissoes);
     }
 
     public function novo()
     {
-        return view('conserto/novo_conserto');
+        return view('permissoes/novo_permissoes');
     }
 }

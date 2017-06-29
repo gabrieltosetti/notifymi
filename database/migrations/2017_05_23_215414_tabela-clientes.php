@@ -25,8 +25,10 @@ class TabelaClientes extends Migration
             $table->char('bairro', 40);
             $table->char('rua', 40);
             $table->smallInteger('numero');
-            $table->char('complemento', 40)->nullable();
+            $table->char('completemento', 40);
             $table->char('senha', 100);
+            $table->string('avatar')->default('default.jpg');
+            $table->string('permissao');->default('0');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -99,10 +99,10 @@
                     <div class="col-lg-12">
                         <div class="text-center m-t-lg">
                             <h1>
-                                Welcome in INSPINIA Laravel Starter Project
+                                Notify-MI!
                             </h1>
                             <small>
-                                It is an application skeleton for a typical web app. You can use it to quickly bootstrap your webapp projects.
+                                Seu sistema de notificações simplificado.
                             </small>
                         </div>
                     </div>

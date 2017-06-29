@@ -14,7 +14,30 @@
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">{{ Auth::user()->name }}</strong></span>
 
-                    <span class="clear"> <span class="block m-t-xs"> Profissão aqui</span>
+
+<!-- preciso melhorar isso aqui-->
+                            <?php if(Auth::user()->permissao == 0) : ?>
+  <i class="fa fa-user-o"></i>  <span class="block m-t-xs"> <strong class="font-bold"> Cliente</strong></span>
+<?php endif; ?>
+
+<?php if(Auth::user()->permissao == 1) : ?>
+<i class="fa fa-cog"></i><strong class="font-bold"> Técnico</strong></span>
+<?php endif; ?>
+
+<?php if(Auth::user()->permissao == 2) : ?>
+<i class="fa fa-address-card-o"></i><strong class="font-bold"> Gerente</strong></span>
+<?php endif; ?>
+
+<?php if(Auth::user()->permissao == 3) : ?>
+<i class="fa fa-briefcase"></i><strong class="font-bold"> Dono</strong></span>
+<?php endif; ?>
+
+<?php if(Auth::user()->permissao == 4) : ?>
+<i class="fa fa-user-secret"></i><strong class="font-bold"> Admin</strong>
+<?php endif; ?>
+
+<!--  -->
+
 
                           </a>
 

@@ -46,8 +46,9 @@ Route::get('/usuarios', 'UsuarioController@lista')->name('usuarios');
 Route::get('/usuarios/novo', 'UsuarioController@novo')->name('novo_usuario');
 
 //permissoes
-Route::get('/permissoes', 'PermissoesController@permissoes')->name('permissoes');
+Route::get('/permissoes', 'PermissoesController@lista')->name('permissoes');
 Route::get('/novopermissoes', 'PermissoesController@novo')->name('novo_permissoes');
+
 //cargos
 Route::get('/cargos', 'CargosController@cargos')->name('cargos');
 Route::get('/novocargos', 'CargosController@novo')->name('novo_cargos');
