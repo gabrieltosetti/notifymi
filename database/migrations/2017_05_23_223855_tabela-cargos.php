@@ -16,7 +16,6 @@ class TabelaCargos extends Migration
         Schema::create('cargos', function (Blueprint $table) {
             $table->increments('id');
             $table->char('cargo', 30);
-
             $table->integer('id_assistencia')->unsigned();
 
             // $table->foreign('id_assistencia')->references('id')->on('assistencias');
