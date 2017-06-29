@@ -59,7 +59,7 @@ class DatabaseSeeder extends Seeder
           'id_assistencia' => '1',
         ]);
         DB::table('cargos')->insert([
-          'cargo' => 'Assistente Técnico',
+          'cargo' => 'Dono',
           'id_assistencia' => '1',
         ]);
 
