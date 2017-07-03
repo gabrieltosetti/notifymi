@@ -28,7 +28,7 @@ class TabelaClientes extends Migration
             $table->char('completemento', 40);
             $table->char('senha', 100);
             $table->string('avatar')->default('default.jpg');
-            $table->string('permissao');->default('0');
+            $table->string('permissao')->default('0');
             $table->rememberToken();
             $table->timestamps();
         });
