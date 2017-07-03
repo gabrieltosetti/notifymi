@@ -17,19 +17,19 @@
 
 <!-- preciso melhorar isso aqui-->
                             <?php if(Auth::user()->permissao == 0) : ?>
-  <i class="fa fa-user-o"></i>  <span class="block m-t-xs"> <strong class="font-bold"> Cliente</strong></span>
+  <i class="fa fa-user-o"></i>  <strong class="font-bold"> Cliente</strong>
 <?php endif; ?>
 
 <?php if(Auth::user()->permissao == 1) : ?>
-<i class="fa fa-cog"></i><strong class="font-bold"> Técnico</strong></span>
+<i class="fa fa-cog"></i><strong class="font-bold"> Técnico</strong>
 <?php endif; ?>
 
 <?php if(Auth::user()->permissao == 2) : ?>
-<i class="fa fa-address-card-o"></i><strong class="font-bold"> Gerente</strong></span>
+<i class="fa fa-address-card-o"></i><strong class="font-bold"> Gerente</strong>
 <?php endif; ?>
 
 <?php if(Auth::user()->permissao == 3) : ?>
-<i class="fa fa-briefcase"></i><strong class="font-bold"> Dono</strong></span>
+<i class="fa fa-briefcase"></i><strong class="font-bold"> Dono</strong>
 <?php endif; ?>
 
 <?php if(Auth::user()->permissao == 4) : ?>
