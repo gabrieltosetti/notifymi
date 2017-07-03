@@ -19,11 +19,11 @@
                                     <div class="col-sm-4">
                                         <div class="text-center">
                                             <img alt="image" class="img-circle m-t-xs img-responsive center-block" src="{{ asset('img/a2.jpg') }}">
-                                            <div class="m-t-xs font-bold">{{$usuario->cargo->cargo}}</div>
+                                            <div class="m-t-xs font-bold">{{$cliente->cargo->cargo}}</div>
                                         </div>
                                     </div>
                                     <div class="col-sm-8 hidden-xs">
-                                        <h3><strong>{{$usuario->nome}}</strong></h3>
+                                        <h3><strong>{{cliente->nome}}</strong></h3>
                                         <p><i class="fa fa-map-marker"></i> {{$usuario->cidade}}</p>
                                         <address>
                                             <strong>{{$usuario->assistencia->nome}}, Inc.</strong><br>
