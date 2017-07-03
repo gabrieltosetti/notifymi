@@ -7,9 +7,17 @@ use Illuminate\Http\Request;
 class LoginController extends Controller
 {
 
-  public function login()
+  public function loginadmin()
   {
-    return view('login/entrar');
+    return view('login/entraradmin');
+  }
+  public function loginassistencia()
+  {
+    return view('login/entrarassistencia');
+  }
+  public function logincliente()
+  {
+    return view('login/entrarcliente');
   }
 
   public function cadastro()

@@ -25,11 +25,10 @@ Route::get('/consertos', 'ConsertoController@lista')->name('consertos');
 Route::get('/consertos/novo', 'ConsertoController@novo')->name('novo_conserto');
 
 //login
-Route::get('/entrar/assistencia', 'LoginasController@login')->name('entrarassistencia');
-Route::get('/entrar/admin', 'LoginController@login')->name('entraradmin');
-Route::get('/entrar/cliente', 'LoginController@login')->name('entrarcliente');
+Route::get('/entrar/assistencia', 'LoginController@loginassistencia')->name('entrarassistencia');
+Route::get('/entrar/admin', 'LoginController@loginadmin')->name('entraradmin');
+Route::get('/entrar/cliente', 'LoginController@logincliente')->name('entrarcliente');
 Route::get('/entrar/cadastro', 'LoginController@cadastro')->name('cadastro');
-Route::get('/logincliente', 'LoginClienteController@login')->name('logincliente');
 
 //profile
 Route::get('/profile', 'ProfileController@perfil')->name('perfil');

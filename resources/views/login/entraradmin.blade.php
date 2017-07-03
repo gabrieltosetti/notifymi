@@ -39,7 +39,8 @@
                 <div class="login-panel panel panel-default">
                     <div class="panel-body">
                         <img src="{{ asset('img/logolog.png')}}" width="475" title="Notify-Mi" alt="Notify-Mi" class="img-responsive center-block" />
-                        <div style="text-align: center;"><h1> Área de assistências</h1></div>
+                        <div style="text-align: center;"><h1> Área de Admins</h1></div>
+
                     </div>
                     <div class="panel-body">
                     @if(isset($erro))
@@ -69,6 +70,7 @@
                                 <a href="/register" class="btn btn-success btn-social btn-block">
                                     <i class="fa fa-edit"></i> Cadastrar
                                 </a>
+
 
                             </fieldset>
 
