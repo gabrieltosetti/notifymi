@@ -39,6 +39,7 @@
                 <div class="login-panel panel panel-default">
                     <div class="panel-body">
                         <img src="{{ asset('img/logolog.png')}}" width="475" title="Notify-Mi" alt="Notify-Mi" class="img-responsive center-block" />
+
                     </div>
                     <div class="panel-body">
                     @if(isset($erro))
