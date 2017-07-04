@@ -16,7 +16,7 @@ class ProfileController extends Controller
   }
 
     public function perfil(){
-      return view('profile/perfil', array('users'=> Auth::user()));
+    return view('profile/perfil', ['users'=> Auth::user()]);
     }
 
     public function mudaravatar(Request $request){
