@@ -10,9 +10,8 @@
     <!--<link href="{{ asset('css/plugins/codemirror/codemirror.css') }}" rel="stylesheet">-->
 @stop
 
-
+@section('title', 'Detalhes')
 <!--ACHO QUE A HOME NAO DEVERIA TER OS BREADCRUMBS E SER PERSONALIZADA COMO UMA DASHBOARD...-->
-
 @section('content')
 
         oi
@@ -22,5 +21,4 @@
 @section('scripts')
 <!-- Input Mask-->
     <script src="{{ asset('js/plugins/jasny/jasny-bootstrap.min.js') }}"></script>
-
 @stop
