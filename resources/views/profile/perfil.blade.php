@@ -4,6 +4,10 @@
     <!--<link href="{{ asset('css/plugins/dropzone/basic.css') }}" rel="stylesheet">-->
     <!--<link href="{{ asset('css/plugins/dropzone/dropzone.css') }}" rel="stylesheet">-->
     <link href="{{ asset('css/plugins/jasny/jasny-bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/plugins/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="css/plugins/sweetalert2/sweetalert2.min.css">
+
+
     <!--<link href="{{ asset('css/plugins/codemirror/codemirror.css') }}" rel="stylesheet">-->
 @stop
 
@@ -12,7 +16,6 @@
     <div class="ibox-content">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-
           <div align="center" >
           <img class="img-circle" src="/media/avatars/{{ $users ->avatar }}" style="padding-bottom:20px; width:350px; height:350px" >
         </div>
@@ -39,6 +42,7 @@
 
         </div>
 
+
                 <div class="col-xs-14 col-sm-6 b-r">
                   <form enctype="multipart/form-data" action="/profile" method="post">
                     <label>Alterar Perfil</label>
@@ -55,15 +59,20 @@
                       <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remover</a>
                   </div>
                   <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                  <input type="submit" class="pull-right btn btn-sm btn-primary ">
+                  <input type="submit" class="pull-right btn btn-sm btn-primary " >
+
+
+                
+
                         </form>
 
 
 
+
+
+
+
                   </div>
-
-
-
 
 
 
@@ -75,8 +84,17 @@
 
 @endsection
 @section('scripts')
+
+
+
+    </script>
 <!-- Input Mask-->
     <script src="{{ asset('js/plugins/jasny/jasny-bootstrap.min.js') }}"></script>
+    <script src="{{ asset('cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js') }}"></script>
+    <script src="{{ asset('js/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
+    <script src="js/plugins/sweetalert2/sweetalert2.min.js"></script>
+    <script src="js/plugins/sweetalert2/custom.js"></script>
+
 
 <!-- iCheck -->
     <script src="{{ asset('js/plugins/iCheck/icheck.min.js') }}"></script>
@@ -88,6 +106,8 @@
             });
 
         });
+
+
     </script>
 
 @stop

@@ -8,26 +8,33 @@ use Auth;
 use Image;
 
 
+
 class ProfileController extends Controller
 {
   public function __construct()
   {
-      $this->middleware('auth');
+    $this->middleware('auth');
   }
 
-    public function perfil(){
+  public function perfil(){
     return view('profile/perfil', ['users'=> Auth::user()]);
-    }
+  }
 
-    public function mudaravatar(Request $request){
-      if($request->hasFile('avatar')){
-        $avatar = $request->file('avatar');
-        $filename = time() . '.' . $avatar->getClientOriginalExtension();
-        Image::make($avatar) -> resize(300, 300)->save(public_path('/media/avatars/' . $filename ) );
-        $user = Auth::user();
-        $user->avatar = $filename;
-        $user->save();
-      }
-      return view('profile/perfil', array('users'=> Auth::user()));
+  public function mudaravatar(Request $request){
+
+      $user = Auth::user();
+      $file = public_path('/media/avatars/' . $user->avatar);
+        unlink($file);
+
+
+    if($request->hasFile('avatar')){
+      $avatar = $request->file('avatar');
+      $filename = time() . '.' . $avatar->getClientOriginalExtension();
+
+      Image::make($avatar) -> resize(300, 300)->save(public_path('/media/avatars/' . $filename ) );
+      $user->avatar = $filename;
+      $user->save();
     }
+    return view('profile/perfil', array('users'=> Auth::user()));
+  }
 }
