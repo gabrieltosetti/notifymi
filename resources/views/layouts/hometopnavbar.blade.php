@@ -16,11 +16,11 @@
 
                 <li>
 
-                  <a href="{{ route('cadastro') }}">
+                  <a href="#">
                     <i class="fa fa-pencil"></i> Registrar
                   </a>
             <li>
-                <a href="{{route('entrar')}}">
+                <a href="#">
                     <i class="fa fa-sign-in"></i> Entrar
                 </a>
 
