@@ -37,7 +37,17 @@
                         <li><a class="page-scroll" href="#principios">Princípios</a></li>
                         <li><a class="page-scroll" href="#planos">Planos</a></li>
                         <li><a class="page-scroll" href="#contato">Contato</a></li>
-                    </ul>
+                        <li><a class="page-scroll" href="{{ route('login') }}">Login</a></li>
+
+              </ul>
+
+
+
+
+
+
+
+
                 </div>
             </div>
         </nav>
@@ -238,34 +248,34 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <div class="navy-line"></div>
-                <h1>More and more extra great feautres</h1>
-                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. </p>
+                <h1>Grandes ferramentas</h1>
+
             </div>
         </div>
         <div class="row">
             <div class="col-lg-5 col-lg-offset-1 features-text">
-                <small>INSPINIA</small>
-                <h2>Perfectly designed </h2>
+
+                <h2>Gráficos completos</h2>
                 <i class="fa fa-bar-chart big-icon pull-right"></i>
-                <p>INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully responsive admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media query. It has a huge collection of reusable UI components and integrated with.</p>
+                <p>Com os gráficos gerados dentro do sistema, fica fácil o controle de sua empresa e saber onde estão os problemas, acelerando ainda mais os atendimentos e tendo um controle individual de cada profissional.</p>
             </div>
             <div class="col-lg-5 features-text">
-                <small>INSPINIA</small>
-                <h2>Perfectly designed </h2>
+
+                <h2>Rápido acesso </h2>
                 <i class="fa fa-bolt big-icon pull-right"></i>
-                <p>INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully responsive admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media query. It has a huge collection of reusable UI components and integrated with.</p>
+                <p>Com apenas um clique você terá acesso aos dados de sua empresa não somente como um todo mas sim atendimentos, clientes, profissionais. Tudo isso em apenas alguns segundos deixando de lado toda a análise de papelada que era necessária antes da implementação do sistema em sua empresa.</p>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-5 col-lg-offset-1 features-text">
-                <small>INSPINIA</small>
-                <h2>Perfectly designed </h2>
-                <i class="fa fa-clock-o big-icon pull-right"></i>
+
+                <h2>Controle de datas</h2>
+                <i class="fa fa-calendar big-icon pull-right"></i>
                 <p>INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully responsive admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media query. It has a huge collection of reusable UI components and integrated with.</p>
             </div>
             <div class="col-lg-5 features-text">
-                <small>INSPINIA</small>
-                <h2>Perfectly designed </h2>
+
+                <h2>Controle de equipe </h2>
                 <i class="fa fa-users big-icon pull-right"></i>
                 <p>INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully responsive admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media query. It has a huge collection of reusable UI components and integrated with.</p>
             </div>
@@ -288,34 +298,34 @@
             <div>
                 <ul class="pricing-plan list-unstyled selected">
                     <li class="pricing-title">
-                        Standard
+                        Padrão
                     </li>
                     <li class="pricing-desc">
-                        Lorem ipsum dolor sit amet, illum fastidii dissentias quo ne. Sea ne sint animal iisque, nam an soluta sensibus.
+                        Acesso completo ao sistema para sua empresa.
                     </li>
                     <li class="pricing-price">
-                        <span>$22</span> / month
+                        <span>R$:20</span> por usuário / Mês
                     </li>
                     <li>
-                        Dashboards
+                        Painéis de negócios
                     </li>
                     <li>
-                        Projects view
+                        Controle de clientes
                     </li>
                     <li>
-                        Contacts
+                        Controle de funcionários
                     </li>
                     <li>
-                        Calendar
+                        Avaliação por profissional
                     </li>
                     <li>
-                        AngularJs
+                        Controle de atendimento
                     </li>
                     <li>
-                        <strong>Support platform</strong>
+                        <strong>Atendimento ao suporte</strong>
                     </li>
                     <li class="plan-action">
-                        <a class="btn btn-primary btn-xs" href="#">Signup</a>
+                        <a class="btn btn-primary btn-xs" href="#">Assinar</a>
                     </li>
                 </ul>
             </div>
@@ -373,7 +383,7 @@
         </div>
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 text-center m-t-lg m-b-lg">
-                <p><strong>&copy; 2015 Company Name</strong><br/> consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
+                <p><strong>&copy; 2017 Notify-Mi</strong><br/> Seu sistema de notificações simplificado.</p>
             </div>
         </div>
     </div>
