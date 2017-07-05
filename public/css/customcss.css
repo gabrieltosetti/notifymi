@@ -6995,22 +6995,131 @@ body.landing-page {
   height: auto;
 }
 .landing-page .header-back {
-  height: 470px;
+  height: 100%;
   width: 100%;
 }
 .landing-page .header-back.one {
-  background: url('../media/equipe/imagem.png')  0 no-repeat;
+  background: url('../media/equipe/imagem.png') 50% 0 no-repeat;
 }
 
 .landing-page .carousel {
-  height: 470px;
+  height: 510px;
 }
 .landing-page .carousel-caption {
   z-index: 10;
 }
 .landing-page .carousel .item {
-  height: 470px;
-  background-color: #777;
+  height: 620px;
+  animation-name: animacao;
+  animation-duration: 60s;
+  animation-iteration-count:infinite;
+  to right
+}
+
+@keyframes animacao {
+  0%    {background:linear-gradient(to right, #75DAE4, #1D8A96 , #1D8A96, #1D8A96, #1D8A96);}
+  1%    {background:linear-gradient(to right, #1D8A96, #75DAE4 , #1D8A96, #1D8A96, #1D8A96);}
+  2%    {background:linear-gradient(to right, #1D8A96, #1D8A96 , #75DAE4, #1D8A96, #1D8A96);}
+  3%    {background:linear-gradient(to right, #1D8A96, #1D8A96 , #1D8A96, #75DAE4, #1D8A96);}
+  4%    {background:linear-gradient(to right, #1D8A96, #1D8A96 , #1D8A96, #1D8A96, #75DAE4);}
+  5%    {background:linear-gradient(to right, #1D8A96, #1D8A96 , #1D8A96, #75DAE4, #1D8A96);}
+  6%    {background:linear-gradient(to right, #1D8A96, #1D8A96 , #75DAE4, #1D8A96, #1D8A96);}
+  7%    {background:linear-gradient(to right, #1D8A96, #75DAE4 , #1D8A96, #1D8A96, #1D8A96);}
+  8%    {background:linear-gradient(to right, #75DAE4, #1D8A96 , #1D8A96, #1D8A96, #1D8A96);}
+  9%    {background:linear-gradient(to right, #1D8A96, #75DAE4 , #1D8A96, #1D8A96, #1D8A96);}
+  10%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #75DAE4, #1D8A96, #1D8A96);}
+  11%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #1D8A96, #75DAE4, #1D8A96);}
+  12%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #1D8A96, #1D8A96, #75DAE4);}
+  13%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #1D8A96, #75DAE4, #1D8A96);}
+  14%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #75DAE4, #1D8A96, #1D8A96);}
+  15%   {background:linear-gradient(to right, #1D8A96, #75DAE4 , #1D8A96, #1D8A96, #1D8A96);}
+  16%   {background:linear-gradient(to right, #75DAE4, #1D8A96 , #1D8A96, #1D8A96, #1D8A96);}
+  17%   {background:linear-gradient(to right, #1D8A96, #75DAE4 , #1D8A96, #1D8A96, #1D8A96);}
+  18%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #75DAE4, #1D8A96, #1D8A96);}
+  19%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #1D8A96, #75DAE4, #1D8A96);}
+  20%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #1D8A96, #1D8A96, #75DAE4);}
+  21%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #1D8A96, #75DAE4, #1D8A96);}
+  22%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #75DAE4, #1D8A96, #1D8A96);}
+  23%   {background:linear-gradient(to right, #1D8A96, #75DAE4 , #1D8A96, #1D8A96, #1D8A96);}
+  24%   {background:linear-gradient(to right, #75DAE4, #1D8A96 , #1D8A96, #1D8A96, #1D8A96);}
+  25%   {background:linear-gradient(to right, #1D8A96, #75DAE4 , #1D8A96, #1D8A96, #1D8A96);}
+  26%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #75DAE4, #1D8A96, #1D8A96);}
+  27%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #1D8A96, #1D8A96, #1D8A96);}
+  29%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #1D8A96, #75DAE4, #1D8A96);}
+  30%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #1D8A96, #1D8A96, #75DAE4);}
+  31%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #1D8A96, #75DAE4, #1D8A96);}
+  32%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #75DAE4, #1D8A96, #1D8A96);}
+  33%   {background:linear-gradient(to right, #1D8A96, #75DAE4 , #1D8A96, #1D8A96, #1D8A96);}
+  34%   {background:linear-gradient(to right, #75DAE4, #1D8A96 , #1D8A96, #1D8A96, #1D8A96);}
+  35%   {background:linear-gradient(to right, #1D8A96, #75DAE4 , #1D8A96, #1D8A96, #1D8A96);}
+  36%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #75DAE4, #1D8A96, #1D8A96);}
+  37%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #1D8A96, #75DAE4, #1D8A96);}
+  38%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #1D8A96, #1D8A96, #75DAE4);}
+  39%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #1D8A96, #75DAE4, #1D8A96);}
+  40%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #75DAE4, #1D8A96, #1D8A96);}
+  41%   {background:linear-gradient(to right, #1D8A96, #75DAE4 , #1D8A96, #1D8A96, #1D8A96);}
+  42%   {background:linear-gradient(to right, #75DAE4, #1D8A96 , #1D8A96, #1D8A96, #1D8A96);}
+  43%   {background:linear-gradient(to right, #1D8A96, #75DAE4 , #1D8A96, #1D8A96, #1D8A96);}
+  44%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #75DAE4, #1D8A96, #1D8A96);}
+  45%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #1D8A96, #75DAE4, #1D8A96);}
+  46%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #1D8A96, #1D8A96, #75DAE4);}
+  47%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #1D8A96, #75DAE4, #1D8A96);}
+  48%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #75DAE4, #1D8A96, #1D8A96);}
+  49%   {background:linear-gradient(to right, #1D8A96, #75DAE4 , #1D8A96, #1D8A96, #1D8A96);}
+  50%   {background:linear-gradient(to right, #75DAE4, #1D8A96 , #1D8A96, #1D8A96, #1D8A96);}
+  51%   {background:linear-gradient(to right, #1D8A96, #75DAE4 , #1D8A96, #1D8A96, #1D8A96);}
+  52%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #75DAE4, #1D8A96, #1D8A96);}
+  53%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #1D8A96, #75DAE4, #1D8A96);}
+  54%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #1D8A96, #1D8A96, #75DAE4);}
+  55%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #1D8A96, #75DAE4, #1D8A96);}
+  56%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #75DAE4, #1D8A96, #1D8A96);}
+  57%   {background:linear-gradient(to right, #1D8A96, #75DAE4 , #1D8A96, #1D8A96, #1D8A96);}
+  58%   {background:linear-gradient(to right, #75DAE4, #1D8A96 , #1D8A96, #1D8A96, #1D8A96);}
+  59%   {background:linear-gradient(to right, #1D8A96, #75DAE4 , #1D8A96, #1D8A96, #1D8A96);}
+  60%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #75DAE4, #1D8A96, #1D8A96);}
+  61%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #1D8A96, #75DAE4, #1D8A96);}
+  62%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #1D8A96, #1D8A96, #75DAE4);}
+  63%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #1D8A96, #75DAE4, #1D8A96);}
+  64%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #75DAE4, #1D8A96, #1D8A96);}
+  65%   {background:linear-gradient(to right, #1D8A96, #75DAE4 , #1D8A96, #1D8A96, #1D8A96);}
+  66%   {background:linear-gradient(to right, #75DAE4, #1D8A96 , #1D8A96, #1D8A96, #1D8A96);}
+  67%   {background:linear-gradient(to right, #1D8A96, #75DAE4 , #1D8A96, #1D8A96, #1D8A96);}
+  68%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #75DAE4, #1D8A96, #1D8A96);}
+  69%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #1D8A96, #75DAE4, #1D8A96);}
+  70%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #1D8A96, #1D8A96, #75DAE4);}
+  71%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #1D8A96, #75DAE4, #1D8A96);}
+  72%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #75DAE4, #1D8A96, #1D8A96);}
+  73%   {background:linear-gradient(to right, #1D8A96, #75DAE4 , #1D8A96, #1D8A96, #1D8A96);}
+  74%   {background:linear-gradient(to right, #75DAE4, #1D8A96 , #1D8A96, #1D8A96, #1D8A96);}
+  75%   {background:linear-gradient(to right, #1D8A96, #75DAE4 , #1D8A96, #1D8A96, #1D8A96);}
+  76%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #75DAE4, #1D8A96, #1D8A96);}
+  77%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #1D8A96, #75DAE4, #1D8A96);}
+  78%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #1D8A96, #1D8A96, #75DAE4);}
+  79%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #1D8A96, #75DAE4, #1D8A96);}
+  80%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #75DAE4, #1D8A96, #1D8A96);}
+  81%   {background:linear-gradient(to right, #1D8A96, #75DAE4 , #1D8A96, #1D8A96, #1D8A96);}
+  82%   {background:linear-gradient(to right, #75DAE4, #1D8A96 , #1D8A96, #1D8A96, #1D8A96);}
+  83%   {background:linear-gradient(to right, #1D8A96, #75DAE4 , #1D8A96, #1D8A96, #1D8A96);}
+  84%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #75DAE4, #1D8A96, #1D8A96);}
+  85%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #1D8A96, #75DAE4, #1D8A96);}
+  86%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #1D8A96, #1D8A96, #75DAE4);}
+  87%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #1D8A96, #75DAE4, #1D8A96);}
+  88%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #75DAE4, #1D8A96, #1D8A96);}
+  89%   {background:linear-gradient(to right, #1D8A96, #75DAE4 , #1D8A96, #1D8A96, #1D8A96);}
+  90%   {background:linear-gradient(to right, #75DAE4, #1D8A96 , #1D8A96, #1D8A96, #1D8A96);}
+  91%   {background:linear-gradient(to right, #1D8A96, #75DAE4 , #1D8A96, #1D8A96, #1D8A96);}
+  92%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #75DAE4, #1D8A96, #1D8A96);}
+  93%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #1D8A96, #75DAE4, #1D8A96);}
+  94%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #1D8A96, #1D8A96, #75DAE4);}
+  95%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #1D8A96, #75DAE4, #1D8A96);}
+  96%   {background:linear-gradient(to right, #1D8A96, #1D8A96 , #75DAE4, #1D8A96, #1D8A96);}
+  97%   {background:linear-gradient(to right, #1D8A96, #75DAE4 , #1D8A96, #1D8A96, #1D8A96);}
+  98%   {background:linear-gradient(to right, #75DAE4, #1D8A96 , #1D8A96, #1D8A96, #1D8A96);}
+  99%   {background:linear-gradient(to right, #1D8A96, #75DAE4 , #1D8A96, #1D8A96, #1D8A96);}
+  100%  {background:linear-gradient(to right, #1D8A96, #1D8A96 , #75DAE4, #1D8A96, #1D8A96);}
+
+
+
 }
 .landing-page .carousel-inner > .item > img {
   position: absolute;
