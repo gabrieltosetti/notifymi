@@ -26,13 +26,15 @@
         <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="container">
               <div class="navbar-header page-scroll">
-                  <a class="navbar-brand">Notify-Mi</a>
+                  <a class="navbar-brand"><img src='img/logoh.png' style="height:25px; weight:25px"><img></a>
               </div>
 
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a class="page-scroll" href="#topo">Topo</a></li>
-                        <li><a class="page-scroll" href="#time">Time</a></li>
+                        <li><a class="page-scroll" href="#equipe">Equipe</a></li>
+                        <li><a class="page-scroll" href="#sobre">Sobre</a></li>
+                        <li><a class="page-scroll" href="#principios">Princípios</a></li>
                         <li><a class="page-scroll" href="#planos">Planos</a></li>
                         <li><a class="page-scroll" href="#contato">Contato</a></li>
                     </ul>
@@ -79,7 +81,7 @@
 
 
 
-<section id="time" class="gray-section team">
+<section id="equipe" class="gray-section team">
     <div class="container">
         <div class="row m-b-lg">
             <div class="col-lg-12 text-center">
@@ -138,13 +140,42 @@
             </div>
         </div>
     </div>
+</section>
 
+<section id="sobre" class="features">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
                 <div class="navy-line"></div>
-                <h1>Our workflow</h1>
-                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. </p>
+                <h1>Sobre</h1>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class=" col-lg-offset-1 features-text">
+          <p>  O do Notify-mi é uma solução WEB Application para qualquer tipo de negócio que precisa manter uma atualização de serviço com o cliente enviando notificações e recebendo feedback ao mesmo tempo
+               no meio do serviço. Neste sistema, o cliente recebe primeiramente um link por e-mail para fazer o cadastro de usuário no sistema, depois este usuário/cliente da assistência pode visualizar todos
+               serviços em andamento e com qual assistência está atrelada a cada serviço em específico.
+              	A assistência poderá manter um contato constante com o cliente durante a reparação do produto, informando cada novo passo e também acompanhar todos os serviços que estão sendo prestados naquele
+                 momento. Se um imprevisto acontecer durante o serviço, uma nova avaliação é feita gerando um novo orçamento, a assistência fica esperando o cliente ler o detalhes no novo orçamento e “aceitar”
+                 ou “recusar” o orçamento, sem medo do cliente chegar na assistência com um orçamento diferente do combinado e tornando todo aquele tempo perdido procurando o número da assistência, pois o sistema
+                  irá informar qual é o seu pedido em apenas alguns clicks onde o cliente rapidamente aceita o novo orçamento ou o recusa. Caso o cliente por acidente recuse ou mude de idéia ele pode pedir a reabertura do seu caso fácilmente.
+                </p>
+
+
+        </div>
+    </div>
+
+</section>
+
+
+<section id="principios" class="gray-section team">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="navy-line"></div>
+                <h1>Princípios</h1>
+              <p> Princípios seguidos pela equipe</p>
             </div>
         </div>
         <div class="row features-block">
@@ -157,24 +188,25 @@
                         </div>
 
                         <div class="vertical-timeline-content">
-                            <h2>Meeting</h2>
-                            <p>Conference on the sales results for the previous year. Monica please examine sales trends in marketing and products. Below please find the current status of the sale.
+                            <h2>Comprometimento</h2>
+                            <p>A equipe Notify-Mi desde o princípio se comprometeu a tornar o sistema o mais completo possível. Todas as ferramentas que achamos necessárias ou que poderiam facilitar de alguma forma a manutenção dos aparelhos fosse implementada.
                             </p>
-                            <a href="#" class="btn btn-xs btn-primary"> More info</a>
-                            <span class="vertical-date"> Today <br/> <small>Dec 24</small> </span>
+
+
                         </div>
                     </div>
 
                     <div class="vertical-timeline-block">
                         <div class="vertical-timeline-icon navy-bg">
-                            <i class="fa fa-file-text"></i>
+                            <i class="fa fa-handshake-o"></i>
                         </div>
 
                         <div class="vertical-timeline-content">
-                            <h2>Decision</h2>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since.</p>
-                            <a href="#" class="btn btn-xs btn-primary"> More info</a>
-                            <span class="vertical-date"> Tomorrow <br/> <small>Dec 26</small> </span>
+                            <h2>Comunicação</h2>
+                            <p>Comunicação é tudo, sem ela nenhuma das partes so sistema se encaixaria e uma boa comunicação cliente e equipe só trás benefícios para ambas as partes,
+                              o cliente se comunicando com a equipe pode dar novas idéias para possíveis melhorias dentro do sistema, assim tornando o sistema ainda mais robusto e completo.</p>
+
+
                         </div>
                     </div>
 
@@ -184,10 +216,10 @@
                         </div>
 
                         <div class="vertical-timeline-content">
-                            <h2>Implementation</h2>
-                            <p>Go to shop and find some products. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's. </p>
-                            <a href="#" class="btn btn-xs btn-primary"> More info</a>
-                            <span class="vertical-date"> Monday <br/> <small>Jan 02</small> </span>
+                            <h2>Simplicidade</h2>
+                            <p>Todo o sistema foi desenvolvido com o âmbito simplificar o máximo possível para todos os usuários, assim tornando o sistema simples e ainda assim completo. </p>
+
+
                         </div>
                     </div>
 
@@ -200,73 +232,6 @@
 </section>
 
 
-<section class="comments gray-section" style="margin-top: 0">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <div class="navy-line"></div>
-                <h1>What our partners say</h1>
-                <p>Donec sed odio dui. Etiam porta sem malesuada. </p>
-            </div>
-        </div>
-        <div class="row features-block">
-            <div class="col-lg-4">
-                <div class="bubble">
-                    "Uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
-                </div>
-                <div class="comments-avatar">
-                    <a href="" class="pull-left">
-                        <img alt="image" src="img/landing/avatar3.jpg">
-                    </a>
-                    <div class="media-body">
-                        <div class="commens-name">
-                            Andrew Williams
-                        </div>
-                        <small class="text-muted">Company X from California</small>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4">
-                <div class="bubble">
-                    "Uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
-                </div>
-                <div class="comments-avatar">
-                    <a href="" class="pull-left">
-                        <img alt="image" src="img/landing/avatar1.jpg">
-                    </a>
-                    <div class="media-body">
-                        <div class="commens-name">
-                            Andrew Williams
-                        </div>
-                        <small class="text-muted">Company X from California</small>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4">
-                <div class="bubble">
-                    "Uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
-                </div>
-                <div class="comments-avatar">
-                    <a href="" class="pull-left">
-                        <img alt="image" src="img/landing/avatar2.jpg">
-                    </a>
-                    <div class="media-body">
-                        <div class="commens-name">
-                            Andrew Williams
-                        </div>
-                        <small class="text-muted">Company X from California</small>
-                    </div>
-                </div>
-            </div>
-
-
-
-        </div>
-    </div>
-
-</section>
 
 <section class="features">
     <div class="container">
@@ -371,30 +336,30 @@
         <div class="row m-b-lg">
             <div class="col-lg-12 text-center">
                 <div class="navy-line"></div>
-                <h1>Contact Us</h1>
+                <h1>Contate-nos</h1>
                 <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod.</p>
             </div>
         </div>
         <div class="row m-b-lg">
             <div class="col-lg-3 col-lg-offset-3">
                 <address>
-                    <strong><span class="navy">Company name, Inc.</span></strong><br/>
-                    795 Folsom Ave, Suite 600<br/>
-                    San Francisco, CA 94107<br/>
-                    <abbr title="Phone">P:</abbr> (123) 456-7890
+                    <strong><span class="navy">Notify-Mi.</span></strong><br/>
+                    999, Rua notify<br/>
+                    Campinas, SP <br/>
+                    Telefone: (99) 9999-9999
                 </address>
             </div>
             <div class="col-lg-4">
                 <p class="text-color">
-                    Consectetur adipisicing elit. Aut eaque, totam corporis laboriosam veritatis quis ad perspiciatis, totam corporis laboriosam veritatis, consectetur adipisicing elit quos non quis ad perspiciatis, totam corporis ea,
+                    Isso aqui é só pra poder encher a linguiça e colocar uns textos interessantes dento
                 </p>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-12 text-center">
-                <a href="mailto:test@email.com" class="btn btn-primary">Send us mail</a>
+                <a href="mailto:contato@notify.com.br" class="btn btn-primary">Email</a>
                 <p class="m-t-sm">
-                    Or follow us on social platform
+                    Siga-nos
                 </p>
                 <ul class="list-inline social-icon">
                     <li><a href="#"><i class="fa fa-twitter"></i></a>
