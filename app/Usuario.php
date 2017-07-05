@@ -50,6 +50,7 @@ class Usuario extends Model
 
     public function cargo()
     {
+        //return $this->hasOne('App\Cargo', 'id_cargo');
         return $this->belongsTo('App\Cargo', 'id_cargo');
     }
 

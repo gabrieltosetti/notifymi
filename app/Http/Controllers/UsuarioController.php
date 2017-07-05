@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Usuario;
 use App\Cargo;
 use App\Http\Requests\UsuarioRequest;
+use Illuminate\Support\Facades\Response;
 
 class UsuarioController extends Controller
 {
@@ -41,7 +42,9 @@ class UsuarioController extends Controller
     public function detalhes($id)
     {
         $usuario = Usuario::find($id);
-        return view('usuario/detalhes_usuario')->with('usuario', $usuario);
+        $usuario->{"cargo"} = $usuario->cargo->id;
+
+        return Response::json($usuario);
     }
 
     //rota: remove_usuario
