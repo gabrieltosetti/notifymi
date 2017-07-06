@@ -20,6 +20,34 @@ Breadcrumbs::register('novo_conserto', function($breadcrumbs)
     $breadcrumbs->push('Novo', route('novo_conserto'));
 });
 
+//Home>Cargos
+Breadcrumbs::register('lista_cargos', function($breadcrumbs)
+{
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Cargos', route('cargos'));
+});
+
+//Home>Cargos>Novo
+Breadcrumbs::register('novo_cargos', function($breadcrumbs)
+{
+    $breadcrumbs->parent('lista_cargos');
+    $breadcrumbs->push('Novo', route('novo_cargos'));
+});
+
+// Home > Clientes
+Breadcrumbs::register('clientes', function($breadcrumbs)
+{
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('Clientes', route('clientes'));
+});
+
+// Home > Clientes > Novo
+Breadcrumbs::register('novo_cliente', function($breadcrumbs)
+{
+    $breadcrumbs->parent('clientes');
+    $breadcrumbs->push('Novo', route('novo_cliente'));
+});
+
 // Home > Clientes
 Breadcrumbs::register('clientes', function($breadcrumbs)
 {

@@ -168,15 +168,6 @@
                  ou “recusar” o orçamento, sem medo do cliente chegar na assistência com um orçamento diferente do combinado e tornando todo aquele tempo perdido procurando o número da assistência, pois o sistema
                   irá informar qual é o seu pedido em apenas alguns clicks onde o cliente rapidamente aceita o novo orçamento ou o recusa. Caso o cliente por acidente recuse ou mude de idéia ele pode pedir a reabertura do seu caso fácilmente.
                 </p>
-                <button class="fa fa-briefcase" onclick="teste()"></button>
-                <script src="js/plugins/sweetalert/sweetalert.min.js"></script>
-<script type="text/javascript">
-function teste(){
-  swal(
-  'funcinou...',
-)
-}
-</script>
 
         </div>
     </div>

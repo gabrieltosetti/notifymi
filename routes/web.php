@@ -55,11 +55,11 @@ Route::get('/usuarios/novo', 'UsuarioController@novo')->name('novo_usuario');
 
 //permissoes
 Route::get('/permissoes', 'PermissoesController@lista')->name('permissoes');
-Route::get('/novopermissoes', 'PermissoesController@novo')->name('novo_permissoes');
+Route::get('/permissoes/novo', 'PermissoesController@novo')->name('novo_permissoes');
 
 //cargos
-Route::get('/cargos', 'CargosController@cargos')->name('cargos');
-Route::get('/novocargos', 'CargosController@novo')->name('novo_cargos');
+Route::get('/cargos', 'CargosController@listacargos')->name('cargos');
+Route::get('/cargos/novo', 'CargosController@novocargo')->name('novo_cargos');
 
 
 Route::get('/usuarios/detalhes/{id?}', 'UsuarioController@detalhes')->name('detalhes_usuario');

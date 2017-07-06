@@ -5,7 +5,7 @@
 @section('content_title', 'Lista de Consertos')
 
 @section('breadcrumbs')
-    {!! Breadcrumbs::render('lista_permissoes') !!}
+    {!! Breadcrumbs::render('lista_cargos') !!}
 @endsection
 
 @section('content')

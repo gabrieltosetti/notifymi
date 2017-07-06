@@ -11,13 +11,13 @@ class CargosController extends Controller
         $this->middleware('auth');
     }
 
-    public function lista()
+    public function listacargos()
     {
-        return view('conserto/lista_conserto');
+        return view('cargos/lista_cargos');
     }
 
-    public function novo()
+    public function novocargo()
     {
-        return view('conserto/novo_conserto');
+        return view('cargos/novo_cargos');
     }
 }
