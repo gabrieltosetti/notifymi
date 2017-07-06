@@ -17,25 +17,27 @@
 
 <!-- preciso melhorar isso aqui-->
 
-@if(Auth::user()->permissao == 0)
+
+<?php $permissao = Auth::user()->permissao?>
+<!-- preciso melhorar isso aqui-->
+@if($permissao == 0)
 <i class="fa fa-user-o"></i>  <strong class="font-bold"> Cliente</strong>
 @endif
 
-@if(Auth::user()->permissao == 1)
+@if($permissao == 1)
 <i class="fa fa-cog"></i><strong class="font-bold"> Técnico</strong>
 @endif
 
-@if(Auth::user()->permissao == 2)
+@if($permissao == 2)
 <i class="fa fa-address-card-o"></i><strong class="font-bold"> Gerente</strong>
 @endif
 
-@if(Auth::user()->permissao == 3)
+@if($permissao == 3)
 <i class="fa fa-briefcase"></i><strong class="font-bold"> Dono</strong>
 @endif
 
-@if(Auth::user()->permissao == 4)
-<i class="fa fa-user-secret"></i><strong class="font-bold"> Admin</strong>
-@endif
+@if($permissao == 4)
+<i class="fa 
 
 <!--  -->
 

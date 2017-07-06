@@ -15,26 +15,31 @@
                             <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">{{ Auth::user()->name }}</strong></span>
 
 
+<?php $permissao = Auth::user()->permissao?>
 <!-- preciso melhorar isso aqui-->
-                            <?php if(Auth::user()->permissao == 0) : ?>
-  <i class="fa fa-user-o"></i>  <strong class="font-bold"> Cliente</strong>
-<?php endif; ?>
+@if($permissao == 0)
+<i class="fa fa-user-o"></i>  <strong class="font-bold"> Cliente</strong>
+@endif
 
-<?php if(Auth::user()->permissao == 1) : ?>
+@if($permissao == 1)
 <i class="fa fa-cog"></i><strong class="font-bold"> Técnico</strong>
-<?php endif; ?>
+@endif
 
-<?php if(Auth::user()->permissao == 2) : ?>
+@if($permissao == 2)
 <i class="fa fa-address-card-o"></i><strong class="font-bold"> Gerente</strong>
-<?php endif; ?>
+@endif
 
-<?php if(Auth::user()->permissao == 3) : ?>
+@if($permissao == 3)
 <i class="fa fa-briefcase"></i><strong class="font-bold"> Dono</strong>
-<?php endif; ?>
+@endif
 
-<?php if(Auth::user()->permissao == 4) : ?>
+@if($permissao == 4)
 <i class="fa fa-user-secret"></i><strong class="font-bold"> Admin</strong>
-<?php endif; ?>
+@endif
+
+
+
+
 
 <!--  -->
 
@@ -63,7 +68,8 @@
                                             CONSERTOS
                 -->
                 <li class="{{ Request::segment(1) === 'consertos' ? 'active' : '' }}" >
-                    <a href="#"><i class="fa fa-wrench"></i> <span class="nav-label">Consertos</span> <span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-wrench"></i>
+                     <span class="nav-label">Consertos</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
                         <li class="{{ Request::fullUrl() === route('consertos') ? 'active' : '' }}" ><a href="{{ route('consertos') }}">Ver todos</a></li>
                         <li class="{{ Request::fullUrl() === route('novo_conserto') ? 'active' : '' }}" ><a href="{{ route('novo_conserto') }}">Novo</a></li>
