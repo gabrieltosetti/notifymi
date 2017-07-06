@@ -75,9 +75,9 @@
 
                                     <a class="btn btn-primary btn-circle btn-lg" href="{{ route('edita_usuario', ['id' => $usuario->id]) }}"><i class="fa fa-pencil"></i></a>
                                 </div>
-                            </div>                            
+                            </div>
                         </div>
-                    </div> <!--/col lg 4--> 
+                    </div> <!--/col lg 4-->
                     @endforeach
                     <!--MODAL-->
                     <div class="modal inmodal" id="modal-detalhes" tabindex="-1" role="dialog" aria-hidden="true">
@@ -182,7 +182,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>        
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
@@ -222,7 +222,7 @@
                 $('#modal-permissao').text(data.permissao);
 
                 $('#modal-detalhes').modal('show');
-            }) 
+            })
         });
     });
 </script>

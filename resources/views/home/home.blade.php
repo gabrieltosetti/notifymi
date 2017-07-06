@@ -14,7 +14,10 @@
 
     <!-- Animation CSS -->
     <link href="css/animate.css" rel="stylesheet">
+    <link href="css/plugins/sweetalert2/sweetalert2.css" rel="stylesheet">
+
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
     <!-- Custom styles for this template -->
 
     <link href="css/customcss.css" rel="stylesheet">
@@ -38,6 +41,11 @@
                         <li><a class="page-scroll" href="#planos">Planos</a></li>
                         <li><a class="page-scroll" href="#contato">Contato</a></li>
                         <li><a class="page-scroll" href="{{ route('login') }}">Login</a></li>
+
+
+
+
+
 
               </ul>
 
@@ -160,7 +168,15 @@
                  ou “recusar” o orçamento, sem medo do cliente chegar na assistência com um orçamento diferente do combinado e tornando todo aquele tempo perdido procurando o número da assistência, pois o sistema
                   irá informar qual é o seu pedido em apenas alguns clicks onde o cliente rapidamente aceita o novo orçamento ou o recusa. Caso o cliente por acidente recuse ou mude de idéia ele pode pedir a reabertura do seu caso fácilmente.
                 </p>
-
+                <button class="fa fa-briefcase" onclick="teste()"></button>
+                <script src="js/plugins/sweetalert/sweetalert.min.js"></script>
+<script type="text/javascript">
+function teste(){
+  swal(
+  'funcinou...',
+)
+}
+</script>
 
         </div>
     </div>
@@ -383,10 +399,12 @@
 <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
 <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
+
 <!-- Custom and plugin javascript -->
 <script src="js/inspinia.js"></script>
 <script src="js/plugins/pace/pace.min.js"></script>
 <script src="js/plugins/wow/wow.min.js"></script>
+<script src="js/plugins/sweetalert2/sweetalert2.min.js"></script>
 <script>
     $(document).ready(function () {
 
