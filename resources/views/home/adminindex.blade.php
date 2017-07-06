@@ -15,7 +15,7 @@
                             <i class="fa fa-cloud fa-5x"></i>
                         </div>
                         <div class="col-xs-8 text-right">
-                            <span> Today degrees </span>
+                            <span> ADMIN</span>
                             <h2 class="font-bold">26'C</h2>
                         </div>
                     </div>
@@ -28,7 +28,7 @@
                             <i class="fa fa-envelope-o fa-5x"></i>
                         </div>
                         <div class="col-xs-8 text-right">
-                            <span> New messages </span>
+                            <span> ADMIN </span>
                             <h2 class="font-bold">260</h2>
                         </div>
                     </div>
@@ -41,7 +41,7 @@
                             <i class="fa fa-music fa-5x"></i>
                         </div>
                         <div class="col-xs-8 text-right">
-                            <span> New albums </span>
+                            <span> ADMIN </span>
                             <h2 class="font-bold">12</h2>
                         </div>
                     </div>
