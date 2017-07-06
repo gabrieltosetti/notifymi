@@ -109,37 +109,15 @@ class DatabaseSeeder extends Seeder
       'id_assistencia' => '1',
     ]);
 
+    //Usuario Admin Teste
 
+    DB::table('admins')->insert([
+      'name' => 'notify',
+      'email' => 'notify@mi.com',
+      'password' => Hash::make('321321'),
+      'permissao' => '4',
+    ]);
 
-
-
-
-    /*
-    DB::table('permissoes')->insert([
-    'name' => 'Cadastra e visualiza consertos',
-  ]);
-  DB::table('permissoes')->insert([
-  'name' => 'Cadastra e visualiza clientes',
-]);
-DB::table('permissoes')->insert([
-'name' => 'Pode lançar acompanhamentos nos consertos',
-]);
-DB::table('permissoes')->insert([
-'name' => 'Cadastra usuários até nível 1',
-]);
-DB::table('permissoes')->insert([
-'name' => 'Cadastra usuários até nível 2',
-]);
-DB::table('permissoes')->insert([
-'name' => 'Visualiza avaliações',
-]);
-DB::table('permissoes')->insert([
-'name' => 'Gera relatórios;',
-]);
-DB::table('permissoes')->insert([
-'name' => 'Cadastra usuários até nível 3',
-]);
-*/
 
 
 }
