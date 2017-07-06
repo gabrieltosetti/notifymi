@@ -49,17 +49,17 @@ Breadcrumbs::register('novo_cliente', function($breadcrumbs)
 });
 
 // Home > Clientes
-Breadcrumbs::register('clientes', function($breadcrumbs)
+Breadcrumbs::register('permissoes', function($breadcrumbs)
 {
     $breadcrumbs->parent('home');
-    $breadcrumbs->push('Clientes', route('clientes'));
+    $breadcrumbs->push('Permissões', route('permissoes'));
 });
 
 // Home > Clientes > Novo
-Breadcrumbs::register('novo_cliente', function($breadcrumbs)
+Breadcrumbs::register('novo_permissoes', function($breadcrumbs)
 {
-    $breadcrumbs->parent('clientes');
-    $breadcrumbs->push('Novo', route('novo_cliente'));
+    $breadcrumbs->parent('permissoes');
+    $breadcrumbs->push('Novo', route('novo_permissoes'));
 });
 
 // Home > Usuario

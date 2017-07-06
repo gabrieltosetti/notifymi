@@ -37,9 +37,8 @@
 @endif
 
 @if($permissao == 4)
-<i class="fa 
-
-<!--  -->
+<i class="fa fa-user-secret"></i><strong class="font-bold"> Admin</strong>
+@endif
 
 
                       </a>

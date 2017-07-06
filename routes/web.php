@@ -67,4 +67,14 @@ Route::post('/usuarios/adiciona', 'UsuarioController@adiciona')->name('novo_usua
 Route::get('/usuarios/remove/{id}', 'UsuarioController@remove')->name('remove_usuario');
 Route::get('/usuarios/edita/{id}', 'UsuarioController@edita')->name('edita_usuario');
 
+Route::get('/clientes/detalhes/{id?}', 'ClienteController@detalhes')->name('detalhes_cliente');
+Route::post('/clientes/adiciona', 'ClienteController@adiciona')->name('novo_cliente_post');
+Route::get('/clientes/remove/{id}', 'ClienteController@remove')->name('remove_cliente');
+Route::get('/clientes/edita/{id}', 'ClienteController@edita')->name('edita_cliente');
+
+Route::get('/consertos/detalhes/{id?}', 'ConsertoController@detalhes')->name('detalhes_Conserto');
+Route::post('/consertos/adiciona', 'ConsertoController@adiciona')->name('novo_Conserto_post');
+Route::get('/consertos/remove/{id}', 'ConsertoController@remove')->name('remove_Conserto');
+Route::get('/consertos/edita/{id}', 'ConsertoController@edita')->name('edita_Conserto');
+
 Auth::routes();

@@ -10,7 +10,7 @@ class Usuario extends Model
   /*use Notifiable;*/
 
   public $timestamps = true;
-  
+
   protected $table = 'usuarios';
 
   /**
@@ -19,8 +19,8 @@ class Usuario extends Model
    * @var array
    */
   protected $fillable = [
-        'nome', 
-        'rg', 
+        'nome',
+        'rg',
         'cpf',
         'cidade',
         'telefone',

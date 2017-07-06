@@ -1,26 +1,112 @@
 @extends('layouts.principal')
 
-@section('title', 'Consertos')
+@section('title', 'Usuários')
 
-@section('content_title', 'Lista de Consertos')
+@section('content_title', 'Lista de Usuários')
 
-@section('breadcrumbs')
-    {!! Breadcrumbs::render('consertos') !!}
-@endsection
+
+
+@section('css')
+      <meta name="_token" content="{{ csrf_token() }}" />
+@stop
 
 @section('content')
     <div class="wrapper wrapper-content animated fadeInRight">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="text-center m-t-lg">
-                            <h1>
-                                Tabela de consertos
-                            </h1>
-                            <small>
-                                Tabela abaixo
-                            </small>
+                <div class="row" id="lista_conserto">
+                    @foreach($consertos as $conserto)
+                    <div class="col-xs-6 col-sm-6 col-lg-4">
+                        <div class="contact-box">
+                            <a class="open-modal" value="{{$conserto->id}}">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="text-center">
+                                        <!--    <img alt="image" class="img-circle m-t-xs img-responsive center-block" src="/media/avatars/{{$conserto->avatar}}"> -->
+
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8 hidden-xs">
+                                        <h3><strong>{{$conserto->modelo}}</strong></h3>
+                                        <p><i class="fa fa-map-marker"></i> {{$conserto->defeito}}</p>
+                                        <address>
+                                            <abbr title="orcamento">Cel:</abbr> {{$conserto->orcamento}}
+                                        </address>
+                                    </div>
+                                    <div class="col-sm-8 text-center visible-xs-block">
+                                        <h3><strong>{{$conserto->modelo}}</strong></h3>
+                                        <p><i class="fa fa-map-marker"></i> {{$conserto->defeito}}</p>
+                                        <address>
+                                            <abbr title="orcamento">Cel:</abbr> {{$conserto->orcamento}}
+                                        </address>
+
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                            <div class="row">
+                                <div class="col-xs-4 col-sm-4 hidden-xs">
+                                    <form action="{{ route('remove_conserto', ['id' => $conserto->id]) }}" method="POST">
+                                        {{ csrf_field() }}
+                                        <button type="submit" class="btn btn-xs btn-danger">Deletar</button>
+                                    </form>
+                                </div>
+                                <div class="col-xs-8 col-sm-3 p-w-xs hidden-xs">
+                                    <a class="btn btn-xs btn-info btn-block open-modal" value="{{$conserto->id}}">Info</a>
+                                </div>
+                                <div class="col-xs-12 col-sm-5 p-w-xs hidden-xs">
+                                    <a class="btn btn-xs btn-warning btn-block" href="{{ route('edita_conserto', ['id' => $conserto->id]) }}">Editar</a>
+                                </div>
+                                <!--orcamento-->
+                                <div class="col-xs-4 col-sm-4 visible-xs-block">
+                                    <form action="{{ route('remove_conserto', ['id' => $conserto->id]) }}" method="POST">
+                                        {{ csrf_field() }}
+                                        <button class="btn btn-danger btn-circle btn-lg" type="submit"><i class="fa fa-times"></i></button>
+                                    </form>
+                                </div>
+                                <div class="col-xs-8 col-sm-3 p-w-xs visible-xs-block">
+                                    <a class="btn btn-success btn-circle btn-lg open-modal" value="{{$conserto->id}}"><i class="fa fa-search"></i></a>
+
+                                    <a class="btn btn-primary btn-circle btn-lg" href="{{ route('edita_conserto', ['id' => $conserto->id]) }}"><i class="fa fa-pencil"></i></a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
+                    </div> <!--/col lg 4-->
+                    @endforeach
+
+                    <!--/MODAL-->
+    <!--/<ROW--></div>
             </div>
 @endsection
+
+@section('scripts')
+  <!--/MODAL
+<script>
+    $(document).ready(function(){
+        var url = "/consertos/detalhes";
+        $('#lista_conserto').on("click", ".open-modal", function () {
+            var conserto_id = $(this).attr('value');
+            console.log("conserto id: "+conserto_id);
+
+            $.get(url + '/' + conserto_id, function (data) {
+                //success data
+                console.log(data);
+                $('#modal-titulo').text(data.modelo);
+
+                $('#modal-RG').text(data.rg);
+                $('#modal-CPF').text(data.cpf);
+                $('#modal-e-mail').text(data.email);
+                $('#modal-orcamento').text(data.orcamento);
+                $('#modal-data_entrega').text(data.data_entrega);
+                $('#modal-defeito').text(data.defeito);
+                $('#modal-bairro').text(data.bairro);
+                $('#modal-rua').text(data.rua);
+                $('#modal-numero').text(data.numero);
+                $('#modal-complemento').text(data.complemento);
+                $('#modal-permissao').text(data.permissao);
+
+                $('#modal-detalhes').modal('show');
+            })
+        });
+    });
+</script>
+-->
+@stop

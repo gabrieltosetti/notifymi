@@ -22,7 +22,8 @@
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <div class="text-center">
-                                            <img alt="image" class="img-circle m-t-xs img-responsive center-block" src="{{ asset('img/a2.jpg') }}">
+                                            <img alt="image" class="img-circle m-t-xs img-responsive center-block" src="/media/avatars/{{$usuario->avatar}}">
+
                                             <div class="m-t-xs font-bold">{{$usuario->cargo->cargo}}</div>
                                         </div>
                                     </div>
@@ -85,7 +86,7 @@
                             <div class="modal-content animated bounceInRight">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                    <img alt="image" class="img-circle m-t-xs img-responsive center-block" src="{{ asset('img/a2.jpg') }}">
+                                    <img alt="image" class="img-circle m-t-xs img-responsive center-block" src="/media/avatars/{{$usuario->avatar}}">
                                     <h4 class="modal-title" id="modal-titulo"></h4>
                                     <small class="font-bold" id="modal-cargo"></small>
                                 </div>
@@ -141,6 +142,118 @@
                                                     <label class="col-sm-3 col-xs-12 control-label">Cidade</label>
                                                     <div class="col-sm-9">
                                                         <p class="form-control-static" id="modal-cidade"></p>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 col-xs-12 control-label">Bairro</label>
+                                                    <div class="col-sm-9">
+                                                        <p class="form-control-static" id="modal-bairro"></p>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 col-xs-12 control-label">Rua</label>
+                                                    <div class="col-sm-9">
+                                                        <p class="form-control-static" id="modal-rua"></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 col-xs-12 control-label">Número</label>
+                                                    <div class="col-sm-9">
+                                                        <p class="form-control-static" id="modal-numero"></p>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 col-xs-12 control-label">Comple.</label>
+                                                    <div class="col-sm-9">
+                                                        <p class="form-control-static" id="modal-complemento"></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                        <!--divisoria--><div class="hr-line-dashed"></div> <!--divisoria-->
+                                        <div class="row">
+                                            <div class="col-xs-6">
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 col-xs-12 control-label">Permissão</label>
+                                                    <div class="col-sm-9">
+                                                        <p class="form-control-static" id="modal-permissao"></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div><!--/modal content-->
+                        </div>
+                    </div>
+                    <!--MODAL-->
+                    <div class="modal inmodal" id="modal-detalhes" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content animated bounceInRight">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                    <img alt="image" class="img-circle m-t-xs img-responsive center-block" src="{{ asset('img/a2.jpg') }}">
+                                    <h4 class="modal-title" id="modal-titulo"></h4>
+
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-horizontal">
+                                        <div class="row">
+                                            <div class="col-xs-6">
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 col-xs-12 control-label">RG</label>
+                                                    <div class="col-sm-9">
+                                                        <p class="form-control-static" id="modal-RG"></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 col-xs-12 control-label">CPF</label>
+                                                    <div class="col-sm-9">
+                                                        <p class="form-control-static" id="modal-CPF"></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                        <!--divisoria--><div class="hr-line-dashed"></div> <!--divisoria-->
+                                        <div class="row">
+                                            <div class="col-xs-6">
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 col-xs-12 control-label">E-mail</label>
+                                                    <div class="col-sm-9">
+                                                        <p class="form-control-static" id="modal-e-mail"></p>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 col-xs-12 control-label">orcamento</label>
+                                                    <div class="col-sm-9">
+                                                        <p class="form-control-static" id="modal-orcamento"></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 col-xs-12 control-label">data_entrega</label>
+                                                    <div class="col-sm-9">
+                                                        <p class="form-control-static" id="modal-data_entrega"></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                        <!--divisoria--><div class="hr-line-dashed"></div> <!--divisoria-->
+                                        <div class="row">
+                                            <div class="col-xs-6">
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 col-xs-12 control-label">defeito</label>
+                                                    <div class="col-sm-9">
+                                                        <p class="form-control-static" id="modal-defeito"></p>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">

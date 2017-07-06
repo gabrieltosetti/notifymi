@@ -1,23 +1,23 @@
 @extends('layouts.principal')
 
-@section('title', 'Consertos')
+@section('title', 'Novo Conserto')
 
-@section('content_title', 'Lista de Permissões')
+@section('content_title', 'Nova Permissão')
 
 @section('breadcrumbs')
-    {!! Breadcrumbs::render('permissoes') !!}
+    {!! Breadcrumbs::render('novo_permissoes') !!}
 @endsection
 
 @section('content')
-    <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="wrapper wrapper-content animated fadeInRight">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="text-center m-t-lg">
                             <h1>
-                                Tabela de permissões
+                                Nova Permissão
                             </h1>
                             <small>
-                                Tabela abaixo
+                                Formulário abaixo
                             </small>
                         </div>
                     </div>
