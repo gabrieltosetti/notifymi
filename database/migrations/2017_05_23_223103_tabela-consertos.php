@@ -20,6 +20,7 @@ class TabelaConsertos extends Migration
             $table->double('orcamento', 6, 2);
             $table->date('data_entrega');
             $table->char('observacao', 255);
+            $table->string('foto')->default('default.jpg');
 
             $table->integer('id_usuario')->unsigned();
             $table->integer('id_assistencia')->unsigned();
