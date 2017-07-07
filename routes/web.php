@@ -74,9 +74,9 @@ Route::post('/clientes/adiciona', 'ClienteController@adiciona')->name('novo_clie
 Route::get('/clientes/remove/{id}', 'ClienteController@remove')->name('remove_cliente');
 Route::get('/clientes/edita/{id}', 'ClienteController@edita')->name('edita_cliente');
 
-Route::get('/consertos/detalhes/{id?}', 'ConsertoController@detalhes')->name('detalhes_Conserto');
-Route::post('/consertos/adiciona', 'ConsertoController@adiciona')->name('novo_Conserto_post');
-Route::get('/consertos/remove/{id}', 'ConsertoController@remove')->name('remove_Conserto');
-Route::get('/consertos/edita/{id}', 'ConsertoController@edita')->name('edita_Conserto');
+Route::get('/consertos/detalhes/{id?}', 'ConsertoController@detalhes')->name('detalhes_conserto');
+Route::post('/consertos/adiciona', 'ConsertoController@adiciona')->name('novo_conserto_post');
+Route::get('/consertos/remove/{id}', 'ConsertoController@remove')->name('remove_conserto');
+Route::get('/consertos/edita/{id}', 'ConsertoController@edita')->name('edita_conserto');
 
 Auth::routes();

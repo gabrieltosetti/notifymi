@@ -2,7 +2,7 @@
 
 @section('title', 'Usuários')
 
-@section('content_title', 'Lista de Usuários')
+@section('content_title', 'Lista de Consertos')
 
 
 
@@ -25,20 +25,14 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-8 hidden-xs">
-                                        <h3><strong>{{$conserto->modelo}}</strong></h3>
-                                        <p><i class="fa fa-map-marker"></i> {{$conserto->defeito}}</p>
-                                        <address>
-                                            <abbr title="orcamento">Cel:</abbr> {{$conserto->orcamento}}
-                                        </address>
-                                    </div>
-                                    <div class="col-sm-8 text-center visible-xs-block">
-                                        <h3><strong>{{$conserto->modelo}}</strong></h3>
-                                        <p><i class="fa fa-map-marker"></i> {{$conserto->defeito}}</p>
-                                        <address>
-                                            <abbr title="orcamento">Cel:</abbr> {{$conserto->orcamento}}
-                                        </address>
+                                        <h3><abbr title="Modelo"> <strong>{{$conserto->modelo}}</strong></abbr></h3>
+                                        <p><i class ="fa fa-wrench"></i>: {{$conserto->defeito}}</p>
+                                        <p>R$: {{$conserto->orcamento}}</p>
+                                        <p>obs: {{$conserto->observacao}}</p>
+
 
                                     </div>
+
                                     <div class="clearfix"></div>
                                 </div>
                             </a>
@@ -78,7 +72,7 @@
 @endsection
 
 @section('scripts')
-  <!--/MODAL
+
 <script>
     $(document).ready(function(){
         var url = "/consertos/detalhes";
@@ -90,23 +84,13 @@
                 //success data
                 console.log(data);
                 $('#modal-titulo').text(data.modelo);
-
-                $('#modal-RG').text(data.rg);
-                $('#modal-CPF').text(data.cpf);
-                $('#modal-e-mail').text(data.email);
                 $('#modal-orcamento').text(data.orcamento);
                 $('#modal-data_entrega').text(data.data_entrega);
                 $('#modal-defeito').text(data.defeito);
-                $('#modal-bairro').text(data.bairro);
-                $('#modal-rua').text(data.rua);
-                $('#modal-numero').text(data.numero);
-                $('#modal-complemento').text(data.complemento);
-                $('#modal-permissao').text(data.permissao);
-
                 $('#modal-detalhes').modal('show');
             })
         });
     });
 </script>
--->
+
 @stop

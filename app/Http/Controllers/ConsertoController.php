@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Conserto;
 use Illuminate\Http\Request;
+use App\Http\Requests\ConsertoRequest;
 
 class ConsertoController extends Controller
 {
@@ -13,7 +14,8 @@ class ConsertoController extends Controller
 
     public function lista()
     {
-        return view('conserto/lista_conserto');
+      $consertos = Conserto::all();
+        return view('conserto/lista_conserto')->with('consertos', $consertos);
     }
 
     public function novo()
