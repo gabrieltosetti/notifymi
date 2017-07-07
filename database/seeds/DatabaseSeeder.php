@@ -88,9 +88,14 @@ class DatabaseSeeder extends Seeder
     ]);
 
 
-    //Usuario Teste
+    //100 Usuarios de teste
+    factory(App\Usuario::class, 20)->create();
+
+    //100 Clientes de teste
+    factory(App\Cliente::class, 20)->create();
 
 
+    /*
     DB::table('usuarios')->insert([
 
       'nome' => 'Testônio dos Testes',
@@ -108,6 +113,9 @@ class DatabaseSeeder extends Seeder
       'id_cargo' => '1',
       'id_assistencia' => '1',
     ]);
+    */
+
+
 
     //Usuario Admin Teste
 
