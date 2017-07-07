@@ -15,6 +15,7 @@
     return view('welcome');
 });*/
 
+Auth::routes();
 
 Route::get('/', 'HomeController@index2')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
@@ -30,8 +31,9 @@ Route::get('/entrar/cliente', 'LoginController@logincliente')->name('entrarclien
 Route::get('/entrar/cadastro', 'LoginController@cadastro')->name('cadastro');
 
   //admin Login
-  Route::get('/entrar/admin', 'AdminController@loginadmin')->name('entraradmin');
   Route::get('/adminindex', 'AdminController@index')->name('admin');
+  Route::get('/entrar/admin', 'Auth\AdminLoginController@showLoginForm')->name('entraradmin');
+  Route::post('/entrar/admin', 'Auth\AdminLoginController@Login')->name('entraradmin.submit');
 
 
 //profile
