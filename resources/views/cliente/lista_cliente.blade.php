@@ -2,7 +2,7 @@
 
 @section('title', 'Usuários')
 
-@section('content_title', 'Lista de Usuários')
+@section('content_title', 'Lista de Clientes')
 
 
 
@@ -26,7 +26,7 @@
                                     </div>
                                     <div class="col-sm-8 hidden-xs">
                                         <h3><strong>{{$cliente->nome}}</strong></h3>
-                                        {{$cliente->avatar}}
+
                                         <p><i class="fa fa-map-marker"></i> {{$cliente->cidade}}</p>
                                         <address>
 
@@ -38,8 +38,8 @@
                                     <div class="col-sm-8 text-center visible-xs-block">
                                         <h3><strong>{{$cliente->nome}}</strong></h3>
                                         <p><i class="fa fa-map-marker"></i> {{$cliente->cidade}}</p>
-                                        <address>
 
+                                        <address>
                                             {{$cliente->bairro}},<br>
                                             {{$cliente->rua}}, {{$cliente->numero}}<br>
                                             <abbr title="Celular">Cel:</abbr> {{$cliente->celular}}
@@ -84,9 +84,9 @@
                             <div class="modal-content animated bounceInRight">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                    <img alt="image" class="img-circle m-t-xs img-responsive center-block" src="{{ asset('img/a2.jpg') }}">
+                                    <img alt="image" class="img-circle m-t-xs img-responsive center-block" src="/media/avatars/{{$cliente->avatar}}">
                                     <h4 class="modal-title" id="modal-titulo"></h4>
-
+                                    <small class="font-bold" ></small>
                                 </div>
                                 <div class="modal-body">
                                     <div class="form-horizontal">
@@ -207,7 +207,6 @@
                 //success data
                 console.log(data);
                 $('#modal-titulo').text(data.nome);
-
                 $('#modal-RG').text(data.rg);
                 $('#modal-CPF').text(data.cpf);
                 $('#modal-e-mail').text(data.email);

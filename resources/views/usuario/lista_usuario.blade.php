@@ -198,7 +198,7 @@
                             <div class="modal-content animated bounceInRight">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                    <img alt="image" class="img-circle m-t-xs img-responsive center-block" src="{{ asset('img/a2.jpg') }}">
+                                    <img alt="image" class="img-circle m-t-xs img-responsive center-block" src="/media/avatars/{{$usuario->avatar}}">
                                     <h4 class="modal-title" id="modal-titulo"></h4>
 
                                 </div>

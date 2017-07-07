@@ -31,7 +31,7 @@ class UsuarioController extends Controller
     //rota: novo_usuario_post
     public function adiciona(UsuarioRequest $request)
     {
-        
+
         request()->file('foto')->store('perfil');
         Usuario::create($request->all());
 

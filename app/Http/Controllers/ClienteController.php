@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Cliente;
+
 use Illuminate\Http\Request;
+use App\Cliente;
 use App\Http\Requests\ClienteRequest;
+use Illuminate\Support\Facades\Response;
 
 
 class ClienteController extends Controller
@@ -39,7 +41,9 @@ class ClienteController extends Controller
     public function detalhes($id)
     {
         $cliente = Cliente::find($id);
-        return view('cliente/detalhes_cliente')->with('cliente', $cliente);
+
+
+        return Response::json($cliente);
     }
 
     //rota: remove_cliente

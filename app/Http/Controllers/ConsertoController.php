@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Conserto;
 use Illuminate\Http\Request;
 use App\Http\Requests\ConsertoRequest;
+use Illuminate\Support\Facades\Response;
 
 class ConsertoController extends Controller
 {
@@ -35,7 +36,7 @@ class ConsertoController extends Controller
         public function detalhes($id)
         {
             $conserto = Conserto::find($id);
-            $conserto->{"cargo"} = $conserto->cargo->id;
+
 
             return Response::json($conserto);
         }
