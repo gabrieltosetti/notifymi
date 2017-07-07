@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Cliente extends Model
 {
     public $timestamps = true;
-  
+
     protected $table = 'clientes';
 
     /**
@@ -16,8 +16,8 @@ class Cliente extends Model
     * @var array
     */
     protected $fillable = [
-        'nome', 
-        'rg', 
+        'nome',
+        'rg',
         'cpf',
         'cidade',
         'telefone',
