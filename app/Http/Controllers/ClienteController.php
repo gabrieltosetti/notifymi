@@ -30,8 +30,9 @@ class ClienteController extends Controller
     //rota: novo_cliente_post
     public function adiciona(ClienteRequest $request)
     {
-
-        request()->file('foto')->store('perfil');
+        if($request->hasFile('foto')){
+            request()->file('foto')->store('perfil');
+        }
         Cliente::create($request->all());
 
         return redirect('/clientes')->withInput();

@@ -207,7 +207,7 @@
                                           <div class="form-group  {{ $errors->has('confirmar') ? 'has-error' : ''}}">
                                               <label class="col-sm-3 control-label" for="confirmar">Confirmar Senha</label>
                                               <div class="col-sm-9">
-                                                  <input type="password" class="form-control" name="confirmar" value="{{ old('confirmar') }}" id="confirmar">
+                                                  <input type="password" class="form-control" name="confirmar" id="confirmar">
                                                   <span class="help-block"><?php echo $errors->first('confirmar'); ?></span>
                                               </div>
                                           </div>
