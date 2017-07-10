@@ -27,6 +27,14 @@
                             <div class="ibox-content">
                                 <form class="form-horizontal" action="{{ route('novo_usuario_post') }}" method="post" enctype="multipart/form-data">
                                     {{ csrf_field() }}
+                                    @if($errors->any())
+                                    <div class="row"> 
+                                        <div class="alert alert-danger alert-dismissable">
+                                            <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                                            Porfavor, corrija o(s) erro(s) abaixo !
+                                        </div>
+                                    </div>
+                                    @endif
                                     <input type="hidden" value="1" name="id_assistencia" />
                                     <div class="row">
                                         <div class="col-xs-12"><p>Quais seus dados?</p></div>

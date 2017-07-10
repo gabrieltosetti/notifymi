@@ -24,6 +24,14 @@
                                 <form class="form-horizontal" action="{{ route('novo_cliente_post') }}" method="post" enctype="multipart/form-data">
                                     {{ csrf_field() }}
                                     <input type="hidden" value="1" name="id_assistencia" />
+                                    @if($errors->any())
+                                    <div class="row"> 
+                                        <div class="alert alert-danger alert-dismissable">
+                                            <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                                            Porfavor, corrija o(s) erro(s) abaixo !
+                                        </div>
+                                    </div>
+                                    @endif
                                     <div class="row">
                                         <div class="col-xs-12"><p>Informações básicas sobre o novo cliente.</p></div>
                                     </div>
