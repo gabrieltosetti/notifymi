@@ -53,6 +53,6 @@ class UsuarioController extends Controller
         $usuario = Usuario::find($id);
         $usuario->delete();
 
-        return redirect()->action('UsuarioController@lista');
+        return;
     }
 }

@@ -66,7 +66,7 @@ Route::get('/cargos/novo', 'CargosController@novocargo')->name('novo_cargos');
 
 Route::get('/usuarios/detalhes/{id?}', 'UsuarioController@detalhes')->name('detalhes_usuario');
 Route::post('/usuarios/adiciona', 'UsuarioController@adiciona')->name('novo_usuario_post');
-Route::get('/usuarios/remove/{id}', 'UsuarioController@remove')->name('remove_usuario');
+Route::delete('/usuarios/remove/{id?}', 'UsuarioController@remove')->name('remove_usuario');
 Route::get('/usuarios/edita/{id}', 'UsuarioController@edita')->name('edita_usuario');
 
 Route::get('/clientes/detalhes/{id?}', 'ClienteController@detalhes')->name('detalhes_cliente');
