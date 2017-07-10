@@ -17,7 +17,7 @@
     <div class="wrapper wrapper-content animated fadeInRight">
                 <div class="row" id="lista_usuario">
                     @foreach($usuarios as $usuario)
-                    <div class="col-xs-6 col-sm-6 col-lg-4" id="usuario-{{$usuario->id}}">
+                    <div class="col-xs-6 col-sm-6 col-md-4" id="usuario-{{$usuario->id}}">
                         <div class="contact-box">
                             <a class="open-modal" value="{{$usuario->id}}">
                                 <div class="row">
