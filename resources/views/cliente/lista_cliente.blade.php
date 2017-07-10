@@ -8,13 +8,14 @@
 
 @section('css')
       <meta name="_token" content="{{ csrf_token() }}" />
+      <link href="{{ asset('css/plugins/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet">
 @stop
 
 @section('content')
     <div class="wrapper wrapper-content animated fadeInRight">
                 <div class="row" id="lista_cliente">
                     @foreach($clientes as $cliente)
-                    <div class="col-xs-6 col-sm-6 col-lg-4">
+                    <div class="col-xs-6 col-sm-6 col-lg-4"  id="cliente-{{$cliente->id}}">
                         <div class="contact-box">
                             <a class="open-modal" value="{{$cliente->id}}">
                                 <div class="row">
@@ -25,7 +26,7 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-8 hidden-xs">
-                                        <h3><strong>{{$cliente->nome}}</strong></h3>
+                                        <h3><strong id="cliente-nome-{{$cliente->id}}">{{$cliente->nome}}</strong></h3>
 
                                         <p><i class="fa fa-map-marker"></i> {{$cliente->cidade}}</p>
                                         <address>
@@ -51,8 +52,7 @@
                             </a>
                             <div class="row">
                                 <div class="col-xs-4 col-sm-4 hidden-xs">
-                                    <form action="{{ route('remove_cliente', ['id' => $cliente->id]) }}" method="POST">
-                                        {{ csrf_field() }}
+                                    <form class="form-deletar" value="{{$cliente->id}}">
                                         <button type="submit" class="btn btn-xs btn-danger">Deletar</button>
                                     </form>
                                 </div>
@@ -64,8 +64,7 @@
                                 </div>
                                 <!--CELULAR-->
                                 <div class="col-xs-4 col-sm-4 visible-xs-block">
-                                    <form action="{{ route('remove_cliente', ['id' => $cliente->id]) }}" method="POST">
-                                        {{ csrf_field() }}
+                                    <form class="form-deletar" value="{{$cliente->id}}">
                                         <button class="btn btn-danger btn-circle btn-lg" type="submit"><i class="fa fa-times"></i></button>
                                     </form>
                                 </div>
@@ -196,14 +195,16 @@
 @endsection
 
 @section('scripts')
+<script src="{{ asset('js/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
 <script>
     $(document).ready(function(){
-        var url = "/clientes/detalhes";
+        var url = "/clientes";
+        /*DETALHES*/
         $('#lista_cliente').on("click", ".open-modal", function () {
             var cliente_id = $(this).attr('value');
             console.log("cliente id: "+cliente_id);
 
-            $.get(url + '/' + cliente_id, function (data) {
+            $.get(url + '/detalhes/' + cliente_id, function (data) {
                 //success data
                 console.log(data);
                 $('#modal-titulo').text(data.nome);
@@ -222,6 +223,53 @@
                 $('#modal-detalhes').modal('show');
             })
         });
-    });
+        /* /DETALHES*/
+        /*DELETAR CLIENTE*/
+        $('form.form-deletar').on("submit", function (event) {
+
+            var cliente_id = $(this).attr('value');
+            var cliente_nome = $("#cliente-nome-"+cliente_id).text();
+
+            swal({
+                title: 'Deletar?',
+                text: 'Tem certeza que deseja excluir '+cliente_nome+'?',
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Sim, deletar!',
+                cancelButtonText: 'Cancelar',
+                showLoaderOnConfirm: true,
+                preConfirm: function () {
+                    return new Promise(function (resolve, reject) {
+                        $.ajaxSetup({
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                            }
+                        });
+                        $.ajax({
+                            type: "DELETE",
+                            url: url + '/remove/' + cliente_id,
+                            success: function (data) {
+                                //console.log(data);
+
+                                $("#cliente-" + cliente_id).remove();
+                                resolve();
+                            },
+                            error: function (data) {
+                                console.log('Error:', data);
+                            }
+                        });
+                    });
+                },
+                allowOutsideClick: false
+                }).then(function (data) {
+                swal({
+                    type: 'success',
+                    title: 'Cliente deletado!',
+                })
+            });
+            event.preventDefault();
+        });
+        /*/DELETAR CLIENTE*/
+    }); /* /DOCUMENT READY*/
 </script>
 @stop

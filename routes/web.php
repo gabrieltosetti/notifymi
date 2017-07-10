@@ -71,7 +71,7 @@ Route::get('/usuarios/edita/{id}', 'UsuarioController@edita')->name('edita_usuar
 
 Route::get('/clientes/detalhes/{id?}', 'ClienteController@detalhes')->name('detalhes_cliente');
 Route::post('/clientes/adiciona', 'ClienteController@adiciona')->name('novo_cliente_post');
-Route::get('/clientes/remove/{id}', 'ClienteController@remove')->name('remove_cliente');
+Route::delete('/clientes/remove/{id?}', 'ClienteController@remove')->name('remove_cliente');
 Route::get('/clientes/edita/{id}', 'ClienteController@edita')->name('edita_cliente');
 
 Route::get('/consertos/detalhes/{id?}', 'ConsertoController@detalhes')->name('detalhes_conserto');
