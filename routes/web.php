@@ -27,8 +27,8 @@ Route::get('/cadastro', 'LoginController@cadastro')->name('cadastro');
 
 //ADMIN
 Route::get('/admin/index', 'AdminController@index')->name('admin');
-Route::get('/admin/entrar', 'Auth\AdminLoginController@showLoginForm')->name('entraradmin');
-Route::post('/admin/entrar', 'Auth\AdminLoginController@Login')->name('entraradmin.submit');
+Route::get('/admin/login', 'Auth\AdminLoginController@showLoginForm')->name('entraradmin');
+Route::post('/admin/login', 'Auth\AdminLoginController@Login')->name('entraradmin.submit');
 
 //profile
 Route::get('/perfil', 'ProfileController@perfil')->name('perfil');
