@@ -24,8 +24,11 @@ class ProfileController extends Controller
 
       $user = Auth::user();
       $file = public_path('/media/avatars/' . $user->avatar);
-        unlink($file);
+      $avatar = $user->avatar;
 
+      if($avatar!==('default.jpg')){
+        unlink($file);
+  }
 
     if($request->hasFile('avatar')){
       $avatar = $request->file('avatar');
