@@ -105,7 +105,7 @@
                                                 </div>
                                             </div>
                                         </div>
-            
+
                                     <!-- end row -->
                                 </div>
                             </div>
@@ -138,13 +138,13 @@
                                                         <div class="col-sm-8 col-md-9 col-lg-10">
                                                             <p class="form-control-static">Cargo aqui</p>
                                                         </div>
-                                                    </div>                                                
+                                                    </div>
                                                     <div class="form-group m-b-none">
                                                         <label class="col-sm-4 col-md-3 col-lg-2 col-xs-12 control-label">Nível</label>
                                                         <div class="col-sm-8 col-md-9 col-lg-10">
                                                             <p class="form-control-static">Nível aqui</p>
                                                         </div>
-                                                    </div>                                                                                             
+                                                    </div>
                                                 </div>
                                                 <div class="col-xs-6">
                                                     <div class="form-group m-b-none">
@@ -170,21 +170,21 @@
                                                         <div class="col-sm-8 col-md-9 col-lg-10">
                                                             <p class="form-control-static">E-mail aqui</p>
                                                         </div>
-                                                    </div> 
+                                                    </div>
                                                     <div class="form-group m-b-none">
                                                         <label class="col-sm-4 col-md-3 col-lg-2 col-xs-12 control-label">Celular</label>
                                                         <div class="col-sm-8 col-md-9 col-lg-10">
                                                             <p class="form-control-static">Celular aqui</p>
                                                         </div>
-                                                    </div>  
-                                                </div>                                         
+                                                    </div>
+                                                </div>
                                                 <div class="col-xs-6">
                                                     <div class="form-group m-b-none">
                                                         <label class="col-sm-4 col-md-3 col-lg-2 col-xs-12 control-label">Telefone</label>
                                                         <div class="col-sm-8 col-md-9 col-lg-10">
                                                             <p class="form-control-static">Telefone aqui</p>
                                                         </div>
-                                                    </div>    
+                                                    </div>
                                                 </div>
                                             </div>
                             <!--divisoria--><div class="hr-line-dashed"></div> <!--divisoria-->
@@ -196,19 +196,19 @@
                                                         <div class="col-sm-8 col-md-9 col-lg-10">
                                                             <p class="form-control-static">Cidade aqui</p>
                                                         </div>
-                                                    </div>  
+                                                    </div>
                                                     <div class="form-group m-b-none">
                                                         <label class="col-sm-4 col-md-3 col-lg-2 col-xs-12 control-label">Bairro</label>
                                                         <div class="col-sm-8 col-md-9 col-lg-10">
                                                             <p class="form-control-static">Bairro aqui</p>
                                                         </div>
-                                                    </div>                                          
+                                                    </div>
                                                     <div class="form-group m-b-none">
                                                         <label class="col-sm-4 col-md-3 col-lg-2 col-xs-12 control-label">Rua</label>
                                                         <div class="col-sm-8 col-md-9 col-lg-10">
                                                             <p class="form-control-static">Rua aqui</p>
                                                         </div>
-                                                    </div>                                          
+                                                    </div>
                                                 </div>
                                                 <div class="col-xs-6">
                                                     <div class="form-group m-b-none">
@@ -216,13 +216,13 @@
                                                         <div class="col-sm-8 col-md-9 col-lg-10">
                                                             <p class="form-control-static">Número aqui</p>
                                                         </div>
-                                                    </div>    
+                                                    </div>
                                                     <div class="form-group m-b-none">
                                                         <label class="col-sm-4 col-md-3 col-lg-2 col-xs-12 control-label">Compl.</label>
                                                         <div class="col-sm-8 col-md-9 col-lg-10">
                                                             <p class="form-control-static">Complemento aqui</p>
                                                         </div>
-                                                    </div>    
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div> <!--/FORM HORIZONTAL-->
@@ -254,14 +254,14 @@
                                                             </select>
                                                             <span class="help-block"><?php echo $errors->first('cargo'); ?></span>
                                                         </div>
-                                                    </div>  
-                                                    <!--/CARGOS-->                                              
+                                                    </div>
+                                                    <!--/CARGOS-->
                                                     <div class="form-group m-b-none">
                                                         <label class="col-sm-4 col-md-3 col-lg-2 col-xs-12 control-label">Nível</label>
                                                         <div class="col-sm-8 col-md-9 col-lg-10">
                                                             <p class="form-control-static">Nível aqui</p>
                                                         </div>
-                                                    </div> 
+                                                    </div>
                                                     <!--INPUT FOTO-->
                                                     <div class="form-group m-b-none">
                                                         <label class="col-sm-4 col-md-3 col-lg-2 col-xs-12 control-label">Alterar foto</label>
@@ -316,7 +316,7 @@
                                                             <input type="email" class="form-control" name="email" value="{{ old('email') }}" id="email" maxlength="50">
                                                             <span class="help-block"><?php echo $errors->first('email'); ?></span>
                                                         </div>
-                                                    </div> 
+                                                    </div>
                                                     <!--/EMAIL-->
                                                     <!--CELULAR-->
                                                     <div class="form-group m-b-none {{ $errors->has('celular') ? 'has-error' : ''}}">
@@ -326,9 +326,9 @@
                                                             <span class="help-block"><?php echo $errors->first('celular'); ?></span>
                                                             <span class="help-block">Exemplo: (99)99999-9999</span>
                                                         </div>
-                                                    </div> 
-                                                    <!--/CELULAR--> 
-                                                </div> <!--/COL 6-->                                        
+                                                    </div>
+                                                    <!--/CELULAR-->
+                                                </div> <!--/COL 6-->
                                                 <div class="col-xs-6">
                                                     <!--TELEFONE-->
                                                     <div class="form-group m-b-none {{ $errors->has('telefone') ? 'has-error' : ''}}">
@@ -338,8 +338,8 @@
                                                             <span class="help-block"><?php echo $errors->first('telefone'); ?></span>
                                                             <span class="help-block">Exemplo: (99)9999-9999</span>
                                                         </div>
-                                                    </div> 
-                                                    <!--/TELEFONE-->   
+                                                    </div>
+                                                    <!--/TELEFONE-->
                                                 </div> <!--/COL 6-->
                                             </div> <!--/ROW CONTATOS-->
                             <!--divisoria--><div class="hr-line-dashed"></div> <!--divisoria-->
@@ -352,21 +352,21 @@
                                                             <input type="text" class="form-control" name="cidade" value="{{ old('cidade') }}" id="cidade" maxlength="30">
                                                             <span class="help-block"><?php echo $errors->first('cidade'); ?></span>
                                                         </div>
-                                                    </div>  
+                                                    </div>
                                                     <div class="form-group m-b-none {{ $errors->has('bairro') ? 'has-error' : ''}}">
                                                         <label class="col-sm-4 col-md-3 col-lg-2 col-xs-12 control-label" for="bairro">Bairro</label>
                                                         <div class="col-sm-8 col-md-9 col-lg-10">
                                                             <input type="text" class="form-control" name="bairro" value="{{ old('bairro') }}" id="bairro" maxlength="40">
                                                             <span class="help-block"><?php echo $errors->first('bairro'); ?></span>
                                                         </div>
-                                                    </div>                                          
+                                                    </div>
                                                     <div class="form-group m-b-none {{ $errors->has('rua') ? 'has-error' : ''}}">
                                                         <label class="col-sm-4 col-md-3 col-lg-2 col-xs-12 control-label" for="rua">Rua</label>
                                                         <div class="col-sm-8 col-md-9 col-lg-10">
                                                             <input type="text" class="form-control" name="rua" value="{{ old('rua') }}" id="rua"  maxlength="40">
                                                             <span class="help-block"><?php echo $errors->first('rua'); ?></span>
                                                         </div>
-                                                    </div>                                          
+                                                    </div>
                                                 </div>
                                                 <div class="col-xs-6">
                                                     <div class="form-group m-b-none {{ $errors->has('numero') ? 'has-error' : ''}}">
@@ -375,14 +375,14 @@
                                                             <input type="number" class="form-control" name="numero" value="{{ old('numero') }}" id="numero" min="0">
                                                             <span class="help-block"><?php echo $errors->first('numero'); ?></span>
                                                         </div>
-                                                    </div>    
+                                                    </div>
                                                     <div class="form-group m-b-none {{ $errors->has('complemento') ? 'has-error' : ''}}">
                                                         <label class="col-sm-4 col-md-3 col-lg-2 col-xs-12 control-label" for="complemento">Compl.</label>
                                                         <div class="col-sm-8 col-md-9 col-lg-10">
                                                             <textarea class="form-control"  placeholder="Opcional" name="complemento" id="complemento"  maxlength="40">{{ old('complemento') }}</textarea>
                                                             <span class="help-block"><?php echo $errors->first('complemento'); ?></span>
                                                         </div>
-                                                    </div>    
+                                                    </div>
                                                 </div>
                                             </div><!--/ROW ENDEREÇO-->
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">

@@ -8,7 +8,8 @@
 
 @section('css')
       <meta name="_token" content="{{ csrf_token() }}" />
-      
+      <link href="{{ asset('css/plugins/dataTables/datatables.min.css') }}" rel="stylesheet">
+
 @stop
 
 @section('content')
@@ -23,7 +24,7 @@
                 </div>
                         <div class="ibox-content">
                             <!-- LINHA DE PESQUISA -->
-                            <div class="m-b-lg"> 
+                            <div class="m-b-lg">
                                 <div class="input-group">
                                     <input type="text" placeholder="Pesquisa..." class=" form-control">
                                     <span class="input-group-btn">
@@ -44,7 +45,7 @@
                             </div>
                             <!-- /LINHA DE PESQUISA -->
                             <div class="table-responsive">
-                            <table class="table table-hover issue-tracker">
+                            <table class="table table-hover issue-tracker dataTables-example">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
@@ -61,7 +62,7 @@
                                             #1
                                         </td>
                                         <td class="issue-info"> <!-- DESCRIÇÃO -->
-                                            <span class="label label-primary">Aberto</span> <a href="#">Título do conserto</a>                                            
+                                            <span class="label label-primary">Aberto</span> <a href="#">Título do conserto</a>
                                             <small>
                                                 Aqui fica a breve descrição.
                                             </small>
@@ -83,7 +84,7 @@
                                             #2
                                         </td>
                                         <td class="issue-info"> <!-- DESCRIÇÃO -->
-                                            <span class="label label-warning">Pendente</span> <a href="#">Título do conserto</a>                                            
+                                            <span class="label label-warning">Pendente</span> <a href="#">Título do conserto</a>
                                             <small>
                                                 Aqui fica a breve descrição.
                                             </small>
@@ -105,7 +106,7 @@
                                             #3
                                         </td>
                                         <td class="issue-info"> <!-- DESCRIÇÃO -->
-                                            <span class="label label-success">Em espera</span> <a href="#">Título do conserto</a>                                            
+                                            <span class="label label-success">Em espera</span> <a href="#">Título do conserto</a>
                                             <small>
                                                 Aqui fica a breve descrição.
                                             </small>
@@ -127,7 +128,7 @@
                                             #4
                                         </td>
                                         <td class="issue-info"> <!-- DESCRIÇÃO -->
-                                            <span class="label label-default">Fechado</span> <a href="#">Título do conserto</a>                                            
+                                            <span class="label label-default">Fechado</span> <a href="#">Título do conserto</a>
                                             <small>
                                                 Aqui fica a breve descrição.
                                             </small>
@@ -149,7 +150,7 @@
                                             #5
                                         </td>
                                         <td class="issue-info"> <!-- DESCRIÇÃO -->
-                                            <span class="label label-danger">Cancelado</span> <a href="#">Título do conserto</a>                                            
+                                            <span class="label label-danger">Cancelado</span> <a href="#">Título do conserto</a>
                                             <small>
                                                 Aqui fica a breve descrição.
                                             </small>
@@ -176,12 +177,38 @@
 @endsection
 
 @section('scripts')
+    <script src="js/plugins/dataTables/datatables.min.js"></script>
+
 
 <script>
     $(document).ready(function(){
-        
+        $('.dataTables-example').DataTable({
+            pageLength: 25,
+            responsive: true,
+            dom: '<"html5buttons"B>lTfgitp',
+            buttons: [
+                { extend: 'copy'},
+                {extend: 'csv'},
+                {extend: 'excel', title: 'ExampleFile'},
+                {extend: 'pdf', title: 'ExampleFile'},
+
+                {extend: 'print',
+                 customize: function (win){
+                        $(win.document.body).addClass('white-bg');
+                        $(win.document.body).css('font-size', '10px');
+
+                        $(win.document.body).find('table')
+                                .addClass('compact')
+                                .css('font-size', 'inherit');
+                }
+                }
+            ]
+
+        });
 
     });
+
 </script>
+
 
 @stop
