@@ -45,7 +45,7 @@
                             </div>
                             <!-- /LINHA DE PESQUISA -->
                             <div class="table-responsive">
-                            <table class="table table-hover issue-tracker dataTables-example">
+                            <table class="table table-hover issue-tracker dataTables-conserto">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
@@ -182,7 +182,7 @@
 
 <script>
     $(document).ready(function(){
-        $('.dataTables-example').DataTable({
+        $('.dataTables-conserto').DataTable({
             pageLength: 25,
             responsive: true,
             dom: '<"html5buttons"B>lTfgitp',
