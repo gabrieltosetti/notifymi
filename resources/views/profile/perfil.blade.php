@@ -3,29 +3,161 @@
     <link href="{{ asset('css/plugins/iCheck/custom.css') }}" rel="stylesheet">
     <link href="{{ asset('css/plugins/jasny/jasny-bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/plugins/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/notifymi.css') }}" rel="stylesheet">
 @stop
 
 @section('content')
 <div class="wrapper wrapper-content animated fadeInRight">
     <div class="row">
         <div class="ibox-content">
-            <div class="row">
+            <div class="row m-b">
                 <div class="col-sm-2">
                     <div class="row">
-                        <img class="img-thumbnail img-responsive center-block" src="/media/avatars/{{ $users ->avatar }}">
+                        <img class="img-thumbnail img-responsive center-block" src="/media/avatars/{{ $users ->avatar }}" style="max-height: 160px;">
                     </div>
                     <div class="row">
                         <h3 class="text-center"><strong>{{$users->name }}</strong></h3>
                     </div>
                 </div>
-                <div class="col-sm-10">
+                <div class="col-sm-8">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-6">
+                            <div class="well well-sm" style="background-color: white;">
+                                <div class="row">
+                                    <div class="col-xs-12 col-md-6 text-center" style="padding-right: 0">
+                                        <h1 class="rating-num">
+                                            4.0</h1>
+                                        <div class="rating">
+                                            <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star">
+                                            </span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star">
+                                            </span><span class="glyphicon glyphicon-star-empty"></span>
+                                        </div>
+                                        <div>
+                                            <span class="glyphicon glyphicon-user"></span>258 total
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-md-6">
+                                       <!-- <div class="row rating-desc">-->
+                                            <div class="row">
+                                                <div class="col-xs-2 col-sm-3 text-right no-padding">
+                                                    <span class="glyphicon glyphicon-star"></span>5
+                                                </div>
+                                                <div class="col-xs-10 col-sm-9">
+                                                    <div class="progress">
+                                                        <div style="width: 80%;" aria-valuemin="0" aria-valuemax="100"  aria-valuenow="80" role="progressbar" class="progress-bar">
+                                                            <span class="sr-only">80%</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- end 5 -->
+                                            <div class="row">
+                                                <div class="col-xs-2 col-sm-3 text-right no-padding">
+                                                    <span class="glyphicon glyphicon-star"></span>4
+                                                </div>
+                                                <div class="col-xs-10 col-sm-9">
+                                                    <div class="progress">
+                                                        <div style="width: 60%;" aria-valuemin="0" aria-valuemax="100"  aria-valuenow="60" role="progressbar" class="progress-bar progress-bar-navy-light">
+                                                            <span class="sr-only">60%</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- end 4 -->
+                                            <div class="row">
+                                                <div class="col-xs-2 col-sm-3 text-right no-padding">
+                                                    <span class="glyphicon glyphicon-star"></span>3
+                                                </div>
+                                                <div class="col-xs-10 col-sm-9">
+                                                    <div class="progress">
+                                                        <div style="width: 40%;" aria-valuemin="0" aria-valuemax="100"  aria-valuenow="40" role="progressbar" class="progress-bar progress-bar-info">
+                                                            <span class="sr-only">40%</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- end 3 -->
+                                            <div class="row">
+                                                <div class="col-xs-2 col-sm-3 text-right no-padding">
+                                                    <span class="glyphicon glyphicon-star"></span>2
+                                                </div>
+                                                <div class="col-xs-10 col-sm-9">
+                                                    <div class="progress">
+                                                        <div style="width: 20%;" aria-valuemin="0" aria-valuemax="100"  aria-valuenow="20" role="progressbar" class="progress-bar progress-bar-warning">
+                                                            <span class="sr-only">20%</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- end 2 -->
+                                            <div class="row">
+                                                <div class="col-xs-2 col-sm-3 text-right no-padding">
+                                                    <span class="glyphicon glyphicon-star"></span>1
+                                                </div>
+                                                <div class="col-xs-10 col-sm-9">
+                                                    <div class="progress">
+                                                        <div style="width: 10%;" aria-valuemin="0" aria-valuemax="100"  aria-valuenow="10" role="progressbar" class="progress-bar progress-bar-danger">
+                                                            <span class="sr-only">10%</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- end 1 -->
+                                       <!--     <div class="col-xs-2 col-sm-3 text-right">
+                                                <span class="glyphicon glyphicon-star"></span>3
+                                            </div>
+                                            <div class="col-xs-10 col-sm-9">
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20"
+                                                        aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                                        <span class="sr-only">40%</span>
+                                                    </div>
+                                                </div>
+                                            </div>-->
+                                            <!-- end 3 -->
+                                           <!-- <div class="col-xs-3 col-md-3 text-right">
+                                                <span class="glyphicon glyphicon-star"></span>2
+                                            </div>
+                                            <div class="col-xs-8 col-md-9">
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="20"
+                                                        aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+                                                        <span class="sr-only">20%</span>
+                                                    </div>
+                                                </div>
+                                            </div>-->
+                                            <!-- end 2 -->
+                                            <!--<div class="col-xs-3 col-md-3 text-right">
+                                                <span class="glyphicon glyphicon-star"></span>1
+                                            </div>
+                                            <div class="col-xs-8 col-md-9">
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80"
+                                                        aria-valuemin="0" aria-valuemax="100" style="width: 15%">
+                                                        <span class="sr-only">15%</span>
+                                                    </div>
+                                                </div>
+                                            </div>-->
+                                            <!-- end 1 -->
+
+                                        <!-- end row -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div> <!--/COL SM 10-->
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
                     <div class="tabs-container">
                         <ul class="nav nav-tabs">
-                            <li class=""><a data-toggle="tab" href="#tab-Geral"><i class="fa fa-user-o"></i>Geral</a></li>
-                            <li class="active"><a data-toggle="tab" href="#tab-editar"><i class="fa fa-edit"></i>Editar</a></li>
+                            <li class="active"><a data-toggle="tab" href="#tab-Geral"><i class="fa fa-user-o"></i>Geral</a></li>
+                            <li class=""><a data-toggle="tab" href="#tab-editar"><i class="fa fa-edit"></i>Editar</a></li>
                         </ul>
                         <div class="tab-content">
-                            <div id="tab-Geral" class="tab-pane">
+                            <div id="tab-Geral" class="tab-pane active">
                                 <div class="panel-body">
                                     <div class="form-horizontal">
                                         <div class="row">
@@ -132,7 +264,7 @@
                                     </div> <!--/FORM HORIZONTAL-->
                                 </div> <!--/PANEL BODY-->
                             </div> <!--/TAB GERAL-->
-                            <div id="tab-editar" class="tab-pane active">
+                            <div id="tab-editar" class="tab-pane">
                                 <div class="panel-body">
                                     <form class="form-horizontal" enctype="multipart/form-data" action="/profile" method="post">
                                         <div class="row">
@@ -140,7 +272,7 @@
                                             <div class="col-xs-6 border-right">
                                                 <!--NOME COMPLETO-->
                                                 <div class="form-group m-b-none {{ $errors->has('nome') ? 'has-error' : ''}}">
-                                                    <label class="col-sm-4 col-md-3. col-lg-2 col-xs-12 control-label" for="nome">Nome</label>
+                                                    <label class="col-sm-4 col-md-3 col-lg-2 col-xs-12 control-label" for="nome">Nome</label>
                                                     <div class="col-sm-8 col-md-9 col-lg-10">
                                                         <input type="text" class="form-control" name="nome" value="{{ old('nome') }}" id="nome" maxlength="50">
                                                         <span class="help-block"><?php echo $errors->first('nome'); ?></span>
@@ -166,6 +298,25 @@
                                                         <p class="form-control-static">Nível aqui</p>
                                                     </div>
                                                 </div> 
+                                                <!--INPUT FOTO-->
+                                                <div class="form-group m-b-none">
+                                                    <label class="col-sm-4 col-md-3 col-lg-2 col-xs-12 control-label">Alterar foto</label>
+                                                    <div class="col-sm-8 col-md-9 col-lg-10">
+                                                        <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                                                            <div class="form-control" data-trigger="fileinput">
+                                                                <i class="glyphicon glyphicon-file fileinput-exists"></i>
+                                                                <span class="fileinput-filename"></span>
+                                                            </div>
+                                                            <span class="input-group-addon btn btn-default btn-file">
+                                                                <span class="fileinput-new">Selecionar Arquivo</span>
+                                                                <span class="fileinput-exists">Alterar</span>
+                                                                <input type="file" name="avatar">
+                                                            </span>
+                                                            <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remover</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- /INPUT FOTO-->
                                             </div> <!--/COL 6-->
                                             <div class="col-xs-6">
                                                 <!--CPF-->
@@ -270,23 +421,8 @@
                                                 </div>    
                                             </div>
                                         </div><!--/ROW ENDEREÇO-->
-                                        <label>Alterar Foto</label>
-                                        <!--INPUT FOTO-->
-                                        <div class="fileinput fileinput-new input-group" data-provides="fileinput">
-                                            <div class="form-control" data-trigger="fileinput">
-                                                <i class="glyphicon glyphicon-file fileinput-exists"></i>
-                                                <span class="fileinput-filename"></span>
-                                            </div>
-                                            <span class="input-group-addon btn btn-default btn-file">
-                                                <span class="fileinput-new">Selecionar Arquivo</span>
-                                                <span class="fileinput-exists">Alterar</span>
-                                                <input type="file" name="avatar">
-                                            </span>
-                                            <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remover</a>
-                                        </div>
-                                        <!-- /INPUT FOTO-->
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <input type="submit" class="pull-right btn btn-sm btn-primary " >
+                                        <input type="submit" class="pull-right btn btn-sm btn-primary" value="Salvar Alterações">
                                     </form>
                                 </div>
                             </div>
@@ -310,8 +446,6 @@
     </script>
 <!-- Input Mask-->
     <script src="{{ asset('js/plugins/jasny/jasny-bootstrap.min.js') }}"></script>
-    <script src="{{ asset('cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js') }}"></script>
-    <script src="{{ asset('js/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
     <script src="{{ asset('js/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
     <script src="{{ asset('js/plugins/sweetalert2/custom.js') }}"></script>
 
