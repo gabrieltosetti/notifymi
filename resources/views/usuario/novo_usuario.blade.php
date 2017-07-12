@@ -82,7 +82,7 @@
                                     <div class="row"><!--row 8-->
                                         <div class="col-xs-12 col-sm-6">
                                             <!--FOTO-->
-                                            <label class="col-sm-3 control-label" for="cpf">Foto</label>
+                                            <label class="col-sm-3 control-label">Foto</label>
 
                                              <div class="fileinput fileinput-new input-group" data-provides="fileinput">
                                                 <div class="form-control" data-trigger="fileinput">
@@ -198,7 +198,6 @@
                                                 <div class="col-sm-9">
                                                     <input type="email" class="form-control" name="email" value="{{ old('email') }}" id="email" maxlength="50">
                                                     <span class="help-block"><?php echo $errors->first('email'); ?></span>
-                                                    <!--<span class="help-block">Este email será usado para login no sistema</span>-->
                                                 </div>
                                             </div>
                                             <!--/EMAIL-->

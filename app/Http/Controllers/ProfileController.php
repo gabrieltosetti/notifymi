@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
 use Image;
+use App\Cargo;
 
 
 
@@ -17,7 +18,7 @@ class ProfileController extends Controller
   }
 
   public function perfil(){
-    return view('profile/perfil', ['users'=> Auth::user()]);
+    return view('profile/perfil', ['users'=> Auth::user(), 'cargos' => Cargo::all()]);
   }
 
   public function mudaravatar(Request $request){
