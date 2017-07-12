@@ -22,7 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/2', 'HomeController@index2')->name('home2');
 
 //login
-Route::get('/assistencia/login', 'LoginController@loginassistencia')->name('entrarassistencia');
+Route::get('/assistencias/login', 'LoginController@loginassistencia')->name('entrarassistencia');
 Route::get('/cadastro', 'LoginController@cadastro')->name('cadastro');
 
 //ADMIN
