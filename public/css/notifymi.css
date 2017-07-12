@@ -22,3 +22,10 @@
     overflow: visible;
     clip: auto; 
 }
+
+.issue-info {
+    width: 55%;
+}
+.issue-id {
+    width: 5%;
+}
