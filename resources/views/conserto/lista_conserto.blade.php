@@ -8,7 +8,9 @@
 
 @section('css')
       <meta name="_token" content="{{ csrf_token() }}" />
-      <link href="{{ asset('css/plugins/dataTables/datatables.min.css') }}" rel="stylesheet">
+
+      <link rel="stylesheet" type="text/css" href="{{ asset('css/plugins/aaa/jquery.dataTables.css') }}">
+      <link rel="stylesheet" type="text/css" href="{{ asset('css/plugins/aaa/buttons.dataTables.css') }}">
 
 @stop
 
@@ -177,7 +179,13 @@
 @endsection
 
 @section('scripts')
-    <script src="js/plugins/dataTables/datatables.min.js"></script>
+<script type="text/javascript" src="js/plugins/aaa/jszip/jszip.js"></script>
+<script type="text/javascript" src="js/plugins/aaa/pdfmake/pdfmake.js"></script>
+<script type="text/javascript" src="js/plugins/aaa/pdfmake/vfs_fonts.js"></script>
+<script type="text/javascript" src="js/plugins/aaa/dataTables/jquery.dataTables.js"></script>
+<script type="text/javascript" src="js/plugins/aaa/dataTables/dataTables.buttons.js"></script>
+<script type="text/javascript" src="js/plugins/aaa/dataTables/buttons.html5.js"></script>
+<script type="text/javascript" src="js/plugins/aaa/dataTables/buttons.print.js"></script>
 
 
 <script>
@@ -189,8 +197,8 @@
             buttons: [
                 { extend: 'copy'},
                 {extend: 'csv'},
-                {extend: 'excel', title: 'ExampleFile'},
-                {extend: 'pdf', title: 'ExampleFile'},
+                {extend: 'excel', title: 'Lista Consertos'},
+                {extend: 'pdf', title: 'Lista Consertos'},
 
                 {extend: 'print',
                  customize: function (win){
