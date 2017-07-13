@@ -3,7 +3,7 @@
  * 2016 SpryMedia Ltd - datatables.net/license
  *
  * FileSaver.js (1.3.3) - MIT license
- * Copyright © 2016 Eli Grey - http://eligrey.com
+ * Copiarright © 2016 Eli Grey - http://eligrey.com
  */
 
 (function( factory ){
@@ -817,13 +817,13 @@ var _excelSpecials = [
  */
 
 //
-// Copy to clipboard
+// Copiar to clipboard
 //
 DataTable.ext.buttons.copyHtml5 = {
 	className: 'buttons-copy buttons-html5',
 
 	text: function ( dt ) {
-		return dt.i18n( 'buttons.copy', 'Copy' );
+		return dt.i18n( 'buttons.copy', 'Copiar' );
 	},
 
 	action: function ( e, dt, button, config ) {
@@ -862,10 +862,10 @@ DataTable.ext.buttons.copyHtml5 = {
 
 				if (successful) {
 					dt.buttons.info(
-						dt.i18n( 'buttons.copyTitle', 'Copy to clipboard' ),
+						dt.i18n( 'buttons.copyTitle', 'Linhas copiadas!' ),
 						dt.i18n( 'buttons.copySuccess', {
-							1: 'Copied one row to clipboard',
-							_: 'Copied %d rows to clipboard'
+							1: 'Copiado para o Ctrl+',
+							_: 'Foram copiadas %d linhas!'
 						}, exportData.rows ),
 						2000
 					);
@@ -879,12 +879,12 @@ DataTable.ext.buttons.copyHtml5 = {
 
 		// Otherwise we show the text box and instruct the user to use it
 		var message = $('<span>'+dt.i18n( 'buttons.copyKeys',
-				'Press <i>ctrl</i> or <i>\u2318</i> + <i>C</i> to copy the table data<br>to your system clipboard.<br><br>'+
-				'To cancel, click this message or press escape.' )+'</span>'
+				'Pressione <i>ctrl</i> ou <i>\u2318</i> + <i>C</i> para copiar os dados da tabela<br>para o seu Ctrl+C.<br><br>'+
+				'Para cancelar, clique nessa mensgem ou pressione esc.' )+'</span>'
 			)
 			.append( hiddenDiv );
 
-		dt.buttons.info( dt.i18n( 'buttons.copyTitle', 'Copy to clipboard' ), message, 0 );
+		dt.buttons.info( dt.i18n( 'buttons.copyTitle', 'Linhas copiadas!' ), message, 0 );
 
 		// Select the text so when the user activates their system clipboard
 		// it will copy that text

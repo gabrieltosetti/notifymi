@@ -11,6 +11,7 @@
 
       <link rel="stylesheet" type="text/css" href="{{ asset('css/plugins/aaa/jquery.dataTables.css') }}">
       <link rel="stylesheet" type="text/css" href="{{ asset('css/plugins/aaa/buttons.dataTables.css') }}">
+          <link href="css/plugins/dataTables/datatables.min.css" rel="stylesheet">
 
 @stop
 
@@ -28,26 +29,14 @@
                             <!-- LINHA DE PESQUISA -->
                             <div class="m-b-lg">
                                 <div class="input-group">
-                                    <input type="text" placeholder="Pesquisa..." class=" form-control">
-                                    <span class="input-group-btn">
-                                        <button type="button" class="btn btn-white"><i class="fa fa-search"></i></button>
-                                    </span>
+
+
                                 </div>
-                                <div class="m-t-md">
-                                    <div class="pull-right">
-                                        <button type="button" class="btn btn-sm btn-white"> <i class="fa fa-comments"></i> </button>
-                                        <button type="button" class="btn btn-sm btn-white"> <i class="fa fa-user"></i> </button>
-                                        <button type="button" class="btn btn-sm btn-white"> <i class="fa fa-list"></i> </button>
-                                        <button type="button" class="btn btn-sm btn-white"> <i class="fa fa-pencil"></i> </button>
-                                        <button type="button" class="btn btn-sm btn-white"> <i class="fa fa-print"></i> </button>
-                                        <button type="button" class="btn btn-sm btn-white"> <i class="fa fa-cogs"></i> </button>
-                                    </div>
-                                    <strong>Encontrados 61 consertos.</strong>
-                                </div>
+
                             </div>
                             <!-- /LINHA DE PESQUISA -->
                             <div class="table-responsive">
-                            <table class="table table-hover issue-tracker dataTables-conserto">
+                            <table class="table table-striped table-bordered table-hover issue-tracker dataTables-conserto">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
