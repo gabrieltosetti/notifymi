@@ -29,6 +29,13 @@ Breadcrumbs::register('novo_conserto', function($breadcrumbs)
     $breadcrumbs->push('Novo', route('novo_conserto'));
 });
 
+// Home > Consertos > Detalhes
+Breadcrumbs::register('detalhes_conserto', function($breadcrumbs)
+{
+    $breadcrumbs->parent('consertos');
+    $breadcrumbs->push('Detalhes', route('detalhes_conserto'));
+});
+
 //Home>Cargos
 Breadcrumbs::register('lista_cargos', function($breadcrumbs)
 {

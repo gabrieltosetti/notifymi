@@ -33,12 +33,11 @@ class ConsertoController extends Controller
         }
 
         //rota: detalhes_conserto
-        public function detalhes($id)
+        public function detalhes()
         {
-            $conserto = Conserto::find($id);
+            //$conserto = Conserto::find($id);
 
-
-            return Response::json($conserto);
+            return view('conserto/detalhes_conserto');
         }
 
         //rota: remove_conserto

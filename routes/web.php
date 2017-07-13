@@ -64,7 +64,7 @@ Route::get('/usuarios/edita/{id}', 'UsuarioController@edita')->name('edita_usuar
 //Consertos
 Route::get('/consertos', 'ConsertoController@lista')->name('consertos');
 Route::get('/consertos/novo', 'ConsertoController@novo')->name('novo_conserto');
-Route::get('/consertos/detalhes/{id?}', 'ConsertoController@detalhes')->name('detalhes_conserto');
+Route::get('/consertos/detalhes', 'ConsertoController@detalhes')->name('detalhes_conserto');
 Route::post('/consertos/adiciona', 'ConsertoController@adiciona')->name('novo_conserto_post');
 Route::get('/consertos/remove/{id}', 'ConsertoController@remove')->name('remove_conserto');
 Route::get('/consertos/edita/{id}', 'ConsertoController@edita')->name('edita_conserto');
