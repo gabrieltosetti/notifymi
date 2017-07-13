@@ -15,6 +15,11 @@ class UsuarioController extends Controller
         $this->middleware('auth');
     }
 
+    public function usuariohome()
+    {
+        return view('home/usuariohome');
+    }
+
     public function lista()
     {
         $usuarios = Usuario::all();

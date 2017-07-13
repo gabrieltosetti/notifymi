@@ -14,7 +14,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
+        'guard' => 'web', //Padrao --- 'guard' => 'web'
         'passwords' => 'users',
     ],
 
@@ -36,14 +36,25 @@ return [
     */
 
     'guards' => [
+
+      //GUARD PADRAO, EVITAR USAR
       'web' => [
           'driver' => 'session',
           'provider' => 'users',
       ],
+
+      //Autenticacao de ADMINS
       'admin' => [
           'driver' => 'session',
           'provider' => 'admins',
       ],
+
+      //Autenticacao de Usuarios (Com tabela usuarios)
+      'usuario' => [
+          'driver' => 'session',
+          'provider' => 'usuarios',
+      ],
+
 
         'api' => [
             'driver' => 'token',

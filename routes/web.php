@@ -17,16 +17,17 @@
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index2')->name('home');
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/2', 'HomeController@index2')->name('home2');
+Route::get('/', 'HomeController@index')->name('index');
+Route::get('/index', 'HomeController@index')->name('index');
+
+//Route::get('/2', 'HomeController@index2')->name('home2');
 
 //login
 Route::get('/assistencias/login', 'LoginController@loginassistencia')->name('entrarassistencia');
 Route::get('/cadastro', 'LoginController@cadastro')->name('cadastro');
 
 //ADMIN
-Route::get('/admin/index', 'AdminController@index')->name('admin');
+Route::get('/admin/home', 'AdminController@adminhome')->name('adminhome');
 Route::get('/admin/login', 'Auth\AdminLoginController@showLoginForm')->name('entraradmin');
 Route::post('/admin/login', 'Auth\AdminLoginController@Login')->name('entraradmin.submit');
 
@@ -52,6 +53,7 @@ Route::get('/cargos', 'CargosController@listacargos')->name('cargos');
 Route::get('/cargos/novo', 'CargosController@novocargo')->name('novo_cargos');
 
 //usuarios
+Route::get('/usuarios/home', 'UsuarioController@usuariohome')->name('usuariohome');
 Route::get('/usuarios', 'UsuarioController@lista')->name('usuarios');
 Route::get('/usuarios/novo', 'UsuarioController@novo')->name('novo_usuario');
 Route::get('/usuarios/detalhes/{id?}', 'UsuarioController@detalhes')->name('detalhes_usuario');

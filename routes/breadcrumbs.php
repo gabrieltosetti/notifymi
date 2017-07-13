@@ -1,9 +1,18 @@
 <?php
 
+//Checagem de autenticacao
+
+
 // Home
 Breadcrumbs::register('home', function($breadcrumbs)
 {
-    $breadcrumbs->push('Página Inicial', route('home'));
+
+  if (Auth::guard('admin')->check())
+    $home = 'adminhome';
+  else
+    $home = 'usuariohome';
+
+    $breadcrumbs->push('Página Inicial', route($home));
 });
 
 // Home > Consertos

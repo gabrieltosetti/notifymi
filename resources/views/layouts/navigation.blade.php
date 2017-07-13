@@ -61,8 +61,8 @@
                 <span><img alt="image" class="img-circle" src="/img/logob.png" style="width:50px; height:50px;"/></span>
                     </div>
                 </li>
-                <li class="{{ Request::fullUrl() === route('home') ? 'active' : '' }}" >
-                    <a href="{{ route('home') }}"><i class="fa fa-home"></i> <span class="nav-label">Página Inicial</span></a>
+                <li class="{{ Request::fullUrl() === route('usuariohome') ? 'active' : '' }}" >
+                    <a href="{{ route('usuariohome') }}"><i class="fa fa-home"></i> <span class="nav-label">Página Inicial</span></a>
                 </li>
                 <!--
                                             CONSERTOS

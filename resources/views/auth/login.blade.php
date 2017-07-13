@@ -68,12 +68,7 @@
                                 <a href="/register" class="btn btn-success btn-social btn-block">
                                     <i class="fa fa-edit"></i> Cadastrar
                                 </a>
-                                <a class="btn btn-block btn-social btn-facebook">
-                                    <i class="fa fa-facebook"></i> Login com Facebook
-                                </a>
-                                <a class="btn btn-block btn-social btn-google">
-                                    <i class="fa fa-google"></i> Login com Google
-                                </a>
+
                             </fieldset>
 
                         </form>

@@ -24,9 +24,9 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-     public function index()
+     public function adminhome()
      {
-         return view('home/adminindex');
+         return view('home/adminhome');
      }
 
 }
