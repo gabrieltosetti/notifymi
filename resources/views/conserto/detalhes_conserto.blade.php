@@ -41,6 +41,7 @@
                                 <label class="control-label col-md-3">Cliente: </label>
                                 <p class="form-control-static col-md-9"> Matheus Luz<a href="#" class="pull-right" data-toggle="tooltip" data-placement="top" title="Mudar cliente"><i class="fa fa-pencil m-r-sm"></i></a></p>
                                 <!-- /CLIENTE -->
+
                                 <!-- CRIADO -->
                                 <label class="control-label col-md-3">Criado: </label>
                                 <p class="form-control-static col-md-9"> 13/07/2017 00:07</p>
@@ -66,14 +67,8 @@
                                 <!-- STATUS -->
                                 <div class="row m-t-sm">
                                     <label class="control-label col-md-3">Status: </label>
-                                    <div class="col-md-5">
-                                        <select class="form-control" name="status">
-                                            <option value="aberto">Aberto</option>
-                                            <option value="andamento">Em andamento</option>
-                                            <option value="pendente">Pendente</option>
-                                            <option value="fechado">Fechado</option>
-                                            <option value="cancelado">Cancelado</option>
-                                        </select>
+                                    <div class="form-group col-md-9">
+                                        <span class="label label-warning">Em andamento</span>
                                     </div>
                                 </div>
                                 <!-- /STATUS -->

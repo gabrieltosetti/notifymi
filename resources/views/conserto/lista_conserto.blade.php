@@ -7,11 +7,11 @@
 
 
 @section('css')
-      <meta name="_token" content="{{ csrf_token() }}" />
+    <meta name="_token" content="{{ csrf_token() }}" />
 
-      <link rel="stylesheet" type="text/css" href="{{ asset('css/plugins/aaa/jquery.dataTables.css') }}">
-      <link rel="stylesheet" type="text/css" href="{{ asset('css/plugins/aaa/buttons.dataTables.css') }}">
-          <link href="css/plugins/dataTables/datatables.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/plugins/aaa/jquery.dataTables.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/plugins/aaa/buttons.dataTables.css') }}">
+    <link href="css/plugins/dataTables/datatables.min.css" rel="stylesheet">
 
 @stop
 
