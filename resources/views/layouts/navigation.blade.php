@@ -3,48 +3,32 @@
             <ul class="nav metismenu" id="side-menu">
                 <li class="nav-header">
                     <div class="dropdown profile-element">
-
-
                       <span><img alt="image" class="img-circle img-lg" src="/media/avatars/{{ Auth::user()->avatar }}"/></span>
-
-
-
-
 
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">{{ Auth::user()->name }}</strong></span>
+                            <?php $permissao = Auth::user()->permissao?>
+                            <!-- preciso melhorar isso aqui-->
+                            @if($permissao == 0)
+                            <i class="fa fa-user-o"></i>  <strong class="font-bold"> Cliente</strong>
+                            @endif
 
+                            @if($permissao == 1)
+                            <i class="fa fa-cog"></i><strong class="font-bold"> Técnico</strong>
+                            @endif
 
-<?php $permissao = Auth::user()->permissao?>
-<!-- preciso melhorar isso aqui-->
-@if($permissao == 0)
-<i class="fa fa-user-o"></i>  <strong class="font-bold"> Cliente</strong>
-@endif
+                            @if($permissao == 2)
+                            <i class="fa fa-address-card-o"></i><strong class="font-bold"> Gerente</strong>
+                            @endif
 
-@if($permissao == 1)
-<i class="fa fa-cog"></i><strong class="font-bold"> Técnico</strong>
-@endif
+                            @if($permissao == 3)
+                            <i class="fa fa-briefcase"></i><strong class="font-bold"> Dono</strong>
+                            @endif
 
-@if($permissao == 2)
-<i class="fa fa-address-card-o"></i><strong class="font-bold"> Gerente</strong>
-@endif
-
-@if($permissao == 3)
-<i class="fa fa-briefcase"></i><strong class="font-bold"> Dono</strong>
-@endif
-
-@if($permissao == 4)
-<i class="fa fa-user-secret"></i><strong class="font-bold"> Admin</strong>
-@endif
-
-
-
-
-
-<!--  -->
-
-
-                          </a>
+                            @if($permissao == 4)
+                            <i class="fa fa-user-secret"></i><strong class="font-bold"> Admin</strong>
+                            @endif
+                        </a>
 
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
                             <li><a href="{{ route('perfil') }}">Perfil</a></li>
@@ -77,9 +61,8 @@
                 </li>
                 <!--/CONSERTOS-->
                 <!--
-                                            CLIENTES
+                    CLIENTES
                 -->
-
                 <li class="{{ Request::segment(1) === 'clientes' ? 'active' : '' }}" >
                     <a href="#"><i class="fa fa-user-o"></i> <span class="nav-label">Clientes</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
@@ -88,26 +71,8 @@
                     </ul>
                 </li>
 
-                <!-- permissao-->
-                <li class="{{ Request::segment(1) === 'permissoes' ? 'active' : '' }}" >
-                    <a href="#"><i class="fa fa-user-o"></i> <span class="nav-label">Permissões</span> <span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level collapse">
-                        <li class="{{ Request::fullUrl() === route('permissoes') ? 'active' : '' }}" ><a href="{{ route('permissoes') }}">Ver todos</a></li>
-                        <li class="{{ Request::fullUrl() === route('novo_permissoes') ? 'active' : '' }}" ><a href="{{ route('novo_permissoes') }}">Novo</a></li>
-                    </ul>
-                </li>
-
-
-                <!--cargos-->
-                <li class="{{ Request::segment(1) === 'cargos' ? 'active' : '' }}" >
-                    <a href="#"><i class="fa fa-user-o"></i> <span class="nav-label">Cargos</span> <span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level collapse">
-                        <li class="{{ Request::fullUrl() === route('cargos') ? 'active' : '' }}" ><a href="{{ route('cargos') }}">Ver todos</a></li>
-                        <li class="{{ Request::fullUrl() === route('novo_cargos') ? 'active' : '' }}" ><a href="{{ route('novo_cargos') }}">Novo</a></li>
-                    </ul>
-                </li>
-
-                                        <!--    USUARIOS
+                 <!--    
+                     USUARIOS
                 -->
                 <li class="{{ Request::segment(1) === 'usuarios' ? 'active' : '' }}" >
                     <a href="#"><i class="fa fa-id-card-o"></i> <span class="nav-label">Usuários</span> <span class="fa arrow"></span></a>
@@ -117,6 +82,17 @@
                     </ul>
                 </li>
                 <!--/USUARIOS-->
+
+                <!--
+                    ASSISTENCIA
+                -->
+                <li class="{{ Request::segment(1) === 'assistencia' ? 'active' : '' }}" >
+                    <a href="#"><i class="fa fa-user-o"></i> <span class="nav-label">Assistencia</span> <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li class="{{ Request::fullUrl() === route('cargos') ? 'active' : '' }}" ><a href="{{ route('cargos') }}">Cargos</a></li>
+                    </ul>
+                </li>
+                <!-- /ASSISTENCIA -->
             </ul>
 
         </div>

@@ -22,7 +22,7 @@
 
     <div id="wrapper">
 
-      <?php if(Auth::user()->permissao > 1) : ?>
+      <?php if(Auth::user()->permissao >= 1) : ?>
         @include('layouts.navigation')
 
         <?php else: ?>
