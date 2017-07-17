@@ -11,6 +11,8 @@
 @section('css')
     <meta name="_token" content="{{ csrf_token() }}" />
     <link href="{{ asset('css/plugins/dataTables/datatables.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/plugins/chosen/bootstrap-chosen.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/plugins/bootstrap3-editable/bootstrap-editable.css') }}" rel="stylesheet">
      <style>
         @media (min-width: 768px) {
             .dt-conserto {
@@ -20,6 +22,7 @@
                 margin-left: 100px !important;
             }
         }
+
     </style> 
 
 @stop
@@ -28,51 +31,62 @@
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
             <div class="col-sm-3">
-                                <!-- IMAGEM -->
-                                <div class="row">
-                                    <img alt="usuário" class="img-thumbnail img-md pull-left m-r-xs" src="/media/avatars/default.jpg">
-                                    <strong>Criado por </strong><a href="#" class="text-navy">Gabriel Tosetti</a> <br>
-                                    13/07/2017 00:07
-                                </div>
-                                <!-- /IMAGEM -->
-                                <div class="row m-t-sm form-horizontal border-bottom">
-                                    <dl class="dl-horizontal">
-                                        <!-- CLIENTE -->
-                                        <dt class="dt-conserto">Cliente: </dt>
-                                        <dd class="dd-conserto m-b-sm"><a href="" class="text-navy">Matheus Luz</a><a href="#" class="pull-right" data-toggle="tooltip" data-placement="top" title="Mudar cliente"><i class="fa fa-pencil m-r-sm"></i></a></dd>
-                                        <!-- /CLIENTE -->
-                                        <!-- CRIADO -->
-                                        <dt class="dt-conserto">Criado: </dt>
-                                        <dd class="dd-conserto m-b-sm">13/07/2017 00:07</dd>
-                                        <!-- /CRIADO -->
-                                        <dt class="dt-conserto">Atualizado: </dt>
-                                        <dd class="dd-conserto m-b-sm">13/07/2017 00:41</dd>
-                                    </dl>
-                                </div>
-                                <div class="row m-t-sm form-horizontal border-bottom">
-                                    <dl class="dl-horizontal">
-                                        <!-- STATUS -->
-                                        <dt class="dt-conserto">Status: </dt>
-                                        <dd class="dd-conserto m-b-sm"><span class="label label-warning">Em andamento</span></dd>
-                                        <!-- /STATUS -->
-                                        <!-- PRIORIDADE -->
-                                        <dt class="dt-conserto">Prioridade: </dt>
-                                        <dd class="dd-conserto m-b-sm">Baixo</dd>
-                                        <!-- /PRIORIDADE -->
-                                    </dl>
-                                </div>
-                                <div class="row m-t-sm form-horizontal">
-                                    <h4>Anexos</h4>
-                                    <ul class="list-unstyled project-files">
-                                        <li><a href=""><i class="fa fa-file"></i> Project_document.docx</a><i class="fa fa-trash m-r-sm pull-right"></i></li>
-                                        <li><a href=""><i class="fa fa-file-picture-o"></i> Logo_zender_company.jpg</a></li>
-                                        <li><a href=""><i class="fa fa-file"></i> Contract_20_11_2014.docx</a></li>
-                                    </ul>
-                                    <div class="text-center m-t-md">
-                                        <a href="#" class="btn btn-xs btn-primary">Adicionar Arquivos</a>
-                                        <a href="#" class="btn btn-xs btn-primary"></a>
-                                    </div>
-                                </div>
+    <!-- 
+        PAINEL ESQUERDO
+        -->
+                <!-- IMAGEM -->
+                <div class="row">
+                    <img alt="usuário" class="img-thumbnail img-md pull-left m-r-xs" src="/media/avatars/default.jpg">
+                    <strong>Criado por </strong><a href="#" class="text-navy">Gabriel Tosetti</a><a href="#" class="pull-right" data-toggle="tooltip" data-placement="top" title="Mudar usuário"><i class="fa fa-pencil m-r-sm"></i></a> <br>
+                    13/07/2017 00:07
+                </div>
+                <!-- /IMAGEM -->
+                <div class="row m-t-sm form-horizontal border-bottom">
+                    <dl class="dl-horizontal">
+                        <!-- CLIENTE -->
+                        <dt class="dt-conserto">Cliente: </dt>
+                        <dd class="dd-conserto m-b-sm"><a href="" class="text-navy">Matheus Luz</a><a href="#" class="pull-right" data-toggle="tooltip" data-placement="top" title="Mudar cliente"><i class="fa fa-pencil m-r-sm"></i></a></dd>
+                        <!-- /CLIENTE -->
+                        <!-- CRIADO -->
+                        <dt class="dt-conserto">Criado: </dt>
+                        <dd class="dd-conserto m-b-sm">13/07/2017 00:07</dd>
+                        <!-- /CRIADO -->
+                        <dt class="dt-conserto">Atualizado: </dt>
+                        <dd class="dd-conserto m-b-sm">13/07/2017 00:41</dd>
+                    </dl>
+                </div>
+                <div class="row m-t-sm form-horizontal border-bottom">
+                    <dl class="dl-horizontal">
+                        <!-- STATUS -->
+                        <dt class="dt-conserto">Status: </dt>
+                        <dd class="dd-conserto m-b-sm"><span class="label label-warning">Em andamento</span></dd>
+                        <!-- /STATUS -->
+                        <!-- PRIORIDADE -->
+                        <dt class="dt-conserto">Prioridade: </dt>
+                        <dd class="dd-conserto m-b-sm">Baixo</dd>
+                        <!-- /PRIORIDADE -->
+                    </dl>
+                </div>
+                <div class="row m-t-sm form-horizontal border-bottom">
+                    <h3>Anexos</h3>
+                    <ul class="list-unstyled project-files">
+                        <li><i class="fa fa-times m-r-sm"></i><a href=""><i class="fa fa-file"></i> Project_document.docx</a></li>
+                        <li><i class="fa fa-times m-r-sm"></i><a href=""><i class="fa fa-file-picture-o"></i> Logo_zender_company.jpg</a></li>
+                        <li><i class="fa fa-times m-r-sm"></i><a href=""><i class="fa fa-file"></i> Contract_20_11_2014.docx</a></li>
+                    </ul>
+                    <div class="text-center m-t-md m-b-xs">
+                        <a href="#" class="btn btn-xs btn-primary">Adicionar Arquivo</a>
+                    </div>
+                </div>
+                <div class="row m-t-sm form-horizontal">
+                    <h3>Em cópia</h3>
+                    <p>Adicione pessoas para receber notificações deste conserto.</p>
+                    <select id="select-copia" data-placeholder="Adicionar pessoas..." class="chosen-select" multiple>
+                    </select>
+                </div>
+    <!-- 
+        /PAINEL ESQUERDO
+        -->
             </div>
             <div class="col-sm-9">
                 <div class="ibox">
@@ -80,49 +94,16 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="m-b-md">
-                                    <a href="#" class="btn btn-white btn-xs pull-right">Edit project</a>
-                                    <h2>Contract with Zender Company</h2>
+                                    <h2 id="titulo">Título do conserto aqui</h2>
                                 </div>
-                                <dl class="dl-horizontal">
-                                    <dt>Status:</dt> <dd><span class="label label-primary">Active</span></dd>
-                                </dl>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-5">
-                                <dl class="dl-horizontal">
-                                            
-                                    <dt>Created by:</dt> <dd>Alex Smith</dd>
-                                    <dt>Messages:</dt> <dd>  162</dd>
-                                    <dt>Client:</dt> <dd><a href="#" class="text-navy"> Zender Company</a> </dd>
-                                    <dt>Version:</dt> <dd> 	v1.4.2 </dd>
-                                </dl>
-                            </div>
-                            <div class="col-lg-7" id="cluster_info">
-                                <dl class="dl-horizontal" >
-                                            
-                                    <dt>Last Updated:</dt> <dd>16.08.2014 12:15:57</dd>
-                                    <dt>Created:</dt> <dd> 	10.07.2014 23:36:57 </dd>
-                                    <dt>Participants:</dt>
-                                    <dd class="project-people">
-                                    <a href=""><img alt="image" class="img-circle" src="img/a3.jpg"></a>
-                                    <a href=""><img alt="image" class="img-circle" src="img/a1.jpg"></a>
-                                    <a href=""><img alt="image" class="img-circle" src="img/a2.jpg"></a>
-                                    <a href=""><img alt="image" class="img-circle" src="img/a4.jpg"></a>
-                                    <a href=""><img alt="image" class="img-circle" src="img/a5.jpg"></a>
-                                    </dd>
-                                </dl>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
-                                <dl class="dl-horizontal">
-                                    <dt>Completed:</dt>
+                                <dl>
+                                    <dt>Descrição <span class="dt-editar">Editar</span></dt>
                                     <dd>
-                                        <div class="progress progress-striped active m-b-sm">
-                                            <div style="width: 60%;" class="progress-bar"></div>
-                                        </div>
-                                        <small>Project completed in <strong>60%</strong>. Remaining close the project, sign a contract and invoice.</small>
+                                        <p id="descricao">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et vitae tempora ex totam, maxime voluptate quod facilis debitis error facere. Laudantium eligendi, sapiente iusto earum placeat quae neque nesciunt magni!</p>
                                     </dd>
                                 </dl>
                             </div>
@@ -433,15 +414,46 @@
 @endsection
 
 @section('scripts')
+<script src="{{ asset('js/plugins/chosen/chosen.jquery.min.js') }}"></script>
+<script src="{{ asset('js/plugins/bootstrap3-editable/bootstrap-editable.min.js') }}"></script>
 <script>
 
 $(document).ready(function(){
+    iniciarMultiUsuario();
+
+    $(".chosen-select").chosen({
+        no_results_text: "Oops, não encontrado!"
+    });
+
     $('[data-toggle="tooltip"]').tooltip();  
-    //tentei colocar isso no css Notifymi.css mas mesmo assim
-    //ele é sobreposto por outro, por enquanto vai ser assim.
-    $(".dt-conserto").attr("style", "@media(min-width:768px){ .dt-conserto{width: 90px;}}");
-    $(".dd-conserto").attr("style", "@media (min-width: 992px) {margin-left: 100px;}");
+
+    $.fn.editable.defaults.mode = 'inline';
+    $('#descricao').editable({
+        type: 'textarea',
+        title: 'Descrição'
+    });
+    $('#titulo').editable({
+        type: 'text',
+        title: 'Conserto'
+    });
+/*     $('#descricao').on('shown', function(e, editable) {
+        $('.editable_large').parents('form').removeClass('form-inline');
+    }); */
+
+
 });
+
+ function iniciarMultiUsuario(){
+    var nomes = <?php echo json_encode($usuarios); ?>;
+
+    $.each(nomes, function (i, nome) {
+        $('#select-copia').append($('<option>', { 
+            value: nome,
+            text : nome 
+        }));
+    });
+
+}
 
 </script>
 

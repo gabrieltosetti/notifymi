@@ -29,3 +29,71 @@
 .issue-id {
     width: 5%;
 }
+
+.project-files li a{
+    font-size: 13px;
+}
+
+.project-files li i.fa-times{
+    color: rgb(255, 96, 96);
+    cursor: pointer;
+}
+
+.nav-tabs > li.active > a, 
+.nav-tabs > li.active > a:hover, 
+.nav-tabs > li.active > a:focus {
+    border-top-color: #1bb394;
+    border-top-width: 3px;
+    color: #1bb394;
+}
+.dt-editar{
+    color: #848484;
+    font-weight: normal;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* X-EDITABLE */
+.editable-buttons {
+    margin-top: 10px;
+    display: block;
+}
+.editable-container.editable-inline, 
+.editableform > .control-group, 
+.editable-input, 
+.editableform .form-control {
+    width:100%;
+}
+
+.editable-click
+{
+    border-bottom: none;
+    font-weight: normal;
+    padding: 10px;
+    border-radius: 6px;
+}
+h2.editable-click
+{
+    font-weight: 100;
+    border-radius: 6px;
+
+}
+
+p.editable-click:hover
+{
+    background-color: whitesmoke !important;
+    cursor: pointer;
+}
+h2.editable-click:hover
+{
+    background-color: whitesmoke !important;
+    cursor: pointer;
+}
+
+
+
+/* /X-EDITABLE */
+
+
+
+

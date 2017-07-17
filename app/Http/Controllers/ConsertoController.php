@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Conserto;
+use App\Usuario;
 use Illuminate\Http\Request;
 use App\Http\Requests\ConsertoRequest;
 use Illuminate\Support\Facades\Response;
@@ -36,8 +37,11 @@ class ConsertoController extends Controller
         public function detalhes()
         {
             //$conserto = Conserto::find($id);
+            $usuarios = Usuario::orderBy('nome')->get(['nome']);
+            //$usuarios = Usuario::all();
+            $usuarios = $usuarios->pluck("nome");
 
-            return view('conserto/detalhes_conserto');
+            return view('conserto/detalhes_conserto')->with('usuarios', $usuarios);
         }
 
         //rota: remove_conserto
