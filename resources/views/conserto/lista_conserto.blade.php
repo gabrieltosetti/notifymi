@@ -37,136 +37,138 @@
           </div>
 
         </div>
+
+          <tr>
+            <td>Data Inicial:</td>
+            <td><input name="min" id="min" type="text"></td>
+          </tr>
+          <tr>
+            <td>Data Final:</td>
+            <td><input name="max" id="max" type="text"></td>
+          </tr>
+
         <!-- /LINHA DE PESQUISA -->
-        <table border="0" cellspacing="5" cellpadding="5">
-       <tbody>
-           <tr>
-               <td>Data Inicial:</td>
-               <td><input name="min" id="min" type="text"></td>
-           </tr>
-           <tr>
-               <td>Data Final:</td>
-               <td><input name="max" id="max" type="text"></td>
-           </tr>
-       </tbody>
-   </table><table width="100%" class="display" id="teste" cellspacing="0">
-     <thead>
-         <tr>
-             <th>ID</th>
-             <th>Descrição</th>
-             <th>Atribuído</th>
-             <th>Cliente</th>
-             <th>Criado</th>
-         </tr>
-     </thead>
-     <tbody>
-         <!-- ADDED -->
-         <tr>
-             <td class="issue-id"> <!-- ID -->
-                 #1
-             </td>
-             <td class="issue-info"> <!-- DESCRIÇÃO -->
-                 <span class="label label-primary">Aberto</span> <a href="#">Título do conserto</a>
-                 <small>
-                     Aqui fica a breve descrição.
-                 </small>
-             </td>
-             <td><!-- ATRIBUIDO -->
-                 <a href="#">Gabriel Tosetti</a>
-             </td>
-             <td> <!-- CLIENTE -->
-                 <a href="#">Matheus Luz</a>
-             </td>
-             <td><!-- CRIADO -->
-                 12/07/2017
-             </td>
-         </tr>
-         <!-- /ADDED -->
-         <!-- PENDENTE -->
-         <tr>
-             <td class="issue-id"> <!-- ID -->
-                 #2
-             </td>
-             <td class="issue-info"> <!-- DESCRIÇÃO -->
-                 <span class="label label-warning">Pendente</span> <a href="#">Título do conserto</a>
-                 <small>
-                     Aqui fica a breve descrição.
-                 </small>
-             </td>
-             <td><!-- ATRIBUIDO -->
-                 <a href="#">Gabriel Tosetti</a>
-             </td>
-             <td> <!-- CLIENTE -->
-                 <a href="#">Matheus Luz</a>
-             </td>
-             <td>12/01/2016</td>
-         </tr>
-         <!-- /PENDENTE -->
-         <!-- PENDENTE -->
-         <tr>
-             <td class="issue-id"> <!-- ID -->
-                 #3
-             </td>
-             <td class="issue-info"> <!-- DESCRIÇÃO -->
-                 <span class="label label-success">Em espera</span> <a href="#">Título do conserto</a>
-                 <small>
-                     Aqui fica a breve descrição.
-                 </small>
-             </td>
-             <td><!-- ATRIBUIDO -->
-                 <a href="#">Gabriel Tosetti</a>
-             </td>
-             <td> <!-- CLIENTE -->
-                 <a href="#">Matheus Luz</a>
-             </td>
-      <td>12/01/2029</td>
-         </tr>
-         <!-- /PENDENTE -->
-         <!-- FECHADO -->
-         <tr>
-             <td class="issue-id"> <!-- ID -->
-                 #4
-             </td>
-             <td class="issue-info"> <!-- DESCRIÇÃO -->
-                 <span class="label label-default">Fechado</span> <a href="#">Título do conserto</a>
-                 <small>
-                     Aqui fica a breve descrição.
-                 </small>
-             </td>
-             <td><!-- ATRIBUIDO -->
-                 <a href="#">Gabriel Tosetti</a>
-             </td>
-             <td> <!-- CLIENTE -->
-                 <a href="#">Matheus Luz</a>
-             </td>
-             <td>12/01/2019</td>
-         </tr>
-         <!-- /FECHADO -->
-         <!-- CANCELADO -->
-         <tr>
-             <td class="issue-id"> <!-- ID -->
-                 #5
-             </td>
-             <td class="issue-info"> <!-- DESCRIÇÃO -->
-                 <span class="label label-danger">Cancelado</span> <a href="#">Título do conserto</a>
-                 <small>
-                     Aqui fica a breve descrição.
-                 </small>
-             </td>
-             <td><!-- ATRIBUIDO -->
-                 <a href="#">Gabriel Tosetti</a>
-             </td>
-             <td> <!-- CLIENTE -->
-                 <a href="#">Matheus Luz</a>
-             </td>
-           <td>12/01/2009</td>
+        <table  class="table table-striped table-bordered table-hover issue-tracker dataTables-conserto" id="teste" cellspacing="0">
 
-         </tr>
-         <!-- /CANCELADO -->
-     </tbody>
- </table>
 
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Descrição</th>
+              <th>Atribuído</th>
+              <th>Cliente</th>
+              <th>Criado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- ADDED -->
+            <tr>
+              <td class="issue-id"> <!-- ID -->
+                #1
+              </td>
+              <td class="issue-info"> <!-- DESCRIÇÃO -->
+                <span class="label label-primary">Aberto</span> <a href="#">Título do conserto</a>
+                <small>
+                  Aqui fica a breve descrição.
+                </small>
+              </td>
+              <td><!-- ATRIBUIDO -->
+                <a href="#">Gabriel Tosetti</a>
+              </td>
+              <td> <!-- CLIENTE -->
+                <a href="#">Matheus Luz</a>
+              </td>
+              <td><!-- CRIADO -->
+                12/07/2017
+              </td>
+            </tr>
+            <!-- /ADDED -->
+            <!-- PENDENTE -->
+            <tr>
+              <td class="issue-id"> <!-- ID -->
+                #2
+              </td>
+              <td class="issue-info"> <!-- DESCRIÇÃO -->
+                <span class="label label-warning">Pendente</span> <a href="#">Título do conserto</a>
+                <small>
+                  Aqui fica a breve descrição.
+                </small>
+              </td>
+              <td><!-- ATRIBUIDO -->
+                <a href="#">Gabriel Tosetti</a>
+              </td>
+              <td> <!-- CLIENTE -->
+                <a href="#">Matheus Luz</a>
+              </td>
+              <td>12/01/2016</td>
+            </tr>
+            <!-- /PENDENTE -->
+            <!-- PENDENTE -->
+            <tr>
+              <td class="issue-id"> <!-- ID -->
+                #3
+              </td>
+              <td class="issue-info"> <!-- DESCRIÇÃO -->
+                <span class="label label-success">Em espera</span> <a href="#">Título do conserto</a>
+                <small>
+                  Aqui fica a breve descrição.
+                </small>
+              </td>
+              <td><!-- ATRIBUIDO -->
+                <a href="#">Gabriel Tosetti</a>
+              </td>
+              <td> <!-- CLIENTE -->
+                <a href="#">Matheus Luz</a>
+              </td>
+              <td>12/01/2029</td>
+            </tr>
+            <!-- /PENDENTE -->
+            <!-- FECHADO -->
+            <tr>
+              <td class="issue-id"> <!-- ID -->
+                #4
+              </td>
+              <td class="issue-info"> <!-- DESCRIÇÃO -->
+                <span class="label label-default">Fechado</span> <a href="#">Título do conserto</a>
+                <small>
+                  Aqui fica a breve descrição.
+                </small>
+              </td>
+              <td><!-- ATRIBUIDO -->
+                <a href="#">Gabriel Tosetti</a>
+              </td>
+              <td> <!-- CLIENTE -->
+                <a href="#">Matheus Luz</a>
+              </td>
+              <td>12/01/2019</td>
+            </tr>
+            <!-- /FECHADO -->
+            <!-- CANCELADO -->
+            <tr>
+              <td class="issue-id"> <!-- ID -->
+                #5
+              </td>
+              <td class="issue-info"> <!-- DESCRIÇÃO -->
+                <span class="label label-danger">Cancelado</span> <a href="#">Título do conserto</a>
+                <small>
+                  Aqui fica a breve descrição.
+                </small>
+              </td>
+              <td><!-- ATRIBUIDO -->
+                <a href="#">Gabriel Tosetti</a>
+              </td>
+              <td> <!-- CLIENTE -->
+                <a href="#">Matheus Luz</a>
+              </td>
+              <td>12/01/2009</td>
+
+            </tr>
+            <!-- /CANCELADO -->
+          </tbody>
+<tfoot><tr></tr></tfoot>
+        </table>
       </div>
+
 
     </div>
   </div>
@@ -181,43 +183,57 @@
 <script type="text/javascript" src="js/plugins/aaa/dataTables/dataTables.buttons.js"></script>
 <script type="text/javascript" src="js/plugins/aaa/dataTables/buttons.html5.js"></script>
 <script type="text/javascript" src="js/plugins/aaa/dataTables/buttons.print.js"></script>
-<script type="text/javascript" src="js/plugins/aaa/dataTables/jquery.dataTables.js"></script>
+
 <script type="text/javascript" src="js/plugins/aaa/dataTables/jquery-ui.js"></script>
 
 
 <script>
 
+const customizePrint = (window) =>
+  $(window.document.body)
+    .addClass('white-bg')
+    .css('font-size', '10px')
+    .find('table')
+    .addClass('compact')
+    .css('font-size', 'inherit');
 
-
-
-
+$(document).ready( () =>
+  $('.dataTables-conserto').DataTable({
+    pageLength: 25,
+    responsive: true,
+    dom: '<"html5buttons"B>lTfgitp',
+    buttons: [
+      { extend: 'copy' },
+      { extend: 'csv' },
+      { extend: 'excel', title: 'Lista Consertos' },
+      { extend: 'pdf', title: 'Lista Consertos' },
+      { extend: 'print', customize: customizePrint }
+    ]
+  })
+);
 
 $(document).ready(function(){
+  $.fn.dataTable.ext.search.push(
+    function (settings, data, dataIndex) {
+      var min = $('#min').datepicker("getDate");
+      var max = $('#max').datepicker("getDate");
+      var startDate = new Date(data[4]);
+      if (min == null && max == null) { return true; }
+      if (min == null && startDate <= max) { return true;}
+      if(max == null && startDate >= min) {return true;}
+      if (startDate <= max && startDate >= min) { return true; }
+      return false;
+    }
+  );
+  $("#min").datepicker({ onSelect: function () { table.draw(); }, changeMonth: true, changeYear: true });
+  $("#max").datepicker({ onSelect: function () { table.draw(); }, changeMonth: true, changeYear: true });
+  var table = $('#teste').DataTable();
+  // Event listener to the two range filtering inputs to redraw on input
+  $('#min, #max').change(function () {
+    table.draw();
+  });
+});
 
-
-   $.fn.dataTable.ext.search.push(
-   function (settings, data, dataIndex) {
-       var min = $('#min').datepicker("getDate");
-       var max = $('#max').datepicker("getDate");
-       var startDate = new Date(data[4]);
-       if (min == null && max == null) { return true; }
-       if (min == null && startDate <= max) { return true;}
-       if(max == null && startDate >= min) {return true;}
-       if (startDate <= max && startDate >= min) { return true; }
-       return false;
-   }
-   );
-
-
-       $("#min").datepicker({ onSelect: function () { table.draw(); }, changeMonth: true, changeYear: true });
-       $("#max").datepicker({ onSelect: function () { table.draw(); }, changeMonth: true, changeYear: true });
-       var table = $('#teste').DataTable();
-
-       // Event listener to the two range filtering inputs to redraw on input
-       $('#min, #max').change(function () {
-           table.draw();
-       });
-   });
 </script>
 
 
