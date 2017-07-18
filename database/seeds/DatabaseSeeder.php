@@ -95,7 +95,7 @@ class DatabaseSeeder extends Seeder
     factory(App\Cliente::class, 20)->create();
 
 
-    /*
+
     DB::table('usuarios')->insert([
 
       'nome' => 'Testônio dos Testes',
@@ -103,17 +103,71 @@ class DatabaseSeeder extends Seeder
       'telefone' => '(19)3232-4242',
       'celular' => '(19)98765-4321',
       'cpf' => '123.456.789-01',
-      'rg' => '12.345.678-9',
+      'rg' => '12.345.678-1',
       'cidade' => 'Testinas',
       'bairro' => 'Vila dos Testes',
       'rua' => 'Rua dos Testes',
       'numero' => '969',
       'permissao' => '1',
-      'senha' => Hash::make('123456'),
+      'password' => Hash::make('321'),
       'id_cargo' => '1',
       'id_assistencia' => '1',
     ]);
-    */
+
+    DB::table('usuarios')->insert([
+
+      'nome' => 'Rafael Bella',
+      'email' => 'rb@notify.com',
+      'telefone' => '(19)3232-4242',
+      'celular' => '(19)98765-4321',
+      'cpf' => '123.456.789-02',
+      'rg' => '12.345.678-2',
+      'cidade' => 'Testinas',
+      'bairro' => 'Vila dos Testes',
+      'rua' => 'Rua dos Testes',
+      'numero' => '969',
+      'permissao' => '4',
+      'password' => Hash::make('123'),
+      'id_cargo' => '1',
+      'id_assistencia' => '1',
+    ]);
+
+    DB::table('usuarios')->insert([
+
+      'nome' => 'Matheus Luz',
+      'email' => 'matheusluz@gmail.com',
+      'telefone' => '(19)3232-4242',
+      'celular' => '(19)98765-4321',
+      'cpf' => '123.456.789-03',
+      'rg' => '12.345.678-3',
+      'cidade' => 'Testinas',
+      'bairro' => 'Vila dos Testes',
+      'rua' => 'Rua dos Testes',
+      'numero' => '969',
+      'permissao' => '4',
+      'password' => Hash::make('123'),
+      'id_cargo' => '1',
+      'id_assistencia' => '1',
+    ]);
+
+    DB::table('usuarios')->insert([
+
+      'nome' => 'Gabriel Tosetti',
+      'email' => 'gt@notify.com',
+      'telefone' => '(19)3232-4242',
+      'celular' => '(19)98765-4321',
+      'cpf' => '123.456.789-04',
+      'rg' => '12.345.678-4',
+      'cidade' => 'Testinas',
+      'bairro' => 'Vila dos Testes',
+      'rua' => 'Rua dos Testes',
+      'numero' => '969',
+      'permissao' => '4',
+      'password' => Hash::make('123'),
+      'id_cargo' => '1',
+      'id_assistencia' => '1',
+    ]);
+
 
 
 

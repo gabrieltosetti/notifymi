@@ -40,7 +40,7 @@
                         <li><a class="page-scroll" href="#principios">Princípios</a></li>
                         <li><a class="page-scroll" href="#planos">Planos</a></li>
                         <li><a class="page-scroll" href="#contato">Contato</a></li>
-                        <li><a class="page-scroll" href="{{ route('usuariohome') }}">Login</a></li>
+                        <li><a class="page-scroll" href="{{ route('login') }}">Login</a></li>
 
 
 

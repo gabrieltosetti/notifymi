@@ -40,7 +40,7 @@ $factory->define(App\Usuario::class, function (Faker\Generator $faker) {
         'rua' => $faker->name,
         'numero' => '99',
         'email' => $faker->unique()->safeEmail,
-        'senha' => $password ?: $password = 'secret',
+        'password' => $password = Hash::make('secret'),
         'permissao' => '0',
         'id_cargo' => '1',
         'id_assistencia' => '1',

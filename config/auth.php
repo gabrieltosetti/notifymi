@@ -14,8 +14,8 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web', //Padrao --- 'guard' => 'web'
-        'passwords' => 'users',
+        'guard' => 'usuario', //Padrao --- 'guard' => 'web'
+        'passwords' => 'usuarios', //Padrao --- 'passwords' => 'users'
     ],
 
     /*
@@ -84,6 +84,10 @@ return [
           'driver' => 'eloquent',
           'model' => App\User::class,
       ],
+      'usuarios' => [
+          'driver' => 'eloquent',
+          'model' => App\Usuario::class,
+      ],
       'admins' => [
           'driver' => 'eloquent',
           'model' => App\Admin::class,
@@ -118,6 +122,11 @@ return [
       ],
       'admins' => [
           'provider' => 'admins',
+          'table' => 'password_resets',
+          'expire' => 60,
+      ],
+      'usuarios' => [
+          'provider' => 'usuarios',
           'table' => 'password_resets',
           'expire' => 60,
       ],

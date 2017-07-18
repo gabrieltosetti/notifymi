@@ -5,13 +5,15 @@ namespace App;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 
-class Usuario extends Model
+class Usuario extends Authenticatable
 {
-  /*use Notifiable;*/
+  // use Notifiable;
 
   public $timestamps = true;
 
+  protected $guard = 'usuario';
   protected $table = 'usuarios';
+
 
   /**
    * The attributes that are mass assignable.
@@ -31,7 +33,6 @@ class Usuario extends Model
         'numero',
         'complemento',
         'email',
-        'senha',
         'permissao',
         'id_cargo',
         'id_assistencia',
@@ -45,7 +46,7 @@ class Usuario extends Model
    * @var array
    */
   protected $hidden = [
-      'remember_token',
+      'password','remember_token',
   ];
 
     public function cargo()
