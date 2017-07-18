@@ -44,7 +44,7 @@
                     @if(isset($erro))
                             <div class="alert alert-danger" role="alert">Dados inválidos !</div>
                         @endif
-                        <form role="form" action="{{ route('login') }}" method="post">
+                        <form role="form" action="{{ route('entrarusuario.submit') }}" method="post">
                             <fieldset>
                                 {{ csrf_field() }}
                                 <div class="form-group">

@@ -28,7 +28,7 @@ class TabelaUsuarios extends Migration
             $table->char('complemento', 40)->nullable();
             $table->string('avatar')->default('default.jpg');
             $table->string('permissao')->default('0');
-            $table->char('senha', 100);
+            $table->char('password', 100);
             $table->rememberToken();
             $table->timestamps();
 

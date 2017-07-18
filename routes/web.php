@@ -19,7 +19,7 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('index');
 Route::get('/index', 'HomeController@index')->name('index');
-
+Route::get('/home', 'UsuarioController@usuariohome')->name('home'); //estudar por que não é possível trocar name e caminho
 //Route::get('/2', 'HomeController@index2')->name('home2');
 
 //login
@@ -30,6 +30,7 @@ Route::get('/cadastro', 'LoginController@cadastro')->name('cadastro');
 Route::get('/admin/home', 'AdminController@adminhome')->name('adminhome');
 Route::get('/admin/login', 'Auth\AdminLoginController@showLoginForm')->name('entraradmin');
 Route::post('/admin/login', 'Auth\AdminLoginController@Login')->name('entraradmin.submit');
+Route::get('/admin/logout', 'Auth\AdminLoginController@logout')->name('sairadmin');
 
 //profile
 Route::get('/perfil', 'ProfileController@perfil')->name('perfil');
@@ -53,6 +54,9 @@ Route::get('/cargos', 'CargosController@listacargos')->name('cargos');
 Route::get('/cargos/novo', 'CargosController@novocargo')->name('novo_cargos');
 
 //usuarios
+Route::get('/usuarios/login', 'Auth\LoginController@showLoginForm')->name('entrarusuario');
+Route::post('/usuarios/login', 'Auth\LoginController@login')->name('entrarusuario.submit');
+Route::get('/usuarios/logout', 'Auth\LoginController@logout')->name('sairusuario');
 Route::get('/usuarios/home', 'UsuarioController@usuariohome')->name('usuariohome');
 Route::get('/usuarios', 'UsuarioController@lista')->name('usuarios');
 Route::get('/usuarios/novo', 'UsuarioController@novo')->name('novo_usuario');
