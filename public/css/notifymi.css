@@ -92,6 +92,8 @@ h2.editable-click:hover
 }
 /* /X-EDITABLE */
 
+/* CONSERTO DETALHAMENTO */
+
 .chat-form img
 {
     width: 38px;
@@ -102,6 +104,32 @@ h2.editable-click:hover
     margin-right: 10px;
 }
 
+.atividade-success
+{
+    background-color: #f0fff5;
+    border: 1px;
+    border-color: #1bb394;
+    border-style: solid;
+    padding: 15px;
+}
 
+.atividade-icon
+{
+    width: 25px;
+    color: #1bb394;
+}
+.atividade-icon + p
+{
+    font-weight: 600;
+    font-size: larger;
+    margin: 0;
+    cursor: pointer;
+}
 
+.widget.atividade-success div.row
+{
+    margin: 0;
+}
+
+/* //CONSERTO DETALHAMENTO */
 
