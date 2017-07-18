@@ -304,6 +304,7 @@ button.ui-button::-moz-focus-inner {
 .ui-datepicker .ui-datepicker-header {
 	position: relative;
 	padding: .2em 0;
+	background-color: #263949;
 }
 .ui-datepicker .ui-datepicker-prev,
 .ui-datepicker .ui-datepicker-next {
@@ -318,15 +319,21 @@ button.ui-button::-moz-focus-inner {
 }
 .ui-datepicker .ui-datepicker-prev {
 	left: 2px;
+		border-radius: 50%;
+		background-color: #879FB8;
 }
 .ui-datepicker .ui-datepicker-next {
 	right: 2px;
+		border-radius: 50%;
+		background-color: #879FB8;
 }
 .ui-datepicker .ui-datepicker-prev-hover {
 	left: 1px;
+	border-radius: 50%;
 }
 .ui-datepicker .ui-datepicker-next-hover {
 	right: 1px;
+		border-radius: 50%;
 }
 .ui-datepicker .ui-datepicker-prev span,
 .ui-datepicker .ui-datepicker-next span {
@@ -346,15 +353,19 @@ button.ui-button::-moz-focus-inner {
 	font-size: 1em;
 	margin: 1px 0;
 }
+
 .ui-datepicker select.ui-datepicker-month,
 .ui-datepicker select.ui-datepicker-year {
 	width: 49%;
+	/*Mês e ano*/
+
 }
 .ui-datepicker table {
 	width: 100%;
 	font-size: .9em;
 	border-collapse: collapse;
 	margin: 0 0 .4em;
+	background-color: #879FB8;
 }
 .ui-datepicker th {
 	padding: .7em .3em;
@@ -460,6 +471,7 @@ button.ui-button::-moz-focus-inner {
 .ui-datepicker-rtl .ui-datepicker-group-middle .ui-datepicker-header {
 	border-right-width: 0;
 	border-left-width: 1px;
+	/*Final date picker*/
 }
 .ui-dialog {
 	overflow: hidden;
