@@ -73,7 +73,7 @@ class Handler extends ExceptionHandler
           //   break;
 
           default:
-            $login = 'entrarcliente';
+            $login = 'login';
             break;
         }
 

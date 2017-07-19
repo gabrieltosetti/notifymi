@@ -9,7 +9,6 @@ Breadcrumbs::register('home', function($breadcrumbs)
 
   if (Auth::guard('admin')->check())
     $home = 'adminhome';
-  else
     $home = 'usuariohome';
 
     $breadcrumbs->push('Página Inicial', route($home));
