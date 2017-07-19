@@ -120,7 +120,7 @@
                                         <div class="panel-options">
                                             <ul class="nav nav-tabs">
                                                 <li class="active"><a href="#tab-1" data-toggle="tab">Mensagem Pública</a></li>
-                                                <li class=""><a href="#tab-2" data-toggle="tab">Últimas atividades</a></li>
+                                                <li class=""><a href="#tab-2" data-toggle="tab">Atividades</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -139,7 +139,7 @@
                                                                 <textarea class="form-control" placeholder="Mensagem..."></textarea>
                                                             </div>
                                                             <div class="text-right">
-                                                                <button type="submit" class="btn btn-sm btn-primary m-t-n-xs"><strong>Enviar</strong></button>
+                                                                <button type="submit" class="btn btn-sm btn-primary m-t-n-xs"><strong>Postar</strong></button>
                                                             </div>
                                                         </form>
                                                     </div>
@@ -223,6 +223,56 @@
                                             <!-- /TAB 1 -->
                                             <!-- TAB 2 -->
                                             <div class="tab-pane" id="tab-2">
+                                                <h3>Nova atividade</h3>
+                                                <!-- NOVA ATIVIDADE -->
+                                                <div class="chat-form">
+                                                    <img alt="usuário" class="img-circle pull-left" src="/media/avatars/default.jpg">
+                                                    <div class="media-body">
+                                                        <form role="form" class="conserto-chat">
+                                                            <h4>Gabriel Tosetti</h4>
+                                                            <div class="form-group">
+                                                                <textarea class="form-control" placeholder="Mensagem..."></textarea>
+                                                            </div>
+                                                            <div class="text-right">
+                                                                <button type="submit" class="btn btn-sm btn-primary m-t-n-xs"><strong>Postar</strong></button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                                <!-- //NOVA ATIVIDADE -->
+                                                <!-- BLOCO DE ATIVIDADE -->
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="widget atividade-success">
+                                                            <div class="row">
+                                                                <i class="fa fa-user fa-3x atividade-icon pull-left"></i>
+                                                                <p class="text-success">Gabriel Tosetti</p>
+                                                                <p>Técnico</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- //BLOCO DE ATIVIDADE -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                                             
                                                 <table class="table table-striped">
                                                     <thead>
