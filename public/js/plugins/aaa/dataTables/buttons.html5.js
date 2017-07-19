@@ -1229,6 +1229,7 @@ DataTable.ext.buttons.pdfHtml5 = {
 
 	text: function ( dt ) {
 		return dt.i18n( 'buttons.pdf', 'PDF' );
+
 	},
 
 	action: function ( e, dt, button, config ) {
@@ -1364,6 +1365,7 @@ DataTable.ext.buttons.pdfHtml5 = {
 
 	download: 'download'
 };
+
 
 
 return DataTable.Buttons;

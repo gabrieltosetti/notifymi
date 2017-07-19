@@ -3,10 +3,11 @@
             <ul class="nav metismenu" id="side-menu">
                 <li class="nav-header">
                     <div class="dropdown profile-element">
-                      <span><img alt="image" class="img-circle img-lg" src="/media/avatars/{{ Auth::user()->avatar }}"/></span>
+                      <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                      <span><img alt="image" class="img-circle " width="170" height="170" src="/media/avatars/{{ Auth::user()->avatar }}"/></span>
 
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">{{ Auth::user()->name }}</strong></span>
+
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">{{ Auth::user()->nome }}</strong></span>
                             <?php $permissao = Auth::user()->permissao?>
                             <!-- preciso melhorar isso aqui-->
                             @if($permissao == 0)
@@ -71,7 +72,7 @@
                     </ul>
                 </li>
 
-                 <!--    
+                 <!--
                      USUARIOS
                 -->
                 <li class="{{ Request::segment(1) === 'usuarios' ? 'active' : '' }}" >
