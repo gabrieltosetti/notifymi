@@ -78,9 +78,7 @@
               <td> <!-- CLIENTE -->
                 <a href="#">Matheus Luz</a>
               </td>
-              <td><!-- CRIADO -->
-                12/07/2017
-              </td>
+          <td>2017/07/17</td>
             </tr>
             <!-- /ADDED -->
             <!-- PENDENTE -->
@@ -100,7 +98,7 @@
               <td> <!-- CLIENTE -->
                 <a href="#">Matheus Luz</a>
               </td>
-              <td>12/01/2016</td>
+              <td>2017/07/16</td>
             </tr>
             <!-- /PENDENTE -->
             <!-- PENDENTE -->
@@ -120,7 +118,7 @@
               <td> <!-- CLIENTE -->
                 <a href="#">Matheus Luz</a>
               </td>
-              <td>12/01/2029</td>
+              <td>2017/07/15</td>
             </tr>
             <!-- /PENDENTE -->
             <!-- FECHADO -->
@@ -140,7 +138,7 @@
               <td> <!-- CLIENTE -->
                 <a href="#">Matheus Luz</a>
               </td>
-              <td>12/01/2019</td>
+              <td>2017/07/14</td>
             </tr>
             <!-- /FECHADO -->
             <!-- CANCELADO -->
@@ -160,7 +158,7 @@
               <td> <!-- CLIENTE -->
                 <a href="#">Matheus Luz</a>
               </td>
-              <td>12/01/2009</td>
+              <td>2017/07/13</td>
 
             </tr>
             <!-- /CANCELADO -->
@@ -217,7 +215,12 @@ $(document).ready(function(){
     function (settings, data, dataIndex) {
       var min = $('#min').datepicker("getDate");
       var max = $('#max').datepicker("getDate");
-      var startDate = new Date(data[4]);
+
+
+
+      var teste = new Date(data[4]);
+
+      var startDate = teste;
       if (min == null && max == null) { return true; }
       if (min == null && startDate <= max) { return true;}
       if(max == null && startDate >= min) {return true;}
