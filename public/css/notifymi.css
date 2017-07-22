@@ -103,20 +103,72 @@ h2.editable-click:hover
 .chat-form > img{
     margin-right: 10px;
 }
-
-.atividade-success
+.media-body
 {
-    background-color: #f0fff5;
-    border: 1px;
-    border-color: #1bb394;
-    border-style: solid;
-    padding: 15px;
+    font-size: 13px;
+}
+.media-body .form-group
+{
+    margin-right: 0px;
+    margin-left: 0px;
 }
 
+
+
+.lista-atividades > div
+{
+    margin-top: 1px;
+}
+.lista-atividades > div:first-child
+{
+    margin-top: 0;
+}
+
+.atividade.success
+{
+    border-width: 1px 1px 1px 8px;
+    background-color: #f0fff5;
+    border-color: #1bb394;
+    border-style: solid;
+    padding: 10px;
+    border-radius: 0;
+}
+.atividade.success .atividade-icon
+{
+    color: #1bb394;
+}
+/* ---------------------- */
+.atividade.warning
+{
+    border-width: 1px 1px 1px 8px;
+    background-color: #fff7ed;
+    border-color: #f8ac5a;
+    border-style: solid;
+    padding: 10px;
+    border-radius: 0;
+}
+.atividade.warning .atividade-icon
+{
+    color: #f8ac5a;
+}
+/* -------------------------- */
+.atividade.danger
+{
+    border-width: 1px 1px 1px 8px;
+    background-color: #ffe5e7;
+    border-color: #ed5666;
+    border-style: solid;
+    padding: 10px;
+    border-radius: 0;
+}
+.atividade.danger .atividade-icon
+{
+    color: #ed5666;
+}
+/* -------------------------- */
 .atividade-icon
 {
     width: 25px;
-    color: #1bb394;
 }
 .atividade-icon + p
 {
@@ -126,10 +178,31 @@ h2.editable-click:hover
     cursor: pointer;
 }
 
-.widget.atividade-success div.row
+.user-group
+{
+    margin-left: -15px !important;
+}
+
+.atividade div.row
 {
     margin: 0;
 }
+
+.atividade .form-horizontal label
+{
+    padding: 0;
+}
+.atividade .form-horizontal p
+{
+    padding-top: 0;
+    min-height: 0;
+}
+.atividade .form-group
+{
+    margin: 0;
+}
+
+
 
 /* //CONSERTO DETALHAMENTO */
 

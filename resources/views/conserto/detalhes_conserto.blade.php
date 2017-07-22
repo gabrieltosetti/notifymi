@@ -13,6 +13,7 @@
     <link href="{{ asset('css/plugins/dataTables/datatables.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/plugins/chosen/bootstrap-chosen.css') }}" rel="stylesheet">
     <link href="{{ asset('css/plugins/bootstrap3-editable/bootstrap-editable.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/plugins/datapicker/datepicker3.css') }}" rel="stylesheet">
      <style>
         @media (min-width: 768px) {
             .dt-conserto {
@@ -225,14 +226,58 @@
                                             <div class="tab-pane" id="tab-2">
                                                 <h3>Nova atividade</h3>
                                                 <!-- NOVA ATIVIDADE -->
-                                                <div class="chat-form">
+                                                <div class="chat-form m-b">
                                                     <img alt="usuário" class="img-circle pull-left" src="/media/avatars/default.jpg">
                                                     <div class="media-body">
-                                                        <form role="form" class="conserto-chat">
-                                                            <h4>Gabriel Tosetti</h4>
-                                                            <div class="form-group">
-                                                                <textarea class="form-control" placeholder="Mensagem..."></textarea>
+                                                        <form role="form">
+                                                            <h4 class="m-b-sm">Gabriel Tosetti</h4>
+                                                            <div class="row">
+                                                                <div class="col-sm-5">
+                                                                    <!--STATUS-->
+                                                                    <div class="form-group {{ $errors->has('status') ? 'has-error' : ''}}">
+                                                                        <label class="control-label" for="atividade-status">Status</label>
+                                                                        <input type="text" class="form-control" name="status" value="{{ old('status') }}" id="atividade-status" maxlength="20">
+                                                                        <span class="help-block">{{$errors->first('status')}}</span>
+                                                                    </div>
+                                                                    <!--/STATUS-->
+                                                                    <!--DATA INICIO-->
+                                                                    <div class="form-group" id="data-inicio">
+                                                                        <label>Atividade Inicio</label>
+                                                                        <div class="input-group date">
+                                                                            <span class="input-group-addon">
+                                                                                <i class="fa fa-calendar"></i>
+                                                                            </span>
+                                                                            <input type="text" class="form-control" value="22/07/2017">
+                                                                        </div>
+                                                                    </div>
+                                                                    <!--/DATA INICIO-->
+                                                                    <!--DATA FINAL-->
+                                                                    <div class="form-group" id="data-final">
+                                                                        <label>Atividade Final</label>
+                                                                        <div class="input-group date">
+                                                                            <span class="input-group-addon">
+                                                                                <i class="fa fa-calendar"></i>
+                                                                            </span>
+                                                                            <input type="text" class="form-control" value="22/07/2017">
+                                                                        </div>
+                                                                    </div>
+                                                                    <!--/DATA FINAL-->
+                                                                </div>
+                                                                <div class="col-sm-7">
+                                                                    <!--TITULO-->
+                                                                    <div class="form-group {{ $errors->has('titulo') ? 'has-error' : ''}}">
+                                                                        <label class="control-label" for="atividade-titulo">Título</label>
+                                                                        <input type="text" class="form-control" name="titulo" value="{{ old('titulo') }}" id="atividade-titulo" maxlength="20">
+                                                                        <span class="help-block">{{$errors->first('titulo')}}</span>
+                                                                    </div>
+                                                                    <!--/TITULO-->
+                                                                    <div class="form-group">
+                                                                        <label class="control-label" for="atividade-mensagem">Mensagem</label>
+                                                                        <textarea id="atividade-mensagem" class="form-control" placeholder="Mensagem..."></textarea>
+                                                                    </div>
+                                                                </div>
                                                             </div>
+                                                            
                                                             <div class="text-right">
                                                                 <button type="submit" class="btn btn-sm btn-primary m-t-n-xs"><strong>Postar</strong></button>
                                                             </div>
@@ -240,40 +285,157 @@
                                                     </div>
                                                 </div>
                                                 <!-- //NOVA ATIVIDADE -->
-                                                <!-- BLOCO DE ATIVIDADE -->
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="widget atividade-success">
-                                                            <div class="row">
-                                                                <i class="fa fa-user fa-3x atividade-icon pull-left"></i>
-                                                                <p class="text-success">Gabriel Tosetti</p>
-                                                                <p>Técnico</p>
+
+                                                <div class="lista-atividades">
+                                                    <!-- BLOCO DE ATIVIDADE SUCCESS -->
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="atividade success">
+                                                                <div class="row">
+                                                                    <div class="col-md-5 col-lg-4">
+                                                                        <div class="row user-group">
+                                                                            <i class="fa fa-user fa-3x atividade-icon pull-left"></i>
+                                                                            <p class="text-success">Gabriel Tosetti</p>
+                                                                            <p>Técnico</p>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-xs-12">
+                                                                                <div class="form-horizontal">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-md-4 control-label">Status:</label>
+                                                                                        <div class="col-md-8">
+                                                                                            <p class="form-control-static">Completado</p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-md-4 control-label">Iniciado:</label>
+                                                                                        <div class="col-md-8">
+                                                                                            <p class="form-control-static">12.07.2014 10:10:1</p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-md-4 control-label">Finalizado:</label>
+                                                                                        <div class="col-md-8">
+                                                                                            <p class="form-control-static">12.07.2014 10:10:1</p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-7 col-lg-8">
+                                                                        <small class="text-success">Título</small><br>
+                                                                        <h3 class="m-b">Troca de tela</h3>
+                                                                        <small class="text-success">Descrição</small>
+                                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos natus eos soluta ipsa cumque repellendus nihil ducimus autem nam tenetur voluptates labore, inventore illum omnis esse rem asperiores, eveniet commodi?</p>
+                                                    
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <!-- //BLOCO DE ATIVIDADE SUCCESS -->
+                                                    <!-- BLOCO DE ATIVIDADE WARNING -->
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="atividade warning">
+                                                                <div class="row">
+                                                                    <div class="col-md-5 col-lg-4">
+                                                                        <div class="row user-group">
+                                                                            <i class="fa fa-user fa-3x atividade-icon pull-left"></i>
+                                                                            <p class="text-success">Gabriel Tosetti</p>
+                                                                            <p>Técnico</p>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-xs-12">
+                                                                                <div class="form-horizontal">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-md-4 control-label">Status:</label>
+                                                                                        <div class="col-md-8">
+                                                                                            <p class="form-control-static">Completado</p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-md-4 control-label">Iniciado:</label>
+                                                                                        <div class="col-md-8">
+                                                                                            <p class="form-control-static">12.07.2014 10:10:1</p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-md-4 control-label">Finalizado:</label>
+                                                                                        <div class="col-md-8">
+                                                                                            <p class="form-control-static">12.07.2014 10:10:1</p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-7 col-lg-8">
+                                                                        <small class="text-success">Título</small><br>
+                                                                        <h3 class="m-b">Troca de tela</h3>
+                                                                        <small class="text-success">Descrição</small>
+                                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos natus eos soluta ipsa cumque repellendus nihil ducimus autem nam tenetur voluptates labore, inventore illum omnis esse rem asperiores, eveniet commodi?</p>
+                                                    
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- //BLOCO DE ATIVIDADE WARNING -->
+                                                    <!-- BLOCO DE ATIVIDADE DANGER -->
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="atividade danger">
+                                                                <div class="row">
+                                                                    <div class="col-md-5 col-lg-4">
+                                                                        <div class="row user-group">
+                                                                            <i class="fa fa-user fa-3x atividade-icon pull-left"></i>
+                                                                            <p class="text-success">Gabriel Tosetti</p>
+                                                                            <p>Técnico</p>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-xs-12">
+                                                                                <div class="form-horizontal">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-md-4 control-label">Status:</label>
+                                                                                        <div class="col-md-8">
+                                                                                            <p class="form-control-static">Completado</p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-md-4 control-label">Iniciado:</label>
+                                                                                        <div class="col-md-8">
+                                                                                            <p class="form-control-static">12.07.2014 10:10:1</p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-md-4 control-label">Finalizado:</label>
+                                                                                        <div class="col-md-8">
+                                                                                            <p class="form-control-static">12.07.2014 10:10:1</p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-7 col-lg-8">
+                                                                        <small class="text-success">Título</small><br>
+                                                                        <h3 class="m-b">Troca de tela</h3>
+                                                                        <small class="text-success">Descrição</small>
+                                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos natus eos soluta ipsa cumque repellendus nihil ducimus autem nam tenetur voluptates labore, inventore illum omnis esse rem asperiores, eveniet commodi?</p>
+                                                    
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- //BLOCO DE ATIVIDADE DANGER -->
                                                 </div>
-                                                <!-- //BLOCO DE ATIVIDADE -->
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                                            
+                                                <h2>Padrao do Inspinia:</h2>     
                                                 <table class="table table-striped">
                                                     <thead>
                                                     <tr>
@@ -488,6 +650,8 @@
 @section('scripts')
 <script src="{{ asset('js/plugins/chosen/chosen.jquery.min.js') }}"></script>
 <script src="{{ asset('js/plugins/bootstrap3-editable/bootstrap-editable.min.js') }}"></script>
+<!-- Data picker -->
+   <script src="{{ asset('js/plugins/datapicker/bootstrap-datepicker.js') }}"></script>
 <script>
 
 $(document).ready(function(){
@@ -507,6 +671,21 @@ $(document).ready(function(){
     $('#titulo').editable({
         type: 'text',
         title: 'Conserto'
+    });
+
+    $('#data-inicio .input-group.date').datepicker({
+        todayBtn: "linked",
+        keyboardNavigation: false,
+        forceParse: false,
+        calendarWeeks: true,
+        autoclose: true
+    });
+    $('#data-final .input-group.date').datepicker({
+        todayBtn: "linked",
+        keyboardNavigation: false,
+        forceParse: false,
+        calendarWeeks: true,
+        autoclose: true
     });
 /*     $('#descricao').on('shown', function(e, editable) {
         $('.editable_large').parents('form').removeClass('form-inline');
