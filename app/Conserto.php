@@ -37,13 +37,17 @@ class Conserto extends Model
         'remember_token',
     ];
 
-    public function cargo()
+    public function usuario()
+    {        
+        return $this->belongsTo('App\Usuario', 'id_usuario');
+    }
+    public function cliente()
+    {        
+        return $this->belongsTo('App\Cliente', 'id_cliente');
+    }
+
+    public function assistencia()
     {
-        //return $this->hasOne('App\Cargo', 'id_cargo');
-        return $this->belongsTo('App\Cargo', 'id_cargo');
+        return $this->belongsTo('App\Assistencia', 'id_assistencia');
     }
-        public function assistencia()
-        {
-            return $this->belongsTo('App\Assistencia', 'id_assistencia');
-        }
-    }
+}

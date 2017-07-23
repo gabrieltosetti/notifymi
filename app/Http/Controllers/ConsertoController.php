@@ -36,12 +36,12 @@ class ConsertoController extends Controller
         //rota: detalhes_conserto
         public function detalhes()
         {
-            //$conserto = Conserto::find($id);
             $usuarios = Usuario::orderBy('nome')->get(['nome']);
-            //$usuarios = Usuario::all();
             $usuarios = $usuarios->pluck("nome");
 
-            return view('conserto/detalhes_conserto')->with('usuarios', $usuarios);
+            $conserto = Conserto::find(1);
+
+            return view('conserto/detalhes_conserto')->with(['usuarios'=> $usuarios, 'conserto' => $conserto]);
         }
 
         //rota: remove_conserto
