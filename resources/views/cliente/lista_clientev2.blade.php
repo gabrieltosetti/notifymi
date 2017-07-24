@@ -17,7 +17,7 @@
 
 @section('content')
 <div class="wrapper wrapper-content animated fadeInRight">
-  <table  class="table table-striped table-bordered table-hover issue-tracker dataTables-conserto" id="lista_cliente" cellspacing="0">
+  <table  class="table table-striped table-bordered table-hover issue-tracker dataTables-clientes" id="lista_cliente" cellspacing="0">
     <thead>
       <tr>
         <th>ID</th>
@@ -35,7 +35,7 @@
       <tr id="cliente-{{$cliente->id}}">
 
         <td class="cliente-id"> <!-- ID -->
-          {{$cliente->id}}
+          #{{$cliente->id}}
         </td>
 
         <td>
@@ -143,7 +143,6 @@ $(document).ready(function(){
       $('#modal-numero').text(data.numero);
       $('#modal-complemento').text(data.complemento);
       $('#modal-permissao').text(data.permissao);
-
       $('#modal-detalhes').modal('show');
     })
   });
@@ -195,5 +194,34 @@ $(document).ready(function(){
   });
   /*/DELETAR CLIENTE*/
 }); /* /DOCUMENT READY*/
+
+
+
+
+
+const customizePrint = (window) =>
+  $(window.document.body)
+    .addClass('white-bg')
+    .css('font-size', '10px')
+    .find('table')
+    .addClass('compact')
+    .css('font-size', 'inherit');
+
+$(document).ready( () =>
+  $('.dataTables-clientes').DataTable({
+    pageLength: 25,
+    responsive: true,
+    dom: '<"html5buttons"B>lTfgitp',
+    buttons: [
+      { extend: 'copy' },
+      { extend: 'csv' },
+      { extend: 'excel', title: 'Lista Clintes' },
+      { extend: 'pdf', title: 'Lista Clientes' },
+      { extend: 'print', customize: customizePrint }
+    ]
+  })
+);
+
+
 </script>
 @stop

@@ -48,7 +48,7 @@
           </tr>
 
         <!-- /LINHA DE PESQUISA -->
-        <table  class="table table-striped table-bordered table-hover issue-tracker dataTables-conserto" id="teste" cellspacing="0">
+        <table  class="table table-striped table-bordered table-hover issue-tracker dataTables-conserto" id="lista_cliente" cellspacing="0">
 
 
           <thead>
@@ -218,9 +218,9 @@ $(document).ready(function(){
 
 
 
-      var teste = new Date(data[4]);
+      var conserto = new Date(data[4]);
 
-      var startDate = teste;
+      var startDate = conserto;
       if (min == null && max == null) { return true; }
       if (min == null && startDate <= max) { return true;}
       if(max == null && startDate >= min) {return true;}
@@ -230,7 +230,7 @@ $(document).ready(function(){
   );
   $("#min").datepicker({ onSelect: function () { table.draw(); }, changeMonth: true, changeYear: true });
   $("#max").datepicker({ onSelect: function () { table.draw(); }, changeMonth: true, changeYear: true });
-  var table = $('#teste').DataTable();
+  var table = $('#lista_conserto').DataTable();
   // Event listener to the two range filtering inputs to redraw on input
   $('#min, #max').change(function () {
     table.draw();
