@@ -27,7 +27,7 @@
         <th>Telefone</th>
         <th>Celular</th>
 
-        <th>Operações</th>
+        <th width="170">Operações</th>
       </tr>
     </thead>
     <tbody>
@@ -55,16 +55,16 @@
         <td>
           {{$cliente->celular}}
         </td>
-        <td>
+        <td width="170">
 
-          <div class="col-xs-2 col-sm-2 hidden-xs">
+          <div class="col-xs-2 col-sm-4 hidden-xs">
             <a title="Ver mais detalhes   "class="btn btn-xs btn-info btn-circle open-modal fa fa-search" value="{{$cliente->id}}"></a>
           </div>
-          <div class="col-xs-2 col-sm-2 hidden-xs">
+          <div class="col-xs-2 col-sm-4 hidden-xs">
             <a title="Editar" class="btn btn-xs btn-warning btn-circle fa fa-pencil" href="{{ route('edita_cliente', ['id' => $cliente->id]) }}"></a>
 
           </div>
-          <div class="col-xs-2 col-sm-3 hidden-xs">
+            <div class="col-xs-2 col-sm-4 hidden-xs">
             <form class="form-deletar" value="{{$cliente->id}}">
               <button title="Remover" type="submit" class="btn btn-xs btn-circle btn-danger fa fa-times"></button>
             </form>
