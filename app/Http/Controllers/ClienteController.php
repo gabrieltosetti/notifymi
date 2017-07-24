@@ -21,6 +21,13 @@ class ClienteController extends Controller
 
         return view('cliente/lista_cliente')->with('clientes', $clientes);
     }
+  //rota: ainda provisória
+    public function listav2()
+    {
+      $clientes = Cliente::all();
+
+        return view('cliente/lista_clientev2')->with('clientes', $clientes);
+    }
 
     public function novo()
     {

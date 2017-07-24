@@ -45,6 +45,7 @@ Route::get('/clientes/detalhes/{id}/', 'ClienteController@detalhes')->name('deta
 Route::post('/clientes/adiciona', 'ClienteController@adiciona')->name('novo_cliente_post');
 Route::delete('/clientes/remove/{id?}', 'ClienteController@remove')->name('remove_cliente');
 Route::get('/clientes/edita/{id}', 'ClienteController@edita')->name('edita_cliente');
+Route::get('/clientesv2',  'ClienteController@listav2')->name('clientesv2');
 
 //permissoes
 Route::get('/permissoes', 'PermissoesController@lista')->name('permissoes');
