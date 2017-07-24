@@ -20,6 +20,9 @@
 
                     <div class="col-xs-6 col-sm-6 col-lg-4"  id="cliente-{{$cliente->id}}">
                         <div class="contact-box">
+
+
+
                             <a class="open-modal" value="{{$cliente->id}}">
                                 <div class="row">
                                     <div class="col-sm-4">
@@ -53,6 +56,10 @@
                                     <div class="clearfix"></div>
                                 </div>
                             </a>
+
+
+
+                            
                             <div class="row">
                                 <div class="col-xs-4 col-sm-4 hidden-xs">
                                     <form class="form-deletar" value="{{$cliente->id}}">

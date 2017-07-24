@@ -35,8 +35,10 @@
 
       @foreach($clientes as $cliente)
       <div class="row">
-        <tr id="lista_cliente">
-          <td class="cliente-id" id="cliente-nome-{{$cliente->nome}}">
+        <tr class="lista_cliente">
+          <a class="open-modal" value="{{$cliente->id}}">
+              <div class="row">
+          <td>
             #{{$cliente->id}}
           </td>
 
@@ -45,7 +47,7 @@
           </td>
 
           <td id="cliente-nome-{{$cliente->id}}" >    <!-- AVATAR -->
-            <h3><strong >{{$cliente->nome}}</strong></h3>      <!-- NOME -->
+            <h3><strong  id="cliente-nome-{{$cliente->id}}">{{$cliente->nome}}</strong></h3>      <!-- NOME -->
           </td>
           <td>
             {{$cliente->email}}
@@ -60,7 +62,7 @@
 
           <td width="170">
             <div class="col-xs-2 col-sm-4 hidden-xs">
-              <a title="Ver mais detalhes" class="btn btn-xs btn-info btn-circle fa fa-search open-modal" value="{{$cliente->id}}"></a>
+              <button title="Ver mais detalhes" class="btn btn-xs btn-info btn-circle fa fa-search open-modal" value="{{$cliente->id}}"></button>
             </div>
 
             <div class="col-xs-2 col-sm-4 hidden-xs">
@@ -85,6 +87,9 @@
               <a class="btn btn-primary btn-circle btn-lg" href="{{ route('edita_cliente', ['id' => $cliente->id]) }}"><i class="fa fa-pencil"></i></a>
             </div>
           </td>
+          </div>
+        </a>
+
         </tr>
       </div>
     </div>
@@ -226,12 +231,9 @@
 $(document).ready(function(){
   var url = "/clientes";
   /*DETALHES*/
-  $('#lista_cliente').on("click", ".open-modal", function () {
-
-  var cliente_id = $(this).attr('value');
-  var cliente_nome = $("#cliente-nome-"+cliente_id).text();
-
-    console.log("cliente id:"+cliente_id);
+  $(".lista_cliente").on("click", ".open-modal", function () {
+    var cliente_id = $(this).attr('value');
+    console.log("cliente id: "+cliente_id);
 
     $.get(url + '/detalhes/' + cliente_id,function (data) {
       //success data
