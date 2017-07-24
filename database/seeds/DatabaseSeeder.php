@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,6 +13,7 @@ class DatabaseSeeder extends Seeder
   public function run()
   {
     // $this->call(UsersTableSeeder::class);
+
 
     //Usuarios padroes
     DB::table('users')->insert([
@@ -179,6 +181,25 @@ class DatabaseSeeder extends Seeder
       'password' => Hash::make('321321'),
       'permissao' => '4',
     ]);
+
+
+      DB::table('consertos')->insert([
+      'modelo' => 'modelo',
+      'defeito' => 'Tela quebrada',
+      'orcamento' => '450.00',
+      'data_entrega' => '2008-7-04',
+      'observacao' => 'O celular caiu no chão e a tela está trincada, iremos verificar os danos causados e prosseguir com os reparos',
+      'status' => 'Em andamento',
+      'prioridade' => 'Baixo',
+      'titulo' => 'iPhone 7',
+      'id_usuario' => '23',
+      'id_assistencia' => '1',
+      'id_cliente' => '1',
+      'created_at' => Carbon::now()->subDays(2),
+      'updated_at' => Carbon::now(),
+    ]);
+
+
 
 
 

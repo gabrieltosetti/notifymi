@@ -21,6 +21,10 @@ class TabelaConsertos extends Migration
             $table->date('data_entrega');
             $table->char('observacao', 255);
             $table->string('foto')->default('default.jpg');
+            $table->char('status', 15);
+            $table->char('prioridade', 10);
+            $table->char('titulo', 50);
+            
 
             $table->integer('id_usuario')->unsigned();
             $table->integer('id_assistencia')->unsigned();
