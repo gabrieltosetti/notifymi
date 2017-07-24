@@ -14,7 +14,10 @@
 @section('content')
     <div class="wrapper wrapper-content animated fadeInRight">
                 <div class="row" id="lista_cliente">
+
                     @foreach($clientes as $cliente)
+
+
                     <div class="col-xs-6 col-sm-6 col-lg-4"  id="cliente-{{$cliente->id}}">
                         <div class="contact-box">
                             <a class="open-modal" value="{{$cliente->id}}">
