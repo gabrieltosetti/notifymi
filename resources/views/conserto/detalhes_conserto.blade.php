@@ -13,7 +13,7 @@
     <link href="{{ asset('css/plugins/dataTables/datatables.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/plugins/chosen/bootstrap-chosen.css') }}" rel="stylesheet">
     <link href="{{ asset('css/plugins/bootstrap3-editable/bootstrap-editable.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/plugins/datapicker/datepicker3.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/plugins/datetimepicker/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
      <style>
         @media (min-width: 768px) {
             .dt-conserto {
@@ -159,19 +159,22 @@
                                                                     <!--STATUS-->
                                                                     <div class="form-group {{ $errors->has('status') ? 'has-error' : ''}}">
                                                                         <label class="control-label" for="atividade-status">Status</label>
-                                                                        <input type="text" class="form-control" name="status" value="{{ old('status') }}" id="atividade-status" maxlength="20">
-                                                                        <span class="help-block">{{$errors->first('status')}}</span>
+                                                                        <select class="form-control" id="atividade-status" name="status">
+                                                                                <option value="Completado">Completado</option>
+                                                                                <option value="Em andamento">Em andamento</option>
+                                                                                <option value="Cancelado">Cancelado</option>
+                                                                        </select>
                                                                     </div>
                                                                     <!--/STATUS-->
                                                                     <!--DATA INICIO-->
-                                                                    <div class="form-group" id="data-inicio">
+                                                                    <div class="form-group">
                                                                         <label>Atividade Inicio</label>
-                                                                        <div class="input-group date">
-                                                                            <span class="input-group-addon">
-                                                                                <i class="fa fa-calendar"></i>
-                                                                            </span>
-                                                                            <input type="text" class="form-control" value="22/07/2017">
+                                                                        <div class="input-group date form_datetime" data-date="1979-09-16T05:25:07Z" data-date-format="dd MM yyyy - HH:ii p" data-link-field="atividade-inicio">
+                                                                            <input class="form-control" size="16" type="text" value="" readonly>
+                                                                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                                                            <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
                                                                         </div>
+                                                                        <input type="hidden" id="atividade-inicio" value="" /><br/>
                                                                     </div>
                                                                     <!--/DATA INICIO-->
                                                                     <!--DATA FINAL-->
@@ -390,7 +393,10 @@
 <script src="{{ asset('js/plugins/chosen/chosen.jquery.min.js') }}"></script>
 <script src="{{ asset('js/plugins/bootstrap3-editable/bootstrap-editable.min.js') }}"></script>
 <!-- Data picker -->
-   <script src="{{ asset('js/plugins/datapicker/bootstrap-datepicker.js') }}"></script>
+    <script src="{{ asset('js/plugins/datapicker/bootstrap-datepicker.js') }}"></script> 
+    <script src="{{ asset('js/plugins/datetimepicker/bootstrap-datetimepicker.min.js') }}"></script>
+    <script src="{{ asset('js/plugins/datetimepicker/locales/bootstrap-datetimepicker.pt-BR.js') }}"></script>
+    <script type="text/javascript" src="bootstrap-datetimepicker.de.js" charset="UTF-8"></script>
 <script>
 
 $(document).ready(function(){
@@ -416,13 +422,21 @@ $(document).ready(function(){
         title: 'Conserto'
     });
 
-    $('#data-inicio .input-group.date').datepicker({
-        todayBtn: "linked",
-        keyboardNavigation: false,
-        forceParse: false,
-        calendarWeeks: true,
-        autoclose: true
+/*     $.fn.datetimepicker.dates['pt-BR'] = {
+        format: 'dd/mm/yyyy'
+    }; */
+
+    $('.form_datetime').datetimepicker({
+        language:  'pt-BR',
+        weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		minView: 2,
+		forceParse: 0
     });
+
     $('#data-final .input-group.date').datepicker({
         todayBtn: "linked",
         keyboardNavigation: false,
@@ -430,9 +444,6 @@ $(document).ready(function(){
         calendarWeeks: true,
         autoclose: true
     });
-/*     $('#descricao').on('shown', function(e, editable) {
-        $('.editable_large').parents('form').removeClass('form-inline');
-    }); */
 
 
 });
