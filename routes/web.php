@@ -59,6 +59,7 @@ Route::get('/cargos/novo', 'CargosController@novocargo')->name('novo_cargos');
 Route::get('/usuarios/login', 'Auth\LoginController@showLoginForm')->name('entrarusuario');
 Route::post('/usuarios/login', 'Auth\LoginController@login')->name('entrarusuario.submit');
 Route::get('/usuarios/logout', 'Auth\LoginController@logout')->name('sairusuario');
+
 //Route::get('/usuarios/home', 'UsuarioController@usuariohome')->name('usuariohome');
 Route::get('/usuarios', 'UsuarioController@lista')->name('usuarios');
 Route::get('/usuarios/novo', 'UsuarioController@novo')->name('novo_usuario');
@@ -74,3 +75,6 @@ Route::get('/consertos/detalhes', 'ConsertoController@detalhes')->name('detalhes
 Route::post('/consertos/adiciona', 'ConsertoController@adiciona')->name('novo_conserto_post');
 Route::get('/consertos/remove/{id}', 'ConsertoController@remove')->name('remove_conserto');
 Route::get('/consertos/edita/{id}', 'ConsertoController@edita')->name('edita_conserto');
+
+//assistencias
+Route::get('/assistenciascadastradas', 'AssistenciascadastradasController@lista')->name('assistenciascadastradas');
