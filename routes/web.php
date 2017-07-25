@@ -78,3 +78,4 @@ Route::get('/consertos/edita/{id}', 'ConsertoController@edita')->name('edita_con
 
 //assistencias
 Route::get('/assistenciascadastradas', 'AssistenciascadastradasController@lista')->name('assistenciascadastradas');
+Route::get('/assistenciascadastradas', 'AssistenciascadastradasController@lista')->name('edita_assistencia');

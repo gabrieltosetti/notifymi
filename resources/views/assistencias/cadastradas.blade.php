@@ -3,7 +3,9 @@
 @section('title', 'Usuários')
 
 @section('content_title', 'Lista de Clientes')
-
+@section('breadcrumbs')
+    {!! Breadcrumbs::render('assistenciascadastradas') !!}
+@endsection
 
 
 @section('css')
@@ -12,80 +14,46 @@
 @stop
 
 @section('content')
-    <div class="wrapper wrapper-content animated fadeInRight">
-                <div class="row" id="lista_assistencia">
+
+    <div>
+    </div>
+        <div class="row wrapper border-bottom white-bg page-heading">
+            <div class="col-lg-10">
+                <h2>Clients</h2>
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li>
+                        <a>App Views</a>
+                    </li>
+                    <li class="active">
+                        <strong>Clients</strong>
+                    </li>
+                </ol>
+            </div>
+            <div class="col-lg-2">
+
+            </div>
+        </div>
+        <div class="full-height-scroll">
+            <div class="table-responsive">
 
                     @foreach($assistencias as $assistencia)
+                    <table class="table table-striped table-hover">
+                        <tbody>
+                        <tr>
+                            <td class="client-avatar"><img alt="image" src="img/a2.jpg"> </td>
+                            <td><a data-toggle="tab" href="#contact-1" class="client-link">{{$assistencia->nome}}</a></td>
+                            <td> {{$assistencia->cidade}}/td>
+                            <td> {{$assistencia->bairro}},<br></td>
+                            <td> gravida@rbisit.com</td>
+                            <td class="client-status"><span class="label label-primary">Active</span></td>
+                        </tr>
 
+                        </tbody>
+                    </table>
 
-                    <div class="col-xs-6 col-sm-6 col-lg-4"  id="assistencia-{{$assistencia->id}}">
-                        <div class="contact-box">
-
-
-
-                            <a class="open-modal" value="{{$assistencia->id}}">
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <div class="text-center">
-                                            <img alt="image" class="img-circle m-t-xs img-responsive center-block" src="/media/avatars/{{$assistencia->avatar}}">
-
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-8 hidden-xs">
-                                        <h3><strong id="assistencia-nome-{{$assistencia->id}}">{{$assistencia->nome}}</strong></h3>
-
-                                        <p><i class="fa fa-map-marker"></i> {{$assistencia->cidade}}</p>
-                                        <address>
-
-                                            {{$assistencia->bairro}},<br>
-                                            {{$assistencia->rua}}, {{$assistencia->numero}}<br>
-                                            <abbr title="Celular">Cel:</abbr> {{$assistencia->celular}}
-                                        </address>
-                                    </div>
-                                    <div class="col-sm-8 text-center visible-xs-block">
-                                        <h3><strong>{{$assistencia->nome}}</strong></h3>
-                                        <p><i class="fa fa-map-marker"></i> {{$assistencia->cidade}}</p>
-
-                                        <address>
-                                            {{$assistencia->bairro}},<br>
-                                            {{$assistencia->rua}}, {{$assistencia->numero}}<br>
-                                            <abbr title="Celular">Cel:</abbr> {{$assistencia->celular}}
-                                        </address>
-
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
-
-
-
-
-                            <div class="row">
-                                <div class="col-xs-4 col-sm-4 hidden-xs">
-                                    <form class="form-deletar" value="{{$assistencia->id}}">
-                                        <button type="submit" class="btn btn-xs btn-danger">Deletar</button>
-                                    </form>
-                                </div>
-                                <div class="col-xs-8 col-sm-3 p-w-xs hidden-xs">
-                                    <a class="btn btn-xs btn-info btn-block open-modal" value="{{$assistencia->id}}">Info</a>
-                                </div>
-                                <div class="col-xs-12 col-sm-5 p-w-xs hidden-xs">
-                                    <a class="btn btn-xs btn-warning btn-block" href="{{ route('edita_assistencia', ['id' => $assistencia->id]) }}">Editar</a>
-                                </div>
-                                <!--CELULAR-->
-                                <div class="col-xs-4 col-sm-4 visible-xs-block">
-                                    <form class="form-deletar" value="{{$assistencia->id}}">
-                                        <button class="btn btn-danger btn-circle btn-lg" type="submit"><i class="fa fa-times"></i></button>
-                                    </form>
-                                </div>
-                                <div class="col-xs-8 col-sm-3 p-w-xs visible-xs-block">
-                                    <a class="btn btn-success btn-circle btn-lg open-modal" value="{{$assistencia->id}}"><i class="fa fa-search"></i></a>
-
-                                    <a class="btn btn-primary btn-circle btn-lg" href="{{ route('edita_assistencia', ['id' => $assistencia->id]) }}"><i class="fa fa-pencil"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div> <!--/col lg 4-->
                     @endforeach
                     <!--MODAL-->
                     <div class="modal inmodal" id="modal-detalhes" tabindex="-1" role="dialog" aria-hidden="true">
