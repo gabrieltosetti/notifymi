@@ -6,19 +6,13 @@ use Illuminate\Http\Request;
 use App\Cliente;
 use App\Http\Requests\ClienteRequest;
 use Illuminate\Support\Facades\Response;
-use Auth;
 
 
 class ClienteController extends Controller
 {
     public function __construct()
     {
-      if (Auth::guard()->check())
-        $auth = 'auth';
-      else
-        $auth = 'auth:admin';
-
-        $this->middleware($auth);
+        $this->middleware('auth');
     }
 
     public function lista()

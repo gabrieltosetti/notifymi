@@ -3,19 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Auth;
 
 class CargosController extends Controller
 {
-  public function __construct()
-  {
-    if (Auth::guard()->check())
-      $auth = 'auth';
-    else
-      $auth = 'auth:admin';
-
-      $this->middleware($auth);
-  }
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function listacargos()
     {
