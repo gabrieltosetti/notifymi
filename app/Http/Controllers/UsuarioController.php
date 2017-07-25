@@ -7,13 +7,20 @@ use App\Usuario;
 use App\Cargo;
 use App\Http\Requests\UsuarioRequest;
 use Illuminate\Support\Facades\Response;
+use Auth;
+
 
 class UsuarioController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+  public function __construct()
+  {
+    if (Auth::guard()->check())
+      $auth = 'auth';
+    else
+      $auth = 'auth:admin';
+
+      $this->middleware($auth);
+  }
 
     public function usuariohome()
     {

@@ -6,13 +6,19 @@ use App\Usuario;
 use Illuminate\Http\Request;
 use App\Http\Requests\ConsertoRequest;
 use Illuminate\Support\Facades\Response;
+use Auth;
 
 class ConsertoController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+  public function __construct()
+  {
+    if (Auth::guard()->check())
+    $auth = 'auth';
+    else
+    $auth = 'auth:admin';
+
+    $this->middleware($auth);
+  }
 
     public function lista()
     {
