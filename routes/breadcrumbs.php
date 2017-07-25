@@ -91,11 +91,7 @@ Breadcrumbs::register('novo_usuario', function($breadcrumbs)
     $breadcrumbs->parent('usuarios');
     $breadcrumbs->push('Novo', route('novo_usuario'));
 });
-Breadcrumbs::register('assistenciascadastradas', function($breadcrumbs)
-{
-    $breadcrumbs->parent('home');
-    $breadcrumbs->push('Assistencias', route('assistenciascadastradas'));
-});
+
 
 /*// Home > Blog
 Breadcrumbs::register('blog', function($breadcrumbs)

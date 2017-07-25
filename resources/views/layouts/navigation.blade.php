@@ -92,9 +92,7 @@
                     <ul class="nav nav-second-level collapse">
                         <li class="{{ Request::fullUrl() === route('cargos') ? 'active' : '' }}" ><a href="{{ route('cargos') }}">Cargos</a></li>
                     </ul>
-                    <ul class="nav nav-second-level collapse">
-                        <li class="{{ Request::fullUrl() === route('assistenciascadastradas') ? 'active' : '' }}" ><a href="{{ route('assistenciascadastradas') }}">Cadastradas</a></li>
-                    </ul>
+
                 </li>
                 <!-- /ASSISTENCIA -->
             </ul>
