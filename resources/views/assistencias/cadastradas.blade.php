@@ -1,11 +1,9 @@
 @extends('layouts.principal')
 
-@section('title', 'Usuários')
+@section('title', 'Assistências')
 
-@section('content_title', 'Lista de Clientes')
-@section('breadcrumbs')
-    {!! Breadcrumbs::render('assistenciascadastradas') !!}
-@endsection
+@section('content_title', 'Assistências cadastradas')
+
 
 
 @section('css')
@@ -19,18 +17,8 @@
     </div>
         <div class="row wrapper border-bottom white-bg page-heading">
             <div class="col-lg-10">
-                <h2>Clients</h2>
-                <ol class="breadcrumb">
-                    <li>
-                        <a href="index.html">Home</a>
-                    </li>
-                    <li>
-                        <a>App Views</a>
-                    </li>
-                    <li class="active">
-                        <strong>Clients</strong>
-                    </li>
-                </ol>
+                <h2>Lista de assistências cadastradas:</h2>
+
             </div>
             <div class="col-lg-2">
 
