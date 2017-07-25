@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Conserto;
 use App\Usuario;
+use App\Atividade;
+use App\Atividade_comentario;
 use Illuminate\Http\Request;
 use App\Http\Requests\ConsertoRequest;
 use Illuminate\Support\Facades\Response;
@@ -40,8 +42,14 @@ class ConsertoController extends Controller
             $usuarios = $usuarios->pluck("nome");
 
             $conserto = Conserto::find(1);
+            $atividades = Atividade::where('id_conserto', 1)->orderBy('id', 'desc')->get();
+            foreach ($atividades as $atividade)
+            {
+//$atividade->id
+                $comentarios[$atividade->id] = Atividade_comentario::where('id_atividade', $atividade->id)->orderBy('id')->get();
+            }
 
-            return view('conserto/detalhes_conserto')->with(['usuarios'=> $usuarios, 'conserto' => $conserto]);
+            return view('conserto/detalhes_conserto')->with(['usuarios'=> $usuarios, 'conserto' => $conserto, 'atividades' => $atividades, 'comentarios' => $comentarios]);
         }
 
         //rota: remove_conserto

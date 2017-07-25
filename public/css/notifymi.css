@@ -114,7 +114,10 @@ h2.editable-click:hover
 }
 
 
-
+.atividade .atividade-id
+{
+    font-size: 22px;
+}
 .lista-atividades > div
 {
     margin-top: 1px;
@@ -123,7 +126,7 @@ h2.editable-click:hover
 {
     margin-top: 0;
 }
-
+/* ---------------------- */
 .atividade.success
 {
     border-width: 1px 1px 1px 8px;
@@ -141,6 +144,10 @@ h2.editable-click:hover
 {
     border-bottom-color: #1bb394;
 }
+.atividade.success .atividade-id
+{
+    color: #1bb394;
+}
 /* ---------------------- */
 .atividade.warning
 {
@@ -151,7 +158,11 @@ h2.editable-click:hover
     padding: 10px;
     border-radius: 0;
 }
-.atividade.warning .atividade-icon
+.atividade.warning hr
+{
+    border-bottom-color: #f8ac5a;
+}
+.atividade.warning .atividade-id
 {
     color: #f8ac5a;
 }
@@ -165,7 +176,11 @@ h2.editable-click:hover
     padding: 10px;
     border-radius: 0;
 }
-.atividade.danger .atividade-icon
+.atividade.danger hr
+{
+    border-bottom-color: #ed5666;
+}
+.atividade.danger .atividade-id
 {
     color: #ed5666;
 }

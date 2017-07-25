@@ -24,7 +24,7 @@
             }
         }
 
-    </style> 
+</style> 
 
 @stop
 
@@ -210,16 +210,26 @@
                                                 <!-- //NOVA ATIVIDADE -->
 
                                                 <div class="lista-atividades">
-                                                    <!-- BLOCO DE ATIVIDADE SUCCESS v2 -->
+                                                    @foreach ($atividades as $atividade)
+                                                    <?php 
+                                                        if($atividade->status == "Completado")
+                                                        {
+                                                            $cor = "success";
+                                                        } elseif ($atividade->status == "Em andamento")
+                                                        {
+                                                            $cor = "warning";
+                                                        } else {
+                                                            $cor = "danger";
+                                                        }
+                                                    ?>
+                                                    <!-- CARD DE ATIVIDADE SUCCESS -->
                                                     <div class="row">
                                                         <div class="col-md-12">
-                                                            <div class="atividade success">
+                                                            <div class="atividade {{$cor}}">
                                                                 <div class="row">
                                                                     <div class="col-md-5 col-lg-4">
                                                                         <div class="row user-group">
-                                                                            <i class="fa fa-user fa-3x atividade-icon pull-left"></i>
-                                                                            <p class="text-success">Gabriel Tosetti</p>
-                                                                            <p>Técnico</p>
+                                                                            <p class="atividade-id">Atividade #{{$atividade->id}}</p>
                                                                         </div>
                                                                         <div class="row">
                                                                             <div class="col-xs-12">
@@ -227,19 +237,19 @@
                                                                                     <div class="form-group">
                                                                                         <label class="col-md-4 control-label">Status:</label>
                                                                                         <div class="col-md-8">
-                                                                                            <p class="form-control-static">Completado</p>
+                                                                                            <p class="form-control-static">{{$atividade->status}}</p>
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="form-group">
                                                                                         <label class="col-md-4 control-label">Iniciado:</label>
                                                                                         <div class="col-md-8">
-                                                                                            <p class="form-control-static">12.07.2014 10:10:1</p>
+                                                                                            <p class="form-control-static">{{$atividade->iniciada == null ? 'Não definida' : $atividade->iniciada->format('d/m/Y H:i')}}</p>
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="form-group">
                                                                                         <label class="col-md-4 control-label">Finalizado:</label>
                                                                                         <div class="col-md-8">
-                                                                                            <p class="form-control-static">12.07.2014 10:10:1</p>
+                                                                                            <p class="form-control-static">{{$atividade->finalizada == null ? 'Não definida' : $atividade->finalizada->format('d/m/Y H:i')}}</p>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -248,165 +258,23 @@
                                                                     </div>
                                                                     <div class="col-md-7 col-lg-8">
                                                                         <small class="text-success">Título</small><br>
-                                                                        <h3 class="m-b">Troca de tela</h3>
+                                                                        <h3 class="m-b">{{$atividade->titulo}}</h3>
                                                                         <small class="text-success">Descrição</small>
-                                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos natus eos soluta ipsa cumque repellendus nihil ducimus autem nam tenetur voluptates labore, inventore illum omnis esse rem asperiores, eveniet commodi?</p>
-                                                    
+                                                                        <p>{{$atividade->descricao}}</p>                                                    
                                                                     </div>
                                                                 </div>
                                                                 <hr class="hr-line-solid">
                                                                 <div class="row">
-                                                                    22/07/2017 22:05 - <span class="font-bold">Gabriel Tosetti</span> criou esta atividade.
-                                                                    22/07/2017 22:10 - <span class="font-bold">Gabriel Tosetti</span> alterou o status de .
+                                                                    @foreach ($comentarios[$atividade->id] as $comentario)
+                                                                    <span class="text-success">{{$comentario->created_at->format('d/m/Y H:i')}} </span>- <strong>{{$comentario->usuario->nome}}</strong> {{$comentario->status}} {{$comentario->comentario}}<br>
+                                                                    @endforeach
+                                                                   <!--  <span class="text-success">22/07/2017 22:05 </span>- <strong>Gabriel Tosetti</strong> criou esta atividade.<br> -->
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <!-- //BLOCO DE ATIVIDADE SUCCESS v2 -->
-                                                    <!-- BLOCO DE ATIVIDADE SUCCESS -->
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <div class="atividade success">
-                                                                <div class="row">
-                                                                    <div class="col-md-5 col-lg-4">
-                                                                        <div class="row user-group">
-                                                                            <i class="fa fa-user fa-3x atividade-icon pull-left"></i>
-                                                                            <p class="text-success">Gabriel Tosetti</p>
-                                                                            <p>Técnico</p>
-                                                                        </div>
-                                                                        <div class="row">
-                                                                            <div class="col-xs-12">
-                                                                                <div class="form-horizontal">
-                                                                                    <div class="form-group">
-                                                                                        <label class="col-md-4 control-label">Status:</label>
-                                                                                        <div class="col-md-8">
-                                                                                            <p class="form-control-static">Completado</p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="form-group">
-                                                                                        <label class="col-md-4 control-label">Iniciado:</label>
-                                                                                        <div class="col-md-8">
-                                                                                            <p class="form-control-static">12.07.2014 10:10:1</p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="form-group">
-                                                                                        <label class="col-md-4 control-label">Finalizado:</label>
-                                                                                        <div class="col-md-8">
-                                                                                            <p class="form-control-static">12.07.2014 10:10:1</p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-7 col-lg-8">
-                                                                        <small class="text-success">Título</small><br>
-                                                                        <h3 class="m-b">Troca de tela</h3>
-                                                                        <small class="text-success">Descrição</small>
-                                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos natus eos soluta ipsa cumque repellendus nihil ducimus autem nam tenetur voluptates labore, inventore illum omnis esse rem asperiores, eveniet commodi?</p>
-                                                    
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- //BLOCO DE ATIVIDADE SUCCESS -->
-                                                    <!-- BLOCO DE ATIVIDADE WARNING -->
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <div class="atividade warning">
-                                                                <div class="row">
-                                                                    <div class="col-md-5 col-lg-4">
-                                                                        <div class="row user-group">
-                                                                            <i class="fa fa-user fa-3x atividade-icon pull-left"></i>
-                                                                            <p class="text-success">Gabriel Tosetti</p>
-                                                                            <p>Técnico</p>
-                                                                        </div>
-                                                                        <div class="row">
-                                                                            <div class="col-xs-12">
-                                                                                <div class="form-horizontal">
-                                                                                    <div class="form-group">
-                                                                                        <label class="col-md-4 control-label">Status:</label>
-                                                                                        <div class="col-md-8">
-                                                                                            <p class="form-control-static">Completado</p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="form-group">
-                                                                                        <label class="col-md-4 control-label">Iniciado:</label>
-                                                                                        <div class="col-md-8">
-                                                                                            <p class="form-control-static">12.07.2014 10:10:1</p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="form-group">
-                                                                                        <label class="col-md-4 control-label">Finalizado:</label>
-                                                                                        <div class="col-md-8">
-                                                                                            <p class="form-control-static">12.07.2014 10:10:1</p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-7 col-lg-8">
-                                                                        <small class="text-success">Título</small><br>
-                                                                        <h3 class="m-b">Troca de tela</h3>
-                                                                        <small class="text-success">Descrição</small>
-                                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos natus eos soluta ipsa cumque repellendus nihil ducimus autem nam tenetur voluptates labore, inventore illum omnis esse rem asperiores, eveniet commodi?</p>
-                                                    
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- //BLOCO DE ATIVIDADE WARNING -->
-                                                    <!-- BLOCO DE ATIVIDADE DANGER -->
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <div class="atividade danger">
-                                                                <div class="row">
-                                                                    <div class="col-md-5 col-lg-4">
-                                                                        <div class="row user-group">
-                                                                            <i class="fa fa-user fa-3x atividade-icon pull-left"></i>
-                                                                            <p class="text-success">Gabriel Tosetti</p>
-                                                                            <p>Técnico</p>
-                                                                        </div>
-                                                                        <div class="row">
-                                                                            <div class="col-xs-12">
-                                                                                <div class="form-horizontal">
-                                                                                    <div class="form-group">
-                                                                                        <label class="col-md-4 control-label">Status:</label>
-                                                                                        <div class="col-md-8">
-                                                                                            <p class="form-control-static">Completado</p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="form-group">
-                                                                                        <label class="col-md-4 control-label">Iniciado:</label>
-                                                                                        <div class="col-md-8">
-                                                                                            <p class="form-control-static">12.07.2014 10:10:1</p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="form-group">
-                                                                                        <label class="col-md-4 control-label">Finalizado:</label>
-                                                                                        <div class="col-md-8">
-                                                                                            <p class="form-control-static">12.07.2014 10:10:1</p>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-7 col-lg-8">
-                                                                        <small class="text-success">Título</small><br>
-                                                                        <h3 class="m-b">Troca de tela</h3>
-                                                                        <small class="text-success">Descrição</small>
-                                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos natus eos soluta ipsa cumque repellendus nihil ducimus autem nam tenetur voluptates labore, inventore illum omnis esse rem asperiores, eveniet commodi?</p>
-                                                    
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- //BLOCO DE ATIVIDADE DANGER -->
+                                                    <!-- //CARD DE ATIVIDADE SUCCESS -->
+                                                    @endforeach
                                                 </div>                                                            
                                             </div>
                                             <!-- /TAB 1 -->

@@ -199,6 +199,64 @@ class DatabaseSeeder extends Seeder
       'updated_at' => Carbon::now(),
     ]);
 
+      DB::table('atividades')->insert([
+      'status' => 'Em andamento',
+      'iniciada' => Carbon::now()->subDays(1),
+      'finalizada' => null,
+      'titulo' => 'Troca de tela',
+      'descricao' => 'Estamos iniciando os reparos necessários para o conserto da tela. Assim que a peça chegar poderemos abrir e verificar o interior do aparelho por eventuais danos.',
+      'id_usuario' => '24',
+      'id_conserto' => '1',  
+      'created_at' => Carbon::now()->subDays(1),
+      'updated_at' => Carbon::now(),
+    ]);
+      DB::table('atividades')->insert([
+      'status' => 'Cancelado',
+      'iniciada' => Carbon::now()->subDays(2),
+      'finalizada' => null,
+      'titulo' => 'Troca do botão',
+      'descricao' => 'Botão de volumes apresentando mal funcionamento.',
+      'id_usuario' => '24',
+      'id_conserto' => '1',  
+      'created_at' => Carbon::now()->subDays(2),
+      'updated_at' => Carbon::now(),
+    ]);
+
+      DB::table('atividades_comentarios')->insert([
+      'status' => 'iniciou esta atividade.',
+      'comentario' => null,
+      'id_usuario' => '24',
+      'id_atividade' => '1',  
+      'created_at' => Carbon::now()->subDays(1),
+      'updated_at' => Carbon::now(),
+    ]);
+      DB::table('atividades_comentarios')->insert([
+      'status' => 'comentou: ',
+      'comentario' => 'Dificuldades em colar a nova tela.',
+      'id_usuario' => '24',
+      'id_atividade' => '1',  
+      'created_at' => Carbon::now()->subDays(1),
+      'updated_at' => Carbon::now(),
+    ]);
+
+
+    DB::table('atividades_comentarios')->insert([
+      'status' => 'iniciou esta atividade.',
+      'comentario' => null,
+      'id_usuario' => '24',
+      'id_atividade' => '2',  
+      'created_at' => Carbon::now()->subDays(2),
+      'updated_at' => Carbon::now(),
+    ]);
+      DB::table('atividades_comentarios')->insert([
+      'status' => 'comentou: ',
+      'comentario' => 'Botão apenas mal encaixado não sendo necessária a troca.',
+      'id_usuario' => '24',
+      'id_atividade' => '2',  
+      'created_at' => Carbon::now()->subDays(1),
+      'updated_at' => Carbon::now(),
+    ]);
+
 
 
 
