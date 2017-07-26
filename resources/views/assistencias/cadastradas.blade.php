@@ -22,6 +22,7 @@
       <tr>
         <th>ID</th>
         <th>Nome</th>
+        <th>Especialidade</th>
         <th>Email de contato</th>
         <th>Telefone</th>
         <th>Telefone 2</th>
@@ -45,7 +46,9 @@
               <td id="assistencia-nome-{{$assistencia->id}}" >
                 <h3><strong  id="assistencia-nome-{{$assistencia->id}}">{{$assistencia->nome}}</strong></h3>      <!-- NOME -->
               </td>
-
+              <td>
+                {{$assistencia->especialidade}}       <!--  Email-->
+              </td>
               <td>
                 {{$assistencia->email}}       <!--  Email-->
               </td>
@@ -135,6 +138,14 @@
                     <label class="col-sm-3 col-xs-12 control-label">Tel 2</label>
                     <div class="col-sm-9">
                     <p class="form-control-static" id="modal-tel2"></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-6">
+                  <div class="form-group">
+                    <label class="col-sm-3 col-xs-12 control-label">Especialidade</label>
+                    <div class="col-sm-9">
+                    <p class="form-control-static" id="modal-especialidade"></p>
                     </div>
                   </div>
                 </div>
@@ -236,6 +247,7 @@ $(document).ready(function(){
       //success data
       console.log(data);
       $('#modal-titulo').text(data.nome);
+      $('#modal-especialidade').text(data.especialidade);
       $('#modal-email').text(data.email);
       $('#modal-site').text(data.site);
       $('#modal-tel1').text(data.telefone1);

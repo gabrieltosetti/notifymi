@@ -19,6 +19,7 @@ class TabelaAssistencias extends Migration
             $table->char('nome', 50);
             $table->char('descricao', 255);
             $table->char('email', 50)->unique();
+            $table->char('especialidade', 50);
             $table->char('site', 30);
             $table->char('cnpj', 18)->unique(); //71.641.243/0001-57
             $table->char('telefone1', 13); //(19)9999-9999
