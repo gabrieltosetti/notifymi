@@ -10,7 +10,6 @@
 
 @section('css')
     <meta name="_token" content="{{ csrf_token() }}" />
-    <link href="{{ asset('css/plugins/dataTables/datatables.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/plugins/chosen/bootstrap-chosen.css') }}" rel="stylesheet">
     <link href="{{ asset('css/plugins/bootstrap3-editable/bootstrap-editable.css') }}" rel="stylesheet">
     <link href="{{ asset('css/plugins/datetimepicker/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
@@ -147,70 +146,96 @@
                                         <div class="tab-content">
                                             <!-- TAB 1 -->
                                             <div class="tab-pane active" id="tab-1">
-                                                <h3>Nova atividade</h3>
-                                                <!-- NOVA ATIVIDADE -->
-                                                <div class="chat-form m-b">
-                                                    <img alt="usuário" class="img-circle pull-left" src="/media/avatars/default.jpg">
-                                                    <div class="media-body">
-                                                        <form role="form">
-                                                            <h4 class="m-b-sm">Gabriel Tosetti</h4>
-                                                            <div class="row">
-                                                                <div class="col-sm-5">
-                                                                    <!--STATUS-->
-                                                                    <div class="form-group {{ $errors->has('status') ? 'has-error' : ''}}">
-                                                                        <label class="control-label" for="atividade-status">Status</label>
-                                                                        <select class="form-control" id="atividade-status" name="status">
-                                                                                <option value="Completado">Completado</option>
-                                                                                <option value="Em andamento">Em andamento</option>
-                                                                                <option value="Cancelado">Cancelado</option>
-                                                                        </select>
-                                                                    </div>
-                                                                    <!--/STATUS-->
-                                                                    <!--DATA INICIO-->
-                                                                    <div class="form-group">
-                                                                        <label>Atividade Inicio</label>
-                                                                        <div class="input-group date form_datetime" data-date="1979-09-16T05:25:07Z" data-date-format="dd MM yyyy - HH:ii p" data-link-field="atividade-inicio">
-                                                                            <input class="form-control" size="16" type="text" value="" readonly>
-                                                                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-                                                                            <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
-                                                                        </div>
-                                                                        <input type="hidden" id="atividade-inicio" value="" /><br/>
-                                                                    </div>
-                                                                    <!--/DATA INICIO-->
-                                                                    <!--DATA FINAL-->
-                                                                    <div class="form-group" id="data-final">
-                                                                        <label>Atividade Final</label>
-                                                                        <div class="input-group date">
-                                                                            <span class="input-group-addon">
-                                                                                <i class="fa fa-calendar"></i>
-                                                                            </span>
-                                                                            <input type="text" class="form-control" value="22/07/2017">
-                                                                        </div>
-                                                                    </div>
-                                                                    <!--/DATA FINAL-->
-                                                                </div>
-                                                                <div class="col-sm-7">
-                                                                    <!--TITULO-->
-                                                                    <div class="form-group {{ $errors->has('titulo') ? 'has-error' : ''}}">
-                                                                        <label class="control-label" for="atividade-titulo">Título</label>
-                                                                        <input type="text" class="form-control" name="titulo" value="{{ old('titulo') }}" id="atividade-titulo" maxlength="20">
-                                                                        <span class="help-block">{{$errors->first('titulo')}}</span>
-                                                                    </div>
-                                                                    <!--/TITULO-->
-                                                                    <div class="form-group">
-                                                                        <label class="control-label" for="atividade-mensagem">Mensagem</label>
-                                                                        <textarea id="atividade-mensagem" class="form-control" placeholder="Mensagem..."></textarea>
-                                                                    </div>
-                                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="panel blank-panel">
+                                                        <!-- PANEL TABS -->
+                                                        <div class="panel-heading">
+                                                            <div class="panel-options">
+                                                                <ul class="nav nav-tabs">
+                                                                    <li class="active"><a href="#tab-nova_atividade" data-toggle="tab">Nova Atividade</a></li>
+                                                                    <li class=""><a href="#tab-editar_atividade" data-toggle="tab">Editar Atividade</a></li>
+                                                                </ul>
                                                             </div>
-                                                            
-                                                            <div class="text-right">
-                                                                <button type="submit" class="btn btn-sm btn-primary m-t-n-xs"><strong>Postar</strong></button>
+                                                        </div>
+                                                        <!-- /PANEL TABS -->
+                                                        <!-- PANEL BODY -->               
+                                                        <div class="panel-body">                                                    
+                                                            <div class="tab-content">
+                                                                <!-- TAB NOVA ATIVIDADE -->
+                                                                <div class="tab-pane active" id="tab-nova_atividade">                                                                    
+                                                                    <div class="chat-form m-b">
+                                                                        <img alt="usuário" class="img-circle pull-left" src="/media/avatars/default.jpg">
+                                                                        <div class="media-body">
+                                                                            <form role="form">
+                                                                                <h4 class="m-b-sm">Gabriel Tosetti</h4>
+                                                                                <div class="row">
+                                                                                    <div class="col-sm-5">
+                                                                                        <!--STATUS-->
+                                                                                        <div class="form-group {{ $errors->has('status') ? 'has-error' : ''}}">
+                                                                                            <label class="control-label" for="atividade-status">Status</label>
+                                                                                            <select class="form-control" id="atividade-status" name="status">
+                                                                                                    <option value="Completado">Completado</option>
+                                                                                                    <option value="Em andamento">Em andamento</option>
+                                                                                                    <option value="Cancelado">Cancelado</option>
+                                                                                            </select>
+                                                                                        </div>
+                                                                                        <!--/STATUS-->
+                                                                                        <!--DATA INICIO-->
+                                                                                        <div class="form-group">
+                                                                                            <label>Atividade Inicio</label>
+                                                                                            <div class="input-group date form_datetime" data-link-field="atividade-inicio">
+                                                                                                <input class="form-control" size="16" type="text" value="" >
+                                                                                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                                                                                <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                                                                                            </div>
+                                                                                            <input type="hidden" id="atividade-inicio" value="" />
+                                                                                        </div>
+                                                                                        <!--/DATA INICIO-->
+                                                                                        <!--DATA FINAL-->
+                                                                                        <div class="form-group">
+                                                                                            <label>Atividade Final</label>
+                                                                                            <div class="input-group date form_datetime" data-link-field="atividade-final">
+                                                                                                <input class="form-control" size="16" type="text" value="" >
+                                                                                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                                                                                <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                                                                                            </div>
+                                                                                            <input type="hidden" id="atividade-final" value="" />
+                                                                                        </div>
+                                                                                        <!--/DATA FINAL-->
+                                                                                    </div>
+                                                                                    <div class="col-sm-7">
+                                                                                        <!--TITULO-->
+                                                                                        <div class="form-group {{ $errors->has('titulo') ? 'has-error' : ''}}">
+                                                                                            <label class="control-label" for="atividade-titulo">Título</label>
+                                                                                            <input type="text" class="form-control" name="titulo" value="{{ old('titulo') }}" id="atividade-titulo" maxlength="20">
+                                                                                            <span class="help-block">{{$errors->first('titulo')}}</span>
+                                                                                        </div>
+                                                                                        <!--/TITULO-->
+                                                                                        <div class="form-group">
+                                                                                            <label class="control-label" for="atividade-mensagem">Mensagem</label>
+                                                                                            <textarea id="atividade-mensagem" class="form-control" placeholder="Mensagem..."></textarea>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                
+                                                                                <div class="text-right">
+                                                                                    <button type="submit" class="btn btn-sm btn-primary m-t-n-xs"><strong>Postar</strong></button>
+                                                                                </div>
+                                                                            </form>
+                                                                        </div>                                                                        
+                                                                    </div>                                                                    
+                                                                </div>
+                                                                <!-- /TAB NOVA ATIVIDADE -->
+                                                                <!-- TAB EDITAR ATIVIDADE -->
+                                                                <div class="tab-pane" id="tab-editar_atividade">
+                                                                </div>
+                                                                <!-- /TAB EDITAR ATIVIDADE -->
                                                             </div>
-                                                        </form>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <!-- //NOVA ATIVIDADE -->
+                                                <h3>Atividade</h3>
+                                                
 
                                                 <div class="lista-atividades">
                                                     @foreach ($atividades as $atividade)
@@ -393,7 +418,6 @@
 <script src="{{ asset('js/plugins/chosen/chosen.jquery.min.js') }}"></script>
 <script src="{{ asset('js/plugins/bootstrap3-editable/bootstrap-editable.min.js') }}"></script>
 <!-- Data picker -->
-    <script src="{{ asset('js/plugins/datapicker/bootstrap-datepicker.js') }}"></script> 
     <script src="{{ asset('js/plugins/datetimepicker/bootstrap-datetimepicker.min.js') }}"></script>
     <script src="{{ asset('js/plugins/datetimepicker/locales/bootstrap-datetimepicker.pt-BR.js') }}"></script>
     <script type="text/javascript" src="bootstrap-datetimepicker.de.js" charset="UTF-8"></script>
@@ -422,29 +446,15 @@ $(document).ready(function(){
         title: 'Conserto'
     });
 
-/*     $.fn.datetimepicker.dates['pt-BR'] = {
-        format: 'dd/mm/yyyy'
-    }; */
-
     $('.form_datetime').datetimepicker({
         language:  'pt-BR',
-        weekStart: 1,
-        todayBtn:  1,
-		autoclose: 1,
-		todayHighlight: 1,
-		startView: 2,
-		minView: 2,
-		forceParse: 0
+        format: "dd MM yyyy - hh:ii",
+        autoclose: true,
+        todayBtn: true,
+        minuteStep: 5,
+        todayHighlight: true,
+        pickerPosition: 'bottom-left'
     });
-
-    $('#data-final .input-group.date').datepicker({
-        todayBtn: "linked",
-        keyboardNavigation: false,
-        forceParse: false,
-        calendarWeeks: true,
-        autoclose: true
-    });
-
 
 });
 
