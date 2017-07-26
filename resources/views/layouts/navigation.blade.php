@@ -90,7 +90,9 @@
                 <li class="{{ Request::segment(1) === 'assistencia' ? 'active' : '' }}" >
                     <a href="#"><i class="fa fa-user-o"></i> <span class="nav-label">Assistencia</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level collapse">
-                        <li class="{{ Request::fullUrl() === route('cargos') ? 'active' : '' }}" ><a href="{{ route('cargos') }}">Cargos</a></li>
+                        <li class="{{ Request::fullUrl() === route('lista_cargos') ? 'active' : '' }}" ><a href="{{ route('lista_cargos') }}">Cargos</a></li>
+                        <li class="{{ Request::fullUrl() === route('lista_assistencia') ? 'active' : '' }}" ><a href="{{ route('lista_assistencia') }}"> Lista</a></li>
+
                     </ul>
 
                 </li>

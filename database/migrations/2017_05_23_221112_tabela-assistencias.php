@@ -15,6 +15,7 @@ class TabelaAssistencias extends Migration
     {
         Schema::create('assistencias', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('avatar')->default('default.jpg');
             $table->char('nome', 50);
             $table->char('descricao', 255);
             $table->char('email', 50)->unique();

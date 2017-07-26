@@ -16,19 +16,20 @@ class Assistencia extends Model
   * @var array
   */
   protected $fillable = [
-      'nome',
-      'rg',
-      'cpf',
-      'cidade',
-      'telefone',
-      'celular',
-      'cidade',
-      'bairro',
-      'rua',
-      'numero',
-      'complemento',
-      'email',
-      'senha',
+    'nome',
+    'descricao',
+    'email',
+    'site',
+    'cnpj',
+    'complemento',
+    'telefone1',
+    'telefone2',
+    'celular',
+    'cidade',
+    'bairro',
+    'rua',
+    'numero',
+
   ];
 
   protected $guarded = ['id'];
@@ -39,11 +40,8 @@ class Assistencia extends Model
   * @var array
   */
   protected $hidden = [
-      'remember_token',
+    'remember_token',
   ];
 
-    public function cargos()
-    {
-        return $this->belongsTo('App\Cargo');
-    }
+
 }

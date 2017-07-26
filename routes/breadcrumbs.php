@@ -36,10 +36,15 @@ Breadcrumbs::register('detalhes_conserto', function($breadcrumbs)
 });
 
 //Home>Cargos
-Breadcrumbs::register('lista_cargos', function($breadcrumbs)
+Breadcrumbs::register('assistencia', function($breadcrumbs)
 {
     $breadcrumbs->parent('home');
-    $breadcrumbs->push('Cargos', route('cargos'));
+    $breadcrumbs->push('Assistencia', route('novo_cargos'));
+});
+Breadcrumbs::register('lista_cargos', function($breadcrumbs)
+{
+    $breadcrumbs->parent('assistencia');
+    $breadcrumbs->push('Lista de Cargos', route('lista_cargos'));
 });
 
 //Home>Cargos>Novo
@@ -90,6 +95,8 @@ Breadcrumbs::register('novo_usuario', function($breadcrumbs)
     $breadcrumbs->parent('usuarios');
     $breadcrumbs->push('Novo', route('novo_usuario'));
 });
+
+
 
 
 /*// Home > Blog

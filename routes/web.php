@@ -37,6 +37,11 @@ Route::get('/admin/logout', 'Auth\AdminLoginController@logout')->name('sairadmin
 Route::get('/perfil', 'ProfileController@perfil')->name('perfil');
 Route::post('/perfil', 'ProfileController@mudaravatar')->name('perfil_post');
 
+//assistencias
+Route::get('/assistencias', 'AssistenciaController@lista')->name('lista_assistencia');
+Route::get('/assistencias/edita', 'AssistenciaController@lista')->name('edita_assistencia');
+Route::get('/assistencias/detalhes/{id?}', 'AssistenciaController@detalhes')->name('detalhes_assistencia');
+
 //Cliente
 Route::get('/clientes/login', 'LoginController@logincliente')->name('entrarcliente');
 Route::get('/clientes', 'ClienteController@lista')->name('clientes');
@@ -52,7 +57,7 @@ Route::get('/permissoes', 'PermissoesController@lista')->name('permissoes');
 Route::get('/permissoes/novo', 'PermissoesController@novo')->name('novo_permissoes');
 
 //cargos
-Route::get('/cargos', 'CargosController@listacargos')->name('cargos');
+Route::get('/lista_cargos', 'CargosController@listacargos')->name('lista_cargos');
 Route::get('/cargos/novo', 'CargosController@novocargo')->name('novo_cargos');
 
 //usuarios
@@ -75,7 +80,3 @@ Route::get('/consertos/detalhes', 'ConsertoController@detalhes')->name('detalhes
 Route::post('/consertos/adiciona', 'ConsertoController@adiciona')->name('novo_conserto_post');
 Route::get('/consertos/remove/{id}', 'ConsertoController@remove')->name('remove_conserto');
 Route::get('/consertos/edita/{id}', 'ConsertoController@edita')->name('edita_conserto');
-
-//assistencias
-Route::get('/assistenciascadastradas', 'AssistenciascadastradasController@lista')->name('assistenciascadastradas');
-Route::get('/assistenciascadastradas', 'AssistenciascadastradasController@lista')->name('edita_assistencia');
