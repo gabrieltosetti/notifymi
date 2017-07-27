@@ -190,9 +190,9 @@ placeholder="Procurar na lista">
                   </div>
                 </div>
                 <div class="form-group">
-
+                  <label class="col-sm-3 col-xs-12 control-label">Maps:</label>
                   <div class="col-sm-9">  <!-- inserir maps aqui -->
-                    <a class="btn btn-info fa fa-map-marker sign-bttn" onclick="window.open('https://www.google.com.br/maps/place/ {{$assistencia->cidade}} {{$assistencia->bairro}} {{$assistencia->rua}} {{$assistencia->numero}}')" href="#">Abrir no Maps</a>
+                    <a class="btn btn-w-m btn-success fa fa-map-marker" onclick="window.open('https://www.google.com.br/maps/place/ {{$assistencia->cidade}} {{$assistencia->bairro}} {{$assistencia->rua}} {{$assistencia->numero}}')" href="#">Abrir no Maps</a>
                   </div>
                 </div>
               </div>
