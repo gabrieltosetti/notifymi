@@ -16,24 +16,24 @@ class DatabaseSeeder extends Seeder
 
 
     //Usuarios padroes
-    DB::table('users')->insert([
-      'name' => 'Matheus Luz',
-      'email' => 'matheusluz@gmail.com',
-      'password' => Hash::make('123'),
-      'permissao' =>'4'
-    ]);
-    DB::table('users')->insert([
-      'name' => 'Gabriel Tosetti',
-      'email' => 'gt@notify.com',
-      'password' => Hash::make('123'),
-      'permissao' =>'4'
-    ]);
-    DB::table('users')->insert([
-      'name' => 'Rafael Bella',
-      'email' => 'rb@notify.com',
-      'password' => Hash::make('123'),
-      'permissao' =>'4'
-    ]);
+    // DB::table('users')->insert([
+    //   'name' => 'Matheus Luz',
+    //   'email' => 'matheusluz@gmail.com',
+    //   'password' => Hash::make('123'),
+    //   'permissao' =>'4'
+    // ]);
+    // DB::table('users')->insert([
+    //   'name' => 'Gabriel Tosetti',
+    //   'email' => 'gt@notify.com',
+    //   'password' => Hash::make('123'),
+    //   'permissao' =>'4'
+    // ]);
+    // DB::table('users')->insert([
+    //   'name' => 'Rafael Bella',
+    //   'email' => 'rb@notify.com',
+    //   'password' => Hash::make('123'),
+    //   'permissao' =>'4'
+    // ]);
 
     //Assistencia Teste
 
@@ -41,6 +41,7 @@ class DatabaseSeeder extends Seeder
       'nome' => 'AssisTeste',
       'descricao' => 'Assistencia dos Testes',
       'email' => 'suporte@assisteste.com',
+      'especialidade' => 'Profissional na Assistencia de Testes',
       'site' => 'www.assisteste.com.br',
       'cnpj' => '60.335.977/0001-91',
       'telefone1' => '(19)3232-3232',
@@ -90,11 +91,14 @@ class DatabaseSeeder extends Seeder
     ]);
 
 
-    //100 Usuarios de teste
-    factory(App\Usuario::class, 20)->create();
+    //20 Assistencias de teste
+    factory(App\Assistencia::class, 20)->create();
 
-    //100 Clientes de teste
-    factory(App\Cliente::class, 20)->create();
+    //50 Usuarios de teste
+    factory(App\Usuario::class, 50)->create();
+
+    //50 Clientes de teste
+    factory(App\Cliente::class, 50)->create();
 
 
 
@@ -128,7 +132,7 @@ class DatabaseSeeder extends Seeder
       'bairro' => 'Vila dos Testes',
       'rua' => 'Rua dos Testes',
       'numero' => '969',
-      'permissao' => '4',
+      'permissao' => '6',
       'password' => Hash::make('123'),
       'id_cargo' => '1',
       'id_assistencia' => '1',
@@ -146,7 +150,7 @@ class DatabaseSeeder extends Seeder
       'bairro' => 'Vila dos Testes',
       'rua' => 'Rua dos Testes',
       'numero' => '969',
-      'permissao' => '4',
+      'permissao' => '6',
       'password' => Hash::make('123'),
       'id_cargo' => '1',
       'id_assistencia' => '1',
@@ -164,7 +168,7 @@ class DatabaseSeeder extends Seeder
       'bairro' => 'Vila dos Testes',
       'rua' => 'Rua dos Testes',
       'numero' => '969',
-      'permissao' => '4',
+      'permissao' => '6',
       'password' => Hash::make('123'),
       'id_cargo' => '1',
       'id_assistencia' => '1',
@@ -179,7 +183,7 @@ class DatabaseSeeder extends Seeder
       'name' => 'notify',
       'email' => 'notify@mi.com',
       'password' => Hash::make('321321'),
-      'permissao' => '4',
+      'permissao' => '6',
     ]);
 
 
@@ -206,7 +210,7 @@ class DatabaseSeeder extends Seeder
       'titulo' => 'Troca de tela',
       'descricao' => 'Estamos iniciando os reparos necessários para o conserto da tela. Assim que a peça chegar poderemos abrir e verificar o interior do aparelho por eventuais danos.',
       'id_usuario' => '24',
-      'id_conserto' => '1',  
+      'id_conserto' => '1',
       'created_at' => Carbon::now()->subDays(1),
       'updated_at' => Carbon::now(),
     ]);
@@ -217,7 +221,7 @@ class DatabaseSeeder extends Seeder
       'titulo' => 'Troca do botão',
       'descricao' => 'Botão de volumes apresentando mal funcionamento.',
       'id_usuario' => '24',
-      'id_conserto' => '1',  
+      'id_conserto' => '1',
       'created_at' => Carbon::now()->subDays(2),
       'updated_at' => Carbon::now(),
     ]);
@@ -226,7 +230,7 @@ class DatabaseSeeder extends Seeder
       'status' => 'iniciou esta atividade.',
       'comentario' => null,
       'id_usuario' => '24',
-      'id_atividade' => '1',  
+      'id_atividade' => '1',
       'created_at' => Carbon::now()->subDays(1),
       'updated_at' => Carbon::now(),
     ]);
@@ -234,7 +238,7 @@ class DatabaseSeeder extends Seeder
       'status' => 'comentou: ',
       'comentario' => 'Dificuldades em colar a nova tela.',
       'id_usuario' => '24',
-      'id_atividade' => '1',  
+      'id_atividade' => '1',
       'created_at' => Carbon::now()->subDays(1),
       'updated_at' => Carbon::now(),
     ]);
@@ -244,7 +248,7 @@ class DatabaseSeeder extends Seeder
       'status' => 'iniciou esta atividade.',
       'comentario' => null,
       'id_usuario' => '24',
-      'id_atividade' => '2',  
+      'id_atividade' => '2',
       'created_at' => Carbon::now()->subDays(2),
       'updated_at' => Carbon::now(),
     ]);
@@ -252,7 +256,7 @@ class DatabaseSeeder extends Seeder
       'status' => 'comentou: ',
       'comentario' => 'Botão apenas mal encaixado não sendo necessária a troca.',
       'id_usuario' => '24',
-      'id_atividade' => '2',  
+      'id_atividade' => '2',
       'created_at' => Carbon::now()->subDays(1),
       'updated_at' => Carbon::now(),
     ]);

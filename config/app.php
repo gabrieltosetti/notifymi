@@ -14,6 +14,9 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
+    //idioma do faker para números de telefone
+    'faker_locale' => 'pt_BR',
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment
