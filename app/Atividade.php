@@ -22,7 +22,7 @@ class Atividade extends Model
         'titulo',
         'descricao',
         'id_usuario',
-        'id_conserto',
+        'id_conserto'
     ];
 
     protected $guarded = ['id'];
@@ -34,7 +34,7 @@ class Atividade extends Model
     * @var array
     */
     protected $hidden = [
-        'remember_token',
+        'remember_token'
     ];
 
     public function usuario()

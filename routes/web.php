@@ -80,3 +80,4 @@ Route::get('/consertos/detalhes', 'ConsertoController@detalhes')->name('detalhes
 Route::post('/consertos/adiciona', 'ConsertoController@adiciona')->name('novo_conserto_post');
 Route::get('/consertos/remove/{id}', 'ConsertoController@remove')->name('remove_conserto');
 Route::get('/consertos/edita/{id}', 'ConsertoController@edita')->name('edita_conserto');
+Route::post('/consertos/atividade/nova', 'ConsertoController@nova_atividade')->name('nova_atividade');

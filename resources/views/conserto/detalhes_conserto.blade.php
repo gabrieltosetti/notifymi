@@ -13,6 +13,7 @@
     <link href="{{ asset('css/plugins/chosen/bootstrap-chosen.css') }}" rel="stylesheet">
     <link href="{{ asset('css/plugins/bootstrap3-editable/bootstrap-editable.css') }}" rel="stylesheet">
     <link href="{{ asset('css/plugins/datetimepicker/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
+    <meta name="_token" content="{{ csrf_token() }}" />
      <style>
         @media (min-width: 768px) {
             .dt-conserto {
@@ -166,7 +167,7 @@
                                                                     <div class="chat-form m-b">
                                                                         <img alt="usuário" class="img-circle pull-left" src="/media/avatars/default.jpg">
                                                                         <div class="media-body">
-                                                                            <form role="form">
+                                                                            <form role="form" method="POST" id="atividade-nova">
                                                                                 <h4 class="m-b-sm">Gabriel Tosetti</h4>
                                                                                 <div class="row">
                                                                                     <div class="col-sm-5">
@@ -213,13 +214,13 @@
                                                                                         <!--/TITULO-->
                                                                                         <div class="form-group">
                                                                                             <label class="control-label" for="atividade-mensagem">Mensagem</label>
-                                                                                            <textarea id="atividade-mensagem" class="form-control" placeholder="Mensagem..."></textarea>
+                                                                                            <textarea id="atividade-descricao" class="form-control" placeholder="Mensagem..."></textarea>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
                                                                                 
                                                                                 <div class="text-right">
-                                                                                    <button type="submit" class="btn btn-sm btn-primary m-t-n-xs"><strong>Postar</strong></button>
+                                                                                    <button type="submit" class="btn btn-sm btn-primary m-t-n-xs"><strong>Criar</strong></button>
                                                                                 </div>
                                                                             </form>
                                                                         </div>                                                                        
@@ -420,7 +421,6 @@
 <!-- Data picker -->
     <script src="{{ asset('js/plugins/datetimepicker/bootstrap-datetimepicker.min.js') }}"></script>
     <script src="{{ asset('js/plugins/datetimepicker/locales/bootstrap-datetimepicker.pt-BR.js') }}"></script>
-    <script type="text/javascript" src="bootstrap-datetimepicker.de.js" charset="UTF-8"></script>
 <script>
 
 $(document).ready(function(){
@@ -456,7 +456,94 @@ $(document).ready(function(){
         pickerPosition: 'bottom-left'
     });
 
-});
+    $('#atividade-nova').on("submit", function (e) {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            }
+        });
+        var formData = {
+            status: $('#atividade-status').val(),
+            iniciada: $('#atividade-inicio').val(),
+            finalizada: $('#atividade-final').val(),
+            titulo: $('#atividade-titulo').val(),
+            descricao: $('#atividade-descricao').val(),
+            id_conserto: "{{$conserto->id}}",
+            id_usuario: "{{ Auth::user()->id }}"
+        }
+        $.ajax({
+            type: "POST",
+            url: "{{route('nova_atividade')}}",
+            data: formData,
+            dataType: 'json',
+            success: function (data) {
+                console.log(data);
+                if (data.status == "Completado")
+                    {cor = "success"}
+                else if(data.status == "Em andamento")
+                    {cor = "warning"}
+                else
+                    {cor = "danger"}
+                    
+                card=                                    '<div class="row">';
+                card+=                                        '<div class="col-md-12">';
+                card+=                                            '<div class="atividade '+cor+'">';//cor
+                card+=                                                '<div class="row">';
+                card+=                                                    '<div class="col-md-5 col-lg-4">';
+                card+=                                                        '<div class="row user-group">';
+                card+=                                                            '<p class="atividade-id">Atividade #'+data.id+'</p>';//id
+                card+=                                                        '</div>';
+                card+=                                                        '<div class="row">';
+                card+=                                                           ' <div class="col-xs-12">';
+                card+=                                                                '<div class="form-horizontal">';
+                card+=                                                                   ' <div class="form-group">';
+                card+=                                                                        '<label class="col-md-4 control-label">Status:</label>';
+                card+=                                                                        '<div class="col-md-8">';
+                card+=                                                                            '<p class="form-control-static">'+data.status+'</p>';//status
+                card+=                                                                        '</div>';
+                card+=                                                                    '</div>';
+                card+=                                                                    '<div class="form-group">';
+                card+=                                                                        '<label class="col-md-4 control-label">Iniciado:</label>';
+                card+=                                                                        '<div class="col-md-8">';
+                card+=                                                                            '<p class="form-control-static">'+data.iniciada+'</p>';//iniciado
+                card+=                                                                        '</div>';
+                card+=                                                                    '</div>';
+                card+=                                                                    '<div class="form-group">';
+                card+=                                                                        '<label class="col-md-4 control-label">Finalizado:</label>';
+                card+=                                                                        '<div class="col-md-8">';
+                card+=                                                                            '<p class="form-control-static">'+data.finalizada+'</p>';//finalizada
+                card+=                                                                        '</div>';
+                card+=                                                                    '</div>';
+                card+=                                                                '</div>';
+                card+=                                                            '</div>';
+                card+=                                                        '</div>';
+                card+=                                                    '</div>';
+                card+=                                                    '<div class="col-md-7 col-lg-8">';
+                card+=                                                        '<small class="text-success">Título</small><br>';
+                card+=                                                        '<h3 class="m-b">'+data.titulo+'</h3>';//titulo
+                card+=                                                        '<small class="text-success">Descrição</small>';
+                card+=                                                        '<p>'+data.descricao+'</p>';  //descricao                                            
+                card+=                                                    '</div>';
+                card+=                                                '</div>';
+                card+=                                                '<hr class="hr-line-solid">';
+                card+=                                                '<div class="row">';
+                card+=                                                    '<span class="text-success">22/07/2017 22:05 </span>- <strong>Gabriel Tosetti</strong> criou esta atividade.<br>';
+                card+=                                                '</div>';
+                card+=                                            '</div>';
+                card+=                                        '</div>';
+                card+=                                    '</div>';
+                $(".lista-atividades").prepend(card);
+            },
+            error: function (data) {
+                console.log('Error:', data);
+            }
+        });
+        e.preventDefault();  
+    });
+    
+
+}); /* / DOC READY */
+
 
  function iniciarMultiUsuario(){
     var nomes = <?php echo json_encode($usuarios); ?>;
