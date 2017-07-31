@@ -18,7 +18,8 @@
 @stop
 
 @section('content')
-<div class="ibox-content">
+<div class="ibox float-e-margins">
+<div class="ibox-content" style=" width: 100%; height: 100%;">
 <input type="text" class="form-control input-sm m-b-xs" id="filtro"
 placeholder="Procurar na lista">
 
@@ -84,7 +85,7 @@ placeholder="Procurar na lista">
               <div class="col-xs-8 col-sm-3 p-w-xs visible-xs-block">
                 <a class="btn btn-success btn-circle btn-lg open-modal"> "><i class="fa fa-search" value="{{$assistencia->id}}"></i></a>
 
-                <a class="btn btn-primary btn-circle btn-lg" href="{{ route('edita_assistencia', ['id' => $assistencia->id]) }}"><i class="fa fa-pencil"></i></a>
+                <a class="btn btn-primary btn-circle btn-lg" data-toggle="popover" data-placement="auto left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." href="{{ route('edita_assistencia', ['id' => $assistencia->id]) }}"><i class="fa fa-pencil"></i></a>
               </div>
             </td>
           </div>
@@ -93,6 +94,7 @@ placeholder="Procurar na lista">
       </tr>
     </div>
   </div>
+    </div>
   @endforeach
   <!--MODAL-->
   <div class="modal inmodal" id="modal-detalhes" tabindex="-1" role="dialog" aria-hidden="true">
