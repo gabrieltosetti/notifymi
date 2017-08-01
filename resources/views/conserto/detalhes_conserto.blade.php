@@ -24,7 +24,7 @@
             }
         }
 
-</style> 
+</style>
 
 @stop
 
@@ -32,7 +32,7 @@
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
             <div class="col-sm-3">
-    <!-- 
+    <!--
         PAINEL ESQUERDO
         -->
                 <!-- IMAGEM -->
@@ -89,7 +89,7 @@
                     <select id="select-copia" data-placeholder="Adicionar pessoas..." class="chosen-select" multiple>
                     </select>
                 </div>
-    <!-- 
+    <!--
         /PAINEL ESQUERDO
         -->
             </div>
@@ -142,8 +142,8 @@
                                         </div>
                                     </div>
                                     <!-- /PANEL TABS -->
-                                    <!-- PANEL BODY -->               
-                                    <div class="panel-body">                                                    
+                                    <!-- PANEL BODY -->
+                                    <div class="panel-body">
                                         <div class="tab-content">
                                             <!-- TAB 1 -->
                                             <div class="tab-pane active" id="tab-1">
@@ -159,11 +159,11 @@
                                                             </div>
                                                         </div>
                                                         <!-- /PANEL TABS -->
-                                                        <!-- PANEL BODY -->               
-                                                        <div class="panel-body">                                                    
+                                                        <!-- PANEL BODY -->
+                                                        <div class="panel-body">
                                                             <div class="tab-content">
                                                                 <!-- TAB NOVA ATIVIDADE -->
-                                                                <div class="tab-pane active" id="tab-nova_atividade">                                                                    
+                                                                <div class="tab-pane active" id="tab-nova_atividade">
                                                                     <div class="chat-form m-b">
                                                                         <img alt="usuário" class="img-circle pull-left" src="/media/avatars/default.jpg">
                                                                         <div class="media-body">
@@ -218,13 +218,13 @@
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
-                                                                                
+
                                                                                 <div class="text-right">
                                                                                     <button type="submit" class="btn btn-sm btn-primary m-t-n-xs"><strong>Criar</strong></button>
                                                                                 </div>
                                                                             </form>
-                                                                        </div>                                                                        
-                                                                    </div>                                                                    
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                                 <!-- /TAB NOVA ATIVIDADE -->
                                                                 <!-- TAB EDITAR ATIVIDADE -->
@@ -236,11 +236,11 @@
                                                     </div>
                                                 </div>
                                                 <h3>Atividade</h3>
-                                                
+
 
                                                 <div class="lista-atividades">
                                                     @foreach ($atividades as $atividade)
-                                                    <?php 
+                                                    <?php
                                                         if($atividade->status == "Completado")
                                                         {
                                                             $cor = "success";
@@ -289,7 +289,7 @@
                                                                         <small class="text-success">Título</small><br>
                                                                         <h3 class="m-b">{{$atividade->titulo}}</h3>
                                                                         <small class="text-success">Descrição</small>
-                                                                        <p>{{$atividade->descricao}}</p>                                                    
+                                                                        <p>{{$atividade->descricao}}</p>
                                                                     </div>
                                                                 </div>
                                                                 <hr class="hr-line-solid">
@@ -304,7 +304,7 @@
                                                     </div>
                                                     <!-- //CARD DE ATIVIDADE SUCCESS -->
                                                     @endforeach
-                                                </div>                                                            
+                                                </div>
                                             </div>
                                             <!-- /TAB 1 -->
                                             <!-- TAB 2 -->
@@ -397,13 +397,13 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                            
+
                                             </div>
                                             <!-- /TAB 2 -->
 
-                                        </div> <!-- /TABS CONTENT -->                                                  
+                                        </div> <!-- /TABS CONTENT -->
                                     </div>
-                                    <!-- /PANEL BODY -->                                             
+                                    <!-- /PANEL BODY -->
                                 </div><!-- /BLANK PANEL -->
                             </div> <!-- /COL-LG-12 -->
                         </div> <!-- /ROW TABS -->
@@ -430,7 +430,7 @@ $(document).ready(function(){
         no_results_text: "Oops, não encontrado!"
     });
 
-    $('[data-toggle="tooltip"]').tooltip();  
+    $('[data-toggle="tooltip"]').tooltip();
 
     $.fn.editable.defaults.mode = 'inline';
     $('#conserto-descricao').editable({
@@ -484,7 +484,7 @@ $(document).ready(function(){
                     {cor = "warning"}
                 else
                     {cor = "danger"}
-                    
+
                 card=                                    '<div class="row">';
                 card+=                                        '<div class="col-md-12">';
                 card+=                                            '<div class="atividade '+cor+'">';//cor
@@ -522,7 +522,7 @@ $(document).ready(function(){
                 card+=                                                        '<small class="text-success">Título</small><br>';
                 card+=                                                        '<h3 class="m-b">'+data.titulo+'</h3>';//titulo
                 card+=                                                        '<small class="text-success">Descrição</small>';
-                card+=                                                        '<p>'+data.descricao+'</p>';  //descricao                                            
+                card+=                                                        '<p>'+data.descricao+'</p>';  //descricao
                 card+=                                                    '</div>';
                 card+=                                                '</div>';
                 card+=                                                '<hr class="hr-line-solid">';
@@ -538,9 +538,9 @@ $(document).ready(function(){
                 console.log('Error:', data);
             }
         });
-        e.preventDefault();  
+        e.preventDefault();
     });
-    
+
 
 }); /* / DOC READY */
 
@@ -549,9 +549,9 @@ $(document).ready(function(){
     var nomes = <?php echo json_encode($usuarios); ?>;
 
     $.each(nomes, function (i, nome) {
-        $('#select-copia').append($('<option>', { 
+        $('#select-copia').append($('<option>', {
             value: nome,
-            text : nome 
+            text : nome
         }));
     });
 

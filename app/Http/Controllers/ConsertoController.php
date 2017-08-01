@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 use App\Conserto;
 use App\Usuario;
+use App\Cliente;
 use App\Atividade;
 use App\Atividade_comentario;
 use Illuminate\Http\Request;
 use App\Http\Requests\ConsertoRequest;
 use Illuminate\Support\Facades\Response;
 use Carbon\Carbon;
+use Auth;
 
 class ConsertoController extends Controller
 {
@@ -25,7 +27,14 @@ class ConsertoController extends Controller
 
     public function novo()
     {
-        return view('conserto/novo_conserto');
+      $idassistencia =  Auth::user()->id_assistencia;
+      $usuarios = Usuario::orderBy('nome')->where('id_assistencia', $idassistencia)->get(['nome']);
+      $usuarios = $usuarios->pluck("nome");
+      
+      $clientes = Cliente::all();
+      $clientes = $clientes->pluck("nome");
+
+        return view('conserto/novo_conserto')->with(['clientes'=> $clientes, 'funcionarios' =>$usuarios]);
     }
     public function adiciona(ConsertoRequest $request)
     {
