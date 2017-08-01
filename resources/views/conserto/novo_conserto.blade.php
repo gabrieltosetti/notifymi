@@ -117,32 +117,31 @@
                   </div>
                 </div>
               </div>
-              <!--divisoria--><div class="hr-line-dashed"></div> <!--divisoria-->
-
-              <div class="row"> <!--row 7-->
-                <div class="col-xs-12">
-                  <button class="btn btn-primary" type="submit">Criar</button>
-                  <a class="btn btn-danger" href="{{ route('consertos') }}">Cancelar</a>
-                </div>
-              </div>
-
-            </form>
             </div>
-          </div> <!--/ibox content-->
-        </div> <!--/ibox-->
-      </div><!--/col xs 12-->
-    </div> <!--/row 1-->
-  </div> <!--/content-->
-  @endsection
 
-  @section('scripts')
-  <!-- Input Mask-->
-  <script src="{{ asset('js/plugins/jasny/jasny-bootstrap.min.js') }}"></script>
+            <div class="row"> <!--row 7-->
+              <div class="col-xs-12">
+                <button class="btn btn-primary" type="submit">Criar</button>
+                <a class="btn btn-danger" href="{{ route('consertos') }}">Cancelar</a>
+              </div>
+            </div>
+          </form>
+
+        </div> <!--/ibox content-->
+      </div> <!--/ibox-->
+    </div><!--/col xs 12-->
+  </div> <!--/row 1-->
+</div> <!--/content-->
+@endsection
+
+@section('scripts')
+<!-- Input Mask-->
+<script src="{{ asset('js/plugins/jasny/jasny-bootstrap.min.js') }}"></script>
 
 
 
 
-  <script>
+<script>
 
-  </script>
-  @stop
+</script>
+@stop
