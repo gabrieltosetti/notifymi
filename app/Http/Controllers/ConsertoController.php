@@ -27,19 +27,19 @@ class ConsertoController extends Controller
 
     public function novo()
     {
-      $idassistencia =  Auth::user()->id_assistencia;
-      $usuarios = Usuario::orderBy('nome')->where('id_assistencia', $idassistencia)->get(['nome']);
-      $usuarios = $usuarios->pluck("nome");
-      
-      $clientes = Cliente::all();
-      $clientes = $clientes->pluck("nome");
 
-        return view('conserto/novo_conserto')->with(['clientes'=> $clientes, 'funcionarios' =>$usuarios]);
+      $idassistencia =  Auth::user()->id_assistencia;
+      $usuarios = Usuario::all()->where('id_assistencia', $idassistencia);  
+
+      $clientes = Cliente::all()->where('permissao', '0');
+      return view('conserto/novo_conserto')->with(['clientes'=> $clientes, 'funcionarios' =>$usuarios]);
     }
     public function adiciona(ConsertoRequest $request)
     {
 
-        request()->file('foto')->store('perfil');
+      if($request->hasFile('foto')){
+          request()->file('foto')->store('perfil');
+      }
         Conserto::create($request->all());
 
         return redirect('/consertos')->withInput();
