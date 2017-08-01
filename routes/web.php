@@ -28,6 +28,7 @@ Route::get('/assistencias/login', 'LoginController@loginassistencia')->name('ent
 Route::get('/cadastro', 'LoginController@cadastro')->name('cadastro');
 
 //ADMIN
+Route::get('/admin', 'AdminController@adminhome')->name('adminhome');
 Route::get('/admin/home', 'AdminController@adminhome')->name('adminhome');
 Route::get('/admin/login', 'Auth\AdminLoginController@showLoginForm')->name('entraradmin');
 Route::post('/admin/login', 'Auth\AdminLoginController@Login')->name('entraradmin.submit');

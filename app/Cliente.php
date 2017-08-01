@@ -2,9 +2,9 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Cliente extends Model
+class Cliente extends Authenticatable
 {
     public $timestamps = true;
 
@@ -22,7 +22,6 @@ class Cliente extends Model
         'cidade',
         'telefone',
         'celular',
-        'cidade',
         'bairro',
         'rua',
         'numero',

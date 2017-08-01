@@ -46,6 +46,9 @@
             <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
               {{ csrf_field() }}
 
+
+              <!-- NOME -->
+
               <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                 <label for="name" class="col-md-4 control-label">Nome</label>
 
@@ -59,6 +62,40 @@
                   @endif
                 </div>
               </div>
+
+              <!-- RG -->
+
+              <div class="form-group{{ $errors->has('RG') ? ' has-error' : '' }}">
+                <label for="RG" class="col-md-4 control-label">RG</label>
+
+                <div class="col-md-6">
+                  <input id="RG" type="text" class="form-control" name="RG" value="{{ old('RG') }}" required autofocus>
+
+                  @if ($errors->has('RG'))
+                  <span class="help-block">
+                    <strong>{{ $errors->first('RG') }}</strong>
+                  </span>
+                  @endif
+                </div>
+              </div>
+
+              <!-- CPF -->
+
+              <div class="form-group{{ $errors->has('CPF') ? ' has-error' : '' }}">
+                <label for="CPF" class="col-md-4 control-label">CPF</label>
+
+                <div class="col-md-6">
+                  <input id="CPF" type="text" class="form-control" name="CPF" value="{{ old('CPF') }}" required autofocus>
+
+                  @if ($errors->has('CPF'))
+                  <span class="help-block">
+                    <strong>{{ $errors->first('CPF') }}</strong>
+                  </span>
+                  @endif
+                </div>
+              </div>
+
+              <!-- EMAIL -->
 
               <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                 <label for="email" class="col-md-4 control-label">Endereço de email</label>
@@ -74,6 +111,9 @@
                 </div>
               </div>
 
+
+              <!-- SENHA -->
+
               <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                 <label for="password" class="col-md-4 control-label">Senha</label>
 
@@ -87,6 +127,9 @@
                   @endif
                 </div>
               </div>
+
+
+              <!-- CONFIRMAR SENHA -->
 
               <div class="form-group">
                 <label for="password-confirm" class="col-md-4 control-label">Confirmar Senha</label>
