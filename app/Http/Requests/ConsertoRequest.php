@@ -24,11 +24,12 @@ class ConsertoRequest extends FormRequest
     public function rules()
     {
         return [
+            'titulo' => 'required|max:20',
             'modelo' => 'required|max:50',
             'defeito' => 'required|max:255',
             'orcamento' => 'required|max:14',
             'data_entrega' => 'required|max:13',
-            'observacao' => 'required|max:255',
+            'observacao' => 'max:255',
             'id_usuario' => 'required|max:10',
             'id_assistencia' => 'required|max:10',
             'id_cliente' => 'required|max:10',

@@ -40,8 +40,8 @@
             <div class="row"> <!--row 2-->
               <div class="col-xs-12 col-sm-6 b-r">
                 <!--TITULO-->
-                <div class="form-group  {{ $errors->has('cpf') ? 'has-error' : ''}}">
-                  <label class="col-sm-3 control-label" for="cpf">Título</label>
+                <div class="form-group  {{ $errors->has('titulo') ? 'has-error' : ''}}">
+                  <label class="col-sm-3 control-label" for="titulo">Título</label>
                   <div class="col-sm-9">
                     <input type="text" class="form-control" name="titulo" placeholder="" value="{{ old('titulo') }}" id="titulo">
                     <span class="help-block"><?php echo $errors->first('titulo'); ?></span>
@@ -50,10 +50,17 @@
                 <!-- FIM TITULO -->
                 <!-- MODELO -->
                 <div class="form-group  {{ $errors->has('modelo') ? 'has-error' : ''}}">
-                  <label class="col-sm-3 control-label" for="nome">Modelo</label>
+                  <label class="col-sm-3 control-label" for="modelo">Modelo</label>
                   <div class="col-sm-9">
                     <input type="text" class="form-control" name="modelo" value="{{ old('modelo') }}" id="modelo" maxlength="50">
                     <span class="help-block"><?php echo $errors->first('modelo'); ?></span>
+                  </div>
+                </div>
+                <div class="form-group  {{ $errors->has('data_entrega') ? 'has-error' : ''}}">
+                  <label class="col-sm-3 control-label" for="data_entrega">Data de entrega:</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" name="data_entrega" value="{{ old('data_entrega') }}" id="data_entrega" maxlength="13">
+                    <span class="help-block"><?php echo $errors->first('data_entrega'); ?></span>
                   </div>
                 </div>
                 <!-- FIM DEFEITO -->
@@ -69,11 +76,19 @@
                 </div>
                 <!-- FIM DEFEITO -->
                 <!--DETALHES  -->
-                <div class="form-group {{ $errors->has('complemento') ? 'has-error' : ''}}">
-                  <label for="complemento" class="col-sm-3 control-label">Detalhes:</label>
+                <div class="form-group {{ $errors->has('orcamento') ? 'has-error' : ''}}">
+                  <label for="orcamento" class="col-sm-3 control-label">Valor:</label>
                   <div class="col-sm-9">
-                    <textarea class="form-control"  placeholder="Opcional" name="complemento" id="detalhes"  maxlength="255">{{ old('detalhes') }}</textarea>
-                    <span class="help-block"><?php echo $errors->first('detalhes'); ?></span>
+                    <input type ="text" class="form-control"  placeholder="" name="orcamento" id="orcamento"  maxlength="14">{{ old('orcamento') }}</input>
+                    <span class="help-block"><?php echo $errors->first('orcamento'); ?></span>
+                  </div>
+                </div>
+
+                <div class="form-group {{ $errors->has('observacao') ? 'has-error' : ''}}">
+                  <label for="observacao" class="col-sm-3 control-label">Observação:</label>
+                  <div class="col-sm-9">
+                    <textarea class="form-control"  placeholder="Opcional" name="observacao" id="observacao"  maxlength="255">{{ old('observacao') }}</textarea>
+                    <span class="help-block"><?php echo $errors->first('observacao'); ?></span>
                   </div>
                 </div>
                 <!-- FIM DETALHES -->
@@ -100,6 +115,17 @@
                     <span class="help-block"><?php echo $errors->first('funcionario'); ?></span>
                   </div>
                 </div>
+
+                <div class="form-group {{ $errors->has('id_assistencia') ? 'has-error' : ''}}">
+                  <label for="id_assistencia" class="col-sm-3 control-label">ID Assistência:</label>
+                  <div class="col-sm-9">
+                    <select placeholder="placeholder" class="form-control"  maxlength="255" name="id_assistencia">
+                      <option value="{{$funcionario->id_assistencia}}">{{$funcionario->id_assistencia}}</option>
+                    </select>
+                    <span class="help-block"><?php echo $errors->first('id_assistencia'); ?></span>
+                  </div>
+                </div>
+
               </div>
               <!-- FIM FORMGROUP FUNCIONARIO -->
 
