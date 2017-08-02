@@ -16,14 +16,17 @@ class Conserto extends Model
     * @var array
     */
     protected $fillable = [
-        'modelo',
-        'defeito',
-        'orcamento',
-        'data_entrega',
-        'observacao',
-        'id_usuario',
-        'id_assistencia',
-        'id_cliente',
+      'titulo',
+      'modelo',
+      'defeito',
+      'orcamento',
+      'data_entrega',
+      'observacao',
+      'id_usuario',
+      'id_assistencia',
+      'id_cliente',
+      'prioridade',
+      'status',
     ];
 
     protected $guarded = ['id'];
@@ -38,11 +41,11 @@ class Conserto extends Model
     ];
 
     public function usuario()
-    {        
+    {
         return $this->belongsTo('App\Usuario', 'id_usuario');
     }
     public function cliente()
-    {        
+    {
         return $this->belongsTo('App\Cliente', 'id_cliente');
     }
 
