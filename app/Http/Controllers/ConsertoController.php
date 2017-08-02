@@ -16,12 +16,7 @@ class ConsertoController extends Controller
 {
     public function __construct()
     {
-
-      if (Auth::guard('admin')->check())
-        $auth = 'adminhome';
-      $auth = 'usuariohome';
-
-      $this->middleware($auth);
+        $this->middleware('auth');
     }
 
     public function lista()
