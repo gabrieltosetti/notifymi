@@ -8,10 +8,10 @@ Breadcrumbs::register('home', function($breadcrumbs)
 {
 
   if (Auth::guard('admin')->check())
-    $home = 'adminhome';
-    $home = 'usuariohome';
+    $auth = 'adminhome';
+    $auth = 'usuariohome';
 
-    $breadcrumbs->push('Página Inicial', route($home));
+    $breadcrumbs->push('Página Inicial', route($auth));
 });
 
 // Home > Consertos
