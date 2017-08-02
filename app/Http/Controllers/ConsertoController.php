@@ -16,15 +16,12 @@ class ConsertoController extends Controller
 {
     public function __construct()
     {
-
-
       if (Auth::guard()->check())
         $auth = 'auth';
       else
         $auth = 'auth:admin';
 
         $this->middleware($auth);
-
     }
 
     public function lista()
