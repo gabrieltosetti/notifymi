@@ -16,12 +16,7 @@ class ConsertoController extends Controller
 {
     public function __construct()
     {
-
-      if (Auth::guard('admin')->check())
-        $auth = 'adminhome';
-      $auth = 'usuariohome';
-
-      $this->middleware($auth);
+        $this->middleware('auth');
     }
 
     public function lista()
@@ -39,18 +34,17 @@ class ConsertoController extends Controller
       $clientes = Cliente::all()->where('permissao', '0');
       return view('conserto/novo_conserto')->with(['clientes'=> $clientes, 'funcionarios' =>$usuarios]);
     }
+
     public function adiciona(ConsertoRequest $request)
     {
 
-      if($request->hasFile('foto')){
-          request()->file('foto')->store('perfil');
-      }
+      
         Conserto::create($request->all());
 
         return redirect('/consertos')->withInput();
     }
 
-    //rota: detalhes_conserto
+
     public function detalhes()
     {
         $usuarios = Usuario::orderBy('nome')->get(['nome']);
