@@ -43,7 +43,7 @@
           <div class="panel-body">
               <img src="{{ asset('img/logocad.png')}}" width="475" title="Notify-Mi" alt="Notify-Mi" class="img-responsive center-block" />
               <!--<div class="panel-heading">Registrar</div>!-->
-            <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
+            <form class="form-horizontal" role="form" method="POST" action="{{ route('cadastro.submit') }}">
               {{ csrf_field() }}
 
 
@@ -146,7 +146,7 @@
                   </button>
 
 
-                    <a class="btn btn-danger" href="/login/">
+                    <a class="btn btn-danger" href="{{ route('entrarusuario') }}">
                       Cancelar
                     </a>
 
