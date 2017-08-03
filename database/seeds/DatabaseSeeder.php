@@ -192,7 +192,7 @@ class DatabaseSeeder extends Seeder
       'defeito' => 'Tela quebrada',
       'orcamento' => '450.00',
       'data_entrega' => '2008-7-04',
-      'observacao' => 'O celular caiu no chão e a tela está trincada, iremos verificar os danos causados e prosseguir com os reparos',
+      'detalhes' => 'O celular caiu no chão e a tela está trincada, iremos verificar os danos causados e prosseguir com os reparos',
       'status' => 'Em andamento',
       'prioridade' => 'Baixo',
       'titulo' => 'iPhone 7',

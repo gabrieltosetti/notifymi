@@ -55,7 +55,6 @@ class ConsertoController extends Controller
         $atividades = Atividade::where('id_conserto', 1)->orderBy('id', 'desc')->get();
         foreach ($atividades as $atividade)
         {
-//$atividade->id
             $comentarios[$atividade->id] = Atividade_comentario::where('id_atividade', $atividade->id)->orderBy('id')->get();
         }
 
@@ -74,7 +73,16 @@ class ConsertoController extends Controller
     public function nova_atividade(Request $request)
     {
         $atividade = Atividade::create($request->all());
-        //$iniciada = Carbon::now();
+
+        $comentario = [
+            'status' => 'iniciou esta atividade.',
+            'comentario' => null,
+            'id_usuario' => Auth::user()->id,
+            'id_atividade' => $atividade->id,
+            'created_at' => $atividade->iniciada
+        ];
+
+        $atividade_comentario = Atividade_comentario::create($comentario);
         $card = [
             'id' => $atividade->id,
             'status' => $atividade->status,
@@ -82,8 +90,11 @@ class ConsertoController extends Controller
             'finalizada' => $atividade->finalizada == null ? "Não definido" : $atividade->finalizada->format('d/m/Y H:i'),
             'titulo' => $atividade->titulo,
             'descricao' => $atividade->descricao,
+            'comentario_criado' => $atividade_comentario->created_at->format('d/m/Y H:i'),
+            'comentario_usuario' => $atividade_comentario->usuario->nome,
+            'comentario_status' => $atividade_comentario->status
+     
         ];
-
         //$atividade->iniciada = $atividade->iniciada->format('d/m/Y H:i');
         //$atividade->finalizada = $atividade->finalizada == null ? "Não definido" : $atividade->finalizada->format('d/m/Y H:i');
 
