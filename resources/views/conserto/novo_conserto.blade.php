@@ -87,7 +87,7 @@
                 <div class="form-group {{ $errors->has('observacao') ? 'has-error' : ''}}">
                   <label for="observacao" class="col-sm-3 control-label">Observação:</label>
                   <div class="col-sm-9">
-                    <textarea class="form-control"  placeholder="Opcional" name="observacao" id="observacao"  maxlength="255">{{ old('observacao') }}</textarea>
+                    <textarea class="form-control"  placeholder="Breve descrição do problema." name="observacao" id="observacao"  maxlength="255">{{ old('observacao') }}</textarea>
                     <span class="help-block"><?php echo $errors->first('observacao'); ?></span>
                   </div>
                 </div>
@@ -171,7 +171,7 @@
 
             <div class="row"> <!--row 7-->
               <div class="col-xs-12">
-                <button class="btn btn-primary" type="submit">Criar</button>
+                <button class="btn btn-primary" id="submit" type="submit">Criar</button>
                 <a class="btn btn-danger" href="{{ route('novo_conserto_post') }}">Cancelar</a>
               </div>
             </div>
@@ -192,8 +192,10 @@
 
 
 <script>
+
 $( function() {
   $( '.datepicker' ).datepicker();
 } );
+
 </script>
 @stop

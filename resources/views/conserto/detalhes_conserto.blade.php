@@ -303,7 +303,7 @@
                                                                             </form>
                                                                         </div>
                                                                     </div>
-                                                                </div><!-- /TAB EDITAR ATIVIDADE -->                                                                
+                                                                </div><!-- /TAB EDITAR ATIVIDADE -->
                                                             </div>
                                                         </div>
                                                     </div>
@@ -617,7 +617,7 @@ $(document).ready(function(){
                 card+=                                    '</div>';
                 $(".lista-atividades").prepend(card);
                 toastr["success"]('Atividade adicionada com sucesso !','Atividade');
-                
+
             },
             error: function (data) {
                 console.log('Error:', data);

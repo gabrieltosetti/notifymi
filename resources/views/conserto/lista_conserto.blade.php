@@ -48,7 +48,7 @@
         </tr>
 
         <!-- /LINHA DE PESQUISA -->
-        <table  class="table table-striped table-bordered table-hover issue-tracker dataTables-conserto form_datetime" id="lista_cliente" cellspacing="0">
+        <table  class="table table-striped table-bordered table-hover issue-tracker dataTables-conserto form_datetime" id="lista_conserto" cellspacing="0">
 
 
           <thead>
@@ -70,7 +70,7 @@
               <td class="issue-info"> <!-- DESCRIÇÃO -->
                 <span class="label label-primary">{{$conserto->status}}</span> <a href="#">{{$conserto->titulo}}</a>
                 <small>
-                  {{$conserto->observacao}}
+                  {{ $conserto->observacao }}
                 </small>
               </td>
               <td><!-- ATRIBUIDO -->
@@ -81,7 +81,9 @@
               </td>
 
               <td>
-                {{$conserto->data_entrega}}
+              {{date('Y/m/d', strtotime($conserto->data_entrega))}}
+
+
               </td>
             </tr>
             @endforeach
@@ -144,9 +146,9 @@ $(document).ready(function(){
       var min = $('#min').datepicker("getDate");
       var max = $('#max').datepicker("getDate");
 
-      var conserto = new Date(data[4]);
+      var lista_conserto = new Date(data[4]);
 
-      var startDate = conserto;
+      var startDate = lista_conserto;
       if (min == null && max == null) { return true; }
       if (min == null && startDate <= max) { return true;}
       if(max == null && startDate >= min) {return true;}
