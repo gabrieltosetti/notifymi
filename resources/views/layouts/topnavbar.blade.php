@@ -120,14 +120,8 @@
 
             <li>
 
-              {{-- <!--Assim que comment função do laravel e não me pergunte pq -->
-                @if (Auth::guard('admin')->check())
-                              {{$logout = 'sairadmin';}}
-                            @else if (Auth::guard('usuario')->check())
-                              {{$logout = 'sairusuario';}}
-                               --}}
 
-                <a href="{{ route('sairusuario') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     <i class="fa fa-sign-out"></i> Log out
                 </a>
                 <!-- <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

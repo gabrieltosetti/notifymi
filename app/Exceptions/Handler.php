@@ -68,8 +68,8 @@ class Handler extends ExceptionHandler
             $login = 'entraradmin';
           break;
 
-          // case 'web':
-          //   $login = 'entrarcliente'
+          // case 'usuario':
+          //   $login = 'login'
           //   break;
 
           default:
