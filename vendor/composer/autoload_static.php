@@ -8,8 +8,8 @@ class ComposerStaticInit42dd67b073849a0914a2f1b2e0791ade
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
-        '1d1b89d124cc9cb8219922c9d5569199' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
+        '1d1b89d124cc9cb8219922c9d5569199' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
@@ -89,7 +89,6 @@ class ComposerStaticInit42dd67b073849a0914a2f1b2e0791ade
         array (
             'Dotenv\\' => 7,
             'Doctrine\\Instantiator\\' => 22,
-            'Doctrine\\Common\\Inflector\\' => 26,
             'DeepCopy\\' => 9,
             'DaveJamesMiller\\Breadcrumbs\\' => 28,
         ),
@@ -235,10 +234,6 @@ class ComposerStaticInit42dd67b073849a0914a2f1b2e0791ade
         array (
             0 => __DIR__ . '/..' . '/doctrine/instantiator/src/Doctrine/Instantiator',
         ),
-        'Doctrine\\Common\\Inflector\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Common/Inflector',
-        ),
         'DeepCopy\\' => 
         array (
             0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
@@ -291,18 +286,27 @@ class ComposerStaticInit42dd67b073849a0914a2f1b2e0791ade
                 0 => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src',
             ),
         ),
+        'D' => 
+        array (
+            'Doctrine\\Common\\Inflector\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/doctrine/inflector/lib',
+            ),
+        ),
     );
 
     public static $classMap = array (
         'App\\Admin' => __DIR__ . '/../..' . '/app/Admin.php',
         'App\\Assistencia' => __DIR__ . '/../..' . '/app/Assistencia.php',
+        'App\\Atividade' => __DIR__ . '/../..' . '/app/Atividade.php',
+        'App\\Atividade_Comentario' => __DIR__ . '/../..' . '/app/Atividade_Comentario.php',
         'App\\Cargo' => __DIR__ . '/../..' . '/app/Cargo.php',
         'App\\Cliente' => __DIR__ . '/../..' . '/app/Cliente.php',
         'App\\Conserto' => __DIR__ . '/../..' . '/app/Conserto.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminController.php',
-        'App\\Http\\Controllers\\AssistenciascadastradasController' => __DIR__ . '/../..' . '/app/Http/Controllers/AssistenciascadastradasController.php',
+        'App\\Http\\Controllers\\AssistenciaController' => __DIR__ . '/../..' . '/app/Http/Controllers/AssistenciaController.php',
         'App\\Http\\Controllers\\Auth\\AdminLoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/AdminLoginController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
@@ -327,6 +331,7 @@ class ComposerStaticInit42dd67b073849a0914a2f1b2e0791ade
         'App\\Http\\Requests\\ConsertoRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ConsertoRequest.php',
         'App\\Http\\Requests\\PermissoesRequest' => __DIR__ . '/../..' . '/app/Http/Requests/PermissoesRequest.php',
         'App\\Http\\Requests\\UsuarioRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UsuarioRequest.php',
+        'App\\Mail\\BemVindo' => __DIR__ . '/../..' . '/app/Mail/BemVindo.php',
         'App\\Permissoes' => __DIR__ . '/../..' . '/app/Permissoes.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
@@ -896,8 +901,8 @@ class ComposerStaticInit42dd67b073849a0914a2f1b2e0791ade
         'Illuminate\\Auth\\AuthServiceProvider' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/AuthServiceProvider.php',
         'Illuminate\\Auth\\Authenticatable' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Authenticatable.php',
         'Illuminate\\Auth\\AuthenticationException' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/AuthenticationException.php',
+        'Illuminate\\Auth\\Console\\AuthMakeCommand' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Console/AuthMakeCommand.php',
         'Illuminate\\Auth\\Console\\ClearResetsCommand' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Console/ClearResetsCommand.php',
-        'Illuminate\\Auth\\Console\\MakeAuthCommand' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Console/MakeAuthCommand.php',
         'Illuminate\\Auth\\CreatesUserProviders' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/CreatesUserProviders.php',
         'Illuminate\\Auth\\DatabaseUserProvider' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/DatabaseUserProvider.php',
         'Illuminate\\Auth\\EloquentUserProvider' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/EloquentUserProvider.php',
