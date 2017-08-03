@@ -186,23 +186,21 @@
                                                                                         <!--DATA INICIO-->
                                                                                         <div class="form-group">
                                                                                             <label>Atividade Inicio</label>
-                                                                                            <div class="input-group date form_datetime" data-link-field="atividade-inicio">
-                                                                                                <input class="form-control" size="16" type="text" value="" >
+                                                                                            <div class="input-group date form_datetime">
+                                                                                                <input id="atividade-inicio" class="form-control" size="16" type="text" value="" >
                                                                                                 <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                                                                                                 <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
                                                                                             </div>
-                                                                                            <input type="hidden" id="atividade-inicio" value="" />
                                                                                         </div>
                                                                                         <!--/DATA INICIO-->
                                                                                         <!--DATA FINAL-->
                                                                                         <div class="form-group">
                                                                                             <label>Atividade Final</label>
-                                                                                            <div class="input-group date form_datetime" data-link-field="atividade-final">
-                                                                                                <input class="form-control" size="16" type="text" value="" >
+                                                                                            <div class="input-group date form_datetime">
+                                                                                                <input id="atividade-final" class="form-control" size="16" type="text" value="" >
                                                                                                 <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                                                                                                 <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
                                                                                             </div>
-                                                                                            <input type="hidden" id="atividade-final" value="" />
                                                                                         </div>
                                                                                         <!--/DATA FINAL-->
                                                                                     </div>
@@ -251,8 +249,8 @@
                                                                                     <div class="col-sm-5">
                                                                                         <!--STATUS-->
                                                                                         <div class="form-group {{ $errors->has('status') ? 'has-error' : ''}}">
-                                                                                            <label class="control-label" for="atividade-status">Status</label>
-                                                                                            <select class="form-control" id="atividade-status" name="status">
+                                                                                            <label class="control-label" for="escolha-status">Status</label>
+                                                                                            <select class="form-control" id="escolha-status" name="status">
                                                                                                     <option value="Completado">Completado</option>
                                                                                                     <option value="Em andamento">Em andamento</option>
                                                                                                     <option value="Cancelado">Cancelado</option>
@@ -262,43 +260,42 @@
                                                                                         <!--DATA INICIO-->
                                                                                         <div class="form-group">
                                                                                             <label>Atividade Inicio</label>
-                                                                                            <div class="input-group date form_datetime" data-link-field="atividade-inicio">
-                                                                                                <input class="form-control" size="16" type="text" value="" >
+                                                                                            <div class="input-group date form_datetime">
+                                                                                                <input id="escolha-inicio" class="form-control" size="16" type="text" value="" >
                                                                                                 <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                                                                                                 <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
                                                                                             </div>
-                                                                                            <input type="hidden" id="atividade-inicio" value="" />
+                                                                                            
                                                                                         </div>
                                                                                         <!--/DATA INICIO-->
                                                                                         <!--DATA FINAL-->
                                                                                         <div class="form-group">
                                                                                             <label>Atividade Final</label>
-                                                                                            <div class="input-group date form_datetime" data-link-field="atividade-final">
-                                                                                                <input class="form-control" size="16" type="text" value="" >
+                                                                                            <div class="input-group date form_datetime">
+                                                                                                <input id="escolha-final" class="form-control" size="16" type="text" value="" >
                                                                                                 <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                                                                                                 <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
                                                                                             </div>
-                                                                                            <input type="hidden" id="atividade-final" value="" />
                                                                                         </div>
                                                                                         <!--/DATA FINAL-->
                                                                                     </div>
                                                                                     <div class="col-sm-7">
                                                                                         <!--TITULO-->
                                                                                         <div class="form-group {{ $errors->has('titulo') ? 'has-error' : ''}}">
-                                                                                            <label class="control-label" for="atividade-titulo">Título</label>
-                                                                                            <input type="text" class="form-control" name="titulo" value="{{ old('titulo') }}" id="atividade-titulo" maxlength="20">
+                                                                                            <label class="control-label" for="escolha-titulo">Título</label>
+                                                                                            <input type="text" class="form-control" name="titulo" value="{{ old('titulo') }}" id="escolha-titulo" maxlength="20">
                                                                                             <span class="help-block">{{$errors->first('titulo')}}</span>
                                                                                         </div>
                                                                                         <!--/TITULO-->
                                                                                         <div class="form-group">
-                                                                                            <label class="control-label" for="atividade-descricao">Descrição</label>
-                                                                                            <textarea id="atividade-descricao" class="form-control" placeholder="descrição..."></textarea>
+                                                                                            <label class="control-label" for="escolha-descricao">Descrição</label>
+                                                                                            <textarea id="escolha-descricao" class="form-control" placeholder="descrição..."></textarea>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
 
                                                                                 <div class="text-right">
-                                                                                    <button type="submit" class="btn btn-sm btn-primary m-t-n-xs"><strong>Criar</strong></button>
+                                                                                    <button type="submit" class="btn btn-sm btn-primary m-t-n-xs"><strong>Atualizar</strong></button>
                                                                                 </div>
                                                                             </form>
                                                                         </div>
@@ -500,44 +497,16 @@
 
 $(document).ready(function(){
     iniciarMultiUsuario();
-    toastr.options = {
-    "closeButton": true,
-    "progressBar": true,
-    "showDuration": "400",
-    "hideDuration": "1000",
-    "timeOut": "7000",
-    "extendedTimeOut": "1000"
-    };
+    iniciarDateFields();
+    iniciarEditableFields();
+    iniciarTooltipFields();
+    iniciarToastrOptions();   
+    var atividades = {!! $atividades !!};
 
     $(".chosen-select").chosen({
         no_results_text: "Oops, não encontrado!"
     });
-
-    $('[data-toggle="tooltip"]').tooltip();
-
-    $.fn.editable.defaults.mode = 'inline';
-    $('#conserto-descricao').editable({
-        type: 'textarea',
-        title: 'Descrição'
-    });
-    $('#conserto-titulo').editable({
-        type: 'text',
-        title: 'Conserto'
-    });
-    $('#conserto-defeito').editable({
-        type: 'text',
-        title: 'Conserto'
-    });
-
-    $('.form_datetime').datetimepicker({
-        language:  'pt-BR',
-        format: "dd MM yyyy - hh:ii",
-        autoclose: true,
-        todayBtn: true,
-        minuteStep: 5,
-        todayHighlight: true,
-        pickerPosition: 'bottom-left'
-    });
+    
 
     $('#atividade-nova').on("submit", function (e) {
         $.ajaxSetup({
@@ -626,6 +595,24 @@ $(document).ready(function(){
         e.preventDefault();
     });
 
+    $('#atividade-escolha').on('change', function() {
+        id = this.value;
+        $.each(atividades, function(i, atividade) {
+            if(atividade["id"] == id)
+            {
+                $('#escolha-status').val(atividade["status"]);        
+                $('#escolha-inicio').val(atividade["iniciada"]);
+                     
+                $('#escolha-final').val(atividade["finalizada"] == null ? "Não definido" : atividade["finalizada"]);        
+                $('#escolha-titulo').text(atividade["titulo"]);        
+                $('#escolha-titulo').val(atividade["titulo"]);        
+                $('#escolha-descricao').text(atividade["descricao"]);  
+            }
+        });
+        //$('#escolha-inicio').datetimepicker('update'); 
+      
+    })
+
 
 }); /* / DOC READY */
 
@@ -641,6 +628,49 @@ $(document).ready(function(){
     });
 
 }
+function iniciarDateFields(){
+    $('.form_datetime').datetimepicker({
+        language:  'pt-BR',
+        format: "dd MM yyyy - hh:ii",
+        autoclose: true,
+        todayBtn: true,
+        minuteStep: 5,
+        todayHighlight: true,
+        pickerPosition: 'bottom-left'
+    });
+}
+function iniciarEditableFields(){
+    $.fn.editable.defaults.mode = 'inline';
+    $('#conserto-descricao').editable({
+        type: 'textarea',
+        title: 'Descrição'
+    });
+    $('#conserto-titulo').editable({
+        type: 'text',
+        title: 'Conserto'
+    });
+    $('#conserto-defeito').editable({
+        type: 'text',
+        title: 'Conserto'
+    });
+}
+function iniciarTooltipFields(){
+    $('[data-toggle="tooltip"]').tooltip();
+}
+function iniciarToastrOptions(){
+    toastr.options = {
+        "closeButton": true,
+        "progressBar": true,
+        "showDuration": "400",
+        "hideDuration": "1000",
+        "timeOut": "7000",
+        "extendedTimeOut": "1000"
+    };
+}
+
+
+
+
 
 </script>
 
