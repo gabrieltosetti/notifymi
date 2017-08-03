@@ -40,11 +40,11 @@
 
         <tr>
           <td>Data Inicial:</td>
-          <td><input name="min" id="min" type="text"></td>
+          <td><input name="min" id="min" placeholder="Ano/Mês/Dia" type="text"></td>
         </tr>
         <tr>
           <td>Data Final:</td>
-          <td><input name="max" id="max" type="text"></td>
+          <td><input name="max" id="max" placeholder="Ano/Mês/Dia" type="text"></td>
         </tr>
 
         <!-- /LINHA DE PESQUISA -->
@@ -65,6 +65,7 @@
             @foreach($consertos as $conserto)
             <tr>
               <td class="issue-id"> <!-- ID -->
+                {{$teste}}
                 {{$conserto->id}}
               </td>
               <td class="issue-info"> <!-- DESCRIÇÃO -->

@@ -39,10 +39,13 @@ class ConsertoController extends Controller
 
     public function lista()
     {
-      $consertos = Conserto::all();
+      $idassistencia =  Auth::user()->id_assistencia;
 
+      $consertos = Conserto::where('id_assistencia', '=', $idassistencia)->get();
 
-        return view('conserto/lista_conserto')->with('consertos', $consertos);
+      $teste = Conserto::where('id_assistencia', '=' , $idassistencia)->count();
+
+        return view('conserto/lista_conserto')->with(['consertos'=> $consertos, 'teste' => $teste]);
     }
 
     public function novo()
