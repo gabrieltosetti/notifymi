@@ -191,7 +191,7 @@ class DatabaseSeeder extends Seeder
       'modelo' => 'modelo',
       'defeito' => 'Tela quebrada',
       'orcamento' => '450.00',
-      'data_entrega' => '2008-7-04',
+      'data_entrega' => Carbon::now()->addDays(7),
       'observacao' => 'O celular caiu no chão e a tela está trincada, iremos verificar os danos causados e prosseguir com os reparos',
       'status' => 'Em andamento',
       'prioridade' => 'Baixo',

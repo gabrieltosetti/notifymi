@@ -226,12 +226,12 @@
                                     <div class="row">
                                         <div class="col-xs-12"><p>Tudo certo? Vamos finalizar !</p></div>
                                     </div>
-                                    <div class="row"> <!--row 7-->
+                                    <div class="row">
                                         <div class="col-xs-12">
                                             <button class="btn btn-primary" type="submit">Criar !</button>
                                             <a class="btn btn-danger" href="{{ route('clientes') }}">Cancelar</a>
                                         </div>
-                                    </div> <!--/row 7-->
+                                    </div>
 
                                 </form>
                             </div> <!--/ibox content-->
