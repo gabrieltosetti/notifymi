@@ -270,7 +270,7 @@
                                                                                         <!--/DATA INICIO-->
                                                                                         <!--DATA FINAL-->
                                                                                         <div class="form-group">
-                                                                                            <label>Atividade Final</label>
+                                                                                            <label>Atividade Final <small class="text-muted text-success">opcional</small></label>
                                                                                             <div class="input-group date form_datetime">
                                                                                                 <input id="escolha-final" class="form-control" size="16" type="text" value="" >
                                                                                                 <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
@@ -291,6 +291,17 @@
                                                                                             <label class="control-label" for="escolha-descricao">Descrição</label>
                                                                                             <textarea id="escolha-descricao" class="form-control" placeholder="descrição..."></textarea>
                                                                                         </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="row">                                                                                    
+                                                                                    <div class="col-xs-12">
+                                                                                        <p>Adicionar comentário? <small class="text-success">opcional</small></p>
+                                                                                        <!--COMENTÁRIO-->
+                                                                                        <div class="form-group">
+                                                                                            <label class="control-label" for="escolha-comentario">Comentário</label>
+                                                                                            <textarea id="escolha-comentario" class="form-control" placeholder="comentário..."></textarea>
+                                                                                        </div>
+                                                                                        <!--/COMENTÁRIO-->
                                                                                     </div>
                                                                                 </div>
 
@@ -324,7 +335,7 @@
                                                     <!-- CARD DE ATIVIDADE -->
                                                     <div class="row">
                                                         <div class="col-md-12">
-                                                            <div class="atividade {{$cor}}">
+                                                            <div class="atividade {{$cor}}" atividade="{{$atividade->id}}">
                                                                 <div class="row">
                                                                     <div class="col-md-5 col-lg-4">
                                                                         <div class="row user-group">
@@ -601,8 +612,7 @@ $(document).ready(function(){
             if(atividade["id"] == id)
             {
                 $('#escolha-status').val(atividade["status"]);        
-                $('#escolha-inicio').val(atividade["iniciada"]);
-                     
+                $('#escolha-inicio').val(atividade["iniciada"]);                     
                 $('#escolha-final').val(atividade["finalizada"] == null ? "Não definido" : atividade["finalizada"]);        
                 $('#escolha-titulo').text(atividade["titulo"]);        
                 $('#escolha-titulo').val(atividade["titulo"]);        
