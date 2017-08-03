@@ -40,12 +40,12 @@ class LoginController extends Controller
       }
     }
 
-    public function logout()
-    {
-        Auth::guard('usuario')->logout();
-
-        return redirect('/');
-    }
+    // public function logout()
+    // {
+    //     Auth::guard('usuario')->logout();
+    //
+    //     return redirect('/');
+    // }
   }
 
 

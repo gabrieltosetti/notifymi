@@ -38,17 +38,17 @@
 
         </div>
 
-          <tr>
-            <td>Data Inicial:</td>
-            <td><input name="min" id="min" type="text"></td>
-          </tr>
-          <tr>
-            <td>Data Final:</td>
-            <td><input name="max" id="max" type="text"></td>
-          </tr>
+        <tr>
+          <td>Data Inicial:</td>
+          <td><input name="min" id="min" type="text"></td>
+        </tr>
+        <tr>
+          <td>Data Final:</td>
+          <td><input name="max" id="max" type="text"></td>
+        </tr>
 
         <!-- /LINHA DE PESQUISA -->
-        <table  class="table table-striped table-bordered table-hover issue-tracker dataTables-conserto" id="lista_cliente" cellspacing="0">
+        <table  class="table table-striped table-bordered table-hover issue-tracker dataTables-conserto form_datetime" id="lista_cliente" cellspacing="0">
 
 
           <thead>
@@ -57,113 +57,38 @@
               <th>Descrição</th>
               <th>Atribuído</th>
               <th>Cliente</th>
-              <th>Criado</th>
+              <th>Data Entrega</th>
             </tr>
           </thead>
           <tbody>
             <!-- ADDED -->
+            @foreach($consertos as $conserto)
             <tr>
               <td class="issue-id"> <!-- ID -->
-                #1
+                {{$conserto->id}}
               </td>
               <td class="issue-info"> <!-- DESCRIÇÃO -->
-                <span class="label label-primary">Aberto</span> <a href="#">Título do conserto</a>
+                <span class="label label-primary">{{$conserto->status}}</span> <a href="#">{{$conserto->titulo}}</a>
                 <small>
-                  Aqui fica a breve descrição.
+                  {{$conserto->observacao}}
                 </small>
               </td>
               <td><!-- ATRIBUIDO -->
-                <a href="#">Gabriel Tosetti</a>
+                <a href="#">{{$conserto->id_usuario}}</a>
               </td>
               <td> <!-- CLIENTE -->
-                <a href="#">Matheus Luz</a>
+                <a href="#">{{$conserto->id_cliente}}</a>
               </td>
-          <td>2017/07/17</td>
-            </tr>
-            <!-- /ADDED -->
-            <!-- PENDENTE -->
-            <tr>
-              <td class="issue-id"> <!-- ID -->
-                #2
-              </td>
-              <td class="issue-info"> <!-- DESCRIÇÃO -->
-                <span class="label label-warning">Pendente</span> <a href="#">Título do conserto</a>
-                <small>
-                  Aqui fica a breve descrição.
-                </small>
-              </td>
-              <td><!-- ATRIBUIDO -->
-                <a href="#">Gabriel Tosetti</a>
-              </td>
-              <td> <!-- CLIENTE -->
-                <a href="#">Matheus Luz</a>
-              </td>
-              <td>2017/07/16</td>
-            </tr>
-            <!-- /PENDENTE -->
-            <!-- PENDENTE -->
-            <tr>
-              <td class="issue-id"> <!-- ID -->
-                #3
-              </td>
-              <td class="issue-info"> <!-- DESCRIÇÃO -->
-                <span class="label label-success">Em espera</span> <a href="#">Título do conserto</a>
-                <small>
-                  Aqui fica a breve descrição.
-                </small>
-              </td>
-              <td><!-- ATRIBUIDO -->
-                <a href="#">Gabriel Tosetti</a>
-              </td>
-              <td> <!-- CLIENTE -->
-                <a href="#">Matheus Luz</a>
-              </td>
-              <td>2017/07/15</td>
-            </tr>
-            <!-- /PENDENTE -->
-            <!-- FECHADO -->
-            <tr>
-              <td class="issue-id"> <!-- ID -->
-                #4
-              </td>
-              <td class="issue-info"> <!-- DESCRIÇÃO -->
-                <span class="label label-default">Fechado</span> <a href="#">Título do conserto</a>
-                <small>
-                  Aqui fica a breve descrição.
-                </small>
-              </td>
-              <td><!-- ATRIBUIDO -->
-                <a href="#">Gabriel Tosetti</a>
-              </td>
-              <td> <!-- CLIENTE -->
-                <a href="#">Matheus Luz</a>
-              </td>
-              <td>2017/07/14</td>
-            </tr>
-            <!-- /FECHADO -->
-            <!-- CANCELADO -->
-            <tr>
-              <td class="issue-id"> <!-- ID -->
-                #5
-              </td>
-              <td class="issue-info"> <!-- DESCRIÇÃO -->
-                <span class="label label-danger">Cancelado</span> <a href="#">Título do conserto</a>
-                <small>
-                  Aqui fica a breve descrição.
-                </small>
-              </td>
-              <td><!-- ATRIBUIDO -->
-                <a href="#">Gabriel Tosetti</a>
-              </td>
-              <td> <!-- CLIENTE -->
-                <a href="#">Matheus Luz</a>
-              </td>
-              <td>2017/07/13</td>
 
+              <td>
+                {{$conserto->data_entrega}}
+              </td>
             </tr>
-            <!-- /CANCELADO -->
+            @endforeach
+
+
           </tbody>
-<tfoot><tr></tr></tfoot>
+          <tfoot><tr></tr></tfoot>
         </table>
       </div>
 
@@ -178,36 +103,39 @@
 <script type="text/javascript" src="js/plugins/aaa/pdfmake/pdfmake.js"></script>
 <script type="text/javascript" src="js/plugins/aaa/pdfmake/vfs_fonts.js"></script>
 <script type="text/javascript" src="js/plugins/aaa/dataTables/jquery.dataTables.js"></script>
+<script type="text/javascript" src="js/plugins/aaa/dataTables/jquery-ui.js"></script>
 <script type="text/javascript" src="js/plugins/aaa/dataTables/dataTables.buttons.js"></script>
 <script type="text/javascript" src="js/plugins/aaa/dataTables/buttons.html5.js"></script>
 <script type="text/javascript" src="js/plugins/aaa/dataTables/buttons.print.js"></script>
 
-<script type="text/javascript" src="js/plugins/aaa/dataTables/jquery-ui.js"></script>
+
 
 
 <script>
 
 const customizePrint = (window) =>
-  $(window.document.body)
-    .addClass('white-bg')
-    .css('font-size', '10px')
-    .find('table')
-    .addClass('compact')
-    .css('font-size', 'inherit');
+$(window.document.body)
+.addClass('white-bg')
+.css('font-size', '10px')
+.find('table')
+.addClass('compact')
+.css('font-size', 'inherit');
+
+
 
 $(document).ready( () =>
-  $('.dataTables-conserto').DataTable({
-    pageLength: 25,
-    responsive: true,
-    dom: '<"html5buttons"B>lTfgitp',
-    buttons: [
-      { extend: 'copy' },
-      { extend: 'csv' },
-      { extend: 'excel', title: 'Lista Consertos' },
-      { extend: 'pdf', title: 'Lista Consertos' },
-      { extend: 'print', customize: customizePrint }
-    ]
-  })
+$('.dataTables-conserto').DataTable({
+  pageLength: 25,
+  responsive: true,
+  dom: '<"html5buttons"B>lTfgitp',
+  buttons: [
+    { extend: 'copy' },
+    { extend: 'csv' },
+    { extend: 'excel', title: 'Lista Consertos' },
+    { extend: 'pdf', title: 'Lista Consertos' },
+    { extend: 'print', customize: customizePrint }
+  ]
+})
 );
 
 $(document).ready(function(){
@@ -215,8 +143,6 @@ $(document).ready(function(){
     function (settings, data, dataIndex) {
       var min = $('#min').datepicker("getDate");
       var max = $('#max').datepicker("getDate");
-
-
 
       var conserto = new Date(data[4]);
 
@@ -228,6 +154,7 @@ $(document).ready(function(){
       return false;
     }
   );
+
   $("#min").datepicker({ onSelect: function () { table.draw(); }, changeMonth: true, changeYear: true });
   $("#max").datepicker({ onSelect: function () { table.draw(); }, changeMonth: true, changeYear: true });
   var table = $('#lista_conserto').DataTable();

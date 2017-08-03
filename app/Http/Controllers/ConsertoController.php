@@ -16,7 +16,25 @@ class ConsertoController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+
+      $guards = array_keys(config('auth.guards'));
+      foreach ($guards as $guard) {
+        if(Auth::guard($guard)->check()) {
+          $this->middleware($guard);
+            }
+        else {
+          $this->middleware('auth');
+        }
+      }
+
+      // if (Auth::guard()->check())
+      //   $auth = 'auth';
+      // else
+      //   $auth = 'auth:admin';
+      //
+      //   $this->middleware($auth);
+
+
     }
 
     public function lista()
@@ -29,7 +47,7 @@ class ConsertoController extends Controller
     {
 
       $idassistencia =  Auth::user()->id_assistencia;
-      $usuarios = Usuario::all()->where('id_assistencia', $idassistencia);  
+      $usuarios = Usuario::all()->where('id_assistencia', $idassistencia);
 
       $clientes = Cliente::all()->where('permissao', '0');
       return view('conserto/novo_conserto')->with(['clientes'=> $clientes, 'funcionarios' =>$usuarios]);

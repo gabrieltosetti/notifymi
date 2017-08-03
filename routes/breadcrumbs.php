@@ -7,93 +7,95 @@
 Breadcrumbs::register('home', function($breadcrumbs)
 {
 
-  if (Auth::guard('admin')->check())
+  if (Auth::guard('admin')->check()){
     $home = 'adminhome';
+  }
+  else{
     $home = 'usuariohome';
-
-    $breadcrumbs->push('Página Inicial', route($home));
+  }
+  $breadcrumbs->push('Página Inicial', route($home));
 });
 
 // Home > Consertos
 Breadcrumbs::register('consertos', function($breadcrumbs)
 {
-    $breadcrumbs->parent('home');
-    $breadcrumbs->push('Consertos', route('consertos'));
+  $breadcrumbs->parent('home');
+  $breadcrumbs->push('Consertos', route('consertos'));
 });
 
 // Home > Consertos > Novo
 Breadcrumbs::register('novo_conserto', function($breadcrumbs)
 {
-    $breadcrumbs->parent('consertos');
-    $breadcrumbs->push('Novo', route('novo_conserto'));
+  $breadcrumbs->parent('consertos');
+  $breadcrumbs->push('Novo', route('novo_conserto'));
 });
 
 // Home > Consertos > Detalhes
 Breadcrumbs::register('detalhes_conserto', function($breadcrumbs)
 {
-    $breadcrumbs->parent('consertos');
-    $breadcrumbs->push('Detalhes', route('detalhes_conserto'));
+  $breadcrumbs->parent('consertos');
+  $breadcrumbs->push('Detalhes', route('detalhes_conserto'));
 });
 
 //Home>Cargos
 Breadcrumbs::register('assistencia', function($breadcrumbs)
 {
-    $breadcrumbs->parent('home');
-    $breadcrumbs->push('Assistencia', route('novo_cargos'));
+  $breadcrumbs->parent('home');
+  $breadcrumbs->push('Assistencia', route('novo_cargos'));
 });
 Breadcrumbs::register('lista_cargos', function($breadcrumbs)
 {
-    $breadcrumbs->parent('assistencia');
-    $breadcrumbs->push('Lista de Cargos', route('lista_cargos'));
+  $breadcrumbs->parent('assistencia');
+  $breadcrumbs->push('Lista de Cargos', route('lista_cargos'));
 });
 
 //Home>Cargos>Novo
 Breadcrumbs::register('novo_cargos', function($breadcrumbs)
 {
-    $breadcrumbs->parent('lista_cargos');
-    $breadcrumbs->push('Novo', route('novo_cargos'));
+  $breadcrumbs->parent('lista_cargos');
+  $breadcrumbs->push('Novo', route('novo_cargos'));
 });
 
 // Home > Clientes
 Breadcrumbs::register('clientes', function($breadcrumbs)
 {
-    $breadcrumbs->parent('home');
-    $breadcrumbs->push('Clientes', route('clientes'));
+  $breadcrumbs->parent('home');
+  $breadcrumbs->push('Clientes', route('clientes'));
 });
 
 // Home > Clientes > Novo
 Breadcrumbs::register('novo_cliente', function($breadcrumbs)
 {
-    $breadcrumbs->parent('clientes');
-    $breadcrumbs->push('Novo', route('novo_cliente'));
+  $breadcrumbs->parent('clientes');
+  $breadcrumbs->push('Novo', route('novo_cliente'));
 });
 
 // Home > Clientes
 Breadcrumbs::register('permissoes', function($breadcrumbs)
 {
-    $breadcrumbs->parent('home');
-    $breadcrumbs->push('Permissões', route('permissoes'));
+  $breadcrumbs->parent('home');
+  $breadcrumbs->push('Permissões', route('permissoes'));
 });
 
 // Home > Clientes > Novo
 Breadcrumbs::register('novo_permissoes', function($breadcrumbs)
 {
-    $breadcrumbs->parent('permissoes');
-    $breadcrumbs->push('Novo', route('novo_permissoes'));
+  $breadcrumbs->parent('permissoes');
+  $breadcrumbs->push('Novo', route('novo_permissoes'));
 });
 
 // Home > Usuario
 Breadcrumbs::register('usuarios', function($breadcrumbs)
 {
-    $breadcrumbs->parent('home');
-    $breadcrumbs->push('Usuários', route('usuarios'));
+  $breadcrumbs->parent('home');
+  $breadcrumbs->push('Usuários', route('usuarios'));
 });
 
 // Home > Usuario > Novo
 Breadcrumbs::register('novo_usuario', function($breadcrumbs)
 {
-    $breadcrumbs->parent('usuarios');
-    $breadcrumbs->push('Novo', route('novo_usuario'));
+  $breadcrumbs->parent('usuarios');
+  $breadcrumbs->push('Novo', route('novo_usuario'));
 });
 
 
@@ -102,22 +104,22 @@ Breadcrumbs::register('novo_usuario', function($breadcrumbs)
 /*// Home > Blog
 Breadcrumbs::register('blog', function($breadcrumbs)
 {
-    $breadcrumbs->parent('home');
-    $breadcrumbs->push('Blog', route('blog'));
+$breadcrumbs->parent('home');
+$breadcrumbs->push('Blog', route('blog'));
 });
 
 // Home > Blog > [Category]
 Breadcrumbs::register('category', function($breadcrumbs, $category)
 {
-    $breadcrumbs->parent('blog');
-    $breadcrumbs->push($category->title, route('category', $category->id));
+$breadcrumbs->parent('blog');
+$breadcrumbs->push($category->title, route('category', $category->id));
 });
 
 // Home > Blog > [Category] > [Page]
 Breadcrumbs::register('page', function($breadcrumbs, $page)
 {
-    $breadcrumbs->parent('category', $page->category);
-    $breadcrumbs->push($page->title, route('page', $page->id));
+$breadcrumbs->parent('category', $page->category);
+$breadcrumbs->push($page->title, route('page', $page->id));
 });*/
 
 

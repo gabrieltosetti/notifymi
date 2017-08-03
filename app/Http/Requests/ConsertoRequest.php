@@ -24,6 +24,7 @@ class ConsertoRequest extends FormRequest
     public function rules()
     {
         return [
+            'titulo' => 'required|max:20',
             'modelo' => 'required|max:50',
             'defeito' => 'required|max:255',
             'orcamento' => 'required|max:14',
@@ -32,6 +33,8 @@ class ConsertoRequest extends FormRequest
             'id_usuario' => 'required|max:10',
             'id_assistencia' => 'required|max:10',
             'id_cliente' => 'required|max:10',
+            'prioridade' => 'required|max:10',
+            'status' => 'required|max:10',
         ];
     }
 
@@ -40,6 +43,7 @@ class ConsertoRequest extends FormRequest
         return [
             'required'  => 'O campo :attribute não pode ser vazio.',
             'max'       => 'O campo :attribute não pode passar de :max caracteres.',
+            'unique'       => ':attribute já usado.',
         ];
     }
 }

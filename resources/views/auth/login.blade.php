@@ -65,7 +65,7 @@
 
                                 <button type="submit" class="btn btn-info btn-social btn-block"><i class="fa fa-sign-in"></i> Login</button>
 
-                                <a href="/register" class="btn btn-success btn-social btn-block">
+                                <a href="{{ route('cadastro') }}" class="btn btn-success btn-social btn-block">
                                     <i class="fa fa-edit"></i> Cadastrar
                                 </a>
 

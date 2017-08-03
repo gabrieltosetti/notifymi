@@ -17,22 +17,19 @@ class TabelaConsertos extends Migration
             $table->increments('id');
             $table->char('modelo', 50);
             $table->char('defeito', 255);
-            $table->double('orcamento', 6, 2);
-            $table->date('data_entrega');
-            $table->char('detalhes', 255);
+            $table->char('observacao', 255);
+            $table->decimal('orcamento', 12, 2);
+            $table->char('detalhes', 255)->default('detalhes detalhados');
             $table->string('foto')->default('default.jpg');
             $table->char('status', 15);
             $table->char('prioridade', 10);
             $table->char('titulo', 50);
-
-
+            $table->timestamp('data_entrega');
             $table->integer('id_usuario')->unsigned();
             $table->integer('id_assistencia')->unsigned();
             $table->integer('id_cliente')->unsigned();
 
-            // $table->foreign('id_usuario')->references('id')->on('usuarios');
-            // $table->foreign('id_cliente')->references('id')->on('clientes');
-            // $table->foreign('id_assistencia')->references('id')->on('assistencias');
+
             $table->timestamps();
         });
     }
