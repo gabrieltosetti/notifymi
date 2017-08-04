@@ -15,6 +15,9 @@
     <link href="{{ asset('css/plugins/datetimepicker/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
     <!-- Toastr style -->
     <link href="{{ asset('css/plugins/toastr/toastr.min.css') }}" rel="stylesheet">
+    <!-- Ladda style -->
+    <link href="{{ asset('css/plugins/ladda/ladda-themeless.min.css') }}" rel="stylesheet">
+
     <meta name="_token" content="{{ csrf_token() }}" />
      <style>
         @media (min-width: 768px) {
@@ -216,13 +219,13 @@
                                                                                         <!--/TITULO-->
                                                                                         <div class="form-group">
                                                                                             <label class="control-label" for="atividade-descricao">Descrição</label>
-                                                                                            <textarea id="atividade-descricao" class="form-control" placeholder="descrição..."></textarea>
+                                                                                            <textarea id="atividade-descricao" rows="5" class="form-control" placeholder="descrição..."></textarea>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
 
                                                                                 <div class="text-right">
-                                                                                    <button type="submit" class="btn btn-sm btn-primary m-t-n-xs"><strong>Criar</strong></button>
+                                                                                    <button id="btn-criar" type="submit" class="ladda-button btn btn-sm btn-primary m-t-n-xs" data-style="expand-right"><span class="ladda-label">Criar</span><span class="ladda-spinner"></span></button>
                                                                                 </div>
                                                                             </form>
                                                                         </div>
@@ -292,7 +295,7 @@
                                                                                         <!--/TITULO-->
                                                                                         <div class="form-group">
                                                                                             <label class="control-label" for="escolha-descricao">Descrição</label>
-                                                                                            <textarea id="escolha-descricao" class="form-control" placeholder="descrição..."></textarea>
+                                                                                            <textarea id="escolha-descricao"  rows="5" class="form-control" placeholder="descrição..."></textarea>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -302,7 +305,7 @@
                                                                                         <!--COMENTÁRIO-->
                                                                                         <div class="form-group">
                                                                                             <label class="control-label" for="escolha-comentario">Comentário <small class="text-success">opcional</small></label>
-                                                                                            <textarea id="escolha-comentario" class="form-control" placeholder="comentário..."></textarea>
+                                                                                            <textarea id="escolha-comentario" rows="3" class="form-control" placeholder="comentário..."></textarea>
                                                                                         </div>
                                                                                         <!--/COMENTÁRIO-->
                                                                                     </div>
@@ -381,7 +384,6 @@
                                                                     @foreach ($comentarios[$atividade->id] as $comentario)
                                                                     <span class="text-success">{{$comentario->created_at->format('d/m/Y H:i')}} </span>- <strong>{!!$comentario->usuario->nome!!}</strong> {!!$comentario->status!!} {{$comentario->comentario}}<br>
                                                                     @endforeach
-                                                                   <!--  <span class="text-success">22/07/2017 22:05 </span>- <strong>Gabriel Tosetti</strong> criou esta atividade.<br> -->
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -507,6 +509,10 @@
     <script src="{{ asset('js/plugins/datetimepicker/locales/bootstrap-datetimepicker.pt-BR.js') }}"></script>
 <!-- Toastr script -->
 <script src="{{ asset('js/plugins/toastr/toastr.min.js') }}"></script>
+<!-- Ladda -->
+    <script src="{{ asset('js/plugins/ladda/spin.min.js') }}"></script>
+    <script src="{{ asset('js/plugins/ladda/ladda.min.js') }}"></script>
+    <script src="{{ asset('js/plugins/ladda/ladda.jquery.min.js') }}"></script>
 <script>
 
 $(document).ready(function(){
@@ -523,6 +529,8 @@ $(document).ready(function(){
     
 
     $('#atividade-nova').on("submit", function (e) {
+        var btn = $( '#btn-criar' ).ladda();
+        btn.ladda('start');
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
@@ -608,6 +616,7 @@ $(document).ready(function(){
             }
         });
         e.preventDefault();
+        btn.ladda( 'stop' );
     });
     $('#atividade-editar').on("submit", function (e) {
         e.preventDefault();        
@@ -633,8 +642,7 @@ $(document).ready(function(){
             data: editarAtividade,
             dataType: 'json',
             success: function (data) {
-                toastr["success"]('Resultado: '+ data.resultado,'Atividade');
-                console.log(data.resultado);
+                toastr["success"]('Atividade atualizada com sucesso!','Atividade');
             },
             error: function (data) {
                 console.log('Error:', data);

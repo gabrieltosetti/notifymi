@@ -16,8 +16,8 @@ class TabelaAtividades extends Migration
         Schema::create('atividades', function (Blueprint $table) {
             $table->increments('id');
             $table->char('status', 15);
-            $table->timestamp('iniciada');
-            $table->timestamp('finalizada')->nullable();
+            $table->dateTime('iniciada');
+            $table->dateTime('finalizada')->nullable();
             $table->char('titulo');
             $table->char('descricao', 255);            
 
