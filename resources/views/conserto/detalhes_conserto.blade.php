@@ -195,7 +195,7 @@
                                                                                         <!--/DATA INICIO-->
                                                                                         <!--DATA FINAL-->
                                                                                         <div class="form-group">
-                                                                                            <label>Atividade Final</label>
+                                                                                            <label>Atividade Final <small class="text-success">opcional</small></label>
                                                                                             <div class="input-group date form_datetime">
                                                                                                 <input id="atividade-final" class="form-control" size="16" type="text" value="" >
                                                                                                 <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
@@ -270,7 +270,7 @@
                                                                                         <!--/DATA INICIO-->
                                                                                         <!--DATA FINAL-->
                                                                                         <div class="form-group">
-                                                                                            <label>Atividade Final <small class="text-muted text-success">opcional</small></label>
+                                                                                            <label>Atividade Final <small class="text-success">opcional</small></label>
                                                                                             <div class="input-group date form_datetime">
                                                                                                 <input id="escolha-final" class="form-control" size="16" type="text" value="" >
                                                                                                 <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
@@ -295,10 +295,10 @@
                                                                                 </div>
                                                                                 <div class="row">                                                                                    
                                                                                     <div class="col-xs-12">
-                                                                                        <p>Adicionar comentário? <small class="text-success">opcional</small></p>
+                                                                                        <p>Adicionar comentário?</p>
                                                                                         <!--COMENTÁRIO-->
                                                                                         <div class="form-group">
-                                                                                            <label class="control-label" for="escolha-comentario">Comentário</label>
+                                                                                            <label class="control-label" for="escolha-comentario">Comentário <small class="text-success">opcional</small></label>
                                                                                             <textarea id="escolha-comentario" class="form-control" placeholder="comentário..."></textarea>
                                                                                         </div>
                                                                                         <!--/COMENTÁRIO-->
@@ -618,9 +618,7 @@ $(document).ready(function(){
                 $('#escolha-titulo').val(atividade["titulo"]);        
                 $('#escolha-descricao').text(atividade["descricao"]);  
             }
-        });
-        //$('#escolha-inicio').datetimepicker('update'); 
-      
+        });      
     })
 
 
