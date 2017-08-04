@@ -61,38 +61,45 @@ class AtividadeController extends Controller
     {
         $atividade = Atividade::find($request->id);
         $texto = null;
+        $data_finalizada = $atividade->finalizada == null ? "Não definido" : $atividade->finalizada;
                 
         if($request->status != $atividade->status)
         {
-            $texto == null ? "alter"
+            $texto .= $texto == null ? "alterou o status de <strong>".$atividade->status."</strong> para <strong>".$request->status."</strong>" : ", o status de <strong>"+$atividade->status+"</strong> para <strong>"+$request->status+"</strong>";
+            $atividade->status = $request->status;
         } 
         if($request->iniciada != $atividade->iniciada)
         {
-            return Response::json(["resultado" => "iniciada diferente"]);
+            $texto .= $texto == null ? "alterou a data inicio de <strong>".$atividade->iniciada."</strong> para <strong>".$request->iniciada."</strong>" : ", a data inicio de <strong>".$atividade->iniciada."</strong> para <strong>".$request->iniciada."</strong>";
+            $atividade->iniciada = $request->iniciada;
         } 
-        if($request->finalizada != $atividade->finalizada)
+        if($request->finalizada != $data_finalizada)
         {
-            return Response::json(["resultado" => "finalizada diferente"]);
+            $texto .= $texto == null ? "alterou a data final de <strong>".$data_finalizada."</strong> para <strong>".$request->finalizada."</strong>" : ", a data final de <strong>".$data_finalizada."</strong> para <strong>".$request->finalizada."</strong>";
+            $atividade->finalizada = $request->finalizada;
         } 
         if($request->titulo != $atividade->titulo)
         {
-            return Response::json(["resultado" => "titulo diferente"]);
+            $texto .= $texto == null ? "alterou o título de <strong>".$atividade->titulo."</strong> para <strong>".$request->titulo."</strong>" : ", o título de <strong>".$atividade->titulo."</strong> para <strong>".$request->titulo."</strong>";
+            $atividade->titulo = $request->titulo;
         } 
         if($request->descricao != $atividade->descricao)
         {
-            return Response::json(["resultado" => "descricao diferente"]);
-        } 
+            $texto .= $texto == null ? "alterou a descrição de <strong>".$atividade->descricao."</strong> para <strong>".$request->descricao."</strong>" : ", a descrição de <strong>".$atividade->descricao."</strong> para <strong>".$request->descricao."</strong>";
+            $atividade->descricao = $request->descricao;
+        }   
 
-/*         $comentario = [
-            'status' => 'iniciou esta atividade.',
-            'comentario' => null,
+        $comentario = [
+            'status' => $texto == null ? "" : $texto.'.',
+            'comentario' => $request->comentario == null ? null : " Comentário: ".$request->comentario,
             'id_usuario' => Auth::user()->id,
             'id_atividade' => $atividade->id,
-            'created_at' => $atividade->iniciada
+            'updated_at' => Carbon::now()
         ];
 
-        $atividade_comentario = Atividade_comentario::create($comentario); */
+        $atividade_comentario = Atividade_comentario::create($comentario);
+        $atividade->save();
 
-        return Response::json(["resultado" => "nada"]);
+        return Response::json(["resultado" => $request->iniciada." e a atividade ".$atividade->iniciada]);
     }
 }

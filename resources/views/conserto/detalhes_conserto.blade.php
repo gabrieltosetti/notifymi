@@ -379,7 +379,7 @@
                                                                 <hr class="hr-line-solid">
                                                                 <div class="row">
                                                                     @foreach ($comentarios[$atividade->id] as $comentario)
-                                                                    <span class="text-success">{{$comentario->created_at->format('d/m/Y H:i')}} </span>- <strong>{{$comentario->usuario->nome}}</strong> {{$comentario->status}} {{$comentario->comentario}}<br>
+                                                                    <span class="text-success">{{$comentario->created_at->format('d/m/Y H:i')}} </span>- <strong>{!!$comentario->usuario->nome!!}</strong> {!!$comentario->status!!} {{$comentario->comentario}}<br>
                                                                     @endforeach
                                                                    <!--  <span class="text-success">22/07/2017 22:05 </span>- <strong>Gabriel Tosetti</strong> criou esta atividade.<br> -->
                                                                 </div>
@@ -610,7 +610,7 @@ $(document).ready(function(){
         e.preventDefault();
     });
     $('#atividade-editar').on("submit", function (e) {
-        e.preventDefault();
+        e.preventDefault();        
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
@@ -621,7 +621,7 @@ $(document).ready(function(){
             id: $('#atividade-escolha').val(),
             status: $('#escolha-status').val(),
             iniciada: $('#escolha-inicio').val(),
-            finalizada: $('#escolha-final').val(),
+            finalizada: $('#escolha-final').val() == null ? "Não definido" : $('#escolha-final').val(),
             titulo: $('#escolha-titulo').val(),
             descricao: $('#escolha-descricao').val(),
             comentario: $('#escolha-comentario').val()
@@ -634,6 +634,7 @@ $(document).ready(function(){
             dataType: 'json',
             success: function (data) {
                 toastr["success"]('Resultado: '+ data.resultado,'Atividade');
+                console.log(data.resultado);
             },
             error: function (data) {
                 console.log('Error:', data);
@@ -657,6 +658,7 @@ $(document).ready(function(){
                 $('#escolha-titulo').text(atividade["titulo"]);        
                 $('#escolha-titulo').val(atividade["titulo"]);        
                 $('#escolha-descricao').text(atividade["descricao"]);  
+                $('#escolha-descricao').val(atividade["descricao"]);  
             }
         });      
     })
