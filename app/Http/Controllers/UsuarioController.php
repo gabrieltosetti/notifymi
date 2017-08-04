@@ -5,59 +5,75 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Usuario;
 use App\Cargo;
+use App\Conserto;
+use App\Cliente;
 use App\Http\Requests\UsuarioRequest;
 use Illuminate\Support\Facades\Response;
+use Auth;
 
 class UsuarioController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+  public function __construct()
+  {
+    $this->middleware('auth');
+  }
 
-    public function usuariohome()
-    {
-        return view('home/usuariohome');
-    }
+  public function usuariohome()
+  {
+    $idassistencia       = Auth::user()->id_assistencia;
+    $contadornovo        = Conserto::where('id_assistencia', '=', $idassistencia)->where('status', '=', 'Novo')->count();
+    $contadoremandamento = Conserto::where('id_assistencia', '=', $idassistencia)->where('status', '=', 'Em Andamento')->count();
+    $contadoremespera    = Conserto::where('id_assistencia', '=', $idassistencia)->where('status', '=', 'Em espera')->count();
+    $contadorconcluido   = Conserto::where('id_assistencia', '=', $idassistencia)->where('status', '=', 'Concluido')->count();
+    $contadorcancelado   = Conserto::where('id_assistencia', '=', $idassistencia)->where('status', '=', 'Cancelado')->count();
 
-    public function lista()
-    {
-        $usuarios = Usuario::all();
 
-        return view('usuario/lista_usuario')->with('usuarios', $usuarios);
-        /*return view('usuario/lista_usuario');*/
-    }
+    return view('home/usuariohome')->with(["novo"        => $contadornovo,
+                                           "emandamento" => $contadoremandamento,
+                                           "emespera"    => $contadoremespera,
+                                           "concluido"   => $contadorconcluido,
+                                           "cancelado"   => $contadorcancelado,
+                                           ]);
+  }
 
-    public function novo()
-    {
-        return view('usuario/novo_usuario')->with('cargos', Cargo::all());
-    }
+  public function lista()
+  {
+    $usuarios = Usuario::all();
 
-    //rota: novo_usuario_post
-    public function adiciona(UsuarioRequest $request)
-    {
+    return view('usuario/lista_usuario')->with('usuarios', $usuarios);
+    /*return view('usuario/lista_usuario');*/
+  }
 
-        request()->file('foto')->store('perfil');
-        Usuario::create($request->all());
+  public function novo()
+  {
+    return view('usuario/novo_usuario')->with('cargos', Cargo::all());
+  }
 
-        return redirect('/usuarios')->withInput();
-    }
+  //rota: novo_usuario_post
+  public function adiciona(UsuarioRequest $request)
+  {
 
-    //rota: detalhes_usuario
-    public function detalhes($id)
-    {
-        $usuario = Usuario::find($id);
-        $usuario->{"cargo"} = $usuario->cargo->id;
+    request()->file('foto')->store('perfil');
+    Usuario::create($request->all());
 
-        return Response::json($usuario);
-    }
+    return redirect('/usuarios')->withInput();
+  }
 
-    //rota: remove_usuario
-    public function remove($id)
-    {
-        $usuario = Usuario::find($id);
-        $usuario->delete();
+  //rota: detalhes_usuario
+  public function detalhes($id)
+  {
+    $usuario = Usuario::find($id);
+    $usuario->{"cargo"} = $usuario->cargo->id;
 
-        return;
-    }
+    return Response::json($usuario);
+  }
+
+  //rota: remove_usuario
+  public function remove($id)
+  {
+    $usuario = Usuario::find($id);
+    $usuario->delete();
+
+    return;
+  }
 }
