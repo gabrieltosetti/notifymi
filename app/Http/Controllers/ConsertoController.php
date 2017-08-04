@@ -39,8 +39,13 @@ class ConsertoController extends Controller
 
     public function lista()
     {
-      $consertos = Conserto::all();
-        return view('conserto/lista_conserto')->with('consertos', $consertos);
+      $idassistencia =  Auth::user()->id_assistencia;
+
+      $consertos = Conserto::where('id_assistencia', '=', $idassistencia)->get();
+
+      $teste = Conserto::where('id_assistencia', '=' , $idassistencia)->count();
+
+        return view('conserto/lista_conserto')->with(['consertos'=> $consertos, 'teste' => $teste]);
     }
 
     public function novo()
@@ -111,7 +116,7 @@ class ConsertoController extends Controller
             'comentario_criado' => $atividade_comentario->created_at->format('d/m/Y H:i'),
             'comentario_usuario' => $atividade_comentario->usuario->nome,
             'comentario_status' => $atividade_comentario->status
-     
+
         ];
         //$atividade->iniciada = $atividade->iniciada->format('d/m/Y H:i');
         //$atividade->finalizada = $atividade->finalizada == null ? "Não definido" : $atividade->finalizada->format('d/m/Y H:i');

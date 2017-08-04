@@ -17,9 +17,8 @@ class TabelaConsertos extends Migration
             $table->increments('id');
             $table->char('modelo', 50);
             $table->char('defeito', 255);
-            $table->char('observacao', 255);
+            $table->char('observacao', 255)->default('Nenhuma observação feita.')->nullable();
             $table->decimal('orcamento', 12, 2);
-            $table->char('detalhes', 255)->default('detalhes detalhados');
             $table->string('foto')->default('default.jpg');
             $table->char('status', 15);
             $table->char('prioridade', 10);
