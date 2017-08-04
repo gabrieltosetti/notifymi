@@ -125,7 +125,7 @@
                                 <dl>
                                     <dt>Detalhes <span class="dt-editar">Editar</span></dt>
                                     <dd>
-                                        <p id="conserto-descricao">{{$conserto->detalhes}}</p>
+                                        <p id="conserto-descricao">{{$conserto->observacao}}</p>
                                     </dd>
                                 </dl>
                             </div>
@@ -186,21 +186,23 @@
                                                                                         <!--DATA INICIO-->
                                                                                         <div class="form-group">
                                                                                             <label>Atividade Inicio</label>
-                                                                                            <div class="input-group date form_datetime">
-                                                                                                <input id="atividade-inicio" class="form-control" size="16" type="text" value="" >
+                                                                                            <div class="input-group date form_datetime" data-link-field="atividade-inicio">
+                                                                                                <input class="form-control" size="16" type="text" value="" >
                                                                                                 <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                                                                                                 <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
                                                                                             </div>
+                                                                                            <input type="hidden" id="atividade-inicio" value="" />
                                                                                         </div>
                                                                                         <!--/DATA INICIO-->
                                                                                         <!--DATA FINAL-->
                                                                                         <div class="form-group">
                                                                                             <label>Atividade Final <small class="text-success">opcional</small></label>
-                                                                                            <div class="input-group date form_datetime">
-                                                                                                <input id="atividade-final" class="form-control" size="16" type="text" value="" >
+                                                                                            <div class="input-group date form_datetime" data-link-field="atividade-final">
+                                                                                                <input class="form-control" size="16" type="text" value="" >
                                                                                                 <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                                                                                                 <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
                                                                                             </div>
+                                                                                            <input type="hidden" id="atividade-final" value="" />
                                                                                         </div>
                                                                                         <!--/DATA FINAL-->
                                                                                     </div>
@@ -243,7 +245,7 @@
                                                                     <div class="chat-form m-b">
                                                                         <img alt="usuário" class="img-circle pull-left" src="/media/avatars/default.jpg">
                                                                         <div class="media-body">
-                                                                            <form role="form" method="POST" id="atividade-nova">
+                                                                            <form role="form" method="POST" id="atividade-editar">
                                                                                 <h4 class="m-b-sm">Gabriel Tosetti</h4>
                                                                                 <div class="row">
                                                                                     <div class="col-sm-5">
@@ -260,22 +262,23 @@
                                                                                         <!--DATA INICIO-->
                                                                                         <div class="form-group">
                                                                                             <label>Atividade Inicio</label>
-                                                                                            <div class="input-group date form_datetime">
-                                                                                                <input id="escolha-inicio" class="form-control" size="16" type="text" value="" >
+                                                                                            <div class="input-group date form_datetime" data-link-field="escolha-inicio">
+                                                                                                <input class="form-control" size="16" type="text" value="" escolha="data-inicio">
                                                                                                 <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                                                                                                 <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
                                                                                             </div>
-                                                                                            
+                                                                                            <input type="hidden" id="escolha-inicio" value="" />
                                                                                         </div>
                                                                                         <!--/DATA INICIO-->
                                                                                         <!--DATA FINAL-->
                                                                                         <div class="form-group">
                                                                                             <label>Atividade Final <small class="text-success">opcional</small></label>
-                                                                                            <div class="input-group date form_datetime">
-                                                                                                <input id="escolha-final" class="form-control" size="16" type="text" value="" >
+                                                                                            <div class="input-group date form_datetime" data-link-field="escolha-final">
+                                                                                                <input class="form-control" size="16" type="text" value="" escolha="data-final">
                                                                                                 <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                                                                                                 <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
                                                                                             </div>
+                                                                                            <input type="hidden" id="escolha-final" value="" />
                                                                                         </div>
                                                                                         <!--/DATA FINAL-->
                                                                                     </div>
@@ -601,9 +604,43 @@ $(document).ready(function(){
             },
             error: function (data) {
                 console.log('Error:', data);
+                toastr["error"]('Atividade não pode ser editada !','Atividade');
             }
         });
         e.preventDefault();
+    });
+    $('#atividade-editar').on("submit", function (e) {
+        e.preventDefault();
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            }
+        });        
+
+        var editarAtividade = {
+            id: $('#atividade-escolha').val(),
+            status: $('#escolha-status').val(),
+            iniciada: $('#escolha-inicio').val(),
+            finalizada: $('#escolha-final').val(),
+            titulo: $('#escolha-titulo').val(),
+            descricao: $('#escolha-descricao').val(),
+            comentario: $('#escolha-comentario').val()
+        };
+
+        $.ajax({
+            type: "POST",
+            url: "{{route('editar_atividade')}}",
+            data: editarAtividade,
+            dataType: 'json',
+            success: function (data) {
+                toastr["success"]('Resultado: '+ data.resultado,'Atividade');
+            },
+            error: function (data) {
+                console.log('Error:', data);
+                toastr["error"]('Atividade não pode ser editada !','Atividade');
+            }
+        });
+        
     });
 
     $('#atividade-escolha').on('change', function() {
@@ -611,9 +648,12 @@ $(document).ready(function(){
         $.each(atividades, function(i, atividade) {
             if(atividade["id"] == id)
             {
+                //data-link-field="escolha-final"
                 $('#escolha-status').val(atividade["status"]);        
                 $('#escolha-inicio').val(atividade["iniciada"]);                     
-                $('#escolha-final').val(atividade["finalizada"] == null ? "Não definido" : atividade["finalizada"]);        
+                $('[escolha="data-inicio"]').val(atividade["iniciada"]);                                   
+                $('#escolha-final').val(atividade["finalizada"] == null ? "Não definido" : atividade["finalizada"]);    
+                $('[escolha="data-final"]').val(atividade["finalizada"] == null ? "Não definido" : atividade["finalizada"]);       
                 $('#escolha-titulo').text(atividade["titulo"]);        
                 $('#escolha-titulo').val(atividade["titulo"]);        
                 $('#escolha-descricao').text(atividade["descricao"]);  

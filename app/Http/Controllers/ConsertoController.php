@@ -16,7 +16,6 @@ class ConsertoController extends Controller
 {
     public function __construct()
     {
-
       $guards = array_keys(config('auth.guards'));
       foreach ($guards as $guard) {
         if(Auth::guard($guard)->check()) {
@@ -26,14 +25,6 @@ class ConsertoController extends Controller
           $this->middleware('auth');
         }
       }
-
-      // if (Auth::guard()->check())
-      //   $auth = 'auth';
-      // else
-      //   $auth = 'auth:admin';
-      //
-      //   $this->middleware($auth);
-
 
     }
 
@@ -57,6 +48,7 @@ class ConsertoController extends Controller
       $clientes = Cliente::all()->where('permissao', '0');
       return view('conserto/novo_conserto')->with(['clientes'=> $clientes, 'funcionarios' =>$usuarios]);
     }
+    
     public function adiciona(ConsertoRequest $request)
     {
 
@@ -91,36 +83,5 @@ class ConsertoController extends Controller
         $conserto->delete();
 
         return redirect()->action('ConsertoController@lista');
-    }
-
-    public function nova_atividade(Request $request)
-    {
-        $atividade = Atividade::create($request->all());
-
-        $comentario = [
-            'status' => 'iniciou esta atividade.',
-            'comentario' => null,
-            'id_usuario' => Auth::user()->id,
-            'id_atividade' => $atividade->id,
-            'created_at' => $atividade->iniciada
-        ];
-
-        $atividade_comentario = Atividade_comentario::create($comentario);
-        $card = [
-            'id' => $atividade->id,
-            'status' => $atividade->status,
-            'iniciada' => $atividade->iniciada->format('d/m/Y H:i'),
-            'finalizada' => $atividade->finalizada == null ? "Não definido" : $atividade->finalizada->format('d/m/Y H:i'),
-            'titulo' => $atividade->titulo,
-            'descricao' => $atividade->descricao,
-            'comentario_criado' => $atividade_comentario->created_at->format('d/m/Y H:i'),
-            'comentario_usuario' => $atividade_comentario->usuario->nome,
-            'comentario_status' => $atividade_comentario->status
-
-        ];
-        //$atividade->iniciada = $atividade->iniciada->format('d/m/Y H:i');
-        //$atividade->finalizada = $atividade->finalizada == null ? "Não definido" : $atividade->finalizada->format('d/m/Y H:i');
-
-        return Response::json($card);
     }
 }
