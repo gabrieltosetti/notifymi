@@ -380,7 +380,7 @@
                                                                     </div>
                                                                 </div>
                                                                 <hr class="hr-line-solid">
-                                                                <div class="row">
+                                                                <div class="row" atividade="comentario">
                                                                     @foreach ($comentarios[$atividade->id] as $comentario)
                                                                     <span class="text-success">{{$comentario->created_at->format('d/m/Y H:i')}} </span>- <strong>{!!$comentario->usuario->nome!!}</strong> {!!$comentario->status!!} {{$comentario->comentario}}<br>
                                                                     @endforeach
@@ -665,6 +665,7 @@ $(document).ready(function(){
                 {
                     $("[atividade='"+data.atividade.id+"'] [atividade='descricao'").text(data.atividade.descricao);
                 }
+                 $("[atividade='"+data.atividade.id+"'] [atividade='comentario'").append("<span class='text-success'>"+data.comentario.created_at+"</span> - <strong>"+data.comentario.usuario+"</strong> "+data.comentario.status+" "+(data.comentario.comentario == null ? "" : data.comentario.comentario)+"<br>");
             },
             error: function (data) {
                 console.log('Error:', data);
