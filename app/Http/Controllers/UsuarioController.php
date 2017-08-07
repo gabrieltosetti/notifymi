@@ -26,6 +26,10 @@ class UsuarioController extends Controller
     $contadoremespera    = Conserto::where('id_assistencia', '=', $idassistencia)->where('status', '=', 'Em espera')->count();
     $contadorconcluido   = Conserto::where('id_assistencia', '=', $idassistencia)->where('status', '=', 'Concluido')->count();
     $contadorcancelado   = Conserto::where('id_assistencia', '=', $idassistencia)->where('status', '=', 'Cancelado')->count();
+    $funcionarios        = Usuario::where('id_assistencia', '=', $idassistencia)->get();
+    $funcionarios -> toArray();
+
+
 
 
     return view('home/usuariohome')->with(["novo"        => $contadornovo,
@@ -33,6 +37,7 @@ class UsuarioController extends Controller
                                            "emespera"    => $contadoremespera,
                                            "concluido"   => $contadorconcluido,
                                            "cancelado"   => $contadorcancelado,
+                                           "funcionarios" => $funcionarios
                                            ]);
   }
 

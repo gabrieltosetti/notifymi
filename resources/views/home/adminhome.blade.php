@@ -15,7 +15,7 @@
                             <i class="fa fa-cloud fa-5x"></i>
                         </div>
                         <div class="col-xs-8 text-right">
-                            <span> ADMIN</span>
+                            <span> Today degrees </span>
                             <h2 class="font-bold">26'C</h2>
                         </div>
                     </div>
@@ -28,7 +28,7 @@
                             <i class="fa fa-envelope-o fa-5x"></i>
                         </div>
                         <div class="col-xs-8 text-right">
-                            <span> ADMIN </span>
+                            <span>  </span>
                             <h2 class="font-bold">260</h2>
                         </div>
                     </div>
@@ -41,7 +41,7 @@
                             <i class="fa fa-music fa-5x"></i>
                         </div>
                         <div class="col-xs-8 text-right">
-                            <span> ADMIN </span>
+                            <span> New albums </span>
                             <h2 class="font-bold">12</h2>
                         </div>
                     </div>
@@ -60,33 +60,53 @@
                         <div>
                             <table class="table">
                                 <tbody>
+                                  <tr>
+                                      <td>
+                                          <button type="button" style="height:35px; width:50px" class="btn m-r-sm">{{$novo}}</button>
+                                          Novos
+                                      </td>
+                                  </tr>
                                 <tr>
                                     <td>
-                                        <button type="button" class="btn btn-warning m-r-sm">20</button>
+                                        <button type="button" style="height:35px; width:50px" class="btn btn-warning m-r-sm">{{$emandamento}}</button>
                                         Em andamento
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <button type="button" class="btn btn-success m-r-sm">40</button>
+                                        <button type="button" style="height:35px; width:50px" class="btn btn-success m-r-sm">{{$emespera}}</button>
                                         Em espera
                                     </td>
                                 </tr>
 
                                 <tr>
                                     <td>
-                                        <button type="button" class="btn btn-default m-r-sm">40</button>
-                                        Finalizados
+                                        <button type="button" style="height:35px; width:50px" class="btn btn-primary m-r-sm">{{$concluido}}</button>
+                                        Concluído
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <button type="button" class="btn btn-danger m-r-sm">12</button>
-                                        Cancelados
+                                        <button type="button" style="height:35px; width:50px" class="btn btn-danger m-r-sm">{{$cancelado}}</button>
+                                        Cancelado
                                     </td>
                                 </tr>
+
+
                                 </tbody>
                             </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Bar Chart Example</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <div>
+                            <canvas id="barChart" height="140"></canvas>
                         </div>
                     </div>
                 </div>
@@ -108,5 +128,5 @@
                     </div>
                 </div>
             </div>
-
+    <script src="js/plugins/chartJs/Chart.min.js"></script>
 @endsection
