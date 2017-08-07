@@ -520,14 +520,15 @@ $(document).ready(function(){
     iniciarDateFields();
     iniciarEditableFields();
     iniciarTooltipFields();
-    iniciarToastrOptions();   
+    iniciarToastrOptions();  
+
     var atividades = {!! $atividades !!};
+    atulizarCamposEditar(atividades, $( "#atividade-escolha option:first-child" ).val()); 
 
     $(".chosen-select").chosen({
         no_results_text: "Oops, não encontrado!"
     });
     
-
     $('#atividade-nova').on("submit", function (e) {
         var btn = $( '#btn-criar' ).ladda();
         btn.ladda('start');
@@ -653,23 +654,8 @@ $(document).ready(function(){
     });
 
     $('#atividade-escolha').on('change', function() {
-        id = this.value;
-        $.each(atividades, function(i, atividade) {
-            if(atividade["id"] == id)
-            {
-                //data-link-field="escolha-final"
-                $('#escolha-status').val(atividade["status"]);        
-                $('#escolha-inicio').val(atividade["iniciada"]);                     
-                $('[escolha="data-inicio"]').val(atividade["iniciada"]);                                   
-                $('#escolha-final').val(atividade["finalizada"] == null ? "Não definido" : atividade["finalizada"]);    
-                $('[escolha="data-final"]').val(atividade["finalizada"] == null ? "Não definido" : atividade["finalizada"]);       
-                $('#escolha-titulo').text(atividade["titulo"]);        
-                $('#escolha-titulo').val(atividade["titulo"]);        
-                $('#escolha-descricao').text(atividade["descricao"]);  
-                $('#escolha-descricao').val(atividade["descricao"]);  
-            }
-        });      
-    })
+        atulizarCamposEditar(atividades, this.value);
+    });
 
 
 }); /* / DOC READY */
@@ -724,6 +710,22 @@ function iniciarToastrOptions(){
         "timeOut": "7000",
         "extendedTimeOut": "1000"
     };
+}
+function atulizarCamposEditar(atividades, id){
+    $.each(atividades, function(i, atividade) {
+        if(atividade["id"] == id)
+        {
+            $('#escolha-status').val(atividade["status"]);        
+            $('#escolha-inicio').val(atividade["iniciada"]);                     
+            $('[escolha="data-inicio"]').val(atividade["iniciada"]);                                   
+            $('#escolha-final').val(atividade["finalizada"] == null ? "Não definido" : atividade["finalizada"]);    
+            $('[escolha="data-final"]').val(atividade["finalizada"] == null ? "Não definido" : atividade["finalizada"]);       
+            $('#escolha-titulo').text(atividade["titulo"]);        
+            $('#escolha-titulo').val(atividade["titulo"]);        
+            $('#escolha-descricao').text(atividade["descricao"]);  
+            $('#escolha-descricao').val(atividade["descricao"]);  
+        }
+    }); 
 }
 
 
