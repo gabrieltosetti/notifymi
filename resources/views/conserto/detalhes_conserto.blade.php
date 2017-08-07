@@ -353,19 +353,19 @@
                                                                                     <div class="form-group">
                                                                                         <label class="col-md-4 control-label">Status:</label>
                                                                                         <div class="col-md-8">
-                                                                                            <p class="form-control-static">{{$atividade->status}}</p>
+                                                                                            <p class="form-control-static" atividade="status">{{$atividade->status}}</p>
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="form-group">
                                                                                         <label class="col-md-4 control-label">Iniciado:</label>
                                                                                         <div class="col-md-8">
-                                                                                            <p class="form-control-static">{{$atividade->iniciada == null ? 'Não definida' : $atividade->iniciada->format('d/m/Y H:i')}}</p>
+                                                                                            <p class="form-control-static" atividade="iniciada">{{$atividade->iniciada == null ? 'Não definida' : $atividade->iniciada->format('d/m/Y H:i')}}</p>
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="form-group">
                                                                                         <label class="col-md-4 control-label">Finalizado:</label>
                                                                                         <div class="col-md-8">
-                                                                                            <p class="form-control-static">{{$atividade->finalizada == null ? 'Não definida' : $atividade->finalizada->format('d/m/Y H:i')}}</p>
+                                                                                            <p class="form-control-static" atividade="finalizada">{{$atividade->finalizada == null ? 'Não definida' : $atividade->finalizada->format('d/m/Y H:i')}}</p>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -374,9 +374,9 @@
                                                                     </div>
                                                                     <div class="col-md-7 col-lg-8">
                                                                         <small class="text-success">Título</small><br>
-                                                                        <h3 class="m-b">{{$atividade->titulo}}</h3>
+                                                                        <h3 class="m-b" atividade="titulo">{{$atividade->titulo}}</h3>
                                                                         <small class="text-success">Descrição</small>
-                                                                        <p>{{$atividade->descricao}}</p>
+                                                                        <p atividade="descricao">{{$atividade->descricao}}</p>
                                                                     </div>
                                                                 </div>
                                                                 <hr class="hr-line-solid">
@@ -644,12 +644,34 @@ $(document).ready(function(){
             dataType: 'json',
             success: function (data) {
                 toastr["success"]('Atividade atualizada com sucesso!','Atividade');
+                if(data.atividade.status != null)
+                {
+                    $("[atividade='"+data.atividade.id+"']").attr("class", "atividade "+data.atividade.cor);
+                    $("[atividade='"+data.atividade.id+"'] [atividade='status'").text(data.atividade.status);
+                }
+                if(data.atividade.iniciada != null)
+                {
+                    $("[atividade='"+data.atividade.id+"'] [atividade='iniciada'").text(data.atividade.iniciada);
+                }
+                if(data.atividade.finalizada != null)
+                {
+                    $("[atividade='"+data.atividade.id+"'] [atividade='finalizada'").text(data.atividade.finalizada);
+                }
+                if(data.atividade.titulo != null)
+                {
+                    $("[atividade='"+data.atividade.id+"'] [atividade='titulo'").text(data.atividade.titulo);
+                }
+                if(data.atividade.descricao != null)
+                {
+                    $("[atividade='"+data.atividade.id+"'] [atividade='descricao'").text(data.atividade.descricao);
+                }
             },
             error: function (data) {
                 console.log('Error:', data);
                 toastr["error"]('Atividade não pode ser editada !','Atividade');
             }
         });
+
         
     });
 

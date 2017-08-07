@@ -62,31 +62,62 @@ class AtividadeController extends Controller
         $atividade = Atividade::find($request->id);
         $texto = null;
         $data_finalizada = $atividade->finalizada == null ? "Não definido" : $atividade->finalizada;
+        $resultado = 
+        [
+            'atividade' => [
+                'id' => $request->id,
+                'cor' => null,
+                'status' => null,
+                'iniciada' => null,
+                'finalizada' => null,
+                'titulo' => null,
+                'descricao' => null
+            ]
+        ];
                 
         if($request->status != $atividade->status)
         {
             $texto .= $texto == null ? "alterou o status de <strong>".$atividade->status."</strong> para <strong>".$request->status."</strong>" : ", o status de <strong>"+$atividade->status+"</strong> para <strong>"+$request->status+"</strong>";
             $atividade->status = $request->status;
+            switch($request->status)
+            {
+                case "Completado":
+                    $resultado['atividade']['cor'] = "success";
+                    $resultado['atividade']['status'] = "Completado";
+                    break;
+                case "Em andamento":
+                    $resultado['atividade']['cor'] = "warning";
+                    $resultado['atividade']['status'] = "Em andamento";
+                    break;
+                case "Cancelado":
+                    $resultado['atividade']['cor'] = "danger";
+                    $resultado['atividade']['status'] = "Cancelado";
+                    break;
+            }
         } 
         if($request->iniciada != $atividade->iniciada)
         {
             $texto .= $texto == null ? "alterou a data inicio de <strong>".$atividade->iniciada."</strong> para <strong>".$request->iniciada."</strong>" : ", a data inicio de <strong>".$atividade->iniciada."</strong> para <strong>".$request->iniciada."</strong>";
             $atividade->iniciada = $request->iniciada;
+            $resultado['atividade']['iniciada'] = $atividade->iniciada->format('d/m/Y H:i');
         } 
         if($request->finalizada != $data_finalizada)
         {
             $texto .= $texto == null ? "alterou a data final de <strong>".$data_finalizada."</strong> para <strong>".$request->finalizada."</strong>" : ", a data final de <strong>".$data_finalizada."</strong> para <strong>".$request->finalizada."</strong>";
             $atividade->finalizada = $request->finalizada;
+            $resultado['atividade']['finalizada'] = $atividade->finalizada->format('d/m/Y H:i');
         } 
         if($request->titulo != $atividade->titulo)
         {
             $texto .= $texto == null ? "alterou o título de <strong>".$atividade->titulo."</strong> para <strong>".$request->titulo."</strong>" : ", o título de <strong>".$atividade->titulo."</strong> para <strong>".$request->titulo."</strong>";
             $atividade->titulo = $request->titulo;
+            $resultado['atividade']['titulo'] = $atividade->titulo;
         } 
         if($request->descricao != $atividade->descricao)
         {
             $texto .= $texto == null ? "alterou a descrição de <strong>".$atividade->descricao."</strong> para <strong>".$request->descricao."</strong>" : ", a descrição de <strong>".$atividade->descricao."</strong> para <strong>".$request->descricao."</strong>";
             $atividade->descricao = $request->descricao;
+            $resultado['atividade']['descricao'] = $atividade->descricao;
         }   
 
         $comentario = [
@@ -100,6 +131,6 @@ class AtividadeController extends Controller
         $atividade_comentario = Atividade_comentario::create($comentario);
         $atividade->save();
 
-        return Response::json(["resultado" => $request->iniciada." e a atividade ".$atividade->iniciada]);
+        return Response::json($resultado);
     }
 }
