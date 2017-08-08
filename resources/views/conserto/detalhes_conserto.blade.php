@@ -552,7 +552,6 @@ $(document).ready(function(){
             data: formData,
             dataType: 'json',
             success: function (data) {
-                console.log(data);
                 if (data.status == "Completado")
                     {cor = "success"}
                 else if(data.status == "Em andamento")
@@ -562,7 +561,7 @@ $(document).ready(function(){
 
                 card=                                    '<div class="row">';
                 card+=                                        '<div class="col-md-12">';
-                card+=                                            '<div class="atividade '+cor+'">';//cor
+                card+=                                            '<div class="atividade '+cor+'" atividade="'+data.id+'">';//cor
                 card+=                                                '<div class="row">';
                 card+=                                                    '<div class="col-md-5 col-lg-4">';
                 card+=                                                        '<div class="row user-group">';
@@ -574,19 +573,19 @@ $(document).ready(function(){
                 card+=                                                                   ' <div class="form-group">';
                 card+=                                                                        '<label class="col-md-4 control-label">Status:</label>';
                 card+=                                                                        '<div class="col-md-8">';
-                card+=                                                                            '<p class="form-control-static">'+data.status+'</p>';//status
+                card+=                                                                            '<p class="form-control-static" atividade="status">'+data.status+'</p>';//status
                 card+=                                                                        '</div>';
                 card+=                                                                    '</div>';
                 card+=                                                                    '<div class="form-group">';
                 card+=                                                                        '<label class="col-md-4 control-label">Iniciado:</label>';
                 card+=                                                                        '<div class="col-md-8">';
-                card+=                                                                            '<p class="form-control-static">'+data.iniciada+'</p>';//iniciado
+                card+=                                                                            '<p class="form-control-static" atividade="iniciada">'+data.iniciada+'</p>';//iniciado
                 card+=                                                                        '</div>';
                 card+=                                                                    '</div>';
                 card+=                                                                    '<div class="form-group">';
                 card+=                                                                        '<label class="col-md-4 control-label">Finalizado:</label>';
                 card+=                                                                        '<div class="col-md-8">';
-                card+=                                                                            '<p class="form-control-static">'+data.finalizada+'</p>';//finalizada
+                card+=                                                                            '<p class="form-control-static" atividade="finalizada">'+data.finalizada+'</p>';//finalizada
                 card+=                                                                        '</div>';
                 card+=                                                                    '</div>';
                 card+=                                                                '</div>';
@@ -595,19 +594,29 @@ $(document).ready(function(){
                 card+=                                                    '</div>';
                 card+=                                                    '<div class="col-md-7 col-lg-8">';
                 card+=                                                        '<small class="text-success">Título</small><br>';
-                card+=                                                        '<h3 class="m-b">'+data.titulo+'</h3>';//titulo
+                card+=                                                        '<h3 class="m-b" atividade="titulo">'+data.titulo+'</h3>';//titulo
                 card+=                                                        '<small class="text-success">Descrição</small>';
-                card+=                                                        '<p>'+data.descricao+'</p>';  //descricao
+                card+=                                                        '<p atividade="descricao">'+data.descricao+'</p>';  //descricao
                 card+=                                                    '</div>';
                 card+=                                                '</div>';
                 card+=                                                '<hr class="hr-line-solid">';
-                card+=                                                '<div class="row">';
+                card+=                                                '<div class="row" atividade="comentario">';
                 card+=                                                    '<span class="text-success">'+data.comentario_criado+' </span>- <strong>'+data.comentario_usuario+'</strong> '+data.comentario_status+'<br>';
                 card+=                                                '</div>';
                 card+=                                            '</div>';
                 card+=                                        '</div>';
                 card+=                                    '</div>';
                 $(".lista-atividades").prepend(card);
+                
+                atividades.push({
+                    "id": data.id,
+                    "status": data.status,
+                    "iniciada": data.iniciada_semformat,
+                    "finalizada": data.finalizada_semformat,
+                    "titulo": data.titulo,
+                    "descricao": data.descricao
+                });
+                console.log(atividades);
                 toastr["success"]('Atividade adicionada com sucesso !','Atividade');
                 $("#atividade-escolha").prepend($('<option>', {
                     value: data.id,

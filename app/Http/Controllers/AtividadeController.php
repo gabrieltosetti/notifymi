@@ -31,6 +31,16 @@ class AtividadeController extends Controller
 
     public function nova(Request $request)
     {
+        $dados = [
+            'status' => $request->status,
+            'iniciada' => $request->iniciada,
+            'finalizada' => $request->finalizada,
+            'titulo' => $request->titulo,
+            'descricao' => $request->descricao,
+            'id_conserto' => $request->id_conserto,
+            'id_usuario' => $request->id_usuario
+
+        ];
         $atividade = Atividade::create($request->all());
 
         $comentario = [
@@ -51,7 +61,9 @@ class AtividadeController extends Controller
             'descricao' => $atividade->descricao,
             'comentario_criado' => $atividade_comentario->created_at->format('d/m/Y H:i'),
             'comentario_usuario' => $atividade_comentario->usuario->nome,
-            'comentario_status' => $atividade_comentario->status
+            'comentario_status' => $atividade_comentario->status,
+            'iniciada_semformat' => $atividade->iniciada->toDateTimeString(),
+            'finalizada_semformat' => $atividade->finalizada == null ? "Não definido" : $atividade->finalizada->toDateTimeString()
 
         ];
         return Response::json($card);
