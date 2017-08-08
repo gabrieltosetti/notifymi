@@ -60,10 +60,10 @@ class AtividadeController extends Controller
     public function editar(Request $request)
     {
         $atividade = Atividade::find($request->id);
-        $texto = null;
-        $data_finalizada_db = $atividade->finalizada == null ? null : $atividade->finalizada;
         $data_finalizada_request = $request->finalizada == "nao" ? null : new Carbon($request->finalizada, 'America/Sao_Paulo');
-        $data_iniciada = new Carbon($request->iniciada, 'America/Sao_Paulo');
+        $data_iniciada_request = new Carbon($request->iniciada, 'America/Sao_Paulo');
+        $texto = null;
+        $atividade_nova = [];
         $resultado = 
         [
             'atividade' => [
@@ -80,14 +80,20 @@ class AtividadeController extends Controller
                 'status' => null,
                 'comentario' => null,
                 'created_at' => null
-            ]
-        ];
-        $atividade_nova = $atividade;
+            ],
+            'status' => 'NOK'
+        ];        
                 
         if($request->status != $atividade->status)
         {
-            $texto .= $texto == null ? "alterou o <span class='text-success'>status</span> de <strong>".$atividade->status."</strong> para <strong>".$request->status."</strong>" : ", o <span class='text-success'>status</span> de <strong>".$atividade->status."</strong> para <strong>".$request->status."</strong>";
-            $atividade_nova->status = $request->status;
+            if($texto == null)
+            {
+                $texto = "alterou o <span class='text-success'>status</span> de <strong>".$atividade->status."</strong> para <strong>".$request->status."</strong>";
+            } else
+            {
+                $texto .= ", o <span class='text-success'>status</span> de <strong>".$atividade->status."</strong> para <strong>".$request->status."</strong>";
+            }
+            $atividade_nova["status"] = $request->status;
             switch($request->status)
             {
                 case "Completado":
@@ -104,43 +110,61 @@ class AtividadeController extends Controller
                     break;
             }
         } 
-        if($data_iniciada != $atividade->iniciada)
+        if($data_iniciada_request != $atividade->iniciada)
         {
-            $texto .= $texto == null ? "alterou a <span class='text-success'>data inicio</span> de <strong>".$atividade->iniciada->format('d/m/Y H:i')."</strong> para <strong>".$data_iniciada->format('d/m/Y H:i')."</strong>" : ", a <span class='text-success'>data inicio</span> de <strong>".$atividade->iniciada->format('d/m/Y H:i')."</strong> para <strong>".$data_iniciada->format('d/m/Y H:i')."</strong>";
-            $atividade_nova->iniciada = $request->iniciada;
-            $resultado['atividade']['iniciada'] = $atividade->iniciada->format('d/m/Y H:i');
-        } 
-        if($data_finalizada_request != $data_finalizada_db)
-        {
-            $data_db = $data_finalizada_db == null ? "Não definido" : $data_finalizada_db->format('d/m/Y H:i');
-            $data_request = $data_finalizada_request == null ? "Não definido" : $data_finalizada_request->format('d/m/Y H:i');
             if($texto == null)
             {
-                $texto = "alterou a <span class='text-success'>data final</span> de <strong>".$data_db."</strong> para <strong>".$data_request."</strong>";
+                $texto = "alterou a <span class='text-success'>data inicio</span> de <strong>".$atividade->iniciada->format('d/m/Y H:i')."</strong> para <strong>".$data_iniciada_request->format('d/m/Y H:i')."</strong>";
             } else
             {
-                $texto .= ", a <span class='text-success'>data final</span> de <strong>".$data_db."</strong> para <strong>".$data_request."</strong>";
+                $texto .= ", a <span class='text-success'>data inicio</span> de <strong>".$atividade->iniciada->format('d/m/Y H:i')."</strong> para <strong>".$data_iniciada_request->format('d/m/Y H:i')."</strong>";
             }
-            //$texto .= $texto == null ? "alterou a <span class='text-success'>data final</span> de <strong>".$data_finalizada_db == "Não definido" ? "Não definido" : $data_finalizada_db->format('d/m/Y H:i')."</strong> para <strong>".$request->finalizada == "Não definido" ? "Não definido" : $data_finalizada_db->format('d/m/Y H:i')$request->finalizada."</strong>" : ", a <span class='text-success'>data final</span> de <strong>".$data_finalizada_db."</strong> para <strong>".$request->finalizada."</strong>";
-            $data_0 = new Carbon("0000-00-00 00:00:00", 'America/Sao_Paulo');
-            $atividade_nova->finalizada = $data_finalizada_request == null ? $data_0 : $data_finalizada_request;
-            $resultado['atividade']['finalizada'] = $atividade->finalizada->format('d/m/Y H:i');
+            $atividade_nova["iniciada"] = $data_iniciada_request;
+            $resultado['atividade']['iniciada'] = $atividade_nova["iniciada"]->format('d/m/Y H:i');
+        } 
+        if($data_finalizada_request != $atividade->finalizada)
+        {
+            $formatada_db = $atividade->finalizada == null ? "Não definido" : $atividade->finalizada->format('d/m/Y H:i');
+            $formatada_request = $data_finalizada_request == null ? "Não definido" : $data_finalizada_request->format('d/m/Y H:i');
+            if($texto == null)
+            {
+                $texto = "alterou a <span class='text-success'>data final</span> de <strong>".$formatada_db."</strong> para <strong>".$formatada_request."</strong>";
+            } else
+            {
+                $texto .= ", a <span class='text-success'>data final</span> de <strong>".$formatada_db."</strong> para <strong>".$formatada_request."</strong>";
+            }
+            $atividade_nova["finalizada"] = $data_finalizada_request == null ? null : $data_finalizada_request;
+            $resultado['atividade']['finalizada'] = $atividade_nova["finalizada"] == null ? "Não definido" : $atividade_nova["finalizada"]->format('d/m/Y H:i');
         } 
         if($request->titulo != $atividade->titulo)
         {
-            $texto .= $texto == null ? "alterou o <span class='text-success'>título</span> de <strong>".$atividade->titulo."</strong> para <strong>".$request->titulo."</strong>" : ", o <span class='text-success'>título</span> de <strong>".$atividade->titulo."</strong> para <strong>".$request->titulo."</strong>";
-            $atividade_nova->titulo = $request->titulo;
-            $resultado['atividade']['titulo'] = $atividade->titulo;
+            if($texto == null)
+            {
+                $texto = "alterou o <span class='text-success'>título</span> de <strong>".$atividade->titulo."</strong> para <strong>".$request->titulo."</strong>";
+            } else
+            {
+                $texto .= ", o <span class='text-success'>título</span> de <strong>".$atividade->titulo."</strong> para <strong>".$request->titulo."</strong>";
+            }
+            $atividade_nova["titulo"] = $request->titulo;
+            $resultado['atividade']['titulo'] = $atividade_nova["titulo"];
         } 
         if($request->descricao != $atividade->descricao)
         {
             if($texto == null)
-            {$texto = "alterou a <span class='text-success'>descrição</span> de <strong>".$atividade->descricao."</strong> para <strong>".$request->descricao."</strong>";}
-            else{$texto .= ", a <span class='text-success'>descrição</span> de <strong>".$atividade->descricao."</strong> para <strong>".$request->descricao."</strong>";}
-            //$texto .= $texto == null ? "alterou a <span class='text-success'>descrição</span> de <strong>".$atividade->descricao."</strong> para <strong>".$request->descricao."</strong>" : ", a <span class='text-success'>descrição</span> de <strong>".$atividade->descricao."</strong> para <strong>".$request->descricao."</strong>";
-            $atividade_nova->descricao = $request->descricao;
-            $resultado['atividade']['descricao'] = $atividade->descricao;
-        }   
+            {
+                $texto = "alterou a <span class='text-success'>descrição</span> de <strong>".$atividade->descricao."</strong> para <strong>".$request->descricao."</strong>";
+            }else
+            {
+                $texto .= ", a <span class='text-success'>descrição</span> de <strong>".$atividade->descricao."</strong> para <strong>".$request->descricao."</strong>";
+            }
+            $atividade_nova["descricao"] = $request->descricao;
+            $resultado['atividade']['descricao'] = $atividade_nova["descricao"];
+        } 
+
+        if(($texto == null) && ($request->comentario == null)) 
+        {
+            return Response::json($resultado);
+        }
 
         $comentario = [
             'status' => $texto == null ? "" : $texto.'.',
@@ -151,12 +175,14 @@ class AtividadeController extends Controller
         ];
 
         $atividade_comentario = Atividade_comentario::create($comentario);
-        $atividade_nova->save();
+        Atividade::where('id', $atividade->id)->update($atividade_nova);
 
         $resultado['comentario']['usuario'] = $atividade_comentario->usuario->nome;
         $resultado['comentario']['status'] = $atividade_comentario->status;
         $resultado['comentario']['comentario'] = $atividade_comentario->comentario;
         $resultado['comentario']['created_at'] = $atividade_comentario->created_at->format('d/m/Y H:i');
+        $resultado['status'] = "OK";
+
         return Response::json($resultado);
     }
 }

@@ -643,7 +643,7 @@ $(document).ready(function(){
             finalizada: d_finalizada,
             titulo: $('#escolha-titulo').val(),
             descricao: $('#escolha-descricao').val(),
-            comentario: $('#escolha-comentario').val()
+            comentario: $('#escolha-comentario').val() == "" ? null : $('#escolha-comentario').val(),
         };
 
         $.ajax({
@@ -652,41 +652,47 @@ $(document).ready(function(){
             data: editarAtividade,
             dataType: 'json',
             success: function (data) {
-                toastr["success"]('Atividade atualizada com sucesso!','Atividade');
-                if(data.atividade.status != null)
+
+                if(data.status == "NOK")
                 {
-                    $("[atividade='"+data.atividade.id+"']").attr("class", "atividade "+data.atividade.cor);
-                    $("[atividade='"+data.atividade.id+"'] [atividade='status'").text(data.atividade.status);
-                }
-                if(data.atividade.iniciada != null)
+                    toastr["warning"]('Nenhuma alteração feita!','Atividade');                    
+                } else
                 {
-                    $("[atividade='"+data.atividade.id+"'] [atividade='iniciada'").text(data.atividade.iniciada);
-                }
-                if(data.atividade.finalizada != null)
-                {
-                    $("[atividade='"+data.atividade.id+"'] [atividade='finalizada'").text(data.atividade.finalizada);
-                }
-                if(data.atividade.titulo != null)
-                {
-                    $("[atividade='"+data.atividade.id+"'] [atividade='titulo'").text(data.atividade.titulo);
-                }
-                if(data.atividade.descricao != null)
-                {
-                    $("[atividade='"+data.atividade.id+"'] [atividade='descricao'").text(data.atividade.descricao);
-                }
-                $("[atividade='"+data.atividade.id+"'] [atividade='comentario'").append("<span class='text-success'>"+data.comentario.created_at+"</span> - <strong>"+data.comentario.usuario+"</strong> "+data.comentario.status+" "+(data.comentario.comentario == null ? "" : data.comentario.comentario)+"<br>");
-                $('#escolha-comentario').val('');
-                $.each(atividades, function(i, atividade) {
-                    if(atividade["id"] == data.atividade.id)
+                    if(data.atividade.status != null)
                     {
-                        if(data.atividade.status != null){atividade["status"] = data.atividade.status}
-                        if(data.atividade.iniciada != null){atividade["iniciada"] = data.atividade.iniciada}
-                        if(data.atividade.finalizada != null){atividade["finalizada"] = data.atividade.finalizada}
-                        if(data.atividade.titulo != null){atividade["titulo"] = data.atividade.titulo}
-                        if(data.atividade.descricao != null){atividade["descricao"] = data.atividade.descricao}
+                        $("[atividade='"+data.atividade.id+"']").attr("class", "atividade "+data.atividade.cor);
+                        $("[atividade='"+data.atividade.id+"'] [atividade='status'").text(data.atividade.status);
                     }
-                });
-                console.log(data); 
+                    if(data.atividade.iniciada != null)
+                    {
+                        $("[atividade='"+data.atividade.id+"'] [atividade='iniciada'").text(data.atividade.iniciada);
+                    }
+                    if(data.atividade.finalizada != null)
+                    {
+                        $("[atividade='"+data.atividade.id+"'] [atividade='finalizada'").text(data.atividade.finalizada);
+                    }
+                    if(data.atividade.titulo != null)
+                    {
+                        $("[atividade='"+data.atividade.id+"'] [atividade='titulo'").text(data.atividade.titulo);
+                    }
+                    if(data.atividade.descricao != null)
+                    {
+                        $("[atividade='"+data.atividade.id+"'] [atividade='descricao'").text(data.atividade.descricao);
+                    }
+                    $("[atividade='"+data.atividade.id+"'] [atividade='comentario'").append("<span class='text-success'>"+data.comentario.created_at+"</span> - <strong>"+data.comentario.usuario+"</strong> "+data.comentario.status+" "+(data.comentario.comentario == null ? "" : data.comentario.comentario)+"<br>");
+                    $('#escolha-comentario').val('');
+                    $.each(atividades, function(i, atividade) {
+                        if(atividade["id"] == data.atividade.id)
+                        {
+                            if(data.atividade.status != null){atividade["status"] = data.atividade.status}
+                            if(data.atividade.iniciada != null){atividade["iniciada"] = data.atividade.iniciada}
+                            if(data.atividade.finalizada != null){atividade["finalizada"] = data.atividade.finalizada}
+                            if(data.atividade.titulo != null){atividade["titulo"] = data.atividade.titulo}
+                            if(data.atividade.descricao != null){atividade["descricao"] = data.atividade.descricao}
+                        }
+                    });
+                    toastr["success"]('Atividade atualizada com sucesso!','Atividade');
+                }
             },
             error: function (data) {
                 console.log('Error:', data);
