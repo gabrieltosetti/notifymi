@@ -382,7 +382,7 @@
                                                                 <hr class="hr-line-solid">
                                                                 <div class="row" atividade="comentario">
                                                                     @foreach ($comentarios[$atividade->id] as $comentario)
-                                                                    <span class="text-success">{{$comentario->created_at->format('d/m/Y H:i')}} </span>- <strong>{!!$comentario->usuario->nome!!}</strong> {!!$comentario->status!!} {{$comentario->comentario}}<br>
+                                                                    <span class="text-success">{{$comentario->created_at->format('d/m/Y H:i')}} </span>- <strong>{!!$comentario->usuario->nome!!}</strong> {!!$comentario->status!!} {!!$comentario->comentario!!}<br>
                                                                     @endforeach
                                                                 </div>
                                                             </div>
@@ -609,6 +609,10 @@ $(document).ready(function(){
                 card+=                                    '</div>';
                 $(".lista-atividades").prepend(card);
                 toastr["success"]('Atividade adicionada com sucesso !','Atividade');
+                $("#atividade-escolha").prepend($('<option>', {
+                    value: data.id,
+                    text: '#'+data.id+' - '+data.titulo
+                }));
 
             },
             error: function (data) {
@@ -626,12 +630,17 @@ $(document).ready(function(){
                 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
             }
         });        
-
+        if(($('#escolha-final').val() == "Não definido") || ($('#escolha-final').val() == ""))
+        {
+            var d_finalizada = "nao";
+        } else {
+            var d_finalizada = $('#escolha-final').val();
+        }
         var editarAtividade = {
             id: $('#atividade-escolha').val(),
             status: $('#escolha-status').val(),
             iniciada: $('#escolha-inicio').val(),
-            finalizada: $('#escolha-final').val() == null ? "Não definido" : $('#escolha-final').val(),
+            finalizada: d_finalizada,
             titulo: $('#escolha-titulo').val(),
             descricao: $('#escolha-descricao').val(),
             comentario: $('#escolha-comentario').val()
@@ -665,7 +674,19 @@ $(document).ready(function(){
                 {
                     $("[atividade='"+data.atividade.id+"'] [atividade='descricao'").text(data.atividade.descricao);
                 }
-                 $("[atividade='"+data.atividade.id+"'] [atividade='comentario'").append("<span class='text-success'>"+data.comentario.created_at+"</span> - <strong>"+data.comentario.usuario+"</strong> "+data.comentario.status+" "+(data.comentario.comentario == null ? "" : data.comentario.comentario)+"<br>");
+                $("[atividade='"+data.atividade.id+"'] [atividade='comentario'").append("<span class='text-success'>"+data.comentario.created_at+"</span> - <strong>"+data.comentario.usuario+"</strong> "+data.comentario.status+" "+(data.comentario.comentario == null ? "" : data.comentario.comentario)+"<br>");
+                $('#escolha-comentario').val('');
+                $.each(atividades, function(i, atividade) {
+                    if(atividade["id"] == data.atividade.id)
+                    {
+                        if(data.atividade.status != null){atividade["status"] = data.atividade.status}
+                        if(data.atividade.iniciada != null){atividade["iniciada"] = data.atividade.iniciada}
+                        if(data.atividade.finalizada != null){atividade["finalizada"] = data.atividade.finalizada}
+                        if(data.atividade.titulo != null){atividade["titulo"] = data.atividade.titulo}
+                        if(data.atividade.descricao != null){atividade["descricao"] = data.atividade.descricao}
+                    }
+                });
+                console.log(data); 
             },
             error: function (data) {
                 console.log('Error:', data);
@@ -676,7 +697,7 @@ $(document).ready(function(){
         
     });
 
-    $('#atividade-escolha').on('change', function() {
+    $("#atividade-escolha").on("change", function() {
         atulizarCamposEditar(atividades, this.value);
     });
 

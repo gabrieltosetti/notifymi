@@ -17,7 +17,7 @@ class TabelaAtividades extends Migration
             $table->increments('id');
             $table->char('status', 15);
             $table->dateTime('iniciada');
-            $table->dateTime('finalizada')->nullable();
+            $table->dateTime('finalizada')->nullable()->default(null);
             $table->char('titulo');
             $table->char('descricao', 255);            
 
