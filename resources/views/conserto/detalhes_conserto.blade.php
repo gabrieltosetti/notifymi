@@ -37,12 +37,10 @@
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
             <div class="col-sm-3">
-    <!--
-        PAINEL ESQUERDO
-        -->
+    <!-- PAINEL ESQUERDO -->
                 <!-- IMAGEM -->
                 <div class="row">
-                    <img alt="usuário" class="img-thumbnail img-md pull-left m-r-xs" src="/media/avatars/default.jpg">
+                    <img alt="usuário" class="img-thumbnail img-md pull-left m-r-xs" src="/media/avatars/{{$conserto->cliente->avatar}}">
                     <strong>Criado por </strong><a href="#" class="text-navy">{{$conserto->usuario->nome}}</a><a href="#" class="pull-right" data-toggle="tooltip" data-placement="top" title="Mudar usuário"><i class="fa fa-pencil m-r-sm"></i></a> <br>
                     {{$conserto->created_at->diffForHumans()}}
                 </div>
@@ -94,9 +92,7 @@
                     <select id="select-copia" data-placeholder="Adicionar pessoas..." class="chosen-select" multiple>
                     </select>
                 </div>
-    <!--
-        /PAINEL ESQUERDO
-        -->
+    <!-- /PAINEL ESQUERDO -->
             </div>
             <div class="col-sm-9">
                 <div class="ibox">
@@ -141,8 +137,8 @@
                                     <div class="panel-heading">
                                         <div class="panel-options">
                                             <ul class="nav nav-tabs">
-                                                <li class="active"><a href="#tab-1" data-toggle="tab">Atividades</a></li>
-                                                <li class=""><a href="#tab-2" data-toggle="tab">Mensagem Pública</a></li>
+                                                <li class=""><a href="#tab-1" data-toggle="tab">Atividades</a></li>
+                                                <li class="active"><a href="#tab-2" data-toggle="tab">Mensagens</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -151,7 +147,7 @@
                                     <div class="panel-body">
                                         <div class="tab-content">
                                             <!-- TAB 1 -->
-                                            <div class="tab-pane active" id="tab-1">
+                                            <div class="tab-pane" id="tab-1">
                                                 <div class="col-lg-12">
                                                     <div class="panel blank-panel">
                                                         <!-- PANEL TABS -->
@@ -170,7 +166,7 @@
                                                                 <!-- TAB NOVA ATIVIDADE -->
                                                                 <div class="tab-pane active" id="tab-nova_atividade">
                                                                     <div class="chat-form m-b">
-                                                                        <img alt="usuário" class="img-circle pull-left" src="/media/avatars/default.jpg">
+                                                                        <img alt="usuário" class="img-circle pull-left" src="/media/avatars/{!!Auth::user()->avatar!!}">
                                                                         <div class="media-body">
                                                                             <form role="form" method="POST" id="atividade-nova">
                                                                                 <h4 class="m-b-sm">Gabriel Tosetti</h4>
@@ -246,7 +242,7 @@
                                                                     </div>
                                                                     <!--/ESCOLHA-->
                                                                     <div class="chat-form m-b">
-                                                                        <img alt="usuário" class="img-circle pull-left" src="/media/avatars/default.jpg">
+                                                                        <img alt="usuário" class="img-circle pull-left" src="/media/avatars/{!!Auth::user()->avatar!!}">
                                                                         <div class="media-body">
                                                                             <form role="form" method="POST" id="atividade-editar">
                                                                                 <h4 class="m-b-sm">Gabriel Tosetti</h4>
@@ -394,92 +390,66 @@
                                             </div>
                                             <!-- /TAB 1 -->
                                             <!-- TAB 2 -->
-                                            <div class="tab-pane" id="tab-2">
+                                            <div class="tab-pane active" id="tab-2">
                                                 <div class="chat-form">
-                                                    <img alt="usuário" class="img-circle pull-left" src="/media/avatars/default.jpg">
+                                                    <img alt="usuário" class="img-circle pull-left" src="/media/avatars/{!!Auth::user()->avatar!!}">
                                                     <div class="media-body">
                                                         <form role="form" class="conserto-chat">
                                                             <h4>Gabriel Tosetti</h4>
-                                                            <div class="form-group">
-                                                                <textarea class="form-control" placeholder="Mensagem..."></textarea>
+                                                            <!-- MENSAGENS -->
+                                                            <div class="row">
+                                                                <div class="col-xs-12">
+                                                                    <div class="tab" role="tabpanel">
+                                                                        <!-- Nav tabs -->
+                                                                        <ul class="nav nav-tabs" role="tablist">
+                                                                            <li role="presentation" class="active"><a href="#tab-publica" role="tab" data-toggle="tab">Publico</a></li>
+                                                                            <li role="presentation"><a href="#tab-privada" role="tab" data-toggle="tab">Privado</a></li>
+                                                                        </ul>
+                                                                        <!-- Tab panes -->
+                                                                        <div class="tab-content">
+                                                                            <!-- MENSAGEM PUBLICA -->
+                                                                            <div role="tabpanel" class="tab-pane fade in active" id="tab-publica">
+                                                                                <div class="form-group">
+                                                                                    <textarea class="form-control" id="mensagem-publica" rows="4" placeholder="Mensagem pública..."></textarea>
+                                                                                </div>
+                                                                            </div>
+                                                                            <!-- /MENSAGEM PUBLICA -->
+                                                                            <!-- MENSAGEM PRIVADA -->
+                                                                            <div role="tabpanel" class="tab-pane fade" id="tab-privada">
+                                                                                <div class="form-group">
+                                                                                    <textarea class="form-control" id="mensagem-privada" rows="4" placeholder="Mensagem privada..."></textarea>
+                                                                                </div>
+                                                                            </div>
+                                                                            <!-- /MENSAGEM PRIVADA -->
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="text-right">
+                                                                        <button type="submit" class="btn btn-sm btn-primary m-t-n-xs"><strong>Postar</strong></button>
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                            <div class="text-right">
-                                                                <button type="submit" class="btn btn-sm btn-primary m-t-n-xs"><strong>Postar</strong></button>
-                                                            </div>
+                                                            <!-- /MENSAGENS -->
                                                         </form>
                                                     </div>
                                                 </div>
                                                 <div class="feed-activity-list">
                                                     <div class="feed-element">
                                                         <a href="#" class="pull-left">
-                                                            <img alt="image" class="img-circle" src="img/a2.jpg">
+                                                            <img alt="image" class="img-circle" src="/media/avatars/default.jpg">
                                                         </a>
                                                         <div class="media-body ">
                                                             <small class="pull-right">2h ago</small>
                                                             <strong>Mark Johnson</strong> posted message on <strong>Monica Smith</strong> site. <br>
-                                                            <small class="text-muted">Today 2:10 pm - 12.06.2014</small>
-                                                            <div class="well">
-                                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-                                                                Over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-                                                            </div>
+                                                            <small class="text-muted">Today 2:10 pm - 12.06.2014</small>                                                            
+                                                        </div> 
+                                                       
+                                                        <div class="mensagem-publica">
+                                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+                                                            Over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
                                                         </div>
-                                                    </div>
-                                                    <div class="feed-element">
-                                                        <a href="#" class="pull-left">
-                                                            <img alt="image" class="img-circle" src="img/a3.jpg">
-                                                        </a>
-                                                        <div class="media-body ">
-                                                            <small class="pull-right">2h ago</small>
-                                                            <strong>Janet Rosowski</strong> add 1 photo on <strong>Monica Smith</strong>. <br>
-                                                            <small class="text-muted">2 days ago at 8:30am</small>
-                                                        </div>
-                                                    </div>
-                                                    <div class="feed-element">
-                                                        <a href="#" class="pull-left">
-                                                            <img alt="image" class="img-circle" src="img/a4.jpg">
-                                                        </a>
-                                                        <div class="media-body ">
-                                                            <small class="pull-right text-navy">5h ago</small>
-                                                            <strong>Chris Johnatan Overtunk</strong> started following <strong>Monica Smith</strong>. <br>
-                                                            <small class="text-muted">Yesterday 1:21 pm - 11.06.2014</small>
-                                                            <div class="actions">
-                                                                <a class="btn btn-xs btn-white"><i class="fa fa-thumbs-up"></i> Like </a>
-                                                                <a class="btn btn-xs btn-white"><i class="fa fa-heart"></i> Love</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="feed-element">
-                                                        <a href="#" class="pull-left">
-                                                            <img alt="image" class="img-circle" src="img/a5.jpg">
-                                                        </a>
-                                                        <div class="media-body ">
-                                                            <small class="pull-right">2h ago</small>
-                                                            <strong>Kim Smith</strong> posted message on <strong>Monica Smith</strong> site. <br>
-                                                            <small class="text-muted">Yesterday 5:20 pm - 12.06.2014</small>
-                                                            <div class="well">
-                                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-                                                                Over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="feed-element">
-                                                        <a href="#" class="pull-left">
-                                                            <img alt="image" class="img-circle" src="img/profile.jpg">
-                                                        </a>
-                                                        <div class="media-body ">
-                                                            <small class="pull-right">23h ago</small>
-                                                            <strong>Monica Smith</strong> love <strong>Kim Smith</strong>. <br>
-                                                            <small class="text-muted">2 days ago at 2:30 am - 11.06.2014</small>
-                                                        </div>
-                                                    </div>
-                                                    <div class="feed-element">
-                                                        <a href="#" class="pull-left">
-                                                            <img alt="image" class="img-circle" src="img/a7.jpg">
-                                                        </a>
-                                                        <div class="media-body ">
-                                                            <small class="pull-right">46h ago</small>
-                                                            <strong>Mike Loreipsum</strong> started following <strong>Monica Smith</strong>. <br>
-                                                            <small class="text-muted">3 days ago at 7:58 pm - 10.06.2014</small>
+                                                        <div class="well">
+                                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+                                                            Over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
                                                         </div>
                                                     </div>
                                                 </div>
