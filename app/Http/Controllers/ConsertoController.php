@@ -5,7 +5,8 @@ use App\Conserto;
 use App\Usuario;
 use App\Cliente;
 use App\Atividade;
-use App\Atividade_comentario;
+use App\Atividade_Comentario;
+use App\Conserto_Mensagem;
 use Illuminate\Http\Request;
 use App\Http\Requests\ConsertoRequest;
 use Illuminate\Support\Facades\Response;
@@ -72,8 +73,10 @@ class ConsertoController extends Controller
         {
             $comentarios[$atividade->id] = Atividade_comentario::where('id_atividade', $atividade->id)->orderBy('id')->get();
         }
+        $mensagens = Conserto_Mensagem::where('id_conserto', 1)->orderBy('created_at', 'desc')->get();
+        
 
-        return view('conserto/detalhes_conserto')->with(['usuarios'=> $usuarios, 'conserto' => $conserto, 'atividades' => $atividades, 'comentarios' => $comentarios]);
+        return view('conserto/detalhes_conserto')->with(['usuarios'=> $usuarios, 'conserto' => $conserto, 'atividades' => $atividades, 'comentarios' => $comentarios, 'mensagens' => $mensagens]);
     }
 
     //rota: remove_conserto

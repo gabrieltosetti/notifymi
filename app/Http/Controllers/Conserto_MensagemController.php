@@ -6,14 +6,14 @@ use App\Conserto;
 use App\Usuario;
 use App\Cliente;
 use App\Atividade;
-use App\Atividade_mensagem;
+use App\Conserto_Mensagem;
 use Illuminate\Http\Request;
 use App\Http\Requests\ConsertoRequest;
 use Illuminate\Support\Facades\Response;
 use Carbon\Carbon;
 use Auth;
 
-class Atividade_mensagemController extends Controller
+class Conserto_MensagemController extends Controller
 {
     public function __construct()
     {
@@ -30,17 +30,19 @@ class Atividade_mensagemController extends Controller
 
     public function nova(Request $request)
     {
-        $mensagem = Atividade_mensagem::create($request->all());
+        $mensagem = Conserto_Mensagem::create($request->all());
 
-        $resposta = [
+         $resposta = [
             'mensagem' => $mensagem->mensagem,
             'tipo' => $mensagem->tipo,
             'usuario' => [
                 'nome' => $mensagem->usuario->nome,
                 'avatar' => $mensagem->usuario->avatar
             ],
-            'criada' => $mensagem->created_at->toDateTimeString()
-        ];
+            'criada' => $mensagem->created_at->format('H:i'),
+            'criada_extenso' => $mensagem->created_at->formatLocalized('%A, %d de %B %Y'),
+            'criada_diff' => $mensagem->created_at->diffForHumans()
+        ]; 
         return Response::json($resposta);
     }
 }

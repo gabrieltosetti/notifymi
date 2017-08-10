@@ -394,42 +394,47 @@
                                                 <div class="chat-form">
                                                     <img alt="usuário" class="img-circle pull-left" src="/media/avatars/{!!Auth::user()->avatar!!}">
                                                     <div class="media-body">
-                                                        <form role="form" class="conserto-chat">
-                                                            <h4>Gabriel Tosetti</h4>
-                                                            <!-- MENSAGENS -->
-                                                            <div class="row">
-                                                                <div class="col-xs-12">
-                                                                    <div class="tab" role="tabpanel">
-                                                                        <!-- Nav tabs -->
-                                                                        <ul class="nav nav-tabs" role="tablist">
-                                                                            <li role="presentation" class="active"><a class="info" href="#mens-publica" role="tab" data-toggle="tab">Publico</a></li>
-                                                                            <li role="presentation"><a class="warning" href="#mens-privada" role="tab" data-toggle="tab">Privado</a></li>
-                                                                        </ul>
-                                                                        <!-- Tab panes -->
-                                                                        <div class="tab-content">
-                                                                            <!-- MENSAGEM PUBLICA -->
-                                                                            <div role="tabpanel" class="tab-pane fade in active" id="mens-publica">
+                                                        <h4>Gabriel Tosetti</h4>
+                                                        <!-- MENSAGENS -->
+                                                        <div class="row">
+                                                            <div class="col-xs-12">
+                                                                <div class="tab" role="tabpanel">
+                                                                    <!-- Nav tabs -->
+                                                                    <ul class="nav nav-tabs" role="tablist">
+                                                                        <li role="presentation" class="active"><a class="info" href="#mens-publica" role="tab" data-toggle="tab">Publico</a></li>
+                                                                        <li role="presentation"><a class="warning" href="#mens-privada" role="tab" data-toggle="tab">Privado</a></li>
+                                                                    </ul>
+                                                                    <!-- Tab panes -->
+                                                                    <div class="tab-content">
+                                                                        <!-- MENSAGEM PUBLICA -->                                                                            
+                                                                        <div role="tabpanel" class="tab-pane fade in active" id="mens-publica">
+                                                                            <form role="form" method="POST" id="mensagem-form-publica">
                                                                                 <div class="form-group">
                                                                                     <textarea class="form-control" id="mensagem-publica" rows="4" placeholder="Mensagem pública..."></textarea>
                                                                                 </div>
-                                                                            </div>
-                                                                            <!-- /MENSAGEM PUBLICA -->
-                                                                            <!-- MENSAGEM PRIVADA -->
-                                                                            <div role="tabpanel" class="tab-pane fade" id="mens-privada">
+                                                                                <div class="text-right">
+                                                                                    <button type="submit" class="btn btn-sm btn-primary m-t-n-xs"><strong>Postar</strong></button>
+                                                                                </div>
+                                                                            </form>
+                                                                        </div>
+                                                                        <!-- /MENSAGEM PUBLICA -->
+                                                                        <!-- MENSAGEM PRIVADA -->
+                                                                        <div role="tabpanel" class="tab-pane fade" id="mens-privada">
+                                                                            <form role="form" method="POST" id="mensagem-form-privada">
                                                                                 <div class="form-group">
                                                                                     <textarea class="form-control" id="mensagem-privada" rows="4" placeholder="Mensagem privada..."></textarea>
                                                                                 </div>
-                                                                            </div>
-                                                                            <!-- /MENSAGEM PRIVADA -->
+                                                                                <div class="text-right">
+                                                                                    <button type="submit" class="btn btn-sm btn-primary m-t-n-xs"><strong>Postar</strong></button>
+                                                                                </div>
+                                                                            </form>
                                                                         </div>
+                                                                        <!-- /MENSAGEM PRIVADA -->
                                                                     </div>
-                                                                    <div class="text-right">
-                                                                        <button type="submit" class="btn btn-sm btn-primary m-t-n-xs"><strong>Postar</strong></button>
-                                                                    </div>
-                                                                </div>
+                                                                </div>                                                                    
                                                             </div>
-                                                            <!-- /MENSAGENS -->
-                                                        </form>
+                                                        </div>
+                                                        <!-- /MENSAGENS -->
                                                     </div>
                                                 </div>
                                                 <div class="feed-activity-list">
@@ -437,7 +442,7 @@
                                                     <div class="tab" role="tabpanel">
                                                         <!-- NOME DAS TABS -->
                                                         <ul class="nav nav-tabs" role="tablist">
-                                                            <li role="presentation" class="active"><a class="info" href="#tab-todas" role="tab" data-toggle="tab">Todas</a></li>
+                                                            <li role="presentation" class="active"><a href="#tab-todas" role="tab" data-toggle="tab">Todas</a></li>
                                                             <li role="presentation"><a class="info" href="#tab-publica" role="tab" data-toggle="tab">Publico</a></li>
                                                             <li role="presentation"><a class="warning" href="#tab-privada" role="tab" data-toggle="tab">Privado</a></li>
                                                         </ul>
@@ -445,27 +450,23 @@
                                                         <!-- Tab panes -->
                                                         <!-- CONJUNTO DAS TABS LISTA MENSAGEM -->
                                                         <div class="tab-content">
-                                                            <!-- MENSAGEM TODAS -->
+                                                            <!-- MENSAGEM TODAS -->                                                            
                                                             <div role="tabpanel" class="tab-pane fade in active" id="tab-todas">
+                                                                @foreach ($mensagens as $mensagem)
                                                                 <div class="feed-element">
-                                                                    <a href="#" class="pull-left">
-                                                                        <img alt="image" class="img-circle" src="/media/avatars/{!!Auth::user()->avatar !!}">
-                                                                    </a>
+                                                                    <img alt="image" class="img-circle pull-left" src="/media/avatars/{{$mensagem->usuario->avatar}}">
                                                                     <div class="media-body ">
-                                                                        <small class="pull-right">2h ago</small>
-                                                                        <strong>Matheus Luz</strong> comentou <br>
-                                                                        <small class="text-muted">Today 2:10 pm - 12.06.2014</small>                                                            
+                                                                        <small class="pull-right">{{$mensagem->created_at->diffForHumans()}}</small>
+                                                                        <strong>{{$mensagem->usuario->nome}}</strong> escreveu <br>
+                                                                        <small class="text-muted">{{$mensagem->created_at->formatLocalized('%A, %d de %B %Y')}}</small>                                                            
                                                                     </div>                                                        
-                                                                    <div class="mensagem publica">
-                                                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-                                                                        Over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-                                                                    </div>
-                                                                    <div class="mensagem privada">
-                                                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-                                                                        Over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+                                                                    <div class="mensagem {{$mensagem->tipo}}">                                                                        
+                                                                        {{$mensagem->mensagem}}
+                                                                        <p><small class="pull-right">Enviada {{$mensagem->created_at->format('H:i')}}</small></p>
                                                                     </div>
                                                                 </div>
-                                                            </div>
+                                                                @endforeach
+                                                            </div>                                                            
                                                             <!-- /MENSAGEM TODAS -->
                                                             <!-- MENSAGEM PUBLICA -->
                                                             <div role="tabpanel" class="tab-pane fade in" id="tab-publica">
@@ -475,14 +476,14 @@
                                                                     </a>
                                                                     <div class="media-body ">
                                                                         <small class="pull-right">2h ago</small>
-                                                                        <strong>Matheus Luz</strong> comentou <br>
+                                                                        <strong>Matheus Luz</strong> escreveu <br>
                                                                         <small class="text-muted">Today 2:10 pm - 12.06.2014</small>                                                            
                                                                     </div>                                                        
                                                                     <div class="mensagem publica">
                                                                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
                                                                         Over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
                                                                     </div>
-                                                                </div>
+                                                                </div>                                                                
                                                             </div>
                                                             <!-- /MENSAGEM PUBLICA -->
                                                             <!-- MENSAGEM PRIVADA -->
@@ -493,7 +494,7 @@
                                                                     </a>
                                                                     <div class="media-body ">
                                                                         <small class="pull-right">2h ago</small>
-                                                                        <strong>Matheus Luz</strong> comentou <br>
+                                                                        <strong>Matheus Luz</strong> escreveu <br>
                                                                         <small class="text-muted">Today 2:10 pm - 12.06.2014</small>                                                            
                                                                     </div>                                                        
                                                                     <div class="mensagem privada">
@@ -738,6 +739,39 @@ $(document).ready(function(){
     $("#atividade-escolha").on("change", function() {
         atulizarCamposEditar(atividades, this.value);
     });
+    
+    $('#mensagem-form-publica').on("submit", function (e) {
+        
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            }
+        });
+        var formData = {
+            mensagem: $('#mensagem-publica').val(),
+            tipo: "publica",
+            id_conserto: "{{$conserto->id}}",
+            id_usuario: "{{ Auth::user()->id }}"
+        }
+        $.ajax({
+            type: "POST",
+            url: "{{route('nova_conserto_mensagem')}}",
+            data: formData,
+            dataType: 'json',
+            success: function (data) {
+                if (data.tipo == "publica")
+                    {mensagemPublica(data)}
+                else
+                    {}
+                toastr["success"]('Mensagem enviada com sucesso !','Mensagem');
+            },
+            error: function (data) {
+                console.log('Error:', data);
+                toastr["error"]('Mensagem não pode ser enviada !','Mensagem');
+            }
+        });
+        e.preventDefault();
+    });
 
 
 }); /* / DOC READY */
@@ -808,6 +842,21 @@ function atulizarCamposEditar(atividades, id){
             $('#escolha-descricao').val(atividade["descricao"]);  
         }
     }); 
+}
+function mensagemPublica(mensagem){
+    var texto = `<div class="feed-element">
+            <img alt="image" class="img-circle pull-left" src="/media/avatars/`+mensagem.usuario.avatar+`">
+        <div class="media-body">
+            <small class="pull-right">`+mensagem.criada_diff+`</small>
+            <strong>`+mensagem.usuario.nome+`</strong> escreveu <br>
+            <small class="text-muted">`+mensagem.criada_extenso+`</small>                                                            
+        </div>                                                        
+        <div class="mensagem `+mensagem.tipo+`">                                                                        
+            `+mensagem.mensagem+`
+            <p><small class="pull-right">Enviada `+mensagem.criada+`</small></p>
+        </div>
+    </div>`;
+    $("#tab-todas").prepend(texto);
 }
 
 

@@ -84,4 +84,4 @@ Route::get('/consertos/edita/{id}', 'ConsertoController@edita')->name('edita_con
 //Atividade
 Route::post('/atividade/nova', 'AtividadeController@nova')->name('nova_atividade');
 Route::post('/atividade/edita', 'AtividadeController@editar')->name('editar_atividade');
-Route::post('/atividade/mensagem/nova', 'Atividade_mensagemController@nova')->name('nova_atividade_mensagem');
+Route::post('/conserto/mensagem/nova', 'Conserto_MensagemController@nova')->name('nova_conserto_mensagem');

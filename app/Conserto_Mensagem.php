@@ -4,11 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Atividade_mensagem extends Model
+class Conserto_Mensagem extends Model
 {
     public $timestamps = true;
 
-    protected $table = 'atividades_mensagens';
+    protected $table = 'consertos_mensagens';
 
     /**
     * The attributes that are mass assignable.
@@ -19,7 +19,7 @@ class Atividade_mensagem extends Model
         'mensagem',
         'tipo',
         'id_usuario',
-        'id_atividade',
+        'id_conserto',
     ];
 
     protected $guarded = ['id'];
@@ -34,8 +34,8 @@ class Atividade_mensagem extends Model
     {        
         return $this->belongsTo('App\Usuario', 'id_usuario');
     }
-    public function atividade()
+    public function conserto()
     {        
-        return $this->belongsTo('App\Atividade', 'id_atividade');
+        return $this->belongsTo('App\Conserto', 'id_conserto');
     }
 }
