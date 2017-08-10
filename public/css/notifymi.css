@@ -222,16 +222,14 @@ h2.editable-click:hover
 }
 /* MENSAGENS */
 
-.mensagem-publica {
+.mensagem {
 	position: relative;
-	background: #f1f1f1;
-    border: 1px solid #DDDDDD;
     padding: 10px 20px;
     border-radius: 4px;
     margin-top: 14px;
     margin-bottom: 5px;
 }
-.mensagem-publica:after, .mensagem-publica:before {
+.mensagem:after, .mensagem:before {
 	bottom: 100%;
 	left: 18px;
 	border: solid transparent;
@@ -242,18 +240,39 @@ h2.editable-click:hover
 	pointer-events: none;
 }
 
-.mensagem-publica:after {
+.mensagem:after {
 	border-color: rgba(241, 241, 241, 0);
 	border-bottom-color: #f1f1f1;
 	border-width: 9px;
 	margin-left: -9px;
 }
-.mensagem-publica:before {
+.mensagem:before {
 	border-color: rgba(221, 221, 221, 0);
     border-bottom-color: #DDDDDD;
     /* calculo = (tamanho do :after) + (px da border) + 1 */
 	border-width: 10px;
 	margin-left: -10px;
+}
+
+.mensagem.publica {
+    background: #d6efff;
+    border: 1px solid #1c84c6;
+}
+.mensagem.publica:after {
+    border-bottom-color: #d6efff;
+}
+.mensagem.publica:before {
+    border-bottom-color: #1c84c6;
+}
+.mensagem.privada {
+    background: #fff0df;
+    border: 1px solid #f8ac59;
+}
+.mensagem.privada:after {
+    border-bottom-color: #fff0df;
+}
+.mensagem.privada:before {
+    border-bottom-color: #f8ac59;
 }
 
 
@@ -270,7 +289,6 @@ h2.editable-click:hover
     border-radius:0;
     border:none;
     font-size:13px;
-    /* color: #686b6d; */
     padding: 0px 22px 10px;
 }
 .tab .nav-tabs li a:hover{
@@ -305,6 +323,26 @@ h2.editable-click:hover
     margin-top:0;
     border:none;
 }
+
+.tab .nav-tabs li.active > a.info,
+.tab .nav-tabs li.active > a.info:focus,
+.tab .nav-tabs li.active > a.info:hover {
+    border-bottom: 2px solid #1c84c6;
+    color:#1c84c6 ;
+}
+.tab .nav-tabs li.active a.info:after{
+    border-color: rgba(136, 183, 213, 0) rgba(136, 183, 213, 0) #1c84c6;
+}
+.tab .nav-tabs li.active > a.warning,
+.tab .nav-tabs li.active > a.warning:focus,
+.tab .nav-tabs li.active > a.warning:hover {
+    border-bottom: 2px solid #f8ac59;
+    color:#f8ac59 ;
+}
+.tab .nav-tabs li.active a.warning:after{
+    border-color: rgba(136, 183, 213, 0) rgba(136, 183, 213, 0) #f8ac59;
+}
+
 @media only screen and (max-width: 480px) {
     .tab .nav-tabs li{
         width:100%;

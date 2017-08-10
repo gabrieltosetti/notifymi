@@ -402,20 +402,20 @@
                                                                     <div class="tab" role="tabpanel">
                                                                         <!-- Nav tabs -->
                                                                         <ul class="nav nav-tabs" role="tablist">
-                                                                            <li role="presentation" class="active"><a href="#tab-publica" role="tab" data-toggle="tab">Publico</a></li>
-                                                                            <li role="presentation"><a href="#tab-privada" role="tab" data-toggle="tab">Privado</a></li>
+                                                                            <li role="presentation" class="active"><a class="info" href="#mens-publica" role="tab" data-toggle="tab">Publico</a></li>
+                                                                            <li role="presentation"><a class="warning" href="#mens-privada" role="tab" data-toggle="tab">Privado</a></li>
                                                                         </ul>
                                                                         <!-- Tab panes -->
                                                                         <div class="tab-content">
                                                                             <!-- MENSAGEM PUBLICA -->
-                                                                            <div role="tabpanel" class="tab-pane fade in active" id="tab-publica">
+                                                                            <div role="tabpanel" class="tab-pane fade in active" id="mens-publica">
                                                                                 <div class="form-group">
                                                                                     <textarea class="form-control" id="mensagem-publica" rows="4" placeholder="Mensagem pública..."></textarea>
                                                                                 </div>
                                                                             </div>
                                                                             <!-- /MENSAGEM PUBLICA -->
                                                                             <!-- MENSAGEM PRIVADA -->
-                                                                            <div role="tabpanel" class="tab-pane fade" id="tab-privada">
+                                                                            <div role="tabpanel" class="tab-pane fade" id="mens-privada">
                                                                                 <div class="form-group">
                                                                                     <textarea class="form-control" id="mensagem-privada" rows="4" placeholder="Mensagem privada..."></textarea>
                                                                                 </div>
@@ -433,30 +433,83 @@
                                                     </div>
                                                 </div>
                                                 <div class="feed-activity-list">
-                                                    <div class="feed-element">
-                                                        <a href="#" class="pull-left">
-                                                            <img alt="image" class="img-circle" src="/media/avatars/default.jpg">
-                                                        </a>
-                                                        <div class="media-body ">
-                                                            <small class="pull-right">2h ago</small>
-                                                            <strong>Mark Johnson</strong> posted message on <strong>Monica Smith</strong> site. <br>
-                                                            <small class="text-muted">Today 2:10 pm - 12.06.2014</small>                                                            
-                                                        </div> 
-                                                       
-                                                        <div class="mensagem-publica">
-                                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-                                                            Over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+                                                    <!-- TABS MENSAGENS -->
+                                                    <div class="tab" role="tabpanel">
+                                                        <!-- NOME DAS TABS -->
+                                                        <ul class="nav nav-tabs" role="tablist">
+                                                            <li role="presentation" class="active"><a class="info" href="#tab-todas" role="tab" data-toggle="tab">Todas</a></li>
+                                                            <li role="presentation"><a class="info" href="#tab-publica" role="tab" data-toggle="tab">Publico</a></li>
+                                                            <li role="presentation"><a class="warning" href="#tab-privada" role="tab" data-toggle="tab">Privado</a></li>
+                                                        </ul>
+                                                        <!-- /NOME DAS TABS -->
+                                                        <!-- Tab panes -->
+                                                        <!-- CONJUNTO DAS TABS LISTA MENSAGEM -->
+                                                        <div class="tab-content">
+                                                            <!-- MENSAGEM TODAS -->
+                                                            <div role="tabpanel" class="tab-pane fade in active" id="tab-todas">
+                                                                <div class="feed-element">
+                                                                    <a href="#" class="pull-left">
+                                                                        <img alt="image" class="img-circle" src="/media/avatars/{!!Auth::user()->avatar !!}">
+                                                                    </a>
+                                                                    <div class="media-body ">
+                                                                        <small class="pull-right">2h ago</small>
+                                                                        <strong>Matheus Luz</strong> comentou <br>
+                                                                        <small class="text-muted">Today 2:10 pm - 12.06.2014</small>                                                            
+                                                                    </div>                                                        
+                                                                    <div class="mensagem publica">
+                                                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+                                                                        Over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+                                                                    </div>
+                                                                    <div class="mensagem privada">
+                                                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+                                                                        Over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- /MENSAGEM TODAS -->
+                                                            <!-- MENSAGEM PUBLICA -->
+                                                            <div role="tabpanel" class="tab-pane fade in" id="tab-publica">
+                                                                <div class="feed-element">
+                                                                    <a href="#" class="pull-left">
+                                                                        <img alt="image" class="img-circle" src="/media/avatars/{!!Auth::user()->avatar !!}">
+                                                                    </a>
+                                                                    <div class="media-body ">
+                                                                        <small class="pull-right">2h ago</small>
+                                                                        <strong>Matheus Luz</strong> comentou <br>
+                                                                        <small class="text-muted">Today 2:10 pm - 12.06.2014</small>                                                            
+                                                                    </div>                                                        
+                                                                    <div class="mensagem publica">
+                                                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+                                                                        Over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- /MENSAGEM PUBLICA -->
+                                                            <!-- MENSAGEM PRIVADA -->
+                                                            <div role="tabpanel" class="tab-pane fade" id="tab-privada">
+                                                                <div class="feed-element">
+                                                                    <a href="#" class="pull-left">
+                                                                        <img alt="image" class="img-circle" src="/media/avatars/{!!Auth::user()->avatar !!}">
+                                                                    </a>
+                                                                    <div class="media-body ">
+                                                                        <small class="pull-right">2h ago</small>
+                                                                        <strong>Matheus Luz</strong> comentou <br>
+                                                                        <small class="text-muted">Today 2:10 pm - 12.06.2014</small>                                                            
+                                                                    </div>                                                        
+                                                                    <div class="mensagem privada">
+                                                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+                                                                        Over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- /MENSAGEM PRIVADA -->
                                                         </div>
-                                                        <div class="well">
-                                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-                                                            Over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-                                                        </div>
+                                                        <!-- /CONJUNTO DAS TABS LISTA MENSAGEM -->
                                                     </div>
+                                                    <!-- /TABS MENSAGENS -->
                                                 </div>
-
                                             </div>
                                             <!-- /TAB 2 -->
-
                                         </div> <!-- /TABS CONTENT -->
                                     </div>
                                     <!-- /PANEL BODY -->
