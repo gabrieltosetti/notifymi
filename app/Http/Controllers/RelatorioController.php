@@ -22,14 +22,20 @@ class RelatorioController extends Controller
   {
     $idassistencia       = Auth::user()->id_assistencia;
     $contadornovo        = Conserto::where('id_assistencia', '=', $idassistencia)->where('status', '=', 'Novo')->count();
-    $contadoremandamento = Conserto::where('id_assistencia', '=', $idassistencia)->where('status', '=', 'Em Andamento')->count();
+    $contadoremandamento = Conserto::where('id_assistencia', '=', $idassistencia)->where('status', '=', 'Em andamento')->count();
     $contadoremespera    = Conserto::where('id_assistencia', '=', $idassistencia)->where('status', '=', 'Em espera')->count();
-    $contadorconcluido   = Conserto::where('id_assistencia', '=', $idassistencia)->where('status', '=', 'Concluido')->count();
+    $contadorconcluido   = Conserto::where('id_assistencia', '=', $idassistencia)->where('status', '=', 'concluido')->count();
     $contadorcancelado   = Conserto::where('id_assistencia', '=', $idassistencia)->where('status', '=', 'Cancelado')->count();
-    $contadorpedidos     = $contadoremespera + $contadornovo + $contadoremandamento;
+    $contadorpedidos     = $contadoremespera + $contadornovo + $contadoremandamento +  $contadorconcluido;
     $funcionarios        = Usuario::where('id_assistencia', '=', $idassistencia)->get();
-    $pluckidfunc         = Usuario::where('id_assistencia', '=', $idassistencia)->pluck('id');
 
+
+     foreach ($funcionarios as $funcionario) {
+
+       $funcionario->concluido   = Conserto::where('id_usuario', '=', $funcionario->id)->where('status','=', 'concluido')->count();
+       $funcionario->emandamento = Conserto::where('id_usuario', '=', $funcionario->id)->where('status','=', 'Em andamento')->count();
+       $funcionario->emespera    = Conserto::where('id_usuario', '=', $funcionario->id)->where('status','=', 'Em espera')->count();
+     }
 
 
 
@@ -42,7 +48,8 @@ class RelatorioController extends Controller
       "concluido"   => $contadorconcluido,
       "cancelado"   => $contadorcancelado,
       "funcionarios" => $funcionarios,
-      "contadorpedidos"=>$contadorpedidos
+      "contadorpedidos"=>$contadorpedidos,
+
     ]);
   }
 

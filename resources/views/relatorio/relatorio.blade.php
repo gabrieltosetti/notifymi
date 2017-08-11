@@ -50,7 +50,7 @@ var dadosGrafico = {
       pointBorderColor: "#fff",
       data: [
         @foreach($funcionarios as $funcionario)
-        "{{$funcionario->id}}",
+        "{{$funcionario->concluido}}",
         @endforeach
       ]
     },
@@ -62,7 +62,7 @@ var dadosGrafico = {
       pointBorderColor: "#fff",
       data: [
         @foreach($funcionarios as $funcionario)
-        "{{$funcionario->numero}}",
+        "{{$funcionario->emandamento}}",
         @endforeach
       ]
     }
