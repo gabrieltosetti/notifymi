@@ -148,178 +148,173 @@
                                         <div class="tab-content">
                                             <!-- TAB 1 -->
                                             <div class="tab-pane" id="tab-1">
-                                                <div class="col-lg-12">
-                                                    <div class="panel blank-panel">
-                                                        <!-- PANEL TABS -->
-                                                        <div class="panel-heading">
-                                                            <div class="panel-options">
-                                                                <ul class="nav nav-tabs">
-                                                                    <li class="active"><a href="#tab-nova_atividade" data-toggle="tab">Nova Atividade</a></li>
-                                                                    <li class=""><a href="#tab-editar_atividade" data-toggle="tab">Editar Atividade</a></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                        <!-- /PANEL TABS -->
-                                                        <!-- PANEL BODY -->
-                                                        <div class="panel-body">
-                                                            <div class="tab-content">
-                                                                <!-- TAB NOVA ATIVIDADE -->
-                                                                <div class="tab-pane active" id="tab-nova_atividade">
-                                                                    <div class="chat-form m-b">
-                                                                        <img alt="usuário" class="img-circle pull-left" src="/media/avatars/{!!Auth::user()->avatar!!}">
-                                                                        <div class="media-body">
-                                                                            <form role="form" method="POST" id="atividade-nova">
-                                                                                <h4 class="m-b-sm">Gabriel Tosetti</h4>
-                                                                                <div class="row">
-                                                                                    <div class="col-sm-5">
-                                                                                        <!--STATUS-->
-                                                                                        <div class="form-group {{ $errors->has('status') ? 'has-error' : ''}}">
-                                                                                            <label class="control-label" for="atividade-status">Status</label>
-                                                                                            <select class="form-control" id="atividade-status" name="status">
-                                                                                                    <option value="Completado">Completado</option>
-                                                                                                    <option value="Em andamento">Em andamento</option>
-                                                                                                    <option value="Cancelado">Cancelado</option>
-                                                                                            </select>
-                                                                                        </div>
-                                                                                        <!--/STATUS-->
-                                                                                        <!--DATA INICIO-->
-                                                                                        <div class="form-group">
-                                                                                            <label>Atividade Inicio</label>
-                                                                                            <div class="input-group date form_datetime" data-link-field="atividade-inicio">
-                                                                                                <input class="form-control" size="16" type="text" value="" >
-                                                                                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-                                                                                                <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
-                                                                                            </div>
-                                                                                            <input type="hidden" id="atividade-inicio" value="" />
-                                                                                        </div>
-                                                                                        <!--/DATA INICIO-->
-                                                                                        <!--DATA FINAL-->
-                                                                                        <div class="form-group">
-                                                                                            <label>Atividade Final <small class="text-success">opcional</small></label>
-                                                                                            <div class="input-group date form_datetime" data-link-field="atividade-final">
-                                                                                                <input class="form-control" size="16" type="text" value="" >
-                                                                                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-                                                                                                <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
-                                                                                            </div>
-                                                                                            <input type="hidden" id="atividade-final" value="" />
-                                                                                        </div>
-                                                                                        <!--/DATA FINAL-->
+                                                <div class="col-lg-12">        
+                                                    <div class="tab" role="tabpanel">
+                                                        <!-- NOME DAS TABS -->
+                                                        <ul class="nav nav-tabs" role="tablist">
+                                                            <li role="presentation" class="active"><a class="info" href="#tab-nova_atividade" role="tab" data-toggle="tab">Nova Atividade</a></li>
+                                                            <li role="presentation"><a class="warning" href="#tab-editar_atividade" role="tab" data-toggle="tab">Editar Atividade</a></li>
+                                                        </ul>
+                                                        <!-- /NOME DAS TABS -->
+                                                        <!-- CONTEUDO DAS TABS -->
+                                                        <div class="tab-content">
+                                                            <!-- TAB NOVA ATIVIDADE -->                                                                            
+                                                            <div role="tabpanel" class="tab-pane fade in active" id="tab-nova_atividade">
+                                                                <div class="chat-form m-b">
+                                                                    <img alt="usuário" class="img-circle pull-left" src="/media/avatars/{!!Auth::user()->avatar!!}">
+                                                                    <div class="media-body">
+                                                                        <form role="form" method="POST" id="atividade-nova">
+                                                                            <h4 class="m-b-sm">Gabriel Tosetti</h4>
+                                                                            <div class="row">
+                                                                                <div class="col-sm-5">
+                                                                                    <!--STATUS-->
+                                                                                    <div class="form-group {{ $errors->has('status') ? 'has-error' : ''}}">
+                                                                                        <label class="control-label" for="atividade-status">Status</label>
+                                                                                        <select class="form-control" id="atividade-status" name="status">
+                                                                                                <option value="Completado">Completado</option>
+                                                                                                <option value="Em andamento">Em andamento</option>
+                                                                                                <option value="Cancelado">Cancelado</option>
+                                                                                        </select>
                                                                                     </div>
-                                                                                    <div class="col-sm-7">
-                                                                                        <!--TITULO-->
-                                                                                        <div class="form-group {{ $errors->has('titulo') ? 'has-error' : ''}}">
-                                                                                            <label class="control-label" for="atividade-titulo">Título</label>
-                                                                                            <input type="text" class="form-control" name="titulo" value="{{ old('titulo') }}" id="atividade-titulo" maxlength="20">
-                                                                                            <span class="help-block">{{$errors->first('titulo')}}</span>
+                                                                                    <!--/STATUS-->
+                                                                                    <!--DATA INICIO-->
+                                                                                    <div class="form-group">
+                                                                                        <label>Atividade Inicio</label>
+                                                                                        <div class="input-group date form_datetime" data-link-field="atividade-inicio">
+                                                                                            <input class="form-control" size="16" type="text" value="" >
+                                                                                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                                                                            <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
                                                                                         </div>
-                                                                                        <!--/TITULO-->
-                                                                                        <div class="form-group">
-                                                                                            <label class="control-label" for="atividade-descricao">Descrição</label>
-                                                                                            <textarea id="atividade-descricao" rows="5" class="form-control" placeholder="descrição..."></textarea>
+                                                                                        <input type="hidden" id="atividade-inicio" value="" />
+                                                                                    </div>
+                                                                                    <!--/DATA INICIO-->
+                                                                                    <!--DATA FINAL-->
+                                                                                    <div class="form-group">
+                                                                                        <label>Atividade Final <small class="text-success">opcional</small></label>
+                                                                                        <div class="input-group date form_datetime" data-link-field="atividade-final">
+                                                                                            <input class="form-control" size="16" type="text" value="" >
+                                                                                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                                                                            <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
                                                                                         </div>
+                                                                                        <input type="hidden" id="atividade-final" value="" />
+                                                                                    </div>
+                                                                                    <!--/DATA FINAL-->
+                                                                                </div>
+                                                                                <div class="col-sm-7">
+                                                                                    <!--TITULO-->
+                                                                                    <div class="form-group {{ $errors->has('titulo') ? 'has-error' : ''}}">
+                                                                                        <label class="control-label" for="atividade-titulo">Título</label>
+                                                                                        <input type="text" class="form-control" name="titulo" value="{{ old('titulo') }}" id="atividade-titulo" maxlength="20">
+                                                                                        <span class="help-block">{{$errors->first('titulo')}}</span>
+                                                                                    </div>
+                                                                                    <!--/TITULO-->
+                                                                                    <div class="form-group">
+                                                                                        <label class="control-label" for="atividade-descricao">Descrição</label>
+                                                                                        <textarea id="atividade-descricao" rows="5" class="form-control" placeholder="descrição..."></textarea>
                                                                                     </div>
                                                                                 </div>
+                                                                            </div>
 
-                                                                                <div class="text-right">
-                                                                                    <button id="btn-criar" type="submit" class="ladda-button btn btn-sm btn-primary m-t-n-xs" data-style="expand-right"><span class="ladda-label">Criar</span><span class="ladda-spinner"></span></button>
-                                                                                </div>
-                                                                            </form>
-                                                                        </div>
+                                                                            <div class="text-right">
+                                                                                <button id="btn-criar" type="submit" class="ladda-button btn btn-sm btn-primary m-t-n-xs" data-style="expand-right"><span class="ladda-label">Criar</span><span class="ladda-spinner"></span></button>
+                                                                            </div>
+                                                                        </form>
                                                                     </div>
                                                                 </div>
-                                                                <!-- /TAB NOVA ATIVIDADE -->
-                                                                <!-- TAB EDITAR ATIVIDADE -->
-                                                                <div class="tab-pane" id="tab-editar_atividade">
-                                                                    <p>Para editar uma atividade, escolha uma da lista e faça as alterações necessárias.</p>
-                                                                    <!--ESCOLHA-->
-                                                                    <div class="form-group">
-                                                                        <label class="control-label" for="atividade-escolha">Atividade:</label>
-                                                                        <select class="form-control" id="atividade-escolha" name="atividade-escolha">
-                                                                            @foreach ($atividades as $atividade)
-                                                                                <option value="{{$atividade->id}}">#{{$atividade->id}} - {{$atividade->titulo}}</option>
-                                                                            @endforeach
-                                                                        </select>
-                                                                    </div>
-                                                                    <!--/ESCOLHA-->
-                                                                    <div class="chat-form m-b">
-                                                                        <img alt="usuário" class="img-circle pull-left" src="/media/avatars/{!!Auth::user()->avatar!!}">
-                                                                        <div class="media-body">
-                                                                            <form role="form" method="POST" id="atividade-editar">
-                                                                                <h4 class="m-b-sm">Gabriel Tosetti</h4>
-                                                                                <div class="row">
-                                                                                    <div class="col-sm-5">
-                                                                                        <!--STATUS-->
-                                                                                        <div class="form-group {{ $errors->has('status') ? 'has-error' : ''}}">
-                                                                                            <label class="control-label" for="escolha-status">Status</label>
-                                                                                            <select class="form-control" id="escolha-status" name="status">
-                                                                                                    <option value="Completado">Completado</option>
-                                                                                                    <option value="Em andamento">Em andamento</option>
-                                                                                                    <option value="Cancelado">Cancelado</option>
-                                                                                            </select>
-                                                                                        </div>
-                                                                                        <!--/STATUS-->
-                                                                                        <!--DATA INICIO-->
-                                                                                        <div class="form-group">
-                                                                                            <label>Atividade Inicio</label>
-                                                                                            <div class="input-group date form_datetime" data-link-field="escolha-inicio">
-                                                                                                <input class="form-control" size="16" type="text" value="" escolha="data-inicio">
-                                                                                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-                                                                                                <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
-                                                                                            </div>
-                                                                                            <input type="hidden" id="escolha-inicio" value="" />
-                                                                                        </div>
-                                                                                        <!--/DATA INICIO-->
-                                                                                        <!--DATA FINAL-->
-                                                                                        <div class="form-group">
-                                                                                            <label>Atividade Final <small class="text-success">opcional</small></label>
-                                                                                            <div class="input-group date form_datetime" data-link-field="escolha-final">
-                                                                                                <input class="form-control" size="16" type="text" value="" escolha="data-final">
-                                                                                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-                                                                                                <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
-                                                                                            </div>
-                                                                                            <input type="hidden" id="escolha-final" value="" />
-                                                                                        </div>
-                                                                                        <!--/DATA FINAL-->
-                                                                                    </div>
-                                                                                    <div class="col-sm-7">
-                                                                                        <!--TITULO-->
-                                                                                        <div class="form-group {{ $errors->has('titulo') ? 'has-error' : ''}}">
-                                                                                            <label class="control-label" for="escolha-titulo">Título</label>
-                                                                                            <input type="text" class="form-control" name="titulo" value="{{ old('titulo') }}" id="escolha-titulo" maxlength="20">
-                                                                                            <span class="help-block">{{$errors->first('titulo')}}</span>
-                                                                                        </div>
-                                                                                        <!--/TITULO-->
-                                                                                        <div class="form-group">
-                                                                                            <label class="control-label" for="escolha-descricao">Descrição</label>
-                                                                                            <textarea id="escolha-descricao"  rows="5" class="form-control" placeholder="descrição..."></textarea>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="row">                                                                                    
-                                                                                    <div class="col-xs-12">
-                                                                                        <p>Adicionar comentário?</p>
-                                                                                        <!--COMENTÁRIO-->
-                                                                                        <div class="form-group">
-                                                                                            <label class="control-label" for="escolha-comentario">Comentário <small class="text-success">opcional</small></label>
-                                                                                            <textarea id="escolha-comentario" rows="3" class="form-control" placeholder="comentário..."></textarea>
-                                                                                        </div>
-                                                                                        <!--/COMENTÁRIO-->
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                <div class="text-right">
-                                                                                    <button type="submit" class="btn btn-sm btn-primary m-t-n-xs"><strong>Atualizar</strong></button>
-                                                                                </div>
-                                                                            </form>
-                                                                        </div>
-                                                                    </div>
-                                                                </div><!-- /TAB EDITAR ATIVIDADE -->
                                                             </div>
+                                                            <!-- /TAB NOVA ATIVIDADE --> 
+                                                            <!-- TAB EDITAR ATIVIDADE -->                                                                            
+                                                            <div role="tabpanel" class="tab-pane fade in" id="tab-editar_atividade">
+                                                                <p>Para editar uma atividade, escolha uma da lista e faça as alterações necessárias.</p>
+                                                                <!--ESCOLHA-->
+                                                                <div class="form-group">
+                                                                    <label class="control-label" for="atividade-escolha">Atividade:</label>
+                                                                    <select class="form-control" id="atividade-escolha" name="atividade-escolha">
+                                                                        @foreach ($atividades as $atividade)
+                                                                            <option value="{{$atividade->id}}">#{{$atividade->id}} - {{$atividade->titulo}}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
+                                                                <!--/ESCOLHA-->
+                                                                <div class="chat-form m-b">
+                                                                    <img alt="usuário" class="img-circle pull-left" src="/media/avatars/{!!Auth::user()->avatar!!}">
+                                                                    <div class="media-body">
+                                                                        <form role="form" method="POST" id="atividade-editar">
+                                                                            <h4 class="m-b-sm">Gabriel Tosetti</h4>
+                                                                            <div class="row">
+                                                                                <div class="col-sm-5">
+                                                                                    <!--STATUS-->
+                                                                                    <div class="form-group {{ $errors->has('status') ? 'has-error' : ''}}">
+                                                                                        <label class="control-label" for="escolha-status">Status</label>
+                                                                                        <select class="form-control" id="escolha-status" name="status">
+                                                                                                <option value="Completado">Completado</option>
+                                                                                                <option value="Em andamento">Em andamento</option>
+                                                                                                <option value="Cancelado">Cancelado</option>
+                                                                                        </select>
+                                                                                    </div>
+                                                                                    <!--/STATUS-->
+                                                                                    <!--DATA INICIO-->
+                                                                                    <div class="form-group">
+                                                                                        <label>Atividade Inicio</label>
+                                                                                        <div class="input-group date form_datetime" data-link-field="escolha-inicio">
+                                                                                            <input class="form-control" size="16" type="text" value="" escolha="data-inicio">
+                                                                                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                                                                            <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                                                                                        </div>
+                                                                                        <input type="hidden" id="escolha-inicio" value="" />
+                                                                                    </div>
+                                                                                    <!--/DATA INICIO-->
+                                                                                    <!--DATA FINAL-->
+                                                                                    <div class="form-group">
+                                                                                        <label>Atividade Final <small class="text-success">opcional</small></label>
+                                                                                        <div class="input-group date form_datetime" data-link-field="escolha-final">
+                                                                                            <input class="form-control" size="16" type="text" value="" escolha="data-final">
+                                                                                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                                                                            <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                                                                                        </div>
+                                                                                        <input type="hidden" id="escolha-final" value="" />
+                                                                                    </div>
+                                                                                    <!--/DATA FINAL-->
+                                                                                </div>
+                                                                                <div class="col-sm-7">
+                                                                                    <!--TITULO-->
+                                                                                    <div class="form-group {{ $errors->has('titulo') ? 'has-error' : ''}}">
+                                                                                        <label class="control-label" for="escolha-titulo">Título</label>
+                                                                                        <input type="text" class="form-control" name="titulo" value="{{ old('titulo') }}" id="escolha-titulo" maxlength="20">
+                                                                                        <span class="help-block">{{$errors->first('titulo')}}</span>
+                                                                                    </div>
+                                                                                    <!--/TITULO-->
+                                                                                    <div class="form-group">
+                                                                                        <label class="control-label" for="escolha-descricao">Descrição</label>
+                                                                                        <textarea id="escolha-descricao"  rows="5" class="form-control" placeholder="descrição..."></textarea>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row">                                                                                    
+                                                                                <div class="col-xs-12">
+                                                                                    <p>Adicionar comentário?</p>
+                                                                                    <!--COMENTÁRIO-->
+                                                                                    <div class="form-group">
+                                                                                        <label class="control-label" for="escolha-comentario">Comentário <small class="text-success">opcional</small></label>
+                                                                                        <textarea id="escolha-comentario" rows="3" class="form-control" placeholder="comentário..."></textarea>
+                                                                                    </div>
+                                                                                    <!--/COMENTÁRIO-->
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="text-right">
+                                                                                <button type="submit" class="btn btn-sm btn-primary m-t-n-xs"><strong>Atualizar</strong></button>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- /TAB EDITAR ATIVIDADE --> 
                                                         </div>
-                                                    </div>
+                                                        <!-- /CONTEUDO DAS TABS -->
+                                                    </div>                                            
                                                 </div>
                                                 <h3>Atividade</h3>
-
 
                                                 <div class="lista-atividades">
                                                     @foreach ($atividades as $atividade)
@@ -452,56 +447,87 @@
                                                         <div class="tab-content">
                                                             <!-- MENSAGEM TODAS -->                                                            
                                                             <div role="tabpanel" class="tab-pane fade in active" id="tab-todas">
-                                                                @foreach ($mensagens as $mensagem)
+                                                                <?php $total = count($mensagens);
+                                                                    $saida = false;
+                                                                    $proximoI = 1;?>
+                                                                @for ($i = 0; $i < $total; $i++)                                                                    
                                                                 <div class="feed-element">
-                                                                    <img alt="image" class="img-circle pull-left" src="/media/avatars/{{$mensagem->usuario->avatar}}">
+                                                                    <img alt="image" class="img-circle pull-left" src="/media/avatars/{{$mensagens[$i]->usuario->avatar}}">
                                                                     <div class="media-body ">
-                                                                        <small class="pull-right">{{$mensagem->created_at->diffForHumans()}}</small>
-                                                                        <strong>{{$mensagem->usuario->nome}}</strong> escreveu <br>
-                                                                        <small class="text-muted">{{$mensagem->created_at->formatLocalized('%A, %d de %B %Y')}}</small>                                                            
+                                                                        <small class="pull-right">{{$mensagens[$i]->created_at->diffForHumans()}}</small>
+                                                                        <strong>{{$mensagens[$i]->usuario->nome}}</strong> escreveu <br>
+                                                                        <small class="text-muted">{{$mensagens[$i]->created_at->formatLocalized('%A, %d de %B %Y')}}</small>                                                            
                                                                     </div>                                                        
-                                                                    <div class="mensagem {{$mensagem->tipo}}">                                                                        
-                                                                        {{$mensagem->mensagem}}
-                                                                        <p><small class="pull-right">Enviada {{$mensagem->created_at->format('H:i')}}</small></p>
-                                                                    </div>
-                                                                </div>
-                                                                @endforeach
+                                                                    <div class="mensagem-seta {{$mensagens[$i]->tipo}}"><!-- primeiro div -->                                                                      
+                                                                        {!!$mensagens[$i]->mensagem!!}
+                                                                        <p><small class="pull-right">Enviada {{$mensagens[$i]->created_at->format('H:i')}}</small></p>
+                                                                        @if(($i+1) != $total)
+                                                                            @while(($saida == false) && ($mensagens[$i]->usuario->id == $mensagens[$proximoI]->usuario->id))
+                                                                                @if($mensagens[$i]->tipo == $mensagens[$proximoI]->tipo)
+                                                                                    <hr>
+                                                                                    {!!$mensagens[$proximoI]->mensagem!!}
+                                                                                    <p><small class="pull-right">Enviada {{$mensagens[$i]->created_at->format('H:i')}}</small></p>
+                                                                                @else
+                                                                                    </div>
+                                                                                    <div class="mensagem {{$mensagens[$proximoI]->tipo}}">                                                                        
+                                                                                        {!!$mensagens[$proximoI]->mensagem!!}
+                                                                                        <p><small class="pull-right">Enviada {{$mensagens[$proximoI]->created_at->format('H:i')}}</small></p>                                                                                    
+                                                                                @endif
+                                                                                @php
+                                                                                    $i = $proximoI;
+                                                                                    $proximoI++;
+                                                                                    $saida = $proximoI == $total ? true : false;
+                                                                                @endphp
+                                                                            @endwhile
+                                                                            @php 
+                                                                                $saida = false;
+                                                                                $proximoI++;
+                                                                            @endphp
+                                                                        @endif
+                                                                    </div><!-- primeiro /div -->     
+                                                                    
+                                                                </div>                                                                
+                                                                @endfor                                                                
                                                             </div>                                                            
                                                             <!-- /MENSAGEM TODAS -->
                                                             <!-- MENSAGEM PUBLICA -->
                                                             <div role="tabpanel" class="tab-pane fade in" id="tab-publica">
-                                                                <div class="feed-element">
-                                                                    <a href="#" class="pull-left">
-                                                                        <img alt="image" class="img-circle" src="/media/avatars/{!!Auth::user()->avatar !!}">
-                                                                    </a>
-                                                                    <div class="media-body ">
-                                                                        <small class="pull-right">2h ago</small>
-                                                                        <strong>Matheus Luz</strong> escreveu <br>
-                                                                        <small class="text-muted">Today 2:10 pm - 12.06.2014</small>                                                            
-                                                                    </div>                                                        
-                                                                    <div class="mensagem publica">
-                                                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-                                                                        Over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+                                                                @foreach ($mensagens as $mensagem)
+                                                                    @if($mensagem->tipo == "publica")
+                                                                    <div class="feed-element">
+                                                                        <img alt="image" class="img-circle pull-left" src="/media/avatars/{{$mensagem->usuario->avatar}}">
+                                                                        <div class="media-body ">
+                                                                            <small class="pull-right">{{$mensagem->created_at->diffForHumans()}}</small>
+                                                                            <strong>{{$mensagem->usuario->nome}}</strong> escreveu <br>
+                                                                            <small class="text-muted">{{$mensagem->created_at->formatLocalized('%A, %d de %B %Y')}}</small>                                                            
+                                                                        </div>                                                        
+                                                                        <div class="mensagem {{$mensagem->tipo}}">                                                                        
+                                                                            {{$mensagem->mensagem}}
+                                                                            <p><small class="pull-right">Enviada {{$mensagem->created_at->format('H:i')}}</small></p>
+                                                                        </div>
                                                                     </div>
-                                                                </div>                                                                
+                                                                    @endif
+                                                                @endforeach                                                               
                                                             </div>
                                                             <!-- /MENSAGEM PUBLICA -->
                                                             <!-- MENSAGEM PRIVADA -->
                                                             <div role="tabpanel" class="tab-pane fade" id="tab-privada">
-                                                                <div class="feed-element">
-                                                                    <a href="#" class="pull-left">
-                                                                        <img alt="image" class="img-circle" src="/media/avatars/{!!Auth::user()->avatar !!}">
-                                                                    </a>
-                                                                    <div class="media-body ">
-                                                                        <small class="pull-right">2h ago</small>
-                                                                        <strong>Matheus Luz</strong> escreveu <br>
-                                                                        <small class="text-muted">Today 2:10 pm - 12.06.2014</small>                                                            
-                                                                    </div>                                                        
-                                                                    <div class="mensagem privada">
-                                                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-                                                                        Over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+                                                                @foreach ($mensagens as $mensagem)
+                                                                    @if($mensagem->tipo == "privada")
+                                                                    <div class="feed-element">
+                                                                        <img alt="image" class="img-circle pull-left" src="/media/avatars/{{$mensagem->usuario->avatar}}">
+                                                                        <div class="media-body ">
+                                                                            <small class="pull-right">{{$mensagem->created_at->diffForHumans()}}</small>
+                                                                            <strong>{{$mensagem->usuario->nome}}</strong> escreveu <br>
+                                                                            <small class="text-muted">{{$mensagem->created_at->formatLocalized('%A, %d de %B %Y')}}</small>                                                            
+                                                                        </div>                                                        
+                                                                        <div class="mensagem {{$mensagem->tipo}}">                                                                        
+                                                                            {{$mensagem->mensagem}}
+                                                                            <p><small class="pull-right">Enviada {{$mensagem->created_at->format('H:i')}}</small></p>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
+                                                                    @endif
+                                                                @endforeach  
                                                             </div>
                                                             <!-- /MENSAGEM PRIVADA -->
                                                         </div>
@@ -760,7 +786,39 @@ $(document).ready(function(){
             dataType: 'json',
             success: function (data) {
                 if (data.tipo == "publica")
-                    {mensagemPublica(data)}
+                    {inserirMensagem(data)}
+                else
+                    {}
+                toastr["success"]('Mensagem enviada com sucesso !','Mensagem');
+            },
+            error: function (data) {
+                console.log('Error:', data);
+                toastr["error"]('Mensagem não pode ser enviada !','Mensagem');
+            }
+        });
+        e.preventDefault();
+    });
+    $('#mensagem-form-privada').on("submit", function (e) {
+        
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            }
+        });
+        var formData = {
+            mensagem: $('#mensagem-privada').val(),
+            tipo: "privada",
+            id_conserto: "{{$conserto->id}}",
+            id_usuario: "{{ Auth::user()->id }}"
+        }
+        $.ajax({
+            type: "POST",
+            url: "{{route('nova_conserto_mensagem')}}",
+            data: formData,
+            dataType: 'json',
+            success: function (data) {
+                if (data.tipo == "privada")
+                    {inserirMensagem(data)}
                 else
                     {}
                 toastr["success"]('Mensagem enviada com sucesso !','Mensagem');
@@ -843,7 +901,7 @@ function atulizarCamposEditar(atividades, id){
         }
     }); 
 }
-function mensagemPublica(mensagem){
+function inserirMensagem(mensagem){
     var texto = `<div class="feed-element">
             <img alt="image" class="img-circle pull-left" src="/media/avatars/`+mensagem.usuario.avatar+`">
         <div class="media-body">

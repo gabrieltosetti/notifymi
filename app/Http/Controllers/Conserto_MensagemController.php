@@ -36,6 +36,7 @@ class Conserto_MensagemController extends Controller
             'mensagem' => $mensagem->mensagem,
             'tipo' => $mensagem->tipo,
             'usuario' => [
+                'id'  =>  $mensagem->usuario->id,
                 'nome' => $mensagem->usuario->nome,
                 'avatar' => $mensagem->usuario->avatar
             ],
