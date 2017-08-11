@@ -58,6 +58,9 @@ Route::get('/clientes/edita/{id}', 'ClienteController@edita')->name('edita_clien
 Route::get('/permissoes', 'PermissoesController@lista')->name('permissoes');
 Route::get('/permissoes/novo', 'PermissoesController@novo')->name('novo_permissoes');
 
+//relatorio
+Route::get('/relatorio', 'RelatorioController@relatorio')->name('relatorio');
+
 //cargos
 Route::get('/lista_cargos', 'CargosController@listacargos')->name('lista_cargos');
 Route::get('/cargos/novo', 'CargosController@novocargo')->name('novo_cargos');

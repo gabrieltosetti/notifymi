@@ -16,47 +16,49 @@ class Usuario extends Authenticatable
 
 
   /**
-   * The attributes that are mass assignable.
-   *
-   * @var array
-   */
+  * The attributes that are mass assignable.
+  *
+  * @var array
+  */
   protected $fillable = [
-        'nome',
-        'rg',
-        'cpf',
-        'cidade',
-        'telefone',
-        'celular',
-        'cidade',
-        'bairro',
-        'rua',
-        'numero',
-        'complemento',
-        'email',
-        'permissao',
-        'id_cargo',
-        'id_assistencia',
+    'id',
+    'nome',
+    'rg',
+    'cpf',
+    'cidade',
+    'telefone',
+    'celular',
+    'cidade',
+    'bairro',
+    'rua',
+    'numero',
+    'complemento',
+    'email',
+    'permissao',
+    'id_cargo',
+    'id_assistencia',
+
   ];
 
-  protected $guarded = ['id'];
+  protected $guarded = [''];
 
   /**
-   * The attributes that should be hidden for arrays.
-   *
-   * @var array
-   */
+  * The attributes that should be hidden for arrays.
+  *
+  * @var array
+  */
   protected $hidden = [
-      'password','remember_token',
+    'password','remember_token',
   ];
 
-    public function cargo()
-    {
-        //return $this->hasOne('App\Cargo', 'id_cargo');
-        return $this->belongsTo('App\Cargo', 'id_cargo');
-    }
+  public function cargo()
+  {
+    //return $this->hasOne('App\Cargo', 'id_cargo');
+    return $this->belongsTo('App\Cargo', 'id_cargo');
+  }
 
-    public function assistencia()
-    {
-        return $this->belongsTo('App\Assistencia', 'id_assistencia');
-    }
+  public function assistencia()
+  {
+    return $this->belongsTo('App\Assistencia', 'id_assistencia');
+  }
 }
