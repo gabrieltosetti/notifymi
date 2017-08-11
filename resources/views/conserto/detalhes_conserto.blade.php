@@ -447,10 +447,14 @@
                                                         <div class="tab-content">
                                                             <!-- MENSAGEM TODAS -->                                                            
                                                             <div role="tabpanel" class="tab-pane fade in active" id="tab-todas">
-                                                                <?php $total = count($mensagens);
+                                                                @php 
+                                                                    $total = count($mensagens);
                                                                     $saida = false;
-                                                                    $proximoI = 1;?>
-                                                                @for ($i = 0; $i < $total; $i++)                                                                    
+                                                                    $proximoI = 1;
+                                                                    $nTem = true;
+                                                                @endphp
+                                                                @for ($i = 0; $i < $total; $i++) 
+                                                                <?php $nTem = false;?>                                                                        
                                                                 <div class="feed-element">
                                                                     <img alt="image" class="img-circle pull-left" src="/media/avatars/{{$mensagens[$i]->usuario->avatar}}">
                                                                     <div class="media-body ">
@@ -458,7 +462,7 @@
                                                                         <strong>{{$mensagens[$i]->usuario->nome}}</strong> escreveu <br>
                                                                         <small class="text-muted">{{$mensagens[$i]->created_at->formatLocalized('%A, %d de %B %Y')}}</small>                                                            
                                                                     </div>                                                        
-                                                                    <div class="mensagem-seta {{$mensagens[$i]->tipo}}"><!-- primeiro div -->                                                                      
+                                                                    <div class="mensagem-seta {{$mensagens[$i]->tipo}}" mensagem-id="{{$mensagens[$i]->id}}"><!-- primeiro div -->                                                                      
                                                                         {!!$mensagens[$i]->mensagem!!}
                                                                         <p><small class="pull-right">Enviada {{$mensagens[$i]->created_at->format('H:i')}}</small></p>
                                                                         @if(($i+1) != $total)
@@ -466,7 +470,7 @@
                                                                                 @if($mensagens[$i]->tipo == $mensagens[$proximoI]->tipo)
                                                                                     <hr>
                                                                                     {!!$mensagens[$proximoI]->mensagem!!}
-                                                                                    <p><small class="pull-right">Enviada {{$mensagens[$i]->created_at->format('H:i')}}</small></p>
+                                                                                    <p><small class="pull-right">Enviada {{$mensagens[$proximoI]->created_at->format('H:i')}}</small></p>
                                                                                 @else
                                                                                     </div>
                                                                                     <div class="mensagem {{$mensagens[$proximoI]->tipo}}">                                                                        
@@ -484,50 +488,127 @@
                                                                                 $proximoI++;
                                                                             @endphp
                                                                         @endif
-                                                                    </div><!-- primeiro /div -->     
-                                                                    
+                                                                    </div><!-- primeiro /div -->
                                                                 </div>                                                                
-                                                                @endfor                                                                
+                                                                @endfor   
+                                                                @if($nTem)
+                                                                    <div class="feed-element">                                                   
+                                                                        <div class="mensagem-vazia todas">                                                                   
+                                                                            Não há mensagens
+                                                                        </div>  
+                                                                    </div>                                                                     
+                                                                @endif                                                               
                                                             </div>                                                            
                                                             <!-- /MENSAGEM TODAS -->
                                                             <!-- MENSAGEM PUBLICA -->
                                                             <div role="tabpanel" class="tab-pane fade in" id="tab-publica">
-                                                                @foreach ($mensagens as $mensagem)
-                                                                    @if($mensagem->tipo == "publica")
+                                                                @php 
+                                                                    $total = count($mensagens);
+                                                                    $saida = false;
+                                                                    $proximoI = 1;
+                                                                    $nTem = true;
+                                                                @endphp
+                                                                @for ($i = 0; $i < $total; $i++) 
+                                                                    @if($mensagens[$i]->tipo == "publica") 
+                                                                    <?php $nTem = false;?>                                                                     
                                                                     <div class="feed-element">
-                                                                        <img alt="image" class="img-circle pull-left" src="/media/avatars/{{$mensagem->usuario->avatar}}">
+                                                                        <img alt="image" class="img-circle pull-left" src="/media/avatars/{{$mensagens[$i]->usuario->avatar}}">
                                                                         <div class="media-body ">
-                                                                            <small class="pull-right">{{$mensagem->created_at->diffForHumans()}}</small>
-                                                                            <strong>{{$mensagem->usuario->nome}}</strong> escreveu <br>
-                                                                            <small class="text-muted">{{$mensagem->created_at->formatLocalized('%A, %d de %B %Y')}}</small>                                                            
+                                                                            <small class="pull-right">{{$mensagens[$i]->created_at->diffForHumans()}}</small>
+                                                                            <strong>{{$mensagens[$i]->usuario->nome}}</strong> escreveu <br>
+                                                                            <small class="text-muted">{{$mensagens[$i]->created_at->formatLocalized('%A, %d de %B %Y')}}</small>                                                            
                                                                         </div>                                                        
-                                                                        <div class="mensagem {{$mensagem->tipo}}">                                                                        
-                                                                            {{$mensagem->mensagem}}
-                                                                            <p><small class="pull-right">Enviada {{$mensagem->created_at->format('H:i')}}</small></p>
-                                                                        </div>
-                                                                    </div>
+                                                                        <div class="mensagem-seta {{$mensagens[$i]->tipo}}"><!-- primeiro div -->                                                                      
+                                                                            {!!$mensagens[$i]->mensagem!!}
+                                                                            <p><small class="pull-right">Enviada {{$mensagens[$i]->created_at->format('H:i')}}</small></p>
+                                                                            @if(($i+1) != $total)
+                                                                                @while(($saida == false) && ($mensagens[$i]->usuario->id == $mensagens[$proximoI]->usuario->id))
+                                                                                    @if($mensagens[$proximoI]->tipo == "publica")
+                                                                                        <hr>
+                                                                                        {!!$mensagens[$proximoI]->mensagem!!}
+                                                                                        <p><small class="pull-right">Enviada {{$mensagens[$proximoI]->created_at->format('H:i')}}</small></p>                                                                                   
+                                                                                    @endif
+                                                                                    @php
+                                                                                        $i = $proximoI;
+                                                                                        $proximoI++;
+                                                                                        $saida = $proximoI == $total ? true : false;
+                                                                                    @endphp
+                                                                                @endwhile
+                                                                                @php 
+                                                                                    $saida = false;
+                                                                                    $proximoI++;
+                                                                                @endphp
+                                                                            @endif
+                                                                        </div><!-- primeiro /div -->     
+                                                                        
+                                                                    </div> 
                                                                     @endif
-                                                                @endforeach                                                               
+                                                                    @php
+                                                                        $proximoI++;
+                                                                    @endphp                                                                 
+                                                                @endfor  
+                                                                @if($nTem)
+                                                                    <div class="feed-element">                                                   
+                                                                        <div class="mensagem-vazia publica">                                                                   
+                                                                            Não há mensagens Públicas
+                                                                        </div>  
+                                                                    </div>                                                                     
+                                                                @endif                                                               
                                                             </div>
                                                             <!-- /MENSAGEM PUBLICA -->
                                                             <!-- MENSAGEM PRIVADA -->
                                                             <div role="tabpanel" class="tab-pane fade" id="tab-privada">
-                                                                @foreach ($mensagens as $mensagem)
-                                                                    @if($mensagem->tipo == "privada")
+                                                                @php 
+                                                                    $total = count($mensagens);
+                                                                    $saida = false;
+                                                                    $proximoI = 1;
+                                                                    $nTem = true;
+                                                                @endphp
+                                                                @for ($i = 0; $i < $total; $i++) 
+                                                                    @if($mensagens[$i]->tipo == "privada") 
+                                                                    <?php $nTem = false;?>                                                                  
                                                                     <div class="feed-element">
-                                                                        <img alt="image" class="img-circle pull-left" src="/media/avatars/{{$mensagem->usuario->avatar}}">
+                                                                        <img alt="image" class="img-circle pull-left" src="/media/avatars/{{$mensagens[$i]->usuario->avatar}}">
                                                                         <div class="media-body ">
-                                                                            <small class="pull-right">{{$mensagem->created_at->diffForHumans()}}</small>
-                                                                            <strong>{{$mensagem->usuario->nome}}</strong> escreveu <br>
-                                                                            <small class="text-muted">{{$mensagem->created_at->formatLocalized('%A, %d de %B %Y')}}</small>                                                            
+                                                                            <small class="pull-right">{{$mensagens[$i]->created_at->diffForHumans()}}</small>
+                                                                            <strong>{{$mensagens[$i]->usuario->nome}}</strong> escreveu <br>
+                                                                            <small class="text-muted">{{$mensagens[$i]->created_at->formatLocalized('%A, %d de %B %Y')}}</small>                                                            
                                                                         </div>                                                        
-                                                                        <div class="mensagem {{$mensagem->tipo}}">                                                                        
-                                                                            {{$mensagem->mensagem}}
-                                                                            <p><small class="pull-right">Enviada {{$mensagem->created_at->format('H:i')}}</small></p>
-                                                                        </div>
-                                                                    </div>
-                                                                    @endif
-                                                                @endforeach  
+                                                                        <div class="mensagem-seta {{$mensagens[$i]->tipo}}"><!-- primeiro div -->                                                                      
+                                                                            {!!$mensagens[$i]->mensagem!!}
+                                                                            <p><small class="pull-right">Enviada {{$mensagens[$i]->created_at->format('H:i')}}</small></p>
+                                                                            @if(($i+1) != $total)
+                                                                                @while(($saida == false) && ($mensagens[$i]->usuario->id == $mensagens[$proximoI]->usuario->id))
+                                                                                    @if($mensagens[$proximoI]->tipo == "privada")
+                                                                                        <hr>
+                                                                                        {!!$mensagens[$proximoI]->mensagem!!}
+                                                                                        <p><small class="pull-right">Enviada {{$mensagens[$proximoI]->created_at->format('H:i')}}</small></p>                                                                                   
+                                                                                    @endif
+                                                                                    @php
+                                                                                        $i = $proximoI;
+                                                                                        $proximoI++;
+                                                                                        $saida = $proximoI == $total ? true : false;
+                                                                                    @endphp
+                                                                                @endwhile
+                                                                                @php 
+                                                                                    $saida = false;
+                                                                                    $proximoI++;
+                                                                                @endphp
+                                                                            @endif
+                                                                        </div><!-- primeiro /div -->     
+                                                                    </div> 
+                                                                    @endif 
+                                                                    @php
+                                                                        $proximoI++;
+                                                                    @endphp  
+                                                                @endfor
+                                                                @if($nTem)
+                                                                    <div class="feed-element">                                                   
+                                                                        <div class="mensagem-vazia privada">                                                                     
+                                                                            Não há mensagens Privadas
+                                                                        </div>    
+                                                                    </div>                                                                     
+                                                                @endif 
                                                             </div>
                                                             <!-- /MENSAGEM PRIVADA -->
                                                         </div>
@@ -573,7 +654,32 @@ $(document).ready(function(){
     iniciarToastrOptions();  
 
     var atividades = {!! $atividades !!};
-    atulizarCamposEditar(atividades, $( "#atividade-escolha option:first-child" ).val()); 
+    atulizarCamposEditar(atividades, $( "#atividade-escolha option:first-child" ).val());
+    var ultimaPrivada = null;
+    var ultimaPublica = null;
+    @php
+        $ultimaPrivada = -1;
+        $ultimaPublica = -1;
+        $total = count($mensagens);
+        if($total != 0)
+        {
+            for ($i = 0; $i < $total; $i++) {
+                if($mensagens[$i]->tipo == "publica")
+                {
+                    $ultimaPublica = $i;
+                }
+                else {
+                    $ultimaPrivada = $i;
+                }
+            }
+        }
+    @endphp 
+    @if($ultimaPublica != -1)
+        ultimaPublica = {!!$mensagens[$ultimaPublica]!!};
+    @endif
+    @if($ultimaPrivada != -1)
+        ultimaPrivada = {!!$mensagens[$ultimaPrivada]!!};
+    @endif
 
     $(".chosen-select").chosen({
         no_results_text: "Oops, não encontrado!"
@@ -609,53 +715,53 @@ $(document).ready(function(){
                 else
                     {cor = "danger"}
 
-                card=                                    '<div class="row">';
-                card+=                                        '<div class="col-md-12">';
-                card+=                                            '<div class="atividade '+cor+'" atividade="'+data.id+'">';//cor
-                card+=                                                '<div class="row">';
-                card+=                                                    '<div class="col-md-5 col-lg-4">';
-                card+=                                                        '<div class="row user-group">';
-                card+=                                                            '<p class="atividade-id">Atividade #'+data.id+'</p>';//id
-                card+=                                                        '</div>';
-                card+=                                                        '<div class="row">';
-                card+=                                                           ' <div class="col-xs-12">';
-                card+=                                                                '<div class="form-horizontal">';
-                card+=                                                                   ' <div class="form-group">';
-                card+=                                                                        '<label class="col-md-4 control-label">Status:</label>';
-                card+=                                                                        '<div class="col-md-8">';
-                card+=                                                                            '<p class="form-control-static" atividade="status">'+data.status+'</p>';//status
-                card+=                                                                        '</div>';
-                card+=                                                                    '</div>';
-                card+=                                                                    '<div class="form-group">';
-                card+=                                                                        '<label class="col-md-4 control-label">Iniciado:</label>';
-                card+=                                                                        '<div class="col-md-8">';
-                card+=                                                                            '<p class="form-control-static" atividade="iniciada">'+data.iniciada+'</p>';//iniciado
-                card+=                                                                        '</div>';
-                card+=                                                                    '</div>';
-                card+=                                                                    '<div class="form-group">';
-                card+=                                                                        '<label class="col-md-4 control-label">Finalizado:</label>';
-                card+=                                                                        '<div class="col-md-8">';
-                card+=                                                                            '<p class="form-control-static" atividade="finalizada">'+data.finalizada+'</p>';//finalizada
-                card+=                                                                        '</div>';
-                card+=                                                                    '</div>';
-                card+=                                                                '</div>';
-                card+=                                                            '</div>';
-                card+=                                                        '</div>';
-                card+=                                                    '</div>';
-                card+=                                                    '<div class="col-md-7 col-lg-8">';
-                card+=                                                        '<small class="text-success">Título</small><br>';
-                card+=                                                        '<h3 class="m-b" atividade="titulo">'+data.titulo+'</h3>';//titulo
-                card+=                                                        '<small class="text-success">Descrição</small>';
-                card+=                                                        '<p atividade="descricao">'+data.descricao+'</p>';  //descricao
-                card+=                                                    '</div>';
-                card+=                                                '</div>';
-                card+=                                                '<hr class="hr-line-solid">';
-                card+=                                                '<div class="row" atividade="comentario">';
-                card+=                                                    '<span class="text-success">'+data.comentario_criado+' </span>- <strong>'+data.comentario_usuario+'</strong> '+data.comentario_status+'<br>';
-                card+=                                                '</div>';
-                card+=                                            '</div>';
-                card+=                                        '</div>';
-                card+=                                    '</div>';
+                card=`  <div class="row">
+                            <div class="col-md-12">
+                                <div class="atividade `+cor+`" atividade="`+data.id+`">
+                                    <div class="row">
+                                        <div class="col-md-5 col-lg-4">
+                                            <div class="row user-group">
+                                                <p class="atividade-id">Atividade #`+data.id+`</p>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xs-12">
+                                                    <div class="form-horizontal">
+                                                        <div class="form-group">
+                                                            <label class="col-md-4 control-label">Status:</label>
+                                                            <div class="col-md-8">
+                                                                <p class="form-control-static" atividade="status">`+data.status+`</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-md-4 control-label">Iniciado:</label>
+                                                            <div class="col-md-8">
+                                                                <p class="form-control-static" atividade="iniciada">`+data.iniciada+`</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-md-4 control-label">Finalizado:</label>
+                                                            <div class="col-md-8">
+                                                                <p class="form-control-static" atividade="finalizada">`+data.finalizada+`</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-7 col-lg-8">
+                                            <small class="text-success">Título</small><br>
+                                            <h3 class="m-b" atividade="titulo">`+data.titulo+`</h3>
+                                            <small class="text-success">Descrição</small>
+                                            <p atividade="descricao">`+data.descricao+`</p>
+                                        </div>
+                                    </div>
+                                    <hr class="hr-line-solid">
+                                    <div class="row" atividade="comentario">
+                                        <span class="text-success">`+data.comentario_criado+` </span>- <strong>`+data.comentario_usuario+`</strong> `+data.comentario_status+`<br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>`;
                 $(".lista-atividades").prepend(card);
                 
                 atividades.push({
@@ -778,7 +884,7 @@ $(document).ready(function(){
             tipo: "publica",
             id_conserto: "{{$conserto->id}}",
             id_usuario: "{{ Auth::user()->id }}"
-        }
+        };
         $.ajax({
             type: "POST",
             url: "{{route('nova_conserto_mensagem')}}",
@@ -916,12 +1022,5 @@ function inserirMensagem(mensagem){
     </div>`;
     $("#tab-todas").prepend(texto);
 }
-
-
-
-
-
 </script>
-
-
 @stop

@@ -309,6 +309,28 @@ h2.editable-click:hover
     border-top-color: #f8ac59;
 }
 
+.mensagem-vazia{
+    margin-bottom: 1px;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-align: center;
+}
+.mensagem-vazia.privada{
+    border: 2px dashed #f8ac59;
+    background-color: #fff0df;
+    color: #f8ac59;
+}
+.mensagem-vazia.publica{
+    border: 2px dashed #1c84c6;
+    background-color: #d6efff;
+    color: #1c84c6;
+}
+.mensagem-vazia.todas{
+    border: 2px dashed #1ab394;
+    color: #00886c;
+    background: #dff0d8;
+}
+
 
 /* /MENSAGENS */
 
