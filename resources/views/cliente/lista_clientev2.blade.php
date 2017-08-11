@@ -13,6 +13,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('css/plugins/aaa/buttons.dataTables.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('css/plugins/jQueryUI/jquery-ui.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('css/plugins/dataTables/datatables.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/plugins/bootstrap3-editable/bootstrap-editable.css') }}" >
 @stop
 
 @section('content')
@@ -65,9 +66,7 @@
               <button title="Ver mais detalhes" class="btn btn-xs btn-info btn-circle fa fa-search open-modal" value="{{$cliente->id}}"></button>
             </div>
 
-            <div class="col-xs-2 col-sm-4 hidden-xs">
-              <a title="Editar" class="btn btn-xs btn-warning btn-circle fa fa-pencil" href="{{ route('edita_cliente', ['id' => $cliente->id]) }}"></a>
-            </div>
+
 
             <div class="col-xs-2 col-sm-4 hidden-xs">
               <form class="form-deletar" value="{{$cliente->id}}">
@@ -84,9 +83,10 @@
             <div class="col-xs-8 col-sm-3 p-w-xs visible-xs-block">
               <a class="btn btn-success btn-circle btn-lg open-modal"> "><i class="fa fa-search" value="{{$cliente->id}}"></i></a>
 
-              <a class="btn btn-primary btn-circle btn-lg" href="{{ route('edita_cliente', ['id' => $cliente->id]) }}"><i class="fa fa-pencil"></i></a>
+
             </div>
           </td>
+
           </div>
         </a>
 
@@ -98,10 +98,11 @@
     <div class="modal inmodal" id="modal-detalhes" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content animated bounceInRight">
+          <form class="form-horizontal" action="{{ route('edita_cliente_post') }}" method="post" enctype="multipart/form-data">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
             <img alt="image" class="img-circle img-responsive img-lg center-block" src="/media/avatars/{{$cliente->avatar}}">
-            <h4 class="modal-title" id="modal-titulo"></h4>
+            <h4 class="modal-title" name="nome" id="modal-titulo"></h4>
             <small class="font-bold" ></small>
           </div>
           <div class="modal-body">
@@ -111,7 +112,7 @@
                   <div class="form-group">
                     <label class="col-sm-3 col-xs-12 control-label">RG</label>
                     <div class="col-sm-9">
-                      <p class="form-control-static" id="modal-RG"></p>
+                      <p class="form-control-static" name="RG"id="modal-RG"></p>
                     </div>
                   </div>
                 </div>
@@ -119,7 +120,7 @@
                   <div class="form-group">
                     <label class="col-sm-3 col-xs-12 control-label">CPF</label>
                     <div class="col-sm-9">
-                      <p class="form-control-static" id="modal-CPF"></p>
+                      <p class="form-control-static" name="CPF" id="modal-CPF"></p>
                     </div>
                   </div>
                 </div>
@@ -130,13 +131,13 @@
                   <div class="form-group">
                     <label class="col-sm-3 col-xs-12 control-label">E-mail</label>
                     <div class="col-sm-9">
-                      <p class="form-control-static" id="modal-e-mail"></p>
+                      <p class="form-control-static" name="e-mail" id="modal-e-mail"></p>
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="col-sm-3 col-xs-12 control-label">Celular</label>
                     <div class="col-sm-9">
-                      <p class="form-control-static" id="modal-celular"></p>
+                      <p class="form-control-static" name="celular" id="modal-celular"></p>
                     </div>
                   </div>
                 </div>
@@ -144,7 +145,7 @@
                   <div class="form-group">
                     <label class="col-sm-3 col-xs-12 control-label">Telefone</label>
                     <div class="col-sm-9">
-                      <p class="form-control-static" id="modal-telefone"></p>
+                      <p class="form-control-static" name="telefone" id="modal-telefone"></p>
                     </div>
                   </div>
                 </div>
@@ -155,19 +156,19 @@
                   <div class="form-group">
                     <label class="col-sm-3 col-xs-12 control-label">Cidade</label>
                     <div class="col-sm-9">
-                      <p class="form-control-static" id="modal-cidade"></p>
+                      <p class="form-control-static" name="cidade" id="modal-cidade"></p>
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="col-sm-3 col-xs-12 control-label">Bairro</label>
                     <div class="col-sm-9">
-                      <p class="form-control-static" id="modal-bairro"></p>
+                      <p class="form-control-static" name="bairro" id="modal-bairro"></p>
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="col-sm-3 col-xs-12 control-label">Rua</label>
                     <div class="col-sm-9">
-                      <p class="form-control-static" id="modal-rua"></p>
+                      <p class="form-control-static"  name="celular" id="modal-rua"></p>
                     </div>
                   </div>
                 </div>
@@ -187,23 +188,16 @@
                 </div>
               </div>
               <!--divisoria--><div class="hr-line-dashed"></div> <!--divisoria-->
-              <div class="row">
-                <div class="col-xs-6">
-                  <div class="form-group">
-                    <label class="col-sm-3 col-xs-12 control-label">Permissão</label>
-                    <div class="col-sm-9">
-                      <p class="form-control-static" id="modal-permissao"></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+
             </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
             <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="submit" class="btn btn-primary">teste</button>
           </div>
-        </div><!--/modal content-->
+        </form>
+      </div>
       </div>
     </div>
     <!--/MODAL-->
@@ -226,6 +220,7 @@
 <script type="text/javascript" src="js/plugins/aaa/dataTables/buttons.html5.js"></script>
 <script type="text/javascript" src="js/plugins/aaa/dataTables/buttons.print.js"></script>
 <script type="text/javascript" src="js/plugins/aaa/dataTables/jquery-ui.js"></script>
+<script src="{{ asset('js/plugins/bootstrap3-editable/bootstrap-editable.min.js') }}"></script>
 <script>
 
 $(document).ready(function(){
@@ -237,22 +232,82 @@ $(document).ready(function(){
 
     $.get(url + '/detalhes/' + cliente_id,function (data) {
       //success data
+          $.fn.editable.defaults.mode = 'inline';
       console.log(data);
       $('#modal-titulo').text(data.nome);
+      $('#modal-titulo').editable({
+          type: 'text',
+          title: 'Conserto'
+      });
+
       $('#modal-RG').text(data.rg);
+      $('#modal-RG').editable({
+          type: 'text',
+           url: '/clientes/edita',
+          title: 'Conserto'
+      });
+
       $('#modal-CPF').text(data.cpf);
+      $('#modal-CPF').editable({
+          type: 'text',
+          title: 'Conserto'
+      });
+
       $('#modal-e-mail').text(data.email);
+      $('#modal-e-mail').editable({
+          type: 'text',
+          title: 'Conserto'
+      });
+
       $('#modal-celular').text(data.celular);
+      $('#modal-celular').editable({
+          type: 'text',
+          title: 'Conserto'
+      });
+
       $('#modal-telefone').text(data.telefone);
+      $('#modal-telefone').editable({
+          type: 'text',
+          title: 'Conserto'
+      });
+
       $('#modal-cidade').text(data.cidade);
+      $('#modal-cidade').editable({
+          type: 'text',
+          title: 'Conserto'
+      });
+
       $('#modal-bairro').text(data.bairro);
+      $('#modal-bairro').editable({
+          type: 'text',
+          title: 'Conserto'
+      });
+
       $('#modal-rua').text(data.rua);
+      $('#modal-rua').editable({
+          type: 'text',
+          title: 'Conserto'
+      });
+
       $('#modal-numero').text(data.numero);
+      $('#modal-numero').editable({
+          type: 'text',
+          title: 'Conserto'
+      });
+
       $('#modal-complemento').text(data.complemento);
-      $('#modal-permissao').text(data.permissao);
+      $('#modal-complemento').editable({
+          type: 'text',
+          title: 'Conserto'
+      });
+
+
       $('#modal-detalhes').modal('show');
     })
   });
+
+
+
   /* /DETALHES*/
 
   /*DELETAR CLIENTE*/

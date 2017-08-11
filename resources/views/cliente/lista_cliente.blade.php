@@ -59,7 +59,7 @@
 
 
 
-                            
+
                             <div class="row">
                                 <div class="col-xs-4 col-sm-4 hidden-xs">
                                     <form class="form-deletar" value="{{$cliente->id}}">
@@ -70,7 +70,7 @@
                                     <a class="btn btn-xs btn-info btn-block open-modal" value="{{$cliente->id}}">Info</a>
                                 </div>
                                 <div class="col-xs-12 col-sm-5 p-w-xs hidden-xs">
-                                    <a class="btn btn-xs btn-warning btn-block" href="{{ route('edita_cliente', ['id' => $cliente->id]) }}">Editar</a>
+                                    <a class="btn btn-xs btn-warning btn-block open-modal-edita" value="{{$cliente->id}}">Editar</a>
                                 </div>
                                 <!--CELULAR-->
                                 <div class="col-xs-4 col-sm-4 visible-xs-block">
@@ -81,13 +81,14 @@
                                 <div class="col-xs-8 col-sm-3 p-w-xs visible-xs-block">
                                     <a class="btn btn-success btn-circle btn-lg open-modal" value="{{$cliente->id}}"><i class="fa fa-search"></i></a>
 
-                                    <a class="btn btn-primary btn-circle btn-lg" href="{{ route('edita_cliente', ['id' => $cliente->id]) }}"><i class="fa fa-pencil"></i></a>
+                                    <a class="btn btn-primary btn-circle btn-lg" value="{{$cliente->id}}"><i class="fa fa-pencil"></i></a>
                                 </div>
                             </div>
                         </div>
                     </div> <!--/col lg 4-->
                     @endforeach
-                    <!--MODAL-->
+
+                    <!--MODAL1-->
                     <div class="modal inmodal" id="modal-detalhes" tabindex="-1" role="dialog" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content animated bounceInRight">
@@ -199,7 +200,111 @@
                             </div><!--/modal content-->
                         </div>
                     </div>
-                    <!--/MODAL-->
+                    <!--/MODAL1-->
+                    <!--modal2-->
+                    <div class="modal inmodal" id="modal-edita" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content animated bounceInRight">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                    <img alt="image" class="img-circle img-responsive img-lg center-block" src="/media/avatars/{{$cliente->avatar}}">
+                                    <h4 class="modal-title" id="modal-edita-titulo"></h4>
+                                    <small class="font-bold" ></small>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-horizontal">
+                                        <div class="row">
+                                            <div class="col-xs-6">
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 col-xs-12 control-label">RG</label>
+                                                    <div class="col-sm-9">
+                                                        <p class="form-control-static" id="modal-edita-RG"></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 col-xs-12 control-label">CPF</label>
+                                                    <div class="col-sm-9">
+                                                        <p class="form-control-static" id="modal-edita-CPF"></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                        <!--divisoria--><div class="hr-line-dashed"></div> <!--divisoria-->
+                                        <div class="row">
+                                            <div class="col-xs-6">
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 col-xs-12 control-label">E-mail</label>
+                                                    <div class="col-sm-9">
+                                                        <p class="form-control-static" id="modal-edita-e-mail"></p>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 col-xs-12 control-label">Celular</label>
+                                                    <div class="col-sm-9">
+                                                        <p class="form-control-static" id="modal-edita-celular"></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 col-xs-12 control-label">Telefone</label>
+                                                    <div class="col-sm-9">
+                                                        <p class="form-control-static" id="modal-edita-telefone"></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                        <!--divisoria--><div class="hr-line-dashed"></div> <!--divisoria-->
+                                        <div class="row">
+                                            <div class="col-xs-6">
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 col-xs-12 control-label">Cidade</label>
+                                                    <div class="col-sm-9">
+                                                        <p class="form-control-static" id="modal-edita-cidade"></p>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 col-xs-12 control-label">Bairro</label>
+                                                    <div class="col-sm-9">
+                                                        <p class="form-control-static" id="modal-edita-bairro"></p>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 col-xs-12 control-label">Rua</label>
+                                                    <div class="col-sm-9">
+                                                        <p class="form-control-static" id="modal-edita-rua"></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 col-xs-12 control-label">Número</label>
+                                                    <div class="col-sm-9">
+                                                        <p class="form-control-static" id="modal-edita-numero"></p>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 col-xs-12 control-label">Comple.</label>
+                                                    <div class="col-sm-9">
+                                                        <p class="form-control-static" id="modal-edita-complemento"></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div><!--/modal content-->
+                        </div>
+                    </div>
+                    <!--/modal2-->
     <!--/<ROW--></div>
             </div>
 @endsection

@@ -51,6 +51,13 @@ class ClienteController extends Controller
         $cliente = Cliente::find($id);
         return Response::json($cliente);
     }
+    public function edita(ClienteRequest $request)
+    {
+
+      Cliente::create($request->all());
+
+      return redirect('/clientes')->withInput();
+    }
 
     //rota: remove_cliente
     public function remove($id)
@@ -60,4 +67,5 @@ class ClienteController extends Controller
 
         return;
     }
+        //rota: edita_cliente
 }

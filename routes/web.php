@@ -48,10 +48,12 @@ Route::get('/clientes/login', 'LoginController@logincliente')->name('entrarclien
 Route::get('/clientesv2', 'ClienteController@lista')->name('clientesv2');
 Route::get('/clientes',  'ClienteController@listav2')->name('clientes');
 Route::get('/clientes/novo', 'ClienteController@novo')->name('novo_cliente');
-Route::get('/clientes/detalhes/{id}/', 'ClienteController@detalhes')->name('detalhes_cliente');
 Route::post('/clientes/adiciona', 'ClienteController@adiciona')->name('novo_cliente_post');
 Route::delete('/clientes/remove/{id?}', 'ClienteController@remove')->name('remove_cliente');
-Route::get('/clientes/edita/{id}', 'ClienteController@edita')->name('edita_cliente');
+
+Route::get('/clientes/detalhes/{id}/', 'ClienteController@detalhes')->name('detalhes_cliente');
+Route::post('/clientes/edita', 'ClienteController@edita')->name('edita_cliente_post');
+
 
 
 //permissoes
