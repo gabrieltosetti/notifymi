@@ -462,20 +462,20 @@
                                                                         <strong>{{$mensagens[$i]->usuario->nome}}</strong> escreveu <br>
                                                                         <small class="text-muted">{{$mensagens[$i]->created_at->formatLocalized('%A, %d de %B %Y')}}</small>                                                            
                                                                     </div>                                                        
-                                                                    <div class="mensagem-seta {{$mensagens[$i]->tipo}}" mensagem-id="{{$mensagens[$i]->id}}"><!-- primeiro div -->                                                                      
+                                                                    <div class="mensagem-seta {{$mensagens[$i]->tipo}}" mensagem-user="{{$mensagens[$i]->usuario->id}}"><!-- primeiro div -->                                                                      
                                                                         {!!$mensagens[$i]->mensagem!!}
-                                                                        <p><small class="pull-right">Enviada {{$mensagens[$i]->created_at->format('H:i')}}</small></p>
+                                                                        <p mensagem-id="{{$mensagens[$i]->id}}"><small class="pull-right">Enviada {{$mensagens[$i]->created_at->format('H:i')}}</small></p>
                                                                         @if(($i+1) != $total)
                                                                             @while(($saida == false) && ($mensagens[$i]->usuario->id == $mensagens[$proximoI]->usuario->id))
                                                                                 @if($mensagens[$i]->tipo == $mensagens[$proximoI]->tipo)
                                                                                     <hr>
                                                                                     {!!$mensagens[$proximoI]->mensagem!!}
-                                                                                    <p><small class="pull-right">Enviada {{$mensagens[$proximoI]->created_at->format('H:i')}}</small></p>
+                                                                                    <p mensagem-id="{{$mensagens[$i]->id}}"><small class="pull-right">Enviada {{$mensagens[$proximoI]->created_at->format('H:i')}}</small></p>
                                                                                 @else
                                                                                     </div>
                                                                                     <div class="mensagem {{$mensagens[$proximoI]->tipo}}">                                                                        
                                                                                         {!!$mensagens[$proximoI]->mensagem!!}
-                                                                                        <p><small class="pull-right">Enviada {{$mensagens[$proximoI]->created_at->format('H:i')}}</small></p>                                                                                    
+                                                                                        <p mensagem-id="{{$mensagens[$i]->id}}"><small class="pull-right">Enviada {{$mensagens[$proximoI]->created_at->format('H:i')}}</small></p>                                                                                    
                                                                                 @endif
                                                                                 @php
                                                                                     $i = $proximoI;
@@ -655,30 +655,33 @@ $(document).ready(function(){
 
     var atividades = {!! $atividades !!};
     atulizarCamposEditar(atividades, $( "#atividade-escolha option:first-child" ).val());
-    var ultimaPrivada = null;
-    var ultimaPublica = null;
     @php
-        $ultimaPrivada = -1;
-        $ultimaPublica = -1;
+        $ultimaPrivada = null;
+        $ultimaPublica = null;
         $total = count($mensagens);
         if($total != 0)
         {
-            for ($i = 0; $i < $total; $i++) {
-                if($mensagens[$i]->tipo == "publica")
+            foreach($mensagens as $mensagem)
+            {
+                if($mensagem->tipo == "publica")
                 {
-                    $ultimaPublica = $i;
+                    if($ultimaPublica == null) $ultimaPublica = $mensagem;
+                } else {
+                    if($ultimaPrivada == null) $ultimaPrivada = $mensagem;
                 }
-                else {
-                    $ultimaPrivada = $i;
-                }
+                if($ultimaPrivada != null && $ultimaPublica != null) break;
             }
-        }
+        }        
     @endphp 
-    @if($ultimaPublica != -1)
-        ultimaPublica = {!!$mensagens[$ultimaPublica]!!};
+    @if($ultimaPublica != null)
+        var ultimaPublica = {!!$ultimaPublica!!};
+    @else
+        var ultimaPublica = null;
     @endif
-    @if($ultimaPrivada != -1)
-        ultimaPrivada = {!!$mensagens[$ultimaPrivada]!!};
+    @if($ultimaPrivada != null)
+        var ultimaPrivada = {!!$ultimaPrivada!!};
+    @else
+        var ultimaPrivada = null;
     @endif
 
     $(".chosen-select").chosen({
@@ -891,10 +894,7 @@ $(document).ready(function(){
             data: formData,
             dataType: 'json',
             success: function (data) {
-                if (data.tipo == "publica")
-                    {inserirMensagem(data)}
-                else
-                    {}
+                inserirMensagem(data, ultimaPrivada, ultimaPublica);
                 toastr["success"]('Mensagem enviada com sucesso !','Mensagem');
             },
             error: function (data) {
@@ -1007,20 +1007,33 @@ function atulizarCamposEditar(atividades, id){
         }
     }); 
 }
-function inserirMensagem(mensagem){
-    var texto = `<div class="feed-element">
-            <img alt="image" class="img-circle pull-left" src="/media/avatars/`+mensagem.usuario.avatar+`">
-        <div class="media-body">
-            <small class="pull-right">`+mensagem.criada_diff+`</small>
-            <strong>`+mensagem.usuario.nome+`</strong> escreveu <br>
-            <small class="text-muted">`+mensagem.criada_extenso+`</small>                                                            
-        </div>                                                        
-        <div class="mensagem `+mensagem.tipo+`">                                                                        
-            `+mensagem.mensagem+`
-            <p><small class="pull-right">Enviada `+mensagem.criada+`</small></p>
-        </div>
-    </div>`;
-    $("#tab-todas").prepend(texto);
+function inserirMensagem(mensagem, ultPrivada, ultPublica){
+    if(mensagem.tipo == "publica")
+    {
+        if(ultPublica.usuario.id == mensagem.usuario.id)
+        {
+            var texto = mensagem.mensagem+`
+                        <p><small class="pull-right">Enviada `+mensagem.criada+`</small></p>
+                        <hr> `;
+            $("[mensagem-user = '"+ultPublica.usuario.id+"']:first").prepend(texto);
+        }
+        else
+        {
+            var texto = `<div class="feed-element">
+                            <img alt="image" class="img-circle pull-left" src="/media/avatars/`+mensagem.usuario.avatar+`">
+                            <div class="media-body">
+                                <small class="pull-right">`+mensagem.criada_diff+`</small>
+                                <strong>`+mensagem.usuario.nome+`</strong> escreveu <br>
+                                <small class="text-muted">`+mensagem.criada_extenso+`</small>                                                            
+                            </div>                                                        
+                            <div class="mensagem-seta `+mensagem.tipo+`">                                                                        
+                                `+mensagem.mensagem+`
+                                <p><small class="pull-right">Enviada `+mensagem.criada+`</small></p>
+                            </div>
+                        </div>`;
+        }
+    }
+    
 }
 </script>
 @stop
