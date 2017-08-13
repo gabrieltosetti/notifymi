@@ -86,7 +86,7 @@ class DatabaseSeeder extends Seeder
 
     DB::table('cargos')->insert([
       'id' => '6',
-      'cargo' => 'Admins',
+      'cargo' => 'Admin',
       'id_assistencia' => '1',
     ]);
 

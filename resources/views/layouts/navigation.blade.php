@@ -8,35 +8,11 @@
 
 
                             <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">{{ Auth::user()->nome }}</strong></span>
-                            <?php $permissao = Auth::user()->permissao?>
-                            <!-- preciso melhorar isso aqui-->
-                            @if($permissao == 0)
-                            <i class="fa fa-user-o"></i>  <strong class="font-bold"> Cliente</strong>
-                            @endif
-
-                            @if($permissao == 1)
-                            <i class="fa fa-cog"></i><strong class="font-bold"> Atendente</strong>
-                            @endif
-
-                            @if($permissao == 2)
-                            <i class="fa fa-address-card-o"></i><strong class="font-bold"> Assistente Técnico</strong>
-                            @endif
-
-                            @if($permissao == 3)
-                            <i class="fa fa-briefcase"></i><strong class="font-bold"> Técnico</strong>
-                            @endif
-
-                            @if($permissao == 4)
-                            <i class="fa fa-user-secret"></i><strong class="font-bold"> Gerente</strong>
-                            @endif
-
-                            @if($permissao == 5)
-                            <i class="fa fa-user-secret"></i><strong class="font-bold"> Chefe</strong>
-                            @endif
-
-                            @if($permissao == 6)
-                            <i class="fa fa-user-secret"></i><strong class="font-bold"> Admin</strong>
-                            @endif
+                            <strong class="font-bold">{{DB::table('cargos')->
+                              where('id', DB::table('usuarios')->
+                              where('id', Auth::user()->id)->
+                              value('permissao'))->
+                              value('cargo')}}</strong>
                         </a>
 
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">

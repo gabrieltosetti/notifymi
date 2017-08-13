@@ -1,4 +1,5 @@
 @extends('layouts.principal')
+@section('title', 'Perfil')
 @section('css')
     <link href="{{ asset('css/plugins/iCheck/custom.css') }}" rel="stylesheet">
     <link href="{{ asset('css/plugins/jasny/jasny-bootstrap.min.css') }}" rel="stylesheet">
@@ -17,7 +18,7 @@
                             <img class="img-thumbnail img-responsive center-block" src="/media/avatars/{{ $users ->avatar }}" style="max-height: 145px;">
                         </div>
                         <div class="row">
-                            <h3 class="text-center"><strong>{{$users->name }}</strong></h3>
+                            <h3 class="text-center"><strong>{{ Auth::user()->nome }}</strong></h3>
                         </div>
                     </div>
                     <!-- /IMAGEM -->
@@ -130,33 +131,38 @@
                                                     <div class="form-group m-b-none">
                                                         <label class="col-sm-4 col-md-3 col-lg-2 col-xs-12 control-label">Nome</label>
                                                         <div class="col-sm-8 col-md-9 col-lg-10">
-                                                            <p class="form-control-static">{{$users->name }}</p>
+                                                            <p class="form-control-static">{{ Auth::user()->nome }}</p>
                                                         </div>
                                                     </div>
                                                     <div class="form-group m-b-none">
                                                         <label class="col-sm-4 col-md-3 col-lg-2 col-xs-12 control-label">Cargo</label>
                                                         <div class="col-sm-8 col-md-9 col-lg-10">
-                                                            <p class="form-control-static">Cargo aqui</p>
+
+                                                            <p class="form-control-static">{{DB::table('cargos')->
+                                                              where('id', DB::table('usuarios')->
+                                                              where('id', Auth::user()->id)->
+                                                              value('permissao'))-> 
+                                                              value('cargo')}}</p>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group m-b-none">
+                                                    <!-- <div class="form-group m-b-none">
                                                         <label class="col-sm-4 col-md-3 col-lg-2 col-xs-12 control-label">Nível</label>
                                                         <div class="col-sm-8 col-md-9 col-lg-10">
                                                             <p class="form-control-static">Nível aqui</p>
                                                         </div>
-                                                    </div>
+                                                    </div> -->
                                                 </div>
                                                 <div class="col-xs-6">
                                                     <div class="form-group m-b-none">
                                                         <label class="col-sm-4 col-md-3 col-lg-2 col-xs-12 control-label">CPF</label>
                                                         <div class="col-sm-8 col-md-9 col-lg-10">
-                                                            <p class="form-control-static">111.111.111-11</p>
+                                                            <p class="form-control-static">{{ Auth::user()->cpf }}</p>
                                                         </div>
                                                     </div>
                                                     <div class="form-group m-b-none">
                                                         <label class="col-sm-4 col-md-3 col-lg-2 col-xs-12 control-label">RG</label>
                                                         <div class="col-sm-8 col-md-9 col-lg-10">
-                                                            <p class="form-control-static">111.111.111-9</p>
+                                                            <p class="form-control-static">{{ Auth::user()->rg }}</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -168,13 +174,13 @@
                                                     <div class="form-group m-b-none">
                                                         <label class="col-sm-4 col-md-3 col-lg-2 col-xs-12 control-label">E-mail</label>
                                                         <div class="col-sm-8 col-md-9 col-lg-10">
-                                                            <p class="form-control-static">E-mail aqui</p>
+                                                            <p class="form-control-static">{{ Auth::user()->email }}</p>
                                                         </div>
                                                     </div>
                                                     <div class="form-group m-b-none">
                                                         <label class="col-sm-4 col-md-3 col-lg-2 col-xs-12 control-label">Celular</label>
                                                         <div class="col-sm-8 col-md-9 col-lg-10">
-                                                            <p class="form-control-static">Celular aqui</p>
+                                                            <p class="form-control-static">{{ Auth::user()->celular }}</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -182,7 +188,7 @@
                                                     <div class="form-group m-b-none">
                                                         <label class="col-sm-4 col-md-3 col-lg-2 col-xs-12 control-label">Telefone</label>
                                                         <div class="col-sm-8 col-md-9 col-lg-10">
-                                                            <p class="form-control-static">Telefone aqui</p>
+                                                            <p class="form-control-static">{{ Auth::user()->telefone }}</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -194,19 +200,19 @@
                                                     <div class="form-group m-b-none">
                                                         <label class="col-sm-4 col-md-3 col-lg-2 col-xs-12 control-label">Cidade</label>
                                                         <div class="col-sm-8 col-md-9 col-lg-10">
-                                                            <p class="form-control-static">Cidade aqui</p>
+                                                            <p class="form-control-static">{{ Auth::user()->cidade }}</p>
                                                         </div>
                                                     </div>
                                                     <div class="form-group m-b-none">
                                                         <label class="col-sm-4 col-md-3 col-lg-2 col-xs-12 control-label">Bairro</label>
                                                         <div class="col-sm-8 col-md-9 col-lg-10">
-                                                            <p class="form-control-static">Bairro aqui</p>
+                                                            <p class="form-control-static">{{ Auth::user()->bairro }}</p>
                                                         </div>
                                                     </div>
                                                     <div class="form-group m-b-none">
                                                         <label class="col-sm-4 col-md-3 col-lg-2 col-xs-12 control-label">Rua</label>
                                                         <div class="col-sm-8 col-md-9 col-lg-10">
-                                                            <p class="form-control-static">Rua aqui</p>
+                                                            <p class="form-control-static">{{ Auth::user()->rua }}</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -214,13 +220,13 @@
                                                     <div class="form-group m-b-none">
                                                         <label class="col-sm-4 col-md-3 col-lg-2 col-xs-12 control-label">Número</label>
                                                         <div class="col-sm-8 col-md-9 col-lg-10">
-                                                            <p class="form-control-static">Número aqui</p>
+                                                            <p class="form-control-static">{{ Auth::user()->numero }}</p>
                                                         </div>
                                                     </div>
                                                     <div class="form-group m-b-none">
                                                         <label class="col-sm-4 col-md-3 col-lg-2 col-xs-12 control-label">Compl.</label>
                                                         <div class="col-sm-8 col-md-9 col-lg-10">
-                                                            <p class="form-control-static">Complemento aqui</p>
+                                                            <p class="form-control-static">{{ Auth::user()->complemento }}</p>
                                                         </div>
                                                     </div>
                                                 </div>
