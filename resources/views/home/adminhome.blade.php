@@ -33,22 +33,22 @@
             </ul>
         </div>
     </div>
-<!--/WIDGETS-->
-<!--/TABELA DE CONSERTOS-->
+    <!--/WIDGETS-->
+    <!--/TABELA DE CONSERTOS-->
 
-<div class="wrapper wrapper-content animated fadeInRight">
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="text-center m-t-lg">
-                <h1>
-                    Notify-MI!
-                </h1>
-                <small>
-                    Seu sistema de notificações simplificado.
-                </small>
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="text-center m-t-lg">
+                    <h1>
+                        Notify-MI!
+                    </h1>
+                    <small>
+                        Seu sistema de notificações simplificado.
+                    </small>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<script src="js/plugins/chartJs/Chart.min.js"></script>
-@endsection
+    <script src="js/plugins/chartJs/Chart.min.js"></script>
+    @endsection
