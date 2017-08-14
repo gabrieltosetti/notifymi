@@ -13,10 +13,11 @@ class TabelaAvalicao extends Migration
      */
     public function up()
     {
-        Schema::table('avaliacao', function (Blueprint $table) {
+        Schema::create('avaliacao', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_usuario')->unsigned();
             $table->integer('id_assistencia')->unsigned();
+            $table->integer('id_conserto')->unsigned();
             $table->integer('id_cliente')->unsigned();
             $table->integer('atendimento')->unsigned();
             $table->integer('agilidade')->unsigned();
@@ -33,6 +34,6 @@ class TabelaAvalicao extends Migration
      */
      public function down()
      {
-         Schema::dropIfExists('admins');
+         Schema::dropIfExists('avaliacao');
      }
 }

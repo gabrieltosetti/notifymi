@@ -28,7 +28,7 @@
                             <div class="row">
                                 <div class="col-xs-12 col-md-6 text-center" style="padding-right: 0">
                                     <h1 class="rating-num">
-                                        4.0</h1>
+                                        {{$avaliacao->totalmedia}}</h1>
                                     <div class="rating">
                                         <span class="glyphicon glyphicon-star"></span>
                                         <span class="glyphicon glyphicon-star"></span>
@@ -37,7 +37,7 @@
                                         <span class="glyphicon glyphicon-star-empty"></span>
                                     </div>
                                     <div>
-                                        <span class="glyphicon glyphicon-user"></span>258 total
+                                        <span class="glyphicon glyphicon-user"></span>{{$avaliacao->totalcount}} avaliações
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-md-6">
@@ -49,7 +49,7 @@
                                             <div class="col-xs-10 col-sm-9">
                                                 <div class="progress">
                                                     <div style="width: 80%;" aria-valuemin="0" aria-valuemax="100"  aria-valuenow="80" role="progressbar" class="progress-bar">
-                                                        <span class="sr-only">80%</span>
+                                                        <span class="sr-only"></span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -141,7 +141,7 @@
                                                             <p class="form-control-static">{{DB::table('cargos')->
                                                               where('id', DB::table('usuarios')->
                                                               where('id', Auth::user()->id)->
-                                                              value('permissao'))-> 
+                                                              value('permissao'))->
                                                               value('cargo')}}</p>
                                                         </div>
                                                     </div>
