@@ -536,7 +536,6 @@
                                                                                 @endwhile
                                                                                 @php 
                                                                                     $saida = false;
-                                                                                    $proximoI++;
                                                                                 @endphp
                                                                             @endif
                                                                         </div><!-- primeiro /div -->     
@@ -592,7 +591,6 @@
                                                                                 @endwhile
                                                                                 @php 
                                                                                     $saida = false;
-                                                                                    $proximoI++;
                                                                                 @endphp
                                                                             @endif
                                                                         </div><!-- primeiro /div -->     
