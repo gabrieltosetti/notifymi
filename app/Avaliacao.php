@@ -22,7 +22,7 @@ class Avaliacao extends Model
     'id_cliente',
     'atendimento',
     'agilidade',
-    'nota'
+    'nota',
     'obs',
   ];
 
