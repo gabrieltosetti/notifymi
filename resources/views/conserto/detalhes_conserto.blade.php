@@ -462,7 +462,7 @@
                                                                         <strong>{{$mensagens[$i]->usuario->nome}}</strong> escreveu <br>
                                                                         <small class="text-muted">{{$mensagens[$i]->created_at->formatLocalized('%A, %d de %B %Y')}}</small>                                                            
                                                                     </div>                                                        
-                                                                    <div class="mensagem-seta {{$mensagens[$i]->tipo}}" mensagem-user="{{$mensagens[$i]->usuario->id}}"><!-- primeiro div -->                                                                      
+                                                                    <div class="mensagem-seta {{$mensagens[$i]->tipo}}" mensagem-tipo="{{$mensagens[$i]->tipo}}" mensagem-user="{{$mensagens[$i]->usuario->id}}"><!-- primeiro div -->                                                                      
                                                                         {!!$mensagens[$i]->mensagem!!}
                                                                         <p mensagem-id="{{$mensagens[$i]->id}}"><small class="pull-right">Enviada {{$mensagens[$i]->created_at->format('H:i')}}</small></p>
                                                                         @if(($i+1) != $total)
@@ -518,7 +518,7 @@
                                                                             <strong>{{$mensagens[$i]->usuario->nome}}</strong> escreveu <br>
                                                                             <small class="text-muted">{{$mensagens[$i]->created_at->formatLocalized('%A, %d de %B %Y')}}</small>                                                            
                                                                         </div>                                                        
-                                                                        <div class="mensagem-seta {{$mensagens[$i]->tipo}}"><!-- primeiro div -->                                                                      
+                                                                        <div class="mensagem-seta {{$mensagens[$i]->tipo}}" mensagem-user="{{$mensagens[$i]->usuario->id}}"><!-- primeiro div -->                                                                      
                                                                             {!!$mensagens[$i]->mensagem!!}
                                                                             <p><small class="pull-right">Enviada {{$mensagens[$i]->created_at->format('H:i')}}</small></p>
                                                                             @if(($i+1) != $total)
@@ -574,7 +574,7 @@
                                                                             <strong>{{$mensagens[$i]->usuario->nome}}</strong> escreveu <br>
                                                                             <small class="text-muted">{{$mensagens[$i]->created_at->formatLocalized('%A, %d de %B %Y')}}</small>                                                            
                                                                         </div>                                                        
-                                                                        <div class="mensagem-seta {{$mensagens[$i]->tipo}}"><!-- primeiro div -->                                                                      
+                                                                        <div class="mensagem-seta {{$mensagens[$i]->tipo}}" mensagem-user="{{$mensagens[$i]->usuario->id}}"><!-- primeiro div -->                                                                      
                                                                             {!!$mensagens[$i]->mensagem!!}
                                                                             <p><small class="pull-right">Enviada {{$mensagens[$i]->created_at->format('H:i')}}</small></p>
                                                                             @if(($i+1) != $total)
@@ -655,34 +655,6 @@ $(document).ready(function(){
 
     var atividades = {!! $atividades !!};
     atulizarCamposEditar(atividades, $( "#atividade-escolha option:first-child" ).val());
-    @php
-        $ultimaPrivada = null;
-        $ultimaPublica = null;
-        $total = count($mensagens);
-        if($total != 0)
-        {
-            foreach($mensagens as $mensagem)
-            {
-                if($mensagem->tipo == "publica")
-                {
-                    if($ultimaPublica == null) $ultimaPublica = $mensagem;
-                } else {
-                    if($ultimaPrivada == null) $ultimaPrivada = $mensagem;
-                }
-                if($ultimaPrivada != null && $ultimaPublica != null) break;
-            }
-        }        
-    @endphp 
-    @if($ultimaPublica != null)
-        var ultimaPublica = {!!$ultimaPublica!!};
-    @else
-        var ultimaPublica = null;
-    @endif
-    @if($ultimaPrivada != null)
-        var ultimaPrivada = {!!$ultimaPrivada!!};
-    @else
-        var ultimaPrivada = null;
-    @endif
 
     $(".chosen-select").chosen({
         no_results_text: "Oops, não encontrado!"
@@ -894,7 +866,7 @@ $(document).ready(function(){
             data: formData,
             dataType: 'json',
             success: function (data) {
-                inserirMensagem(data, ultimaPrivada, ultimaPublica);
+                inserirMensagem(data);
                 toastr["success"]('Mensagem enviada com sucesso !','Mensagem');
             },
             error: function (data) {
@@ -923,10 +895,7 @@ $(document).ready(function(){
             data: formData,
             dataType: 'json',
             success: function (data) {
-                if (data.tipo == "privada")
-                    {inserirMensagem(data)}
-                else
-                    {}
+                inserirMensagem(data);
                 toastr["success"]('Mensagem enviada com sucesso !','Mensagem');
             },
             error: function (data) {
@@ -1007,33 +976,61 @@ function atulizarCamposEditar(atividades, id){
         }
     }); 
 }
-function inserirMensagem(mensagem, ultPrivada, ultPublica){
-    if(mensagem.tipo == "publica")
+function inserirMensagem(mensagem){
+    var ult = $("#tab-todas div[mensagem-tipo]:first");
+    var curta = mensagem.mensagem+`
+                <p><small class="pull-right">Enviada `+mensagem.criada+`</small></p>
+                <hr> `;
+    var inteira = `<div class="feed-element">
+                <img alt="image" class="img-circle pull-left" src="/media/avatars/`+mensagem.usuario.avatar+`">
+                <div class="media-body">
+                    <small class="pull-right">`+mensagem.criada_diff+`</small>
+                    <strong>`+mensagem.usuario.nome+`</strong> escreveu <br>
+                    <small class="text-muted">`+mensagem.criada_extenso+`</small>                                                            
+                </div>                                                        
+                <div class="mensagem-seta `+mensagem.tipo+`" mensagem-tipo="`+mensagem.tipo+`" mensagem-user="`+mensagem.usuario.id+`">                                                                        
+                    `+mensagem.mensagem+`
+                    <p><small class="pull-right">Enviada `+mensagem.criada+`</small></p>
+                </div>
+            </div>`;
+    var com_seta = `<div class="mensagem-seta `+mensagem.tipo+`" mensagem-tipo="`+mensagem.tipo+`" mensagem-user="`+mensagem.usuario.id+`">                                                                        
+                    `+mensagem.mensagem+`
+                    <p><small class="pull-right">Enviada `+mensagem.criada+`</small></p>
+                </div>
+            </div>`;
+    if (ult.attr("mensagem-user") == mensagem.usuario.id)
     {
-        if(ultPublica.usuario.id == mensagem.usuario.id)
-        {
-            var texto = mensagem.mensagem+`
-                        <p><small class="pull-right">Enviada `+mensagem.criada+`</small></p>
-                        <hr> `;
-            $("[mensagem-user = '"+ultPublica.usuario.id+"']:first").prepend(texto);
+        if (ult.attr("mensagem-tipo") == mensagem.tipo)
+        {            
+            ult.prepend(curta);
         }
-        else
-        {
-            var texto = `<div class="feed-element">
-                            <img alt="image" class="img-circle pull-left" src="/media/avatars/`+mensagem.usuario.avatar+`">
-                            <div class="media-body">
-                                <small class="pull-right">`+mensagem.criada_diff+`</small>
-                                <strong>`+mensagem.usuario.nome+`</strong> escreveu <br>
-                                <small class="text-muted">`+mensagem.criada_extenso+`</small>                                                            
-                            </div>                                                        
-                            <div class="mensagem-seta `+mensagem.tipo+`">                                                                        
-                                `+mensagem.mensagem+`
-                                <p><small class="pull-right">Enviada `+mensagem.criada+`</small></p>
-                            </div>
-                        </div>`;
+        else{
+            ult.before(com_seta);
+            ult.attr("class", "mensagem "+ult.attr("mensagem-tipo"));
         }
+        if($("#tab-"+mensagem.tipo+" div.mensagem-vazia").length == 1)
+        {
+            $("#tab-"+mensagem.tipo).html(inteira);
+        }
+        else {
+            $("#tab-"+mensagem.tipo+" div[mensagem-user]:first").prepend(curta);
+        }        
     }
-    
+    else if ($("#tab-todas div.mensagem-vazia").length != 1)
+    {
+        $("#tab-todas").prepend(inteira);
+        if($("#tab-"+mensagem.tipo+" div.mensagem-vazia").length == 1)
+        {
+            $("#tab-"+mensagem.tipo).html(inteira);
+        }
+        else{
+            $("#tab-"+mensagem.tipo).prepend(inteira);
+        }        
+    }
+    else{
+        $("#tab-todas").html(inteira);
+        $("#tab-"+mensagem.tipo).html(inteira);
+    }    
 }
 </script>
 @stop
