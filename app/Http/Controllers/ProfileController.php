@@ -30,10 +30,10 @@ class ProfileController extends Controller
 
 
     $avaliacao->zero = Avaliacao::where('id_usuario', '=', $idusuario)->where('nota', '>','0' )->where('nota', '<', '1')->count();
-    $avaliacao->um = Avaliacao::where('id_usuario', '=', $idusuario)->where('nota', '>', '1')->where('nota', '<', '2')->count();
-    $avaliacao->dois = Avaliacao::where('id_usuario', '=', $idusuario)->where('nota', '>', '2')->where('nota', '<', '3')->count();
-    $avaliacao->tres = Avaliacao::where('id_usuario', '=', $idusuario)->where('nota', '>', '3')->where('nota', '<', '4')->count();
-    $avaliacao->quatro = Avaliacao::where('id_usuario', '=', $idusuario)->where('nota', '>', '4')->where('nota', '<', '5')->count();
+    $avaliacao->um = Avaliacao::where('id_usuario', '=', $idusuario)->where('nota', '>', '0.99')->where('nota', '<', '2')->count();
+    $avaliacao->dois = Avaliacao::where('id_usuario', '=', $idusuario)->where('nota', '>', '1.99')->where('nota', '<', '3')->count();
+    $avaliacao->tres = Avaliacao::where('id_usuario', '=', $idusuario)->where('nota', '>', '2.99')->where('nota', '<', '4')->count();
+    $avaliacao->quatro = Avaliacao::where('id_usuario', '=', $idusuario)->where('nota', '>', '3.99')->where('nota', '<', '5')->count();
     $avaliacao->cinco = Avaliacao::where('id_usuario', '=', $idusuario)->where('nota', '=', '5')->count();
 
     if($avaliacao->totalcount == '0') {
