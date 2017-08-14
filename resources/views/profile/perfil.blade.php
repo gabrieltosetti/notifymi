@@ -30,14 +30,14 @@
                                     <h1 class="rating-num">
                                         {{$avaliacao->totalmedia}}</h1>
                                     <div class="rating">
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star-empty"></span>
+
+                                      @for ($i = $avaliacao->totalmedia; $i > 0; $i--)
+                                          <span class="glyphicon glyphicon-star"></span>
+                                      @endfor
+
                                     </div>
                                     <div>
-                                        <span class="glyphicon glyphicon-user"></span>{{$avaliacao->totalcount}} avaliações
+                                        <span class="glyphicon glyphicon-user"></span>{{$avaliacao->totalcount}}  avaliações
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-md-6">
@@ -48,8 +48,8 @@
                                             </div>
                                             <div class="col-xs-10 col-sm-9">
                                                 <div class="progress">
-                                                    <div style="width: 80%;" aria-valuemin="0" aria-valuemax="100"  aria-valuenow="80" role="progressbar" class="progress-bar">
-                                                        <span class="sr-only"></span>
+                                                    <div style="width: {{$avaliacao->cincopcnt}}%;" aria-valuemin="0" aria-valuemax="100"  aria-valuenow="80" role="progressbar" class="progress-bar">
+                                                        <span class="sr-only">{{$avaliacao->cinco}} </span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -61,8 +61,8 @@
                                             </div>
                                             <div class="col-xs-10 col-sm-9">
                                                 <div class="progress">
-                                                    <div style="width: 60%;" aria-valuemin="0" aria-valuemax="100"  aria-valuenow="60" role="progressbar" class="progress-bar progress-bar-navy-light">
-                                                        <span class="sr-only">60%</span>
+                                                    <div style="width: {{$avaliacao->quatropcnt}}%;" aria-valuemin="0" aria-valuemax="100"  aria-valuenow="60" role="progressbar" class="progress-bar progress-bar-navy-light">
+                                                        <span class="sr-only">{{$avaliacao->quatro}}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -74,8 +74,8 @@
                                             </div>
                                             <div class="col-xs-10 col-sm-9">
                                                 <div class="progress">
-                                                    <div style="width: 40%;" aria-valuemin="0" aria-valuemax="100"  aria-valuenow="40" role="progressbar" class="progress-bar progress-bar-info">
-                                                        <span class="sr-only">40%</span>
+                                                    <div style="width: {{$avaliacao->trespct}}%;" aria-valuemin="0" aria-valuemax="100"  aria-valuenow="40" role="progressbar" class="progress-bar progress-bar-info">
+                                                        <span class="sr-only">{{$avaliacao->tres}}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -87,8 +87,8 @@
                                             </div>
                                             <div class="col-xs-10 col-sm-9">
                                                 <div class="progress">
-                                                    <div style="width: 20%;" aria-valuemin="0" aria-valuemax="100"  aria-valuenow="20" role="progressbar" class="progress-bar progress-bar-warning">
-                                                        <span class="sr-only">20%</span>
+                                                    <div style="width: {{$avaliacao->doispcnt}}%;" aria-valuemin="0" aria-valuemax="100"  aria-valuenow="20" role="progressbar" class="progress-bar progress-bar-warning">
+                                                        <span class="sr-only">{{$avaliacao->dois}}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -100,8 +100,8 @@
                                             </div>
                                             <div class="col-xs-10 col-sm-9">
                                                 <div class="progress">
-                                                    <div style="width: 10%;" aria-valuemin="0" aria-valuemax="100"  aria-valuenow="10" role="progressbar" class="progress-bar progress-bar-danger">
-                                                        <span class="sr-only">10%</span>
+                                                    <div style="width: {{$avaliacao->umpcnt}}%;" aria-valuemin="0" aria-valuemax="100"  aria-valuenow="10" role="progressbar" class="progress-bar progress-bar-danger">
+                                                        <span class="sr-only">{{$avaliacao->um}}</span>
                                                     </div>
                                                 </div>
                                             </div>

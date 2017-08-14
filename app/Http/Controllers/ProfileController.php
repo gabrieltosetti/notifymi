@@ -26,22 +26,32 @@ class ProfileController extends Controller
     $avaliacao->quantidadeagilidade = Avaliacao::where('id_usuario', '=', $idusuario)->count('agilidade');
     $avaliacao->notaatendimento = Avaliacao::where('id_usuario', '=', $idusuario)->avg('atendimento');
     $avaliacao->quantidadeatendimento = Avaliacao::where('id_usuario', '=', $idusuario)->avg('atendimento');
-    $avaliacao->totalcount = $avaliacao->quantidadeagilidade + $avaliacao->quantidadeatendimento;
+    $avaliacao->totalcount = Avaliacao::where('id_usuario', '=', $idusuario)->count();
 
-    $avaliacao->cinco = Avaliacao::where('id_usuario', '=', $idusuario)->where('nota', '=', '5')->count();
-    $avaliacao->quatro = Avaliacao::where('id_usuario', '=', $idusuario)->where('nota', '>', '4')->where('nota', '<', '5')->count();
-    $avaliacao->tres = Avaliacao::where('id_usuario', '=', $idusuario)->where('nota', '>', '3')->where('nota', '<', '4')->count();
-    $avaliacao->dois = Avaliacao::where('id_usuario', '=', $idusuario)->where('nota', '>', '2')->where('nota', '<', '3')->count();
-    $avaliacao->um = Avaliacao::where('id_usuario', '=', $idusuario)->where('nota', '>', '1')->where('nota', '>', '2')->count();
+
     $avaliacao->zero = Avaliacao::where('id_usuario', '=', $idusuario)->where('nota', '>','0' )->where('nota', '<', '1')->count();
+    $avaliacao->um = Avaliacao::where('id_usuario', '=', $idusuario)->where('nota', '>', '1')->where('nota', '<', '2')->count();
+    $avaliacao->dois = Avaliacao::where('id_usuario', '=', $idusuario)->where('nota', '>', '2')->where('nota', '<', '3')->count();
+    $avaliacao->tres = Avaliacao::where('id_usuario', '=', $idusuario)->where('nota', '>', '3')->where('nota', '<', '4')->count();
+    $avaliacao->quatro = Avaliacao::where('id_usuario', '=', $idusuario)->where('nota', '>', '4')->where('nota', '<', '5')->count();
+    $avaliacao->cinco = Avaliacao::where('id_usuario', '=', $idusuario)->where('nota', '=', '5')->count();
 
     if($avaliacao->totalcount == '0') {
       $avaliacao->totalmedia = '0';
     }
 
     else {
-      $avaliacao->totalmedia = $avaliacao->notaagilidade + $avaliacao->notaatendimento / $avaliacao->totalcount;
+      $avaliacao->totalmedia = number_format(Avaliacao::where('id_usuario', '=', $idusuario)->avg('nota'), 1);
+
+      $avaliacao->cincopcnt = $avaliacao->cinco * 100 / $avaliacao->totalcount;
+      $avaliacao->quatropcnt = $avaliacao->quatro * 100 / $avaliacao->totalcount;
+      $avaliacao->trespcnt = $avaliacao->tres * 100 / $avaliacao->totalcount;
+      $avaliacao->doispcnt = $avaliacao->dois * 100 / $avaliacao->totalcount;
+      $avaliacao->umpcnt = $avaliacao->um * 100 / $avaliacao->totalcount;
+      $avaliacao->zeropcnt = $avaliacao->zero * 100 / $avaliacao->totalcount;
     }
+
+
 
 
     return view('profile/perfil', ['users'=> Auth::user(), 'cargos' => Cargo::all(),'avaliacao' => $avaliacao ]);
