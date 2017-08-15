@@ -37,6 +37,7 @@ Route::post('/admin/login', 'Auth\AdminLoginController@Login')->name('entraradmi
 //profile
 Route::get('/perfil', 'ProfileController@perfil')->name('perfil');
 Route::post('/perfil', 'ProfileController@mudaravatar')->name('perfil_post');
+Route::post('/perfil', 'ProfileController@editar')->name('perfil.editar');
 
 //assistencias
 Route::get('/assistencias', 'AssistenciaController@lista')->name('lista_assistencia');

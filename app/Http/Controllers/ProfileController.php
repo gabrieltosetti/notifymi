@@ -76,4 +76,42 @@ class ProfileController extends Controller
     }
     return view('profile/perfil', array('users'=> Auth::user()));
   }
+
+  protected function validator(array $data)
+  {
+    return Validator::make($data, [
+      'name' => 'required|string|max:255',
+      'email' => 'required|string|email|max:255|unique:users',
+      'password' => 'required|string|min:6|confirmed',
+      'RG' => 'required|min:9|max:12',
+      'CPF' => 'required|min:11|max:14',
+    ]);
+  }
+
+  protected function editar_prep(array $data)
+  {
+
+      //Informação que dados foram alterados?
+    \Mail::to($data['email'])->send(new DadosAlteradosPerfil);
+
+    return Cliente::create([
+      'nome' => $data['name'],
+      'email' => $data['email'],
+      'rg' => $data['RG'],
+      'cpf' => $data['CPF'],
+      'senha' => bcrypt($data['password']),
+    ]);
+  }
+  public function editar(Request $request){
+
+    //Validar dados
+    $this->validator($request->all())->validate();
+
+    //criar usuarios  -- ALTERAR PARA EDIÇÃO DE USUÁRIO
+    $usuario = $this->create($request->all());
+
+    //Redireciona para perfil novamente (atualizar página e subir pop up?)
+    return redirect()->route('perfil');
+
+  }
 }
