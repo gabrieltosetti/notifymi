@@ -19,6 +19,7 @@
     <link href="{{ asset('css/plugins/ladda/ladda-themeless.min.css') }}" rel="stylesheet">
 
     <meta name="_token" content="{{ csrf_token() }}" />
+    <meta charset="UTF-8" />
      <style>
         @media (min-width: 768px) {
             .dt-conserto {
@@ -458,24 +459,24 @@
                                                                 <div class="feed-element">
                                                                     <img alt="image" class="img-circle pull-left" src="/media/avatars/{{$mensagens[$i]->usuario->avatar}}">
                                                                     <div class="media-body ">
-                                                                        <small class="pull-right">{{$mensagens[$i]->created_at->diffForHumans()}}</small>
                                                                         <strong>{{$mensagens[$i]->usuario->nome}}</strong> escreveu <br>
-                                                                        <small class="text-muted">{{$mensagens[$i]->created_at->formatLocalized('%A, %d de %B %Y')}}</small>                                                            
+                                                                        <small class="text-muted">Última mensagem {{$mensagens[$i]->created_at->diffForHumans()}}</small>                                                            
                                                                     </div>                                                        
                                                                     <div class="mensagem-seta {{$mensagens[$i]->tipo}}" mensagem-tipo="{{$mensagens[$i]->tipo}}" mensagem-user="{{$mensagens[$i]->usuario->id}}"><!-- primeiro div -->                                                                      
                                                                         {!!$mensagens[$i]->mensagem!!}
-                                                                        <p mensagem-id="{{$mensagens[$i]->id}}"><small class="pull-right">Enviada {{$mensagens[$i]->created_at->format('H:i')}}</small></p>
+                                                                        <p mensagem-id="{{$mensagens[$i]->id}}"><small class="pull-right">{{utf8_encode($mensagens[$i]->created_at->formatLocalized('%A, %d/%M/%Y %H:%M'))}}</small></p>
+                                                                        
                                                                         @if(($i+1) != $total)
                                                                             @while(($saida == false) && ($mensagens[$i]->usuario->id == $mensagens[$proximoI]->usuario->id))
                                                                                 @if($mensagens[$i]->tipo == $mensagens[$proximoI]->tipo)
                                                                                     <hr>
                                                                                     {!!$mensagens[$proximoI]->mensagem!!}
-                                                                                    <p mensagem-id="{{$mensagens[$i]->id}}"><small class="pull-right">Enviada {{$mensagens[$proximoI]->created_at->format('H:i')}}</small></p>
+                                                                                    <p mensagem-id="{{$mensagens[$proximoI]->id}}"><small class="pull-right">{{utf8_encode($mensagens[$proximoI]->created_at->formatLocalized('%A, %d/%m/%Y %H:%M'))}}</small></p>
                                                                                 @else
                                                                                     </div>
                                                                                     <div class="mensagem {{$mensagens[$proximoI]->tipo}}">                                                                        
                                                                                         {!!$mensagens[$proximoI]->mensagem!!}
-                                                                                        <p mensagem-id="{{$mensagens[$i]->id}}"><small class="pull-right">Enviada {{$mensagens[$proximoI]->created_at->format('H:i')}}</small></p>                                                                                    
+                                                                                        <p mensagem-id="{{$mensagens[$proximoI]->id}}"><small class="pull-right">{{utf8_encode($mensagens[$proximoI]->created_at->formatLocalized('%A, %d/%m/%Y %H:%M'))}}</small></p>                                                                                    
                                                                                 @endif
                                                                                 @php
                                                                                     $i = $proximoI;
@@ -514,19 +515,18 @@
                                                                     <div class="feed-element">
                                                                         <img alt="image" class="img-circle pull-left" src="/media/avatars/{{$mensagens[$i]->usuario->avatar}}">
                                                                         <div class="media-body ">
-                                                                            <small class="pull-right">{{$mensagens[$i]->created_at->diffForHumans()}}</small>
                                                                             <strong>{{$mensagens[$i]->usuario->nome}}</strong> escreveu <br>
                                                                             <small class="text-muted">{{$mensagens[$i]->created_at->formatLocalized('%A, %d de %B %Y')}}</small>                                                            
                                                                         </div>                                                        
                                                                         <div class="mensagem-seta {{$mensagens[$i]->tipo}}" mensagem-user="{{$mensagens[$i]->usuario->id}}"><!-- primeiro div -->                                                                      
                                                                             {!!$mensagens[$i]->mensagem!!}
-                                                                            <p><small class="pull-right">Enviada {{$mensagens[$i]->created_at->format('H:i')}}</small></p>
+                                                                            <p><small class="pull-right">{{$mensagens[$i]->created_at->formatLocalized('%A, %d/%m/%Y %H:%M')}}</small></p>
                                                                             @if(($i+1) != $total)
                                                                                 @while(($saida == false) && ($mensagens[$i]->usuario->id == $mensagens[$proximoI]->usuario->id))
                                                                                     @if($mensagens[$proximoI]->tipo == "publica")
                                                                                         <hr>
                                                                                         {!!$mensagens[$proximoI]->mensagem!!}
-                                                                                        <p><small class="pull-right">Enviada {{$mensagens[$proximoI]->created_at->format('H:i')}}</small></p>                                                                                   
+                                                                                        <p><small class="pull-right">{{$mensagens[$proximoI]->created_at->formatLocalized('%A, %d/%m/%Y %H:%M')}}</small></p>                                                                                   
                                                                                     @endif
                                                                                     @php
                                                                                         $i = $proximoI;
@@ -569,19 +569,18 @@
                                                                     <div class="feed-element">
                                                                         <img alt="image" class="img-circle pull-left" src="/media/avatars/{{$mensagens[$i]->usuario->avatar}}">
                                                                         <div class="media-body ">
-                                                                            <small class="pull-right">{{$mensagens[$i]->created_at->diffForHumans()}}</small>
                                                                             <strong>{{$mensagens[$i]->usuario->nome}}</strong> escreveu <br>
                                                                             <small class="text-muted">{{$mensagens[$i]->created_at->formatLocalized('%A, %d de %B %Y')}}</small>                                                            
                                                                         </div>                                                        
                                                                         <div class="mensagem-seta {{$mensagens[$i]->tipo}}" mensagem-user="{{$mensagens[$i]->usuario->id}}"><!-- primeiro div -->                                                                      
                                                                             {!!$mensagens[$i]->mensagem!!}
-                                                                            <p><small class="pull-right">Enviada {{$mensagens[$i]->created_at->format('H:i')}}</small></p>
+                                                                            <p><small class="pull-right">{{$mensagens[$i]->created_at->formatLocalized('%A, %d/%m/%Y %H:%M')}}</small></p>
                                                                             @if(($i+1) != $total)
                                                                                 @while(($saida == false) && ($mensagens[$i]->usuario->id == $mensagens[$proximoI]->usuario->id))
                                                                                     @if($mensagens[$proximoI]->tipo == "privada")
                                                                                         <hr>
                                                                                         {!!$mensagens[$proximoI]->mensagem!!}
-                                                                                        <p><small class="pull-right">Enviada {{$mensagens[$proximoI]->created_at->format('H:i')}}</small></p>                                                                                   
+                                                                                        <p><small class="pull-right">{{$mensagens[$proximoI]->created_at->created_at->formatLocalized('%A, %d/%m/%Y %H:%M')}}</small></p>                                                                                   
                                                                                     @endif
                                                                                     @php
                                                                                         $i = $proximoI;
@@ -977,23 +976,22 @@ function atulizarCamposEditar(atividades, id){
 function inserirMensagem(mensagem){
     var ult = $("#tab-todas div[mensagem-tipo]:first");
     var curta = mensagem.mensagem+`
-                <p><small class="pull-right">Enviada `+mensagem.criada+`</small></p>
+                <p><small class="pull-right">`+mensagem.criada+`</small></p>
                 <hr> `;
     var inteira = `<div class="feed-element">
                 <img alt="image" class="img-circle pull-left" src="/media/avatars/`+mensagem.usuario.avatar+`">
                 <div class="media-body">
-                    <small class="pull-right">`+mensagem.criada_diff+`</small>
                     <strong>`+mensagem.usuario.nome+`</strong> escreveu <br>
-                    <small class="text-muted">`+mensagem.criada_extenso+`</small>                                                            
+                    <small class="text-muted"> Última mensagem `+mensagem.criada_diff+`</small>                                                            
                 </div>                                                        
                 <div class="mensagem-seta `+mensagem.tipo+`" mensagem-tipo="`+mensagem.tipo+`" mensagem-user="`+mensagem.usuario.id+`">                                                                        
                     `+mensagem.mensagem+`
-                    <p><small class="pull-right">Enviada `+mensagem.criada+`</small></p>
+                    <p><small class="pull-right">`+mensagem.criada+`</small></p>
                 </div>
             </div>`;
     var com_seta = `<div class="mensagem-seta `+mensagem.tipo+`" mensagem-tipo="`+mensagem.tipo+`" mensagem-user="`+mensagem.usuario.id+`">                                                                        
                     `+mensagem.mensagem+`
-                    <p><small class="pull-right">Enviada `+mensagem.criada+`</small></p>
+                    <p><small class="pull-right">`+mensagem.criada+`</small></p>
                 </div>
             </div>`;
     if (ult.attr("mensagem-user") == mensagem.usuario.id)

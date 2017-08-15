@@ -40,7 +40,7 @@ class Conserto_MensagemController extends Controller
                 'nome' => $mensagem->usuario->nome,
                 'avatar' => $mensagem->usuario->avatar
             ],
-            'criada' => $mensagem->created_at->format('H:i'),
+            'criada' => $mensagem->formatLocalized('%A, %d/%m/%Y %H:%M'),
             'criada_extenso' => $mensagem->created_at->formatLocalized('%A, %d de %B %Y'),
             'criada_diff' => $mensagem->created_at->diffForHumans()
         ]; 
