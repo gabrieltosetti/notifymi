@@ -19,7 +19,6 @@
     <link href="{{ asset('css/plugins/ladda/ladda-themeless.min.css') }}" rel="stylesheet">
 
     <meta name="_token" content="{{ csrf_token() }}" />
-    <meta charset="UTF-8" />
      <style>
         @media (min-width: 768px) {
             .dt-conserto {
@@ -516,17 +515,17 @@
                                                                         <img alt="image" class="img-circle pull-left" src="/media/avatars/{{$mensagens[$i]->usuario->avatar}}">
                                                                         <div class="media-body ">
                                                                             <strong>{{$mensagens[$i]->usuario->nome}}</strong> escreveu <br>
-                                                                            <small class="text-muted">{{$mensagens[$i]->created_at->formatLocalized('%A, %d de %B %Y')}}</small>                                                            
+                                                                            <small class="text-muted">Última mensagem {{$mensagens[$i]->created_at->diffForHumans()}}</small>                                                            
                                                                         </div>                                                        
                                                                         <div class="mensagem-seta {{$mensagens[$i]->tipo}}" mensagem-user="{{$mensagens[$i]->usuario->id}}"><!-- primeiro div -->                                                                      
                                                                             {!!$mensagens[$i]->mensagem!!}
-                                                                            <p><small class="pull-right">{{$mensagens[$i]->created_at->formatLocalized('%A, %d/%m/%Y %H:%M')}}</small></p>
+                                                                            <p><small class="pull-right">{{utf8_encode($mensagens[$i]->created_at->formatLocalized('%A, %d/%m/%Y %H:%M'))}}</small></p>
                                                                             @if(($i+1) != $total)
                                                                                 @while(($saida == false) && ($mensagens[$i]->usuario->id == $mensagens[$proximoI]->usuario->id))
                                                                                     @if($mensagens[$proximoI]->tipo == "publica")
                                                                                         <hr>
                                                                                         {!!$mensagens[$proximoI]->mensagem!!}
-                                                                                        <p><small class="pull-right">{{$mensagens[$proximoI]->created_at->formatLocalized('%A, %d/%m/%Y %H:%M')}}</small></p>                                                                                   
+                                                                                        <p><small class="pull-right">{{utf8_encode($mensagens[$proximoI]->created_at->formatLocalized('%A, %d/%m/%Y %H:%M'))}}</small></p>                                                                                   
                                                                                     @endif
                                                                                     @php
                                                                                         $i = $proximoI;
@@ -570,17 +569,17 @@
                                                                         <img alt="image" class="img-circle pull-left" src="/media/avatars/{{$mensagens[$i]->usuario->avatar}}">
                                                                         <div class="media-body ">
                                                                             <strong>{{$mensagens[$i]->usuario->nome}}</strong> escreveu <br>
-                                                                            <small class="text-muted">{{$mensagens[$i]->created_at->formatLocalized('%A, %d de %B %Y')}}</small>                                                            
+                                                                            <small class="text-muted">Última mensagem {{$mensagens[$i]->created_at->diffForHumans()}}</small>                                                            
                                                                         </div>                                                        
                                                                         <div class="mensagem-seta {{$mensagens[$i]->tipo}}" mensagem-user="{{$mensagens[$i]->usuario->id}}"><!-- primeiro div -->                                                                      
                                                                             {!!$mensagens[$i]->mensagem!!}
-                                                                            <p><small class="pull-right">{{$mensagens[$i]->created_at->formatLocalized('%A, %d/%m/%Y %H:%M')}}</small></p>
+                                                                            <p><small class="pull-right">{{utf8_encode($mensagens[$i]->created_at->formatLocalized('%A, %d/%m/%Y %H:%M'))}}</small></p>
                                                                             @if(($i+1) != $total)
                                                                                 @while(($saida == false) && ($mensagens[$i]->usuario->id == $mensagens[$proximoI]->usuario->id))
                                                                                     @if($mensagens[$proximoI]->tipo == "privada")
                                                                                         <hr>
                                                                                         {!!$mensagens[$proximoI]->mensagem!!}
-                                                                                        <p><small class="pull-right">{{$mensagens[$proximoI]->created_at->created_at->formatLocalized('%A, %d/%m/%Y %H:%M')}}</small></p>                                                                                   
+                                                                                        <p><small class="pull-right">{{utf8_encode($mensagens[$proximoI]->created_at->formatLocalized('%A, %d/%m/%Y %H:%M'))}}</small></p>                                                                                   
                                                                                     @endif
                                                                                     @php
                                                                                         $i = $proximoI;
