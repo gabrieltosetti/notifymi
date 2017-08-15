@@ -1,6 +1,6 @@
 @extends('layouts.principal', ['breadcrumb' => 'false'])
 
-@section('title', 'Página Inicial')
+@section('title', 'Relatórios')
 <!--ACHO QUE A HOME NAO DEVERIA TER OS BREADCRUMBS E SER PERSONALIZADA COMO UMA DASHBOARD...-->
 @section('content')
 

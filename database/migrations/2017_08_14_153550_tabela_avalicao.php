@@ -19,9 +19,9 @@ class TabelaAvalicao extends Migration
       $table->integer('id_assistencia')->unsigned();
       $table->integer('id_conserto')->unsigned();
       $table->integer('id_cliente')->unsigned();
-      $table->decimal('atendimento', 2, 2)->unsigned();
-      $table->decimal('agilidade', 2, 2)->unsigned();
-      $table->decimal('nota', 2, 2)->unsigned();
+      $table->integer('atendimento')->unsigned();
+      $table->integer('agilidade')->unsigned();
+      $table->integer('nota')->unsigned();
       $table->string('obs')->nullable();
       $table->rememberToken();
       $table->timestamps();

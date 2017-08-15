@@ -257,7 +257,7 @@
                             </div>
                           </div>
                           <!--/NOME COMPLETO-->
-                          <!--CARGOS-->
+                          <!--
                           <div class="form-group m-b-none">
                             <label class="col-sm-4 col-md-3 col-lg-2 col-xs-12 control-label" for="cargo">Cargo</label>
                             <div class="col-sm-8 col-md-9 col-lg-10">
@@ -269,13 +269,14 @@
                               <span class="help-block"><?php echo $errors->first('cargo'); ?></span>
                             </div>
                           </div>
-                          <!--/CARGOS-->
+
                           <div class="form-group m-b-none">
                             <label class="col-sm-4 col-md-3 col-lg-2 col-xs-12 control-label">Nível</label>
                             <div class="col-sm-8 col-md-9 col-lg-10">
                               <p class="form-control-static">Nível aqui</p>
                             </div>
                           </div>
+                          -->
                           <!--INPUT FOTO-->
                           <div class="form-group m-b-none">
                             <label class="col-sm-4 col-md-3 col-lg-2 col-xs-12 control-label">Alterar foto</label>
@@ -301,7 +302,7 @@
                           <div class="form-group m-b-none {{ $errors->has('cpf') ? 'has-error' : ''}}">
                             <label class="col-sm-4 col-md-3 col-lg-2 col-xs-12 control-label" for="cpf">CPF</label>
                             <div class="col-sm-8 col-md-9 col-lg-10">
-                              <input type="text" class="form-control" name="cpf" data-mask="999.999.999-99" value="{{ old('cpf') }}" id="cpf">
+                              <input type="text" class="form-control" name="cpf" data-mask="999.999.999-99" value="{{ Auth::user()->cpf }}" id="cpf">
                               <span class="help-block"><?php echo $errors->first('cpf'); ?></span>
                               <span class="help-block">Exemplo: 999.999.999-99</span>
                             </div>
@@ -311,7 +312,7 @@
                           <div class="form-group m-b-none {{ $errors->has('rg') ? 'has-error' : ''}}">
                             <label class="col-sm-4 col-md-3 col-lg-2 col-xs-12 control-label" for="rg">RG</label>
                             <div class="col-sm-8 col-md-9 col-lg-10">
-                              <input type="text" class="form-control" name="rg" data-mask="99.999.999-9" value="{{ old('rg') }}" id="rg">
+                              <input type="text" class="form-control" name="rg" data-mask="99.999.999-9" value="{{ Auth::user()->rg }}" id="rg">
                               <span class="help-block"><?php echo $errors->first('rg'); ?></span>
                               <span class="help-block">Exemplo: 99.999.999-99</span>
                             </div>
@@ -327,7 +328,7 @@
                           <div class="form-group m-b-none {{ $errors->has('email') ? 'has-error' : ''}}">
                             <label class="col-sm-4 col-md-3 col-lg-2 col-xs-12 control-label" for="email">E-mail</label>
                             <div class="col-sm-8 col-md-9 col-lg-10">
-                              <input type="email" class="form-control" name="email" value="{{ old('email') }}" id="email" maxlength="50">
+                              <input type="email" class="form-control" name="email" value="{{ Auth::user()->email }}" id="email" maxlength="50">
                               <span class="help-block"><?php echo $errors->first('email'); ?></span>
                             </div>
                           </div>
@@ -336,7 +337,7 @@
                           <div class="form-group m-b-none {{ $errors->has('celular') ? 'has-error' : ''}}">
                             <label class="col-sm-4 col-md-3 col-lg-2 col-xs-12 control-label" for="celular">Celular</label>
                             <div class="col-sm-8 col-md-9 col-lg-10">
-                              <input type="text" class="form-control" name="celular" data-mask="(99)99999-9999" value="{{ old('celular') }}" id="celular">
+                              <input type="text" class="form-control" name="celular" data-mask="(99)99999-9999" value="{{ Auth::user()->celular }}" id="celular">
                               <span class="help-block"><?php echo $errors->first('celular'); ?></span>
                               <span class="help-block">Exemplo: (99)99999-9999</span>
                             </div>
@@ -348,7 +349,7 @@
                           <div class="form-group m-b-none {{ $errors->has('telefone') ? 'has-error' : ''}}">
                             <label class="col-sm-4 col-md-3 col-lg-2 col-xs-12 control-label" for="telefone">Telefone</label>
                             <div class="col-sm-8 col-md-9 col-lg-10">
-                              <input type="text" class="form-control" name="telefone" data-mask="(99)9999-9999" value="{{ old('telefone') }}" id="telefone">
+                              <input type="text" class="form-control" name="telefone" data-mask="(99)9999-9999" value="{{ Auth::user()->telefone }}" id="telefone">
                               <span class="help-block"><?php echo $errors->first('telefone'); ?></span>
                               <span class="help-block">Exemplo: (99)9999-9999</span>
                             </div>
@@ -363,21 +364,21 @@
                           <div class="form-group m-b-none {{ $errors->has('cidade') ? 'has-error' : ''}}">
                             <label class="col-sm-4 col-md-3 col-lg-2 col-xs-12 control-label" for="cidade">Cidade</label>
                             <div class="col-sm-8 col-md-9 col-lg-10">
-                              <input type="text" class="form-control" name="cidade" value="{{ old('cidade') }}" id="cidade" maxlength="30">
+                              <input type="text" class="form-control" name="cidade" value="{{ Auth::user()->cidade }}" id="cidade" maxlength="30">
                               <span class="help-block"><?php echo $errors->first('cidade'); ?></span>
                             </div>
                           </div>
                           <div class="form-group m-b-none {{ $errors->has('bairro') ? 'has-error' : ''}}">
                             <label class="col-sm-4 col-md-3 col-lg-2 col-xs-12 control-label" for="bairro">Bairro</label>
                             <div class="col-sm-8 col-md-9 col-lg-10">
-                              <input type="text" class="form-control" name="bairro" value="{{ old('bairro') }}" id="bairro" maxlength="40">
+                              <input type="text" class="form-control" name="bairro" value="{{ Auth::user()->bairro }}" id="bairro" maxlength="40">
                               <span class="help-block"><?php echo $errors->first('bairro'); ?></span>
                             </div>
                           </div>
                           <div class="form-group m-b-none {{ $errors->has('rua') ? 'has-error' : ''}}">
                             <label class="col-sm-4 col-md-3 col-lg-2 col-xs-12 control-label" for="rua">Rua</label>
                             <div class="col-sm-8 col-md-9 col-lg-10">
-                              <input type="text" class="form-control" name="rua" value="{{ old('rua') }}" id="rua"  maxlength="40">
+                              <input type="text" class="form-control" name="rua" value="{{ Auth::user()->rua }}" id="rua"  maxlength="40">
                               <span class="help-block"><?php echo $errors->first('rua'); ?></span>
                             </div>
                           </div>
@@ -386,14 +387,14 @@
                           <div class="form-group m-b-none {{ $errors->has('numero') ? 'has-error' : ''}}">
                             <label class="col-sm-4 col-md-3 col-lg-2 col-xs-12 control-label" for="numero">Número</label>
                             <div class="col-sm-8 col-md-9 col-lg-10">
-                              <input type="number" class="form-control" name="numero" value="{{ old('numero') }}" id="numero" min="0">
+                              <input type="number" class="form-control" name="numero" value="{{ Auth::user()->numero }}" id="numero" min="0">
                               <span class="help-block"><?php echo $errors->first('numero'); ?></span>
                             </div>
                           </div>
                           <div class="form-group m-b-none {{ $errors->has('complemento') ? 'has-error' : ''}}">
                             <label class="col-sm-4 col-md-3 col-lg-2 col-xs-12 control-label" for="complemento">Compl.</label>
                             <div class="col-sm-8 col-md-9 col-lg-10">
-                              <textarea class="form-control"  placeholder="Opcional" name="complemento" id="complemento"  maxlength="40">{{ old('complemento') }}</textarea>
+                              <textarea class="form-control"  placeholder="Opcional" name="complemento" id="complemento"  maxlength="40">{{ Auth::user()->complemento }}</textarea>
                               <span class="help-block"><?php echo $errors->first('complemento'); ?></span>
                             </div>
                           </div>
