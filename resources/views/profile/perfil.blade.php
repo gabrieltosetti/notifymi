@@ -265,7 +265,7 @@
                                                     <!--/NOME COMPLETO-->
 
                                                     <!-- SENHA -->
-
+                                                    <!--
                                                     <div class="form-group m-b-none {{ $errors->has('senha') ? 'has-error' : ''}}">
                                                         <label class="col-sm-4 col-md-3 col-lg-2 col-xs-12 control-label" for="senha">Senha</label>
                                                         <div class="col-sm-8 col-md-9 col-lg-10">
@@ -273,7 +273,7 @@
                                                             <span class="help-block"><?php echo $errors->first('nome'); ?></span>
                                                         </div>
                                                     </div>
-
+                                                     -->
                                                     <!-- /SENHA -->
 
                                                     <!--INPUT FOTO-->
