@@ -40,7 +40,7 @@ class Conserto_MensagemController extends Controller
                 'nome' => $mensagem->usuario->nome,
                 'avatar' => $mensagem->usuario->avatar
             ],
-            'criada' => utf8_encode($mensagem->created_at->formatLocalized('%A, %d/%M/%Y %H:%M')),
+            'criada' => utf8_encode($mensagem->created_at->formatLocalized('%a, %d/%M/%Y %H:%M')),
             'criada_diff' => $mensagem->created_at->diffForHumans()
         ]; 
         return Response::json($resposta);

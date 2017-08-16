@@ -74,9 +74,17 @@ class ConsertoController extends Controller
             $comentarios[$atividade->id] = Atividade_comentario::where('id_atividade', $atividade->id)->orderBy('id')->get();
         }
         $mensagens = Conserto_Mensagem::where('id_conserto', 1)->orderBy('created_at', 'desc')->get();
+        $contagem = [
+          "mensagem" => [
+            "todas" => Conserto_Mensagem::where('id_conserto','=','1')->count(),
+            "publica" => Conserto_Mensagem::where('id_conserto','=','1')->where('tipo','=','publica')->count(),
+            "privada" => Conserto_Mensagem::where('id_conserto','=','1')->where('tipo','=','privada')->count()
+          ],
+          "atividade" => Atividade::where('id_conserto','=','1')->count()
+        ];
         
 
-        return view('conserto/detalhes_conserto')->with(['usuarios'=> $usuarios, 'conserto' => $conserto, 'atividades' => $atividades, 'comentarios' => $comentarios, 'mensagens' => $mensagens]);
+        return view('conserto/detalhes_conserto')->with(['usuarios'=> $usuarios, 'conserto' => $conserto, 'atividades' => $atividades, 'comentarios' => $comentarios, 'mensagens' => $mensagens, 'contagem' => $contagem]);
     }
 
     //rota: remove_conserto

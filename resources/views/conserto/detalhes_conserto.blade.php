@@ -137,8 +137,8 @@
                                     <div class="panel-heading">
                                         <div class="panel-options">
                                             <ul class="nav nav-tabs">
-                                                <li class=""><a href="#tab-1" data-toggle="tab">Atividades</a></li>
-                                                <li class="active"><a href="#tab-2" data-toggle="tab">Mensagens</a></li>
+                                                <li class=""><a href="#tab-1" data-toggle="tab">Atividades <span id="cont-tab-atividade"  class="conserto badge badge-primary">{{$contagem["atividade"]}}</span></a></li>
+                                                <li class="active"><a href="#tab-2" data-toggle="tab">Mensagens <span id="cont-tab-mensagem" class="conserto badge badge-primary">{{$contagem["mensagem"]["todas"]}}</span></a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -437,9 +437,9 @@
                                                     <div class="tab" role="tabpanel">
                                                         <!-- NOME DAS TABS -->
                                                         <ul class="nav nav-tabs" role="tablist">
-                                                            <li role="presentation" class="active"><a href="#tab-todas" role="tab" data-toggle="tab">Todas</a></li>
-                                                            <li role="presentation"><a class="info" href="#tab-publica" role="tab" data-toggle="tab">Publico</a></li>
-                                                            <li role="presentation"><a class="warning" href="#tab-privada" role="tab" data-toggle="tab">Privado</a></li>
+                                                            <li role="presentation" class="active"><a href="#tab-todas" role="tab" data-toggle="tab">Todas <span id="cont-badge-todas" class="conserto badge badge-primary">{{$contagem["mensagem"]["todas"]}}</span></a></li>
+                                                            <li role="presentation"><a class="info" href="#tab-publica" role="tab" data-toggle="tab">Publico <span id="cont-badge-publica" class="conserto badge badge-success">{{$contagem["mensagem"]["publica"]}}</span></a></li>
+                                                            <li role="presentation"><a class="warning" href="#tab-privada" role="tab" data-toggle="tab">Privado <span id="cont-badge-privada" class="conserto badge badge-warning">{{$contagem["mensagem"]["privada"]}}</span></a></li>
                                                         </ul>
                                                         <!-- /NOME DAS TABS -->
                                                         <!-- Tab panes -->
@@ -463,19 +463,19 @@
                                                                     </div>                                                        
                                                                     <div class="mensagem-seta {{$mensagens[$i]->tipo}}" mensagem-tipo="{{$mensagens[$i]->tipo}}" mensagem-user="{{$mensagens[$i]->usuario->id}}"><!-- primeiro div -->                                                                      
                                                                         {!!$mensagens[$i]->mensagem!!}
-                                                                        <p mensagem-id="{{$mensagens[$i]->id}}"><small class="pull-right">{{utf8_encode($mensagens[$i]->created_at->formatLocalized('%A, %d/%M/%Y %H:%M'))}}</small></p>
+                                                                        <p mensagem-id="{{$mensagens[$i]->id}}"><small class="pull-right">{{utf8_encode($mensagens[$i]->created_at->formatLocalized('%a, %d/%M/%Y %H:%M'))}}</small></p>
                                                                         
                                                                         @if(($i+1) != $total)
                                                                             @while(($saida == false) && ($mensagens[$i]->usuario->id == $mensagens[$proximoI]->usuario->id))
                                                                                 @if($mensagens[$i]->tipo == $mensagens[$proximoI]->tipo)
                                                                                     <hr>
                                                                                     {!!$mensagens[$proximoI]->mensagem!!}
-                                                                                    <p mensagem-id="{{$mensagens[$proximoI]->id}}"><small class="pull-right">{{utf8_encode($mensagens[$proximoI]->created_at->formatLocalized('%A, %d/%m/%Y %H:%M'))}}</small></p>
+                                                                                    <p mensagem-id="{{$mensagens[$proximoI]->id}}"><small class="pull-right">{{utf8_encode($mensagens[$proximoI]->created_at->formatLocalized('%a, %d/%m/%Y %H:%M'))}}</small></p>
                                                                                 @else
                                                                                     </div>
                                                                                     <div class="mensagem {{$mensagens[$proximoI]->tipo}}">                                                                        
                                                                                         {!!$mensagens[$proximoI]->mensagem!!}
-                                                                                        <p mensagem-id="{{$mensagens[$proximoI]->id}}"><small class="pull-right">{{utf8_encode($mensagens[$proximoI]->created_at->formatLocalized('%A, %d/%m/%Y %H:%M'))}}</small></p>                                                                                    
+                                                                                        <p mensagem-id="{{$mensagens[$proximoI]->id}}"><small class="pull-right">{{utf8_encode($mensagens[$proximoI]->created_at->formatLocalized('%a, %d/%m/%Y %H:%M'))}}</small></p>                                                                                    
                                                                                 @endif
                                                                                 @php
                                                                                     $i = $proximoI;
@@ -519,13 +519,13 @@
                                                                         </div>                                                        
                                                                         <div class="mensagem-seta {{$mensagens[$i]->tipo}}" mensagem-user="{{$mensagens[$i]->usuario->id}}"><!-- primeiro div -->                                                                      
                                                                             {!!$mensagens[$i]->mensagem!!}
-                                                                            <p><small class="pull-right">{{utf8_encode($mensagens[$i]->created_at->formatLocalized('%A, %d/%m/%Y %H:%M'))}}</small></p>
+                                                                            <p><small class="pull-right">{{utf8_encode($mensagens[$i]->created_at->formatLocalized('%a, %d/%m/%Y %H:%M'))}}</small></p>
                                                                             @if(($i+1) != $total)
                                                                                 @while(($saida == false) && ($mensagens[$i]->usuario->id == $mensagens[$proximoI]->usuario->id))
                                                                                     @if($mensagens[$proximoI]->tipo == "publica")
                                                                                         <hr>
                                                                                         {!!$mensagens[$proximoI]->mensagem!!}
-                                                                                        <p><small class="pull-right">{{utf8_encode($mensagens[$proximoI]->created_at->formatLocalized('%A, %d/%m/%Y %H:%M'))}}</small></p>                                                                                   
+                                                                                        <p><small class="pull-right">{{utf8_encode($mensagens[$proximoI]->created_at->formatLocalized('%a, %d/%m/%Y %H:%M'))}}</small></p>                                                                                   
                                                                                     @endif
                                                                                     @php
                                                                                         $i = $proximoI;
@@ -573,13 +573,13 @@
                                                                         </div>                                                        
                                                                         <div class="mensagem-seta {{$mensagens[$i]->tipo}}" mensagem-user="{{$mensagens[$i]->usuario->id}}"><!-- primeiro div -->                                                                      
                                                                             {!!$mensagens[$i]->mensagem!!}
-                                                                            <p><small class="pull-right">{{utf8_encode($mensagens[$i]->created_at->formatLocalized('%A, %d/%m/%Y %H:%M'))}}</small></p>
+                                                                            <p><small class="pull-right">{{utf8_encode($mensagens[$i]->created_at->formatLocalized('%a, %d/%m/%Y %H:%M'))}}</small></p>
                                                                             @if(($i+1) != $total)
                                                                                 @while(($saida == false) && ($mensagens[$i]->usuario->id == $mensagens[$proximoI]->usuario->id))
                                                                                     @if($mensagens[$proximoI]->tipo == "privada")
                                                                                         <hr>
                                                                                         {!!$mensagens[$proximoI]->mensagem!!}
-                                                                                        <p><small class="pull-right">{{utf8_encode($mensagens[$proximoI]->created_at->formatLocalized('%A, %d/%m/%Y %H:%M'))}}</small></p>                                                                                   
+                                                                                        <p><small class="pull-right">{{utf8_encode($mensagens[$proximoI]->created_at->formatLocalized('%a, %d/%m/%Y %H:%M'))}}</small></p>                                                                                   
                                                                                     @endif
                                                                                     @php
                                                                                         $i = $proximoI;
@@ -743,7 +743,7 @@ $(document).ready(function(){
                     "titulo": data.titulo,
                     "descricao": data.descricao
                 });
-                console.log(atividades);
+                somarBadge("cont-tab-atividade");
                 toastr["success"]('Atividade adicionada com sucesso !','Atividade');
                 $("#atividade-escolha").prepend($('<option>', {
                     value: data.id,
@@ -863,6 +863,9 @@ $(document).ready(function(){
             dataType: 'json',
             success: function (data) {
                 inserirMensagem(data);
+                somarBadge("cont-tab-mensagem");
+                somarBadge("cont-badge-publica");
+                somarBadge("cont-badge-todas");
                 toastr["success"]('Mensagem enviada com sucesso !','Mensagem');
             },
             error: function (data) {
@@ -892,6 +895,9 @@ $(document).ready(function(){
             dataType: 'json',
             success: function (data) {
                 inserirMensagem(data);
+                somarBadge("cont-tab-mensagem");
+                somarBadge("cont-badge-privada");
+                somarBadge("cont-badge-todas");
                 toastr["success"]('Mensagem enviada com sucesso !','Mensagem');
             },
             error: function (data) {
@@ -901,7 +907,6 @@ $(document).ready(function(){
         });
         e.preventDefault();
     });
-
 
 }); /* / DOC READY */
 
@@ -1008,7 +1013,12 @@ function inserirMensagem(mensagem){
             $("#tab-"+mensagem.tipo).html(inteira);
         }
         else {
-            $("#tab-"+mensagem.tipo+" div[mensagem-user]:first").prepend(curta);
+            if($("#tab-"+mensagem.tipo+" div[mensagem-tipo]:first").attr("mensagem-user") == mensagem.usuario.id)
+            {
+                $("#tab-"+mensagem.tipo+" div[mensagem-user]:first").prepend(curta);
+            } else {
+                $("#tab-"+mensagem.tipo).prepend(inteira);
+            }            
         }        
     }
     else if ($("#tab-todas div.mensagem-vazia").length != 1)
@@ -1026,6 +1036,10 @@ function inserirMensagem(mensagem){
         $("#tab-todas").html(inteira);
         $("#tab-"+mensagem.tipo).html(inteira);
     }    
+}
+function somarBadge(id){
+    var novovalor = parseInt($("#"+id).text()) + 1;
+    $("#"+id).text(novovalor);
 }
 </script>
 @stop

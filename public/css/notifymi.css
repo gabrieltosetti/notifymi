@@ -420,5 +420,25 @@ h2.editable-click:hover
         border:none;
     }
 }
+
+                /* BADGE */
+.nav-tabs > li > a > span.conserto.badge,
+.nav-tabs > li > a > span.conserto.badge {
+    background-color: #A7B1C2;
+}
+.nav-tabs > li > a:hover > span.conserto.badge,
+.nav-tabs > li > a:focus > span.conserto.badge {
+    background-color: #676a6c;
+}
+.nav-tabs > li.active > a > span.conserto.badge.badge-primary {
+    background-color: #1cb394;
+}
+.nav-tabs > li.active > a > span.conserto.badge.badge-success {
+    background-color: #1c84c6;
+}
+.nav-tabs > li.active > a > span.conserto.badge.badge-warning {
+    background-color: #f8ac59;
+}
+
 /* //NOVA TAB PARA CHAT */
 
