@@ -26,6 +26,7 @@ class AssistenciaController extends Controller
   {
       $assistencia = Assistencia::find($id);
 
+      $assistencia->nota = number_format(Avaliacao::where('id_assistencia', '=', $assistencia->id)->avg('agilidade', 'atendimento'), 1, '.', ',');
 
       return Response::json($assistencia);
   }

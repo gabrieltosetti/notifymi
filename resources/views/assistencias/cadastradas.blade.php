@@ -123,7 +123,9 @@
             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
             <img alt="image" class="img-circle img-responsive img-lg center-block" src="/media/avatars/{{$assistencia->avatar}}">
             <h4 class="modal-title" id="modal-titulo"></h4>
-            <small class="font-bold" ></small>
+
+            <small>Nota:</small><small class="font-bold" id="modal-nota"> </small>
+            <span class="fa fa-star"></span>
           </div>
           <div class="modal-body">
             <div class="form-horizontal">
@@ -132,6 +134,7 @@
                   <div class="form-group">
                     <label class="col-sm-3 col-xs-12 control-label">Email</label>
                     <p class="form-control-static" id="modal-email"></p>
+
                   </div>
                 </div>
                 <div class="col-xs-6">
@@ -193,6 +196,7 @@
                     <label class="col-sm-3 col-xs-12 control-label">Rua</label>
                     <div class="col-sm-9">
                       <p class="form-control-static" id="modal-rua"></p>
+                      <p class="form-control-static" id="modal-teste"></p>
                     </div>
                   </div>
 
@@ -210,12 +214,9 @@
                       <p class="form-control-static" id="modal-comp"></p>
                     </div>
                   </div>
-                  <div class="form-group">
-                    <label class="col-sm-3 col-xs-12 control-label">Maps:</label>
-                    <div class="col-sm-9">  <!-- inserir maps aqui -->
-                      <a class="btn btn-w-m btn-success fa fa-map-marker" onclick="window.open('https://www.google.com.br/maps/place/ {{$assistencia->cidade}} {{$assistencia->bairro}} {{$assistencia->rua}} {{$assistencia->numero}}')" href="#">Abrir no Maps</a>
-                    </div>
-                  </div>
+
+
+
                 </div>
               </div>
               <!--divisoria--><div class="hr-line-dashed"></div> <!--divisoria-->
@@ -272,7 +273,9 @@ $(document).ready(function(){
     $.get(url + '/detalhes/' + assistencia_id,function (data) {
       //success data
       console.log(data);
+
       $('#modal-titulo').text(data.nome);
+      $('#modal-nota').text(data.nota);
       $('#modal-especialidade').text(data.especialidade);
       $('#modal-email').text(data.email);
       $('#modal-site').text(data.site);
