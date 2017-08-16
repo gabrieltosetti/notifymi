@@ -73,8 +73,9 @@ TABELA DE CONSERTOS !!
               </tr>
               <tr>
                 <td>
-                  <button type="button" style="height:35px; width:50px" class="btn btn-warning m-r-sm">{{$emandamento}}</button>
+                  <button type="button"  onclick="showDiv()" style="height:35px; width:50px" class="btn btn-warning m-r-sm">{{$emandamento}}</button>
                   Em andamento
+
                 </td>
               </tr>
               <tr>
@@ -104,9 +105,17 @@ TABELA DE CONSERTOS !!
       </div>
 
   </div>
-  <div class="col-lg-6">
+
+
+
+  <div class="col-lg-6 animated fadeInRight "id="welcomeDiv"  style="display:none;" class="answer_list">
+    <div class="ibox-title">
+            <h5>Consertos</h5>
+    <div class="ibox-tools">
+    <i type="button" onclick="hideDiv()" class="fa fa-times"></i>
+    </div>
+  </div>
     <div class="ibox-content">
-      <h2>Consertos</h2>
       <div>
         <canvas id="barChart" width="200" height="150"></canvas>
       </div>
@@ -128,6 +137,17 @@ TABELA DE CONSERTOS !!
 <script src="{{ asset('js/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
 <script src="{{ asset('js/plugins/chartJs/Chart.bundle.js') }}"></script>
 <script>
+function showDiv() {
+  document.getElementById('welcomeDiv').style.display = "block";
+}
+
+
+function hideDiv() {
+  document.getElementById('welcomeDiv').style.display = "none";
+}
+
+
+
 
 
 var dadosGrafico = {
