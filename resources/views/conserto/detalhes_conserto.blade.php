@@ -36,7 +36,7 @@
 @section('content')
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
-            <div class="col-sm-3">
+            <div class="col-sm-3 m-b-md painel-esquerdo">
     <!-- PAINEL ESQUERDO -->
                 <!-- IMAGEM -->
                 <div class="row">
