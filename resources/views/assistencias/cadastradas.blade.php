@@ -19,209 +19,228 @@
 
 @section('content')
 <div class="ibox float-e-margins">
-<div class="ibox-content" style=" width: 100%; height: 100%;">
-<input type="text" class="form-control input-sm m-b-xs" id="filtro"
-placeholder="Procurar na lista">
+  <div class="ibox-content" style=" width: 100%; height: 100%;">
+    <input type="text" class="form-control input-sm m-b-xs" id="filtro"
+    placeholder="Procurar na lista">
 
-<table class="footable table table-stripped" data-page-size="25" data-filter=#filtro>
-  <thead>
-   <tr>
-     <th>ID</th>
-     <th>Nome</th>
-     <th>Especialidade</th>
-     <th>Email de contato</th>
-     <th>Telefone</th>
-     <th>Telefone 2</th>
-     <th>Cidade</th>
+    <table class="footable table table-stripped" data-page-size="25" data-filter=#filtro>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Especialidade</th>
+          <th>Nota</th>
+          <th>Email de contato</th>
+          <th>Telefone</th>
+          <th>Telefone 2</th>
+          <th>Cidade</th>
 
-     <th width="170">Operações</th>
-   </tr>
- </thead>
-  <tbody>
-    @foreach($assistencias as $assistencia)
-    <div class="row">
-      <tr class="lista_assistencia">
-        <a class="open-modal" value="{{$assistencia->id}}">
-          <div class="row">
-            <td>       <!-- ID -->
-              #{{$assistencia->id}}
-            </td>
+          <th width="170">Operações</th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach($assistencias as $assistencia)
+        <div class="row">
+          <tr class="lista_assistencia">
+            <a class="open-modal" value="{{$assistencia->id}}">
+              <div class="row">
+                <td>       <!-- ID -->
+                  #{{$assistencia->id}}
+                </td>
 
-            <td id="assistencia-nome-{{$assistencia->id}}" >
-              <h3><strong  id="assistencia-nome-{{$assistencia->id}}">{{$assistencia->nome}}</strong></h3>      <!-- NOME -->
-            </td>
-            <td>
-              {{$assistencia->especialidade}}       <!--  Email-->
-            </td>
-            <td>
-              {{$assistencia->email}}       <!--  Email-->
-            </td>
-            <td>
-              {{$assistencia->telefone1}}      <!-- Telefone 1-->
-            </td>
+                <td id="assistencia-nome-{{$assistencia->id}}" >
+                  <h3><strong  id="assistencia-nome-{{$assistencia->id}}">{{$assistencia->nome}}</strong></h3>      <!-- NOME -->
+                </td>
+                <td>
+                  {{$assistencia->especialidade}}       <!--  especialidade-->
+                </td>
+                <td>
 
-            <td>
-              {{$assistencia->telefone2}}        <!--Telefone 2  -->
-            </td>
-            <td>
-              {{$assistencia->cidade}}       <!-- cidade -->
-            </td>
+                  {{$assistencia->nota}}
 
-            <td width="170">
-              <div class="col-xs-6 col-sm-6 hidden-xs">
-                <button title="Ver mais detalhes" class="btn btn-xs btn-info btn-circle fa fa-search open-modal" value="{{$assistencia->id}}"></button>
+                  @for ($i = $assistencia->nota -1 ; $i >= 0 ; $i--)
+
+                  @if ($assistencia->nota  < '4.5' )
+                  <span class="fa fa-star"></span>
+                  @endif
+
+                  @if ($assistencia->nota  > '4.5' )
+                  <span class="fa fa-star" title="Muito bem avaliada" style="color:#dcbf48;"></span>
+                  @endif
+
+                  @endfor     <!-- nota -->
+
+
+                </td>
+                <td>
+                  {{$assistencia->email}}       <!--  Email-->
+                </td>
+                <td>
+                  {{$assistencia->telefone1}}      <!-- Telefone 1-->
+                </td>
+
+                <td>
+                  {{$assistencia->telefone2}}        <!--Telefone 2  -->
+                </td>
+                <td>
+                  {{$assistencia->cidade}}       <!-- cidade -->
+                </td>
+
+                <td width="170">
+                  <div class="col-xs-6 col-sm-6 hidden-xs">
+                    <button title="Ver mais detalhes" class="btn btn-xs btn-info btn-circle fa fa-search open-modal" value="{{$assistencia->id}}"></button>
+                  </div>
+
+
+
+
+
+                  <!--CELULAR-->
+                  <div class="col-xs-4 col-sm-4 visible-xs-block">
+                    <form class="form-deletar" value="{{$assistencia->id}}">
+                      <button class="btn btn-danger btn-circle btn-lg" type="submit"><i class="fa fa-times"></i></button>
+                    </form>
+                  </div>
+                  <div class="col-xs-8 col-sm-3 p-w-xs visible-xs-block">
+                    <a class="btn btn-success btn-circle btn-lg open-modal"> "><i class="fa fa-search" value="{{$assistencia->id}}"></i></a>
+
+                    <a class="btn btn-primary btn-circle btn-lg" data-toggle="popover" data-placement="auto left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." href="{{ route('edita_assistencia', ['id' => $assistencia->id]) }}"><i class="fa fa-pencil"></i></a>
+                  </div>
+                </td>
               </div>
+            </a>
 
-
-
-
-
-              <!--CELULAR-->
-              <div class="col-xs-4 col-sm-4 visible-xs-block">
-                <form class="form-deletar" value="{{$assistencia->id}}">
-                  <button class="btn btn-danger btn-circle btn-lg" type="submit"><i class="fa fa-times"></i></button>
-                </form>
-              </div>
-              <div class="col-xs-8 col-sm-3 p-w-xs visible-xs-block">
-                <a class="btn btn-success btn-circle btn-lg open-modal"> "><i class="fa fa-search" value="{{$assistencia->id}}"></i></a>
-
-                <a class="btn btn-primary btn-circle btn-lg" data-toggle="popover" data-placement="auto left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." href="{{ route('edita_assistencia', ['id' => $assistencia->id]) }}"><i class="fa fa-pencil"></i></a>
-              </div>
-            </td>
+          </tr>
+        </div>
+      </div>
+    </div>
+    @endforeach
+    <!--MODAL-->
+    <div class="modal inmodal" id="modal-detalhes" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <img alt="image" class="img-circle img-responsive img-lg center-block" src="/media/avatars/{{$assistencia->avatar}}">
+            <h4 class="modal-title" id="modal-titulo"></h4>
+            <small class="font-bold" ></small>
           </div>
-        </a>
+          <div class="modal-body">
+            <div class="form-horizontal">
+              <div class="row">
+                <div class="col-xs-6">
+                  <div class="form-group">
+                    <label class="col-sm-3 col-xs-12 control-label">Email</label>
+                    <p class="form-control-static" id="modal-email"></p>
+                  </div>
+                </div>
+                <div class="col-xs-6">
+                  <div class="form-group">
+                    <label class="col-sm-3 col-xs-12 control-label">Site</label>
+                    <p class="form-control-static" id="modal-site"></p>
+                  </div>
+                </div>
+              </div>
 
-      </tr>
-    </div>
-  </div>
-    </div>
-  @endforeach
-  <!--MODAL-->
-  <div class="modal inmodal" id="modal-detalhes" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content animated bounceInRight">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-          <img alt="image" class="img-circle img-responsive img-lg center-block" src="/media/avatars/{{$assistencia->avatar}}">
-          <h4 class="modal-title" id="modal-titulo"></h4>
-          <small class="font-bold" ></small>
-        </div>
-        <div class="modal-body">
-          <div class="form-horizontal">
-            <div class="row">
-              <div class="col-xs-6">
-                <div class="form-group">
-                  <label class="col-sm-3 col-xs-12 control-label">Email</label>
-                  <p class="form-control-static" id="modal-email"></p>
+              <div class="row">
+                <div class="col-xs-6">
+                  <div class="form-group">
+                    <label class="col-sm-3 col-xs-12 control-label">Tel 1</label>
+                    <div class="col-sm-9">
+                      <p class="form-control-static" id="modal-tel1"></p>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-3 col-xs-12 control-label">Celular</label>
+                    <div class="col-sm-9">
+                      <p class="form-control-static" id="modal-cel"></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-6">
+                  <div class="form-group">
+                    <label class="col-sm-3 col-xs-12 control-label">Tel 2</label>
+                    <div class="col-sm-9">
+                      <p class="form-control-static" id="modal-tel2"></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-6">
+                  <div class="form-group">
+                    <label class="col-sm-3 col-xs-12 control-label">Especialidade</label>
+                    <div class="col-sm-9">
+                      <p class="form-control-static" id="modal-especialidade"></p>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div class="col-xs-6">
-                <div class="form-group">
-                  <label class="col-sm-3 col-xs-12 control-label">Site</label>
-                  <p class="form-control-static" id="modal-site"></p>
-                </div>
-              </div>
-            </div>
+              <!--divisoria--><div class="hr-line-dashed"></div> <!--divisoria-->
+              <div class="row">
+                <div class="col-xs-6">
+                  <div class="form-group">
+                    <label class="col-sm-3 col-xs-12 control-label">Cidade</label>
+                    <div class="col-sm-9">
+                      <p class="form-control-static" id="modal-cidade"></p>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-3 col-xs-12 control-label">Bairro</label>
+                    <div class="col-sm-9">
+                      <p class="form-control-static" id="modal-bairro"></p>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-3 col-xs-12 control-label">Rua</label>
+                    <div class="col-sm-9">
+                      <p class="form-control-static" id="modal-rua"></p>
+                    </div>
+                  </div>
 
-            <div class="row">
-              <div class="col-xs-6">
-                <div class="form-group">
-                  <label class="col-sm-3 col-xs-12 control-label">Tel 1</label>
-                  <div class="col-sm-9">
-                    <p class="form-control-static" id="modal-tel1"></p>
-                  </div>
                 </div>
-                <div class="form-group">
-                  <label class="col-sm-3 col-xs-12 control-label">Celular</label>
-                  <div class="col-sm-9">
-                    <p class="form-control-static" id="modal-cel"></p>
+                <div class="col-xs-6">
+                  <div class="form-group">
+                    <label class="col-sm-3 col-xs-12 control-label">Número</label>
+                    <div class="col-sm-9">
+                      <p class="form-control-static" id="modal-numero"></p>
+                    </div>
                   </div>
-                </div>
-              </div>
-              <div class="col-xs-6">
-                <div class="form-group">
-                  <label class="col-sm-3 col-xs-12 control-label">Tel 2</label>
-                  <div class="col-sm-9">
-                    <p class="form-control-static" id="modal-tel2"></p>
+                  <div class="form-group">
+                    <label class="col-sm-3 col-xs-12 control-label">Comple.</label>
+                    <div class="col-sm-9">
+                      <p class="form-control-static" id="modal-comp"></p>
+                    </div>
                   </div>
-                </div>
-              </div>
-              <div class="col-xs-6">
-                <div class="form-group">
-                  <label class="col-sm-3 col-xs-12 control-label">Especialidade</label>
-                  <div class="col-sm-9">
-                    <p class="form-control-static" id="modal-especialidade"></p>
+                  <div class="form-group">
+                    <label class="col-sm-3 col-xs-12 control-label">Maps:</label>
+                    <div class="col-sm-9">  <!-- inserir maps aqui -->
+                      <a class="btn btn-w-m btn-success fa fa-map-marker" onclick="window.open('https://www.google.com.br/maps/place/ {{$assistencia->cidade}} {{$assistencia->bairro}} {{$assistencia->rua}} {{$assistencia->numero}}')" href="#">Abrir no Maps</a>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <!--divisoria--><div class="hr-line-dashed"></div> <!--divisoria-->
-            <div class="row">
-              <div class="col-xs-6">
-                <div class="form-group">
-                  <label class="col-sm-3 col-xs-12 control-label">Cidade</label>
-                  <div class="col-sm-9">
-                    <p class="form-control-static" id="modal-cidade"></p>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-3 col-xs-12 control-label">Bairro</label>
-                  <div class="col-sm-9">
-                    <p class="form-control-static" id="modal-bairro"></p>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-3 col-xs-12 control-label">Rua</label>
-                  <div class="col-sm-9">
-                    <p class="form-control-static" id="modal-rua"></p>
-                  </div>
-                </div>
-
-              </div>
-              <div class="col-xs-6">
-                <div class="form-group">
-                  <label class="col-sm-3 col-xs-12 control-label">Número</label>
-                  <div class="col-sm-9">
-                    <p class="form-control-static" id="modal-numero"></p>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-3 col-xs-12 control-label">Comple.</label>
-                  <div class="col-sm-9">
-                    <p class="form-control-static" id="modal-comp"></p>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-3 col-xs-12 control-label">Maps:</label>
-                  <div class="col-sm-9">  <!-- inserir maps aqui -->
-                    <a class="btn btn-w-m btn-success fa fa-map-marker" onclick="window.open('https://www.google.com.br/maps/place/ {{$assistencia->cidade}} {{$assistencia->bairro}} {{$assistencia->rua}} {{$assistencia->numero}}')" href="#">Abrir no Maps</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!--divisoria--><div class="hr-line-dashed"></div> <!--divisoria-->
-            <div class="row">
-              <div class="col-xs-6">
-                <div class="form-group">
-                  <label class="col-sm-3 col-xs-12 control-label">Descrição</label>
-                  <div class="col-sm-9">
-                    <p class="form-control-static" id="modal-descricao"></p>
+              <!--divisoria--><div class="hr-line-dashed"></div> <!--divisoria-->
+              <div class="row">
+                <div class="col-xs-6">
+                  <div class="form-group">
+                    <label class="col-sm-3 col-xs-12 control-label">Descrição</label>
+                    <div class="col-sm-9">
+                      <p class="form-control-static" id="modal-descricao"></p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div><!--/modal content-->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div><!--/modal content-->
+      </div>
     </div>
-  </div>
-  <!--/MODAL-->
+    <!--/MODAL-->
 
-</div>
+  </div>
 </tbody>
 <tfoot><tr></tr></tfoot>
 </table>
