@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class TabelaAtividades extends Migration
+class TabelaConsertosMensagens extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,16 @@ class TabelaAtividades extends Migration
      */
     public function up()
     {
-        Schema::create('atividades', function (Blueprint $table) {
+        Schema::create('consertos_mensagens', function (Blueprint $table) {
             $table->increments('id');
-            $table->char('status', 15);
-            $table->dateTime('iniciada');
-            $table->dateTime('finalizada')->nullable()->default(null);
-            $table->char('titulo');
-            $table->char('descricao', 255);            
+            $table->text('mensagem');         
+            $table->char('tipo', 10);         
 
             $table->integer('id_usuario')->unsigned();
             $table->integer('id_conserto')->unsigned();
 
-            $table->foreign('id_usuario')->references('id')->on('usuarios');
-            $table->foreign('id_conserto')->references('id')->on('consertos');
+            $table->foreign('id_usuario')->references('id')->on('usuarios')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_conserto')->references('id')->on('consertos')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
@@ -37,6 +34,6 @@ class TabelaAtividades extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('atividades');
+        Schema::dropIfExists('consertos_mensagens');
     }
 }

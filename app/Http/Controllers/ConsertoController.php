@@ -5,7 +5,8 @@ use App\Conserto;
 use App\Usuario;
 use App\Cliente;
 use App\Atividade;
-use App\Atividade_comentario;
+use App\Atividade_Comentario;
+use App\Conserto_Mensagem;
 use Illuminate\Http\Request;
 use App\Http\Requests\ConsertoRequest;
 use Illuminate\Support\Facades\Response;
@@ -16,7 +17,6 @@ class ConsertoController extends Controller
 {
     public function __construct()
     {
-
       $guards = array_keys(config('auth.guards'));
       foreach ($guards as $guard) {
         if(Auth::guard($guard)->check()) {
@@ -26,14 +26,6 @@ class ConsertoController extends Controller
           $this->middleware('auth');
         }
       }
-
-      // if (Auth::guard()->check())
-      //   $auth = 'auth';
-      // else
-      //   $auth = 'auth:admin';
-      //
-      //   $this->middleware($auth);
-
 
     }
 
@@ -57,6 +49,7 @@ class ConsertoController extends Controller
       $clientes = Cliente::all()->where('permissao', '0');
       return view('conserto/novo_conserto')->with(['clientes'=> $clientes, 'funcionarios' =>$usuarios]);
     }
+    
     public function adiciona(ConsertoRequest $request)
     {
 
@@ -80,8 +73,18 @@ class ConsertoController extends Controller
         {
             $comentarios[$atividade->id] = Atividade_comentario::where('id_atividade', $atividade->id)->orderBy('id')->get();
         }
+        $mensagens = Conserto_Mensagem::where('id_conserto', 1)->orderBy('created_at', 'desc')->get();
+        $contagem = [
+          "mensagem" => [
+            "todas" => Conserto_Mensagem::where('id_conserto','=','1')->count(),
+            "publica" => Conserto_Mensagem::where('id_conserto','=','1')->where('tipo','=','publica')->count(),
+            "privada" => Conserto_Mensagem::where('id_conserto','=','1')->where('tipo','=','privada')->count()
+          ],
+          "atividade" => Atividade::where('id_conserto','=','1')->count()
+        ];
+        
 
-        return view('conserto/detalhes_conserto')->with(['usuarios'=> $usuarios, 'conserto' => $conserto, 'atividades' => $atividades, 'comentarios' => $comentarios]);
+        return view('conserto/detalhes_conserto')->with(['usuarios'=> $usuarios, 'conserto' => $conserto, 'atividades' => $atividades, 'comentarios' => $comentarios, 'mensagens' => $mensagens, 'contagem' => $contagem]);
     }
 
     //rota: remove_conserto
@@ -91,36 +94,5 @@ class ConsertoController extends Controller
         $conserto->delete();
 
         return redirect()->action('ConsertoController@lista');
-    }
-
-    public function nova_atividade(Request $request)
-    {
-        $atividade = Atividade::create($request->all());
-
-        $comentario = [
-            'status' => 'iniciou esta atividade.',
-            'comentario' => null,
-            'id_usuario' => Auth::user()->id,
-            'id_atividade' => $atividade->id,
-            'created_at' => $atividade->iniciada
-        ];
-
-        $atividade_comentario = Atividade_comentario::create($comentario);
-        $card = [
-            'id' => $atividade->id,
-            'status' => $atividade->status,
-            'iniciada' => $atividade->iniciada->format('d/m/Y H:i'),
-            'finalizada' => $atividade->finalizada == null ? "Não definido" : $atividade->finalizada->format('d/m/Y H:i'),
-            'titulo' => $atividade->titulo,
-            'descricao' => $atividade->descricao,
-            'comentario_criado' => $atividade_comentario->created_at->format('d/m/Y H:i'),
-            'comentario_usuario' => $atividade_comentario->usuario->nome,
-            'comentario_status' => $atividade_comentario->status
-
-        ];
-        //$atividade->iniciada = $atividade->iniciada->format('d/m/Y H:i');
-        //$atividade->finalizada = $atividade->finalizada == null ? "Não definido" : $atividade->finalizada->format('d/m/Y H:i');
-
-        return Response::json($card);
     }
 }

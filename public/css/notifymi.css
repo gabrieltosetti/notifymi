@@ -94,6 +94,14 @@ h2.editable-click:hover
 
 /* CONSERTO DETALHAMENTO */
 
+@media (max-width: 768px) {
+    div.painel-esquerdo > div.row {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+}
+
+
 .chat-form img
 {
     width: 38px;
@@ -220,8 +228,260 @@ h2.editable-click:hover
 {
     margin: 0;
 }
+/* MENSAGENS */
+
+.mensagem-seta {
+	position: relative;
+    padding: 10px 20px;
+    border-radius: 4px;
+    margin-top: 14px;
+    margin-bottom: 1px;
+}
+.mensagem-seta:after, .mensagem-seta:before {
+	bottom: 100%;
+	left: 18px;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.mensagem-seta:after {
+	border-color: rgba(241, 241, 241, 0);
+	border-bottom-color: #f1f1f1;
+	border-width: 9px;
+	margin-left: -9px;
+}
+.mensagem-seta:before {
+	border-color: rgba(221, 221, 221, 0);
+    border-bottom-color: #DDDDDD;
+    /* calculo = (tamanho do :after) + (px da border) + 1 */
+	border-width: 10px;
+	margin-left: -10px;
+}
+
+.mensagem-seta.publica {
+    background: #d6efff;
+    border: 1px solid #1c84c6;
+}
+.mensagem-seta.publica:after {
+    border-bottom-color: #d6efff;
+}
+.mensagem-seta.publica:before {
+    border-bottom-color: #1c84c6;
+}
+.mensagem-seta.privada {
+    background: #fff0df;
+    border: 1px solid #f8ac59;
+}
+.mensagem-seta.privada:after {
+    border-bottom-color: #fff0df;
+}
+.mensagem-seta.privada:before {
+    border-bottom-color: #f8ac59;
+}
+
+.mensagem{
+    margin-bottom: 1px;
+    padding: 10px 20px;
+    border-radius: 4px;
+}
+.mensagem hr,
+.mensagem-seta hr
+{
+    margin-bottom: 10px;
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+.mensagem.publica
+{
+    border: 1px solid #1c84c6;
+    background-color: #d6efff;
+}
+.mensagem.publica hr,
+.mensagem-seta.publica hr
+{
+    border-top-color: #1c84c6;
+}
+.mensagem.privada
+{
+    border: 1px solid #f8ac59;
+    background-color: #fff0df;
+}
+.mensagem.privada hr,
+.mensagem-seta.privada hr
+{
+    border-top-color: #f8ac59;
+}
+
+.mensagem-vazia{
+    margin-bottom: 1px;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-align: center;
+}
+.mensagem-vazia.privada{
+    border: 2px dashed #f8ac59;
+    background-color: #fff0df;
+    color: #f8ac59;
+}
+.mensagem-vazia.publica{
+    border: 2px dashed #1c84c6;
+    background-color: #d6efff;
+    color: #1c84c6;
+}
+.mensagem-vazia.todas{
+    border: 2px dashed #1ab394;
+    color: #00886c;
+    background: #dff0d8;
+}
+
+
+/* /MENSAGENS */
 
 
 
 /* //CONSERTO DETALHAMENTO */
+
+/* NOVA TAB PARA CHAT */
+
+.tab .nav-tabs li a {
+    background:transparent;
+    border-radius:0;
+    border:none;
+    font-size:13px;
+    padding: 0px 22px 10px;
+}
+.tab .nav-tabs li a:hover{
+    background:transparent;
+}
+.tab .nav-tabs li a i{
+    display:block;
+    text-align:center;
+    margin-bottom:4px;
+    color:#1cb394;
+}
+.tab .nav-tabs li.active > a,
+.tab .nav-tabs li.active > a:focus,
+.tab .nav-tabs li.active > a:hover {
+    border: none;
+    border-bottom: 2px solid #1cb394;
+    color:#1cb394 ;
+}
+.tab .nav-tabs li.active a:after{
+    content: " ";
+    position: absolute;
+    bottom: 0%;
+    left: 45%;
+    border-width: 7px;
+    border-style: solid;
+    border-color: rgba(136, 183, 213, 0) rgba(136, 183, 213, 0) #1cb394;
+}
+.tab .tab-content{
+    padding:12px;
+    color:#5a5c5d;
+    font-size: 14px;
+    margin-top:0;
+    border:none;
+}
+
+.tab .nav-tabs li.active > a.info,
+.tab .nav-tabs li.active > a.info:focus,
+.tab .nav-tabs li.active > a.info:hover {
+    border-bottom: 2px solid #1c84c6;
+    color:#1c84c6 ;
+}
+.tab .nav-tabs li.active a.info:after{
+    border-color: rgba(136, 183, 213, 0) rgba(136, 183, 213, 0) #1c84c6;
+}
+.tab .nav-tabs li.active > a.warning,
+.tab .nav-tabs li.active > a.warning:focus,
+.tab .nav-tabs li.active > a.warning:hover {
+    border-bottom: 2px solid #f8ac59;
+    color:#f8ac59 ;
+}
+.tab .nav-tabs li.active a.warning:after{
+    border-color: rgba(136, 183, 213, 0) rgba(136, 183, 213, 0) #f8ac59;
+}
+
+@media only screen and (max-width: 480px) {
+    .tab .nav-tabs li{
+        width:100%;
+    }
+    .tab .nav-tabs li a{
+        border:1px solid lightgray;
+        margin-bottom:10px;
+    }
+    .tab .nav-tabs li a i{
+        display:inline-block;
+        margin-right:15px;
+    }
+    .tab .nav-tabs li.active  a,
+    .tab .nav-tabs > li.active a:focus,
+    .tab .nav-tabs > li.active a:hover {
+        border:1px solid #1cb394;
+    }
+    .tab .nav-tabs > li.active > a:after{
+        border:none;
+    }
+}
+
+                /* BADGE */
+.nav-tabs > li > a > span.conserto.badge,
+.nav-tabs > li > a > span.conserto.badge {
+    background-color: #A7B1C2;
+}
+.nav-tabs > li > a:hover > span.conserto.badge,
+.nav-tabs > li > a:focus > span.conserto.badge {
+    background-color: #676a6c;
+}
+.nav-tabs > li.active > a > span.conserto.badge.badge-primary {
+    background-color: #1cb394;
+}
+.nav-tabs > li.active > a > span.conserto.badge.badge-success {
+    background-color: #1c84c6;
+}
+.nav-tabs > li.active > a > span.conserto.badge.badge-warning {
+    background-color: #f8ac59;
+}
+
+.nav-tabs > li > a:hover, .nav-tabs > li > a:focus {
+    background-color: white;
+    color: #676a6c;
+    border-color: white;
+}
+
+/* //NOVA TAB PARA CHAT */
+
+/* SOMBRA PARA I-BOX */
+
+.ibox-content{
+    background-color: transparent;
+    border: none;
+}
+.ibox-title{
+    background-color: transparent;
+    border-width: 0 0 2px;
+    border-style: solid;
+}
+  .ibox{
+    border-radius: 2px;
+    background-color: white;
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    -ms-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    -o-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  }
+  .gmd-2 {
+    -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    -moz-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    -ms-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    -o-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  }
+  /* //SOMBRA PARA I-BOX */
 

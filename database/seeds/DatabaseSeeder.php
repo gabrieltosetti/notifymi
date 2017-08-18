@@ -227,7 +227,7 @@ class DatabaseSeeder extends Seeder
     ]);
 
       DB::table('atividades_comentarios')->insert([
-      'status' => 'iniciou esta atividade.',
+      'status' => '<span class="text-success">iniciou</span> esta atividade.',
       'comentario' => null,
       'id_usuario' => '24',
       'id_atividade' => '1',
@@ -235,7 +235,7 @@ class DatabaseSeeder extends Seeder
       'updated_at' => Carbon::now(),
     ]);
       DB::table('atividades_comentarios')->insert([
-      'status' => 'comentou: ',
+      'status' => '<span class="text-success">Comentário</span>: ',
       'comentario' => 'Dificuldades em colar a nova tela.',
       'id_usuario' => '24',
       'id_atividade' => '1',
@@ -245,7 +245,7 @@ class DatabaseSeeder extends Seeder
 
 
     DB::table('atividades_comentarios')->insert([
-      'status' => 'iniciou esta atividade.',
+      'status' => '<span class="text-success">iniciou</span> esta atividade.',
       'comentario' => null,
       'id_usuario' => '24',
       'id_atividade' => '2',
@@ -253,7 +253,7 @@ class DatabaseSeeder extends Seeder
       'updated_at' => Carbon::now(),
     ]);
       DB::table('atividades_comentarios')->insert([
-      'status' => 'comentou: ',
+      'status' => '<span class="text-success">Comentário</span>: ',
       'comentario' => 'Botão apenas mal encaixado não sendo necessária a troca.',
       'id_usuario' => '24',
       'id_atividade' => '2',

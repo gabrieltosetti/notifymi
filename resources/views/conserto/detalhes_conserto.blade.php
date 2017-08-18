@@ -15,6 +15,9 @@
     <link href="{{ asset('css/plugins/datetimepicker/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
     <!-- Toastr style -->
     <link href="{{ asset('css/plugins/toastr/toastr.min.css') }}" rel="stylesheet">
+    <!-- Ladda style -->
+    <link href="{{ asset('css/plugins/ladda/ladda-themeless.min.css') }}" rel="stylesheet">
+
     <meta name="_token" content="{{ csrf_token() }}" />
      <style>
         @media (min-width: 768px) {
@@ -33,13 +36,11 @@
 @section('content')
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
-            <div class="col-sm-3">
-    <!--
-        PAINEL ESQUERDO
-        -->
+            <div class="col-sm-3 m-b-md painel-esquerdo">
+    <!-- PAINEL ESQUERDO -->
                 <!-- IMAGEM -->
                 <div class="row">
-                    <img alt="usuário" class="img-thumbnail img-md pull-left m-r-xs" src="/media/avatars/default.jpg">
+                    <img alt="usuário" class="img-thumbnail img-md pull-left m-r-xs" src="/media/avatars/{{$conserto->cliente->avatar}}">
                     <strong>Criado por </strong><a href="#" class="text-navy">{{$conserto->usuario->nome}}</a><a href="#" class="pull-right" data-toggle="tooltip" data-placement="top" title="Mudar usuário"><i class="fa fa-pencil m-r-sm"></i></a> <br>
                     {{$conserto->created_at->diffForHumans()}}
                 </div>
@@ -91,9 +92,7 @@
                     <select id="select-copia" data-placeholder="Adicionar pessoas..." class="chosen-select" multiple>
                     </select>
                 </div>
-    <!--
-        /PAINEL ESQUERDO
-        -->
+    <!-- /PAINEL ESQUERDO -->
             </div>
             <div class="col-sm-9">
                 <div class="ibox">
@@ -125,7 +124,7 @@
                                 <dl>
                                     <dt>Detalhes <span class="dt-editar">Editar</span></dt>
                                     <dd>
-                                        <p id="conserto-descricao">{{$conserto->detalhes}}</p>
+                                        <p id="conserto-descricao">{{$conserto->observacao}}</p>
                                     </dd>
                                 </dl>
                             </div>
@@ -138,8 +137,8 @@
                                     <div class="panel-heading">
                                         <div class="panel-options">
                                             <ul class="nav nav-tabs">
-                                                <li class="active"><a href="#tab-1" data-toggle="tab">Atividades</a></li>
-                                                <li class=""><a href="#tab-2" data-toggle="tab">Mensagem Pública</a></li>
+                                                <li class=""><a href="#tab-1" data-toggle="tab">Atividades <span id="cont-tab-atividade"  class="conserto badge badge-primary">{{$contagem["atividade"]}}</span></a></li>
+                                                <li class="active"><a href="#tab-2" data-toggle="tab">Mensagens <span id="cont-tab-mensagem" class="conserto badge badge-primary">{{$contagem["mensagem"]["todas"]}}</span></a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -148,168 +147,174 @@
                                     <div class="panel-body">
                                         <div class="tab-content">
                                             <!-- TAB 1 -->
-                                            <div class="tab-pane active" id="tab-1">
-                                                <div class="col-lg-12">
-                                                    <div class="panel blank-panel">
-                                                        <!-- PANEL TABS -->
-                                                        <div class="panel-heading">
-                                                            <div class="panel-options">
-                                                                <ul class="nav nav-tabs">
-                                                                    <li class="active"><a href="#tab-nova_atividade" data-toggle="tab">Nova Atividade</a></li>
-                                                                    <li class=""><a href="#tab-editar_atividade" data-toggle="tab">Editar Atividade</a></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                        <!-- /PANEL TABS -->
-                                                        <!-- PANEL BODY -->
-                                                        <div class="panel-body">
-                                                            <div class="tab-content">
-                                                                <!-- TAB NOVA ATIVIDADE -->
-                                                                <div class="tab-pane active" id="tab-nova_atividade">
-                                                                    <div class="chat-form m-b">
-                                                                        <img alt="usuário" class="img-circle pull-left" src="/media/avatars/default.jpg">
-                                                                        <div class="media-body">
-                                                                            <form role="form" method="POST" id="atividade-nova">
-                                                                                <h4 class="m-b-sm">Gabriel Tosetti</h4>
-                                                                                <div class="row">
-                                                                                    <div class="col-sm-5">
-                                                                                        <!--STATUS-->
-                                                                                        <div class="form-group {{ $errors->has('status') ? 'has-error' : ''}}">
-                                                                                            <label class="control-label" for="atividade-status">Status</label>
-                                                                                            <select class="form-control" id="atividade-status" name="status">
-                                                                                                    <option value="Completado">Completado</option>
-                                                                                                    <option value="Em andamento">Em andamento</option>
-                                                                                                    <option value="Cancelado">Cancelado</option>
-                                                                                            </select>
-                                                                                        </div>
-                                                                                        <!--/STATUS-->
-                                                                                        <!--DATA INICIO-->
-                                                                                        <div class="form-group">
-                                                                                            <label>Atividade Inicio</label>
-                                                                                            <div class="input-group date form_datetime" data-link-field="atividade-inicio">
-                                                                                                <input class="form-control" size="16" type="text" value="" >
-                                                                                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-                                                                                                <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
-                                                                                            </div>
-                                                                                            <input type="hidden" id="atividade-inicio" value="" />
-                                                                                        </div>
-                                                                                        <!--/DATA INICIO-->
-                                                                                        <!--DATA FINAL-->
-                                                                                        <div class="form-group">
-                                                                                            <label>Atividade Final</label>
-                                                                                            <div class="input-group date form_datetime" data-link-field="atividade-final">
-                                                                                                <input class="form-control" size="16" type="text" value="" >
-                                                                                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-                                                                                                <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
-                                                                                            </div>
-                                                                                            <input type="hidden" id="atividade-final" value="" />
-                                                                                        </div>
-                                                                                        <!--/DATA FINAL-->
+                                            <div class="tab-pane" id="tab-1">
+                                                <div class="col-lg-12">        
+                                                    <div class="tab" role="tabpanel">
+                                                        <!-- NOME DAS TABS -->
+                                                        <ul class="nav nav-tabs" role="tablist">
+                                                            <li role="presentation" class="active"><a class="info" href="#tab-nova_atividade" role="tab" data-toggle="tab">Nova Atividade</a></li>
+                                                            <li role="presentation"><a class="warning" href="#tab-editar_atividade" role="tab" data-toggle="tab">Editar Atividade</a></li>
+                                                        </ul>
+                                                        <!-- /NOME DAS TABS -->
+                                                        <!-- CONTEUDO DAS TABS -->
+                                                        <div class="tab-content">
+                                                            <!-- TAB NOVA ATIVIDADE -->                                                                            
+                                                            <div role="tabpanel" class="tab-pane fade in active" id="tab-nova_atividade">
+                                                                <div class="chat-form m-b">
+                                                                    <img alt="usuário" class="img-circle pull-left" src="/media/avatars/{!!Auth::user()->avatar!!}">
+                                                                    <div class="media-body">
+                                                                        <form role="form" method="POST" id="atividade-nova">
+                                                                            <h4 class="m-b-sm">Gabriel Tosetti</h4>
+                                                                            <div class="row">
+                                                                                <div class="col-sm-5">
+                                                                                    <!--STATUS-->
+                                                                                    <div class="form-group {{ $errors->has('status') ? 'has-error' : ''}}">
+                                                                                        <label class="control-label" for="atividade-status">Status</label>
+                                                                                        <select class="form-control" id="atividade-status" name="status">
+                                                                                                <option value="Completado">Completado</option>
+                                                                                                <option value="Em andamento">Em andamento</option>
+                                                                                                <option value="Cancelado">Cancelado</option>
+                                                                                        </select>
                                                                                     </div>
-                                                                                    <div class="col-sm-7">
-                                                                                        <!--TITULO-->
-                                                                                        <div class="form-group {{ $errors->has('titulo') ? 'has-error' : ''}}">
-                                                                                            <label class="control-label" for="atividade-titulo">Título</label>
-                                                                                            <input type="text" class="form-control" name="titulo" value="{{ old('titulo') }}" id="atividade-titulo" maxlength="20">
-                                                                                            <span class="help-block">{{$errors->first('titulo')}}</span>
+                                                                                    <!--/STATUS-->
+                                                                                    <!--DATA INICIO-->
+                                                                                    <div class="form-group">
+                                                                                        <label>Atividade Inicio</label>
+                                                                                        <div class="input-group date form_datetime" data-link-field="atividade-inicio">
+                                                                                            <input class="form-control" size="16" type="text" value="" >
+                                                                                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                                                                            <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
                                                                                         </div>
-                                                                                        <!--/TITULO-->
-                                                                                        <div class="form-group">
-                                                                                            <label class="control-label" for="atividade-descricao">Descrição</label>
-                                                                                            <textarea id="atividade-descricao" class="form-control" placeholder="descrição..."></textarea>
+                                                                                        <input type="hidden" id="atividade-inicio" value="" />
+                                                                                    </div>
+                                                                                    <!--/DATA INICIO-->
+                                                                                    <!--DATA FINAL-->
+                                                                                    <div class="form-group">
+                                                                                        <label>Atividade Final <small class="text-success">opcional</small></label>
+                                                                                        <div class="input-group date form_datetime" data-link-field="atividade-final">
+                                                                                            <input class="form-control" size="16" type="text" value="" >
+                                                                                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                                                                            <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
                                                                                         </div>
+                                                                                        <input type="hidden" id="atividade-final" value="" />
+                                                                                    </div>
+                                                                                    <!--/DATA FINAL-->
+                                                                                </div>
+                                                                                <div class="col-sm-7">
+                                                                                    <!--TITULO-->
+                                                                                    <div class="form-group {{ $errors->has('titulo') ? 'has-error' : ''}}">
+                                                                                        <label class="control-label" for="atividade-titulo">Título</label>
+                                                                                        <input type="text" class="form-control" name="titulo" value="{{ old('titulo') }}" id="atividade-titulo" maxlength="20">
+                                                                                        <span class="help-block">{{$errors->first('titulo')}}</span>
+                                                                                    </div>
+                                                                                    <!--/TITULO-->
+                                                                                    <div class="form-group">
+                                                                                        <label class="control-label" for="atividade-descricao">Descrição</label>
+                                                                                        <textarea id="atividade-descricao" rows="5" class="form-control" placeholder="descrição..."></textarea>
                                                                                     </div>
                                                                                 </div>
+                                                                            </div>
 
-                                                                                <div class="text-right">
-                                                                                    <button type="submit" class="btn btn-sm btn-primary m-t-n-xs"><strong>Criar</strong></button>
-                                                                                </div>
-                                                                            </form>
-                                                                        </div>
+                                                                            <div class="text-right">
+                                                                                <button id="btn-criar" type="submit" class="ladda-button btn btn-sm btn-primary m-t-n-xs" data-style="expand-right"><span class="ladda-label">Criar</span><span class="ladda-spinner"></span></button>
+                                                                            </div>
+                                                                        </form>
                                                                     </div>
                                                                 </div>
-                                                                <!-- /TAB NOVA ATIVIDADE -->
-                                                                <!-- TAB EDITAR ATIVIDADE -->
-                                                                <div class="tab-pane" id="tab-editar_atividade">
-                                                                    <p>Para editar uma atividade, escolha uma da lista e faça as alterações necessárias.</p>
-                                                                    <!--ESCOLHA-->
-                                                                    <div class="form-group">
-                                                                        <label class="control-label" for="atividade-escolha">Atividade:</label>
-                                                                        <select class="form-control" id="atividade-escolha" name="atividade-escolha">
-                                                                            @foreach ($atividades as $atividade)
-                                                                                <option value="{{$atividade->id}}">#{{$atividade->id}} - {{$atividade->titulo}}</option>
-                                                                            @endforeach
-                                                                        </select>
-                                                                    </div>
-                                                                    <!--/ESCOLHA-->
-                                                                    <div class="chat-form m-b">
-                                                                        <img alt="usuário" class="img-circle pull-left" src="/media/avatars/default.jpg">
-                                                                        <div class="media-body">
-                                                                            <form role="form" method="POST" id="atividade-nova">
-                                                                                <h4 class="m-b-sm">Gabriel Tosetti</h4>
-                                                                                <div class="row">
-                                                                                    <div class="col-sm-5">
-                                                                                        <!--STATUS-->
-                                                                                        <div class="form-group {{ $errors->has('status') ? 'has-error' : ''}}">
-                                                                                            <label class="control-label" for="atividade-status">Status</label>
-                                                                                            <select class="form-control" id="atividade-status" name="status">
-                                                                                                    <option value="Completado">Completado</option>
-                                                                                                    <option value="Em andamento">Em andamento</option>
-                                                                                                    <option value="Cancelado">Cancelado</option>
-                                                                                            </select>
-                                                                                        </div>
-                                                                                        <!--/STATUS-->
-                                                                                        <!--DATA INICIO-->
-                                                                                        <div class="form-group">
-                                                                                            <label>Atividade Inicio</label>
-                                                                                            <div class="input-group date form_datetime" data-link-field="atividade-inicio">
-                                                                                                <input class="form-control" size="16" type="text" value="" >
-                                                                                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-                                                                                                <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
-                                                                                            </div>
-                                                                                            <input type="hidden" id="atividade-inicio" value="" />
-                                                                                        </div>
-                                                                                        <!--/DATA INICIO-->
-                                                                                        <!--DATA FINAL-->
-                                                                                        <div class="form-group">
-                                                                                            <label>Atividade Final</label>
-                                                                                            <div class="input-group date form_datetime" data-link-field="atividade-final">
-                                                                                                <input class="form-control" size="16" type="text" value="" >
-                                                                                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-                                                                                                <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
-                                                                                            </div>
-                                                                                            <input type="hidden" id="atividade-final" value="" />
-                                                                                        </div>
-                                                                                        <!--/DATA FINAL-->
-                                                                                    </div>
-                                                                                    <div class="col-sm-7">
-                                                                                        <!--TITULO-->
-                                                                                        <div class="form-group {{ $errors->has('titulo') ? 'has-error' : ''}}">
-                                                                                            <label class="control-label" for="atividade-titulo">Título</label>
-                                                                                            <input type="text" class="form-control" name="titulo" value="{{ old('titulo') }}" id="atividade-titulo" maxlength="20">
-                                                                                            <span class="help-block">{{$errors->first('titulo')}}</span>
-                                                                                        </div>
-                                                                                        <!--/TITULO-->
-                                                                                        <div class="form-group">
-                                                                                            <label class="control-label" for="atividade-descricao">Descrição</label>
-                                                                                            <textarea id="atividade-descricao" class="form-control" placeholder="descrição..."></textarea>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                <div class="text-right">
-                                                                                    <button type="submit" class="btn btn-sm btn-primary m-t-n-xs"><strong>Criar</strong></button>
-                                                                                </div>
-                                                                            </form>
-                                                                        </div>
-                                                                    </div>
-                                                                </div><!-- /TAB EDITAR ATIVIDADE -->
                                                             </div>
+                                                            <!-- /TAB NOVA ATIVIDADE --> 
+                                                            <!-- TAB EDITAR ATIVIDADE -->                                                                            
+                                                            <div role="tabpanel" class="tab-pane fade in" id="tab-editar_atividade">
+                                                                <p>Para editar uma atividade, escolha uma da lista e faça as alterações necessárias.</p>
+                                                                <!--ESCOLHA-->
+                                                                <div class="form-group">
+                                                                    <label class="control-label" for="atividade-escolha">Atividade:</label>
+                                                                    <select class="form-control" id="atividade-escolha" name="atividade-escolha">
+                                                                        @foreach ($atividades as $atividade)
+                                                                            <option value="{{$atividade->id}}">#{{$atividade->id}} - {{$atividade->titulo}}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
+                                                                <!--/ESCOLHA-->
+                                                                <div class="chat-form m-b">
+                                                                    <img alt="usuário" class="img-circle pull-left" src="/media/avatars/{!!Auth::user()->avatar!!}">
+                                                                    <div class="media-body">
+                                                                        <form role="form" method="POST" id="atividade-editar">
+                                                                            <h4 class="m-b-sm">Gabriel Tosetti</h4>
+                                                                            <div class="row">
+                                                                                <div class="col-sm-5">
+                                                                                    <!--STATUS-->
+                                                                                    <div class="form-group {{ $errors->has('status') ? 'has-error' : ''}}">
+                                                                                        <label class="control-label" for="escolha-status">Status</label>
+                                                                                        <select class="form-control" id="escolha-status" name="status">
+                                                                                                <option value="Completado">Completado</option>
+                                                                                                <option value="Em andamento">Em andamento</option>
+                                                                                                <option value="Cancelado">Cancelado</option>
+                                                                                        </select>
+                                                                                    </div>
+                                                                                    <!--/STATUS-->
+                                                                                    <!--DATA INICIO-->
+                                                                                    <div class="form-group">
+                                                                                        <label>Atividade Inicio</label>
+                                                                                        <div class="input-group date form_datetime" data-link-field="escolha-inicio">
+                                                                                            <input class="form-control" size="16" type="text" value="" escolha="data-inicio">
+                                                                                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                                                                            <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                                                                                        </div>
+                                                                                        <input type="hidden" id="escolha-inicio" value="" />
+                                                                                    </div>
+                                                                                    <!--/DATA INICIO-->
+                                                                                    <!--DATA FINAL-->
+                                                                                    <div class="form-group">
+                                                                                        <label>Atividade Final <small class="text-success">opcional</small></label>
+                                                                                        <div class="input-group date form_datetime" data-link-field="escolha-final">
+                                                                                            <input class="form-control" size="16" type="text" value="" escolha="data-final">
+                                                                                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                                                                            <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                                                                                        </div>
+                                                                                        <input type="hidden" id="escolha-final" value="" />
+                                                                                    </div>
+                                                                                    <!--/DATA FINAL-->
+                                                                                </div>
+                                                                                <div class="col-sm-7">
+                                                                                    <!--TITULO-->
+                                                                                    <div class="form-group {{ $errors->has('titulo') ? 'has-error' : ''}}">
+                                                                                        <label class="control-label" for="escolha-titulo">Título</label>
+                                                                                        <input type="text" class="form-control" name="titulo" value="{{ old('titulo') }}" id="escolha-titulo" maxlength="20">
+                                                                                        <span class="help-block">{{$errors->first('titulo')}}</span>
+                                                                                    </div>
+                                                                                    <!--/TITULO-->
+                                                                                    <div class="form-group">
+                                                                                        <label class="control-label" for="escolha-descricao">Descrição</label>
+                                                                                        <textarea id="escolha-descricao"  rows="5" class="form-control" placeholder="descrição..."></textarea>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row">                                                                                    
+                                                                                <div class="col-xs-12">
+                                                                                    <p>Adicionar comentário?</p>
+                                                                                    <!--COMENTÁRIO-->
+                                                                                    <div class="form-group">
+                                                                                        <label class="control-label" for="escolha-comentario">Comentário <small class="text-success">opcional</small></label>
+                                                                                        <textarea id="escolha-comentario" rows="3" class="form-control" placeholder="comentário..."></textarea>
+                                                                                    </div>
+                                                                                    <!--/COMENTÁRIO-->
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="text-right">
+                                                                                <button type="submit" class="btn btn-sm btn-primary m-t-n-xs"><strong>Atualizar</strong></button>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- /TAB EDITAR ATIVIDADE --> 
                                                         </div>
-                                                    </div>
+                                                        <!-- /CONTEUDO DAS TABS -->
+                                                    </div>                                            
                                                 </div>
                                                 <h3>Atividade</h3>
-
 
                                                 <div class="lista-atividades">
                                                     @foreach ($atividades as $atividade)
@@ -327,7 +332,7 @@
                                                     <!-- CARD DE ATIVIDADE -->
                                                     <div class="row">
                                                         <div class="col-md-12">
-                                                            <div class="atividade {{$cor}}">
+                                                            <div class="atividade {{$cor}}" atividade="{{$atividade->id}}">
                                                                 <div class="row">
                                                                     <div class="col-md-5 col-lg-4">
                                                                         <div class="row user-group">
@@ -339,19 +344,19 @@
                                                                                     <div class="form-group">
                                                                                         <label class="col-md-4 control-label">Status:</label>
                                                                                         <div class="col-md-8">
-                                                                                            <p class="form-control-static">{{$atividade->status}}</p>
+                                                                                            <p class="form-control-static" atividade="status">{{$atividade->status}}</p>
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="form-group">
                                                                                         <label class="col-md-4 control-label">Iniciado:</label>
                                                                                         <div class="col-md-8">
-                                                                                            <p class="form-control-static">{{$atividade->iniciada == null ? 'Não definida' : $atividade->iniciada->format('d/m/Y H:i')}}</p>
+                                                                                            <p class="form-control-static" atividade="iniciada">{{$atividade->iniciada == null ? 'Não definida' : $atividade->iniciada->format('d/m/Y H:i')}}</p>
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="form-group">
                                                                                         <label class="col-md-4 control-label">Finalizado:</label>
                                                                                         <div class="col-md-8">
-                                                                                            <p class="form-control-static">{{$atividade->finalizada == null ? 'Não definida' : $atividade->finalizada->format('d/m/Y H:i')}}</p>
+                                                                                            <p class="form-control-static" atividade="finalizada">{{$atividade->finalizada == null ? 'Não definida' : $atividade->finalizada->format('d/m/Y H:i')}}</p>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -360,17 +365,16 @@
                                                                     </div>
                                                                     <div class="col-md-7 col-lg-8">
                                                                         <small class="text-success">Título</small><br>
-                                                                        <h3 class="m-b">{{$atividade->titulo}}</h3>
+                                                                        <h3 class="m-b" atividade="titulo">{{$atividade->titulo}}</h3>
                                                                         <small class="text-success">Descrição</small>
-                                                                        <p>{{$atividade->descricao}}</p>
+                                                                        <p atividade="descricao">{{$atividade->descricao}}</p>
                                                                     </div>
                                                                 </div>
                                                                 <hr class="hr-line-solid">
-                                                                <div class="row">
+                                                                <div class="row" atividade="comentario">
                                                                     @foreach ($comentarios[$atividade->id] as $comentario)
-                                                                    <span class="text-success">{{$comentario->created_at->format('d/m/Y H:i')}} </span>- <strong>{{$comentario->usuario->nome}}</strong> {{$comentario->status}} {{$comentario->comentario}}<br>
+                                                                    <span class="text-success">{{$comentario->created_at->format('d/m/Y H:i')}} </span>- <strong>{!!$comentario->usuario->nome!!}</strong> {!!$comentario->status!!} {!!$comentario->comentario!!}<br>
                                                                     @endforeach
-                                                                   <!--  <span class="text-success">22/07/2017 22:05 </span>- <strong>Gabriel Tosetti</strong> criou esta atividade.<br> -->
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -381,99 +385,235 @@
                                             </div>
                                             <!-- /TAB 1 -->
                                             <!-- TAB 2 -->
-                                            <div class="tab-pane" id="tab-2">
+                                            <div class="tab-pane active" id="tab-2">
                                                 <div class="chat-form">
-                                                    <img alt="usuário" class="img-circle pull-left" src="/media/avatars/default.jpg">
+                                                    <img alt="usuário" class="img-circle pull-left" src="/media/avatars/{!!Auth::user()->avatar!!}">
                                                     <div class="media-body">
-                                                        <form role="form" class="conserto-chat">
-                                                            <h4>Gabriel Tosetti</h4>
-                                                            <div class="form-group">
-                                                                <textarea class="form-control" placeholder="Mensagem..."></textarea>
+                                                        <h4>Gabriel Tosetti</h4>
+                                                        <!-- MENSAGENS -->
+                                                        <div class="row">
+                                                            <div class="col-xs-12">
+                                                                <div class="tab" role="tabpanel">
+                                                                    <!-- Nav tabs -->
+                                                                    <ul class="nav nav-tabs" role="tablist">
+                                                                        <li role="presentation" class="active"><a class="info" href="#mens-publica" role="tab" data-toggle="tab">Publico</a></li>
+                                                                        <li role="presentation"><a class="warning" href="#mens-privada" role="tab" data-toggle="tab">Privado</a></li>
+                                                                    </ul>
+                                                                    <!-- Tab panes -->
+                                                                    <div class="tab-content">
+                                                                        <!-- MENSAGEM PUBLICA -->                                                                            
+                                                                        <div role="tabpanel" class="tab-pane fade in active" id="mens-publica">
+                                                                            <form role="form" method="POST" id="mensagem-form-publica">
+                                                                                <div class="form-group">
+                                                                                    <textarea class="form-control" id="mensagem-publica" rows="4" placeholder="Mensagem pública..."></textarea>
+                                                                                </div>
+                                                                                <div class="text-right">
+                                                                                    <button type="submit" class="btn btn-sm btn-primary m-t-n-xs"><strong>Postar</strong></button>
+                                                                                </div>
+                                                                            </form>
+                                                                        </div>
+                                                                        <!-- /MENSAGEM PUBLICA -->
+                                                                        <!-- MENSAGEM PRIVADA -->
+                                                                        <div role="tabpanel" class="tab-pane fade" id="mens-privada">
+                                                                            <form role="form" method="POST" id="mensagem-form-privada">
+                                                                                <div class="form-group">
+                                                                                    <textarea class="form-control" id="mensagem-privada" rows="4" placeholder="Mensagem privada..."></textarea>
+                                                                                </div>
+                                                                                <div class="text-right">
+                                                                                    <button type="submit" class="btn btn-sm btn-primary m-t-n-xs"><strong>Postar</strong></button>
+                                                                                </div>
+                                                                            </form>
+                                                                        </div>
+                                                                        <!-- /MENSAGEM PRIVADA -->
+                                                                    </div>
+                                                                </div>                                                                    
                                                             </div>
-                                                            <div class="text-right">
-                                                                <button type="submit" class="btn btn-sm btn-primary m-t-n-xs"><strong>Postar</strong></button>
-                                                            </div>
-                                                        </form>
+                                                        </div>
+                                                        <!-- /MENSAGENS -->
                                                     </div>
                                                 </div>
                                                 <div class="feed-activity-list">
-                                                    <div class="feed-element">
-                                                        <a href="#" class="pull-left">
-                                                            <img alt="image" class="img-circle" src="img/a2.jpg">
-                                                        </a>
-                                                        <div class="media-body ">
-                                                            <small class="pull-right">2h ago</small>
-                                                            <strong>Mark Johnson</strong> posted message on <strong>Monica Smith</strong> site. <br>
-                                                            <small class="text-muted">Today 2:10 pm - 12.06.2014</small>
-                                                            <div class="well">
-                                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-                                                                Over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+                                                    <!-- TABS MENSAGENS -->
+                                                    <div class="tab" role="tabpanel">
+                                                        <!-- NOME DAS TABS -->
+                                                        <ul class="nav nav-tabs" role="tablist">
+                                                            <li role="presentation" class="active"><a href="#tab-todas" role="tab" data-toggle="tab">Todas <span id="cont-badge-todas" class="conserto badge badge-primary">{{$contagem["mensagem"]["todas"]}}</span></a></li>
+                                                            <li role="presentation"><a class="info" href="#tab-publica" role="tab" data-toggle="tab">Publico <span id="cont-badge-publica" class="conserto badge badge-success">{{$contagem["mensagem"]["publica"]}}</span></a></li>
+                                                            <li role="presentation"><a class="warning" href="#tab-privada" role="tab" data-toggle="tab">Privado <span id="cont-badge-privada" class="conserto badge badge-warning">{{$contagem["mensagem"]["privada"]}}</span></a></li>
+                                                        </ul>
+                                                        <!-- /NOME DAS TABS -->
+                                                        <!-- Tab panes -->
+                                                        <!-- CONJUNTO DAS TABS LISTA MENSAGEM -->
+                                                        <div class="tab-content">
+                                                            <!-- MENSAGEM TODAS -->                                                            
+                                                            <div role="tabpanel" class="tab-pane fade in active" id="tab-todas">
+                                                                @php 
+                                                                    $total = count($mensagens);
+                                                                    $saida = false;
+                                                                    $proximoI = 1;
+                                                                    $nTem = true;
+                                                                @endphp
+                                                                @for ($i = 0; $i < $total; $i++) 
+                                                                <?php $nTem = false;?>                                                                        
+                                                                <div class="feed-element">
+                                                                    <img alt="image" class="img-circle pull-left" src="/media/avatars/{{$mensagens[$i]->usuario->avatar}}">
+                                                                    <div class="media-body ">
+                                                                        <strong>{{$mensagens[$i]->usuario->nome}}</strong> escreveu <br>
+                                                                        <small class="text-muted">Última mensagem {{$mensagens[$i]->created_at->diffForHumans()}}</small>                                                            
+                                                                    </div>                                                        
+                                                                    <div class="mensagem-seta {{$mensagens[$i]->tipo}}" mensagem-tipo="{{$mensagens[$i]->tipo}}" mensagem-user="{{$mensagens[$i]->usuario->id}}"><!-- primeiro div -->                                                                      
+                                                                        {!!$mensagens[$i]->mensagem!!}
+                                                                        <p mensagem-id="{{$mensagens[$i]->id}}"><small class="pull-right">{{utf8_encode($mensagens[$i]->created_at->formatLocalized('%a, %d/%M/%Y %H:%M'))}}</small></p>
+                                                                        
+                                                                        @if(($i+1) != $total)
+                                                                            @while(($saida == false) && ($mensagens[$i]->usuario->id == $mensagens[$proximoI]->usuario->id))
+                                                                                @if($mensagens[$i]->tipo == $mensagens[$proximoI]->tipo)
+                                                                                    <hr>
+                                                                                    {!!$mensagens[$proximoI]->mensagem!!}
+                                                                                    <p mensagem-id="{{$mensagens[$proximoI]->id}}"><small class="pull-right">{{utf8_encode($mensagens[$proximoI]->created_at->formatLocalized('%a, %d/%m/%Y %H:%M'))}}</small></p>
+                                                                                @else
+                                                                                    </div>
+                                                                                    <div class="mensagem {{$mensagens[$proximoI]->tipo}}">                                                                        
+                                                                                        {!!$mensagens[$proximoI]->mensagem!!}
+                                                                                        <p mensagem-id="{{$mensagens[$proximoI]->id}}"><small class="pull-right">{{utf8_encode($mensagens[$proximoI]->created_at->formatLocalized('%a, %d/%m/%Y %H:%M'))}}</small></p>                                                                                    
+                                                                                @endif
+                                                                                @php
+                                                                                    $i = $proximoI;
+                                                                                    $proximoI++;
+                                                                                    $saida = $proximoI == $total ? true : false;
+                                                                                @endphp
+                                                                            @endwhile
+                                                                            @php 
+                                                                                $saida = false;
+                                                                                $proximoI++;
+                                                                            @endphp
+                                                                        @endif
+                                                                    </div><!-- primeiro /div -->
+                                                                </div>                                                                
+                                                                @endfor   
+                                                                @if($nTem)
+                                                                    <div class="feed-element">                                                   
+                                                                        <div class="mensagem-vazia todas">                                                                   
+                                                                            Não há mensagens
+                                                                        </div>  
+                                                                    </div>                                                                     
+                                                                @endif                                                               
+                                                            </div>                                                            
+                                                            <!-- /MENSAGEM TODAS -->
+                                                            <!-- MENSAGEM PUBLICA -->
+                                                            <div role="tabpanel" class="tab-pane fade in" id="tab-publica">
+                                                                @php 
+                                                                    $total = count($mensagens);
+                                                                    $saida = false;
+                                                                    $proximoI = 1;
+                                                                    $nTem = true;
+                                                                @endphp
+                                                                @for ($i = 0; $i < $total; $i++) 
+                                                                    @if($mensagens[$i]->tipo == "publica") 
+                                                                    <?php $nTem = false;?>                                                                     
+                                                                    <div class="feed-element">
+                                                                        <img alt="image" class="img-circle pull-left" src="/media/avatars/{{$mensagens[$i]->usuario->avatar}}">
+                                                                        <div class="media-body ">
+                                                                            <strong>{{$mensagens[$i]->usuario->nome}}</strong> escreveu <br>
+                                                                            <small class="text-muted">Última mensagem {{$mensagens[$i]->created_at->diffForHumans()}}</small>                                                            
+                                                                        </div>                                                        
+                                                                        <div class="mensagem-seta {{$mensagens[$i]->tipo}}" mensagem-user="{{$mensagens[$i]->usuario->id}}"><!-- primeiro div -->                                                                      
+                                                                            {!!$mensagens[$i]->mensagem!!}
+                                                                            <p><small class="pull-right">{{utf8_encode($mensagens[$i]->created_at->formatLocalized('%a, %d/%m/%Y %H:%M'))}}</small></p>
+                                                                            @if(($i+1) != $total)
+                                                                                @while(($saida == false) && ($mensagens[$i]->usuario->id == $mensagens[$proximoI]->usuario->id))
+                                                                                    @if($mensagens[$proximoI]->tipo == "publica")
+                                                                                        <hr>
+                                                                                        {!!$mensagens[$proximoI]->mensagem!!}
+                                                                                        <p><small class="pull-right">{{utf8_encode($mensagens[$proximoI]->created_at->formatLocalized('%a, %d/%m/%Y %H:%M'))}}</small></p>                                                                                   
+                                                                                    @endif
+                                                                                    @php
+                                                                                        $i = $proximoI;
+                                                                                        $proximoI++;
+                                                                                        $saida = $proximoI == $total ? true : false;
+                                                                                    @endphp
+                                                                                @endwhile
+                                                                                @php 
+                                                                                    $saida = false;
+                                                                                @endphp
+                                                                            @endif
+                                                                        </div><!-- primeiro /div -->     
+                                                                        
+                                                                    </div> 
+                                                                    @endif
+                                                                    @php
+                                                                        $proximoI++;
+                                                                    @endphp                                                                 
+                                                                @endfor  
+                                                                @if($nTem)
+                                                                    <div class="feed-element">                                                   
+                                                                        <div class="mensagem-vazia publica">                                                                   
+                                                                            Não há mensagens Públicas
+                                                                        </div>  
+                                                                    </div>                                                                     
+                                                                @endif                                                               
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="feed-element">
-                                                        <a href="#" class="pull-left">
-                                                            <img alt="image" class="img-circle" src="img/a3.jpg">
-                                                        </a>
-                                                        <div class="media-body ">
-                                                            <small class="pull-right">2h ago</small>
-                                                            <strong>Janet Rosowski</strong> add 1 photo on <strong>Monica Smith</strong>. <br>
-                                                            <small class="text-muted">2 days ago at 8:30am</small>
-                                                        </div>
-                                                    </div>
-                                                    <div class="feed-element">
-                                                        <a href="#" class="pull-left">
-                                                            <img alt="image" class="img-circle" src="img/a4.jpg">
-                                                        </a>
-                                                        <div class="media-body ">
-                                                            <small class="pull-right text-navy">5h ago</small>
-                                                            <strong>Chris Johnatan Overtunk</strong> started following <strong>Monica Smith</strong>. <br>
-                                                            <small class="text-muted">Yesterday 1:21 pm - 11.06.2014</small>
-                                                            <div class="actions">
-                                                                <a class="btn btn-xs btn-white"><i class="fa fa-thumbs-up"></i> Like </a>
-                                                                <a class="btn btn-xs btn-white"><i class="fa fa-heart"></i> Love</a>
+                                                            <!-- /MENSAGEM PUBLICA -->
+                                                            <!-- MENSAGEM PRIVADA -->
+                                                            <div role="tabpanel" class="tab-pane fade" id="tab-privada">
+                                                                @php 
+                                                                    $total = count($mensagens);
+                                                                    $saida = false;
+                                                                    $proximoI = 1;
+                                                                    $nTem = true;
+                                                                @endphp
+                                                                @for ($i = 0; $i < $total; $i++) 
+                                                                    @if($mensagens[$i]->tipo == "privada") 
+                                                                    <?php $nTem = false;?>                                                                  
+                                                                    <div class="feed-element">
+                                                                        <img alt="image" class="img-circle pull-left" src="/media/avatars/{{$mensagens[$i]->usuario->avatar}}">
+                                                                        <div class="media-body ">
+                                                                            <strong>{{$mensagens[$i]->usuario->nome}}</strong> escreveu <br>
+                                                                            <small class="text-muted">Última mensagem {{$mensagens[$i]->created_at->diffForHumans()}}</small>                                                            
+                                                                        </div>                                                        
+                                                                        <div class="mensagem-seta {{$mensagens[$i]->tipo}}" mensagem-user="{{$mensagens[$i]->usuario->id}}"><!-- primeiro div -->                                                                      
+                                                                            {!!$mensagens[$i]->mensagem!!}
+                                                                            <p><small class="pull-right">{{utf8_encode($mensagens[$i]->created_at->formatLocalized('%a, %d/%m/%Y %H:%M'))}}</small></p>
+                                                                            @if(($i+1) != $total)
+                                                                                @while(($saida == false) && ($mensagens[$i]->usuario->id == $mensagens[$proximoI]->usuario->id))
+                                                                                    @if($mensagens[$proximoI]->tipo == "privada")
+                                                                                        <hr>
+                                                                                        {!!$mensagens[$proximoI]->mensagem!!}
+                                                                                        <p><small class="pull-right">{{utf8_encode($mensagens[$proximoI]->created_at->formatLocalized('%a, %d/%m/%Y %H:%M'))}}</small></p>                                                                                   
+                                                                                    @endif
+                                                                                    @php
+                                                                                        $i = $proximoI;
+                                                                                        $proximoI++;
+                                                                                        $saida = $proximoI == $total ? true : false;
+                                                                                    @endphp
+                                                                                @endwhile
+                                                                                @php 
+                                                                                    $saida = false;
+                                                                                @endphp
+                                                                            @endif
+                                                                        </div><!-- primeiro /div -->     
+                                                                    </div> 
+                                                                    @endif 
+                                                                    @php
+                                                                        $proximoI++;
+                                                                    @endphp  
+                                                                @endfor
+                                                                @if($nTem)
+                                                                    <div class="feed-element">                                                   
+                                                                        <div class="mensagem-vazia privada">                                                                     
+                                                                            Não há mensagens Privadas
+                                                                        </div>    
+                                                                    </div>                                                                     
+                                                                @endif 
                                                             </div>
+                                                            <!-- /MENSAGEM PRIVADA -->
                                                         </div>
+                                                        <!-- /CONJUNTO DAS TABS LISTA MENSAGEM -->
                                                     </div>
-                                                    <div class="feed-element">
-                                                        <a href="#" class="pull-left">
-                                                            <img alt="image" class="img-circle" src="img/a5.jpg">
-                                                        </a>
-                                                        <div class="media-body ">
-                                                            <small class="pull-right">2h ago</small>
-                                                            <strong>Kim Smith</strong> posted message on <strong>Monica Smith</strong> site. <br>
-                                                            <small class="text-muted">Yesterday 5:20 pm - 12.06.2014</small>
-                                                            <div class="well">
-                                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-                                                                Over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="feed-element">
-                                                        <a href="#" class="pull-left">
-                                                            <img alt="image" class="img-circle" src="img/profile.jpg">
-                                                        </a>
-                                                        <div class="media-body ">
-                                                            <small class="pull-right">23h ago</small>
-                                                            <strong>Monica Smith</strong> love <strong>Kim Smith</strong>. <br>
-                                                            <small class="text-muted">2 days ago at 2:30 am - 11.06.2014</small>
-                                                        </div>
-                                                    </div>
-                                                    <div class="feed-element">
-                                                        <a href="#" class="pull-left">
-                                                            <img alt="image" class="img-circle" src="img/a7.jpg">
-                                                        </a>
-                                                        <div class="media-body ">
-                                                            <small class="pull-right">46h ago</small>
-                                                            <strong>Mike Loreipsum</strong> started following <strong>Monica Smith</strong>. <br>
-                                                            <small class="text-muted">3 days ago at 7:58 pm - 10.06.2014</small>
-                                                        </div>
-                                                    </div>
+                                                    <!-- /TABS MENSAGENS -->
                                                 </div>
-
                                             </div>
                                             <!-- /TAB 2 -->
-
                                         </div> <!-- /TABS CONTENT -->
                                     </div>
                                     <!-- /PANEL BODY -->
@@ -496,50 +636,29 @@
     <script src="{{ asset('js/plugins/datetimepicker/locales/bootstrap-datetimepicker.pt-BR.js') }}"></script>
 <!-- Toastr script -->
 <script src="{{ asset('js/plugins/toastr/toastr.min.js') }}"></script>
+<!-- Ladda -->
+    <script src="{{ asset('js/plugins/ladda/spin.min.js') }}"></script>
+    <script src="{{ asset('js/plugins/ladda/ladda.min.js') }}"></script>
+    <script src="{{ asset('js/plugins/ladda/ladda.jquery.min.js') }}"></script>
 <script>
 
 $(document).ready(function(){
     iniciarMultiUsuario();
-    toastr.options = {
-    "closeButton": true,
-    "progressBar": true,
-    "showDuration": "400",
-    "hideDuration": "1000",
-    "timeOut": "7000",
-    "extendedTimeOut": "1000"
-    };
+    iniciarDateFields();
+    iniciarEditableFields();
+    iniciarTooltipFields();
+    iniciarToastrOptions();  
+
+    var atividades = {!! $atividades !!};
+    atulizarCamposEditar(atividades, $( "#atividade-escolha option:first-child" ).val());
 
     $(".chosen-select").chosen({
         no_results_text: "Oops, não encontrado!"
     });
-
-    $('[data-toggle="tooltip"]').tooltip();
-
-    $.fn.editable.defaults.mode = 'inline';
-    $('#conserto-descricao').editable({
-        type: 'textarea',
-        title: 'Descrição'
-    });
-    $('#conserto-titulo').editable({
-        type: 'text',
-        title: 'Conserto'
-    });
-    $('#conserto-defeito').editable({
-        type: 'text',
-        title: 'Conserto'
-    });
-
-    $('.form_datetime').datetimepicker({
-        language:  'pt-BR',
-        format: "dd MM yyyy - hh:ii",
-        autoclose: true,
-        todayBtn: true,
-        minuteStep: 5,
-        todayHighlight: true,
-        pickerPosition: 'bottom-left'
-    });
-
+    
     $('#atividade-nova').on("submit", function (e) {
+        var btn = $( '#btn-criar' ).ladda();
+        btn.ladda('start');
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
@@ -560,7 +679,6 @@ $(document).ready(function(){
             data: formData,
             dataType: 'json',
             success: function (data) {
-                console.log(data);
                 if (data.status == "Completado")
                     {cor = "success"}
                 else if(data.status == "Em andamento")
@@ -568,64 +686,227 @@ $(document).ready(function(){
                 else
                     {cor = "danger"}
 
-                card=                                    '<div class="row">';
-                card+=                                        '<div class="col-md-12">';
-                card+=                                            '<div class="atividade '+cor+'">';//cor
-                card+=                                                '<div class="row">';
-                card+=                                                    '<div class="col-md-5 col-lg-4">';
-                card+=                                                        '<div class="row user-group">';
-                card+=                                                            '<p class="atividade-id">Atividade #'+data.id+'</p>';//id
-                card+=                                                        '</div>';
-                card+=                                                        '<div class="row">';
-                card+=                                                           ' <div class="col-xs-12">';
-                card+=                                                                '<div class="form-horizontal">';
-                card+=                                                                   ' <div class="form-group">';
-                card+=                                                                        '<label class="col-md-4 control-label">Status:</label>';
-                card+=                                                                        '<div class="col-md-8">';
-                card+=                                                                            '<p class="form-control-static">'+data.status+'</p>';//status
-                card+=                                                                        '</div>';
-                card+=                                                                    '</div>';
-                card+=                                                                    '<div class="form-group">';
-                card+=                                                                        '<label class="col-md-4 control-label">Iniciado:</label>';
-                card+=                                                                        '<div class="col-md-8">';
-                card+=                                                                            '<p class="form-control-static">'+data.iniciada+'</p>';//iniciado
-                card+=                                                                        '</div>';
-                card+=                                                                    '</div>';
-                card+=                                                                    '<div class="form-group">';
-                card+=                                                                        '<label class="col-md-4 control-label">Finalizado:</label>';
-                card+=                                                                        '<div class="col-md-8">';
-                card+=                                                                            '<p class="form-control-static">'+data.finalizada+'</p>';//finalizada
-                card+=                                                                        '</div>';
-                card+=                                                                    '</div>';
-                card+=                                                                '</div>';
-                card+=                                                            '</div>';
-                card+=                                                        '</div>';
-                card+=                                                    '</div>';
-                card+=                                                    '<div class="col-md-7 col-lg-8">';
-                card+=                                                        '<small class="text-success">Título</small><br>';
-                card+=                                                        '<h3 class="m-b">'+data.titulo+'</h3>';//titulo
-                card+=                                                        '<small class="text-success">Descrição</small>';
-                card+=                                                        '<p>'+data.descricao+'</p>';  //descricao
-                card+=                                                    '</div>';
-                card+=                                                '</div>';
-                card+=                                                '<hr class="hr-line-solid">';
-                card+=                                                '<div class="row">';
-                card+=                                                    '<span class="text-success">'+data.comentario_criado+' </span>- <strong>'+data.comentario_usuario+'</strong> '+data.comentario_status+'<br>';
-                card+=                                                '</div>';
-                card+=                                            '</div>';
-                card+=                                        '</div>';
-                card+=                                    '</div>';
+                card=`  <div class="row">
+                            <div class="col-md-12">
+                                <div class="atividade `+cor+`" atividade="`+data.id+`">
+                                    <div class="row">
+                                        <div class="col-md-5 col-lg-4">
+                                            <div class="row user-group">
+                                                <p class="atividade-id">Atividade #`+data.id+`</p>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xs-12">
+                                                    <div class="form-horizontal">
+                                                        <div class="form-group">
+                                                            <label class="col-md-4 control-label">Status:</label>
+                                                            <div class="col-md-8">
+                                                                <p class="form-control-static" atividade="status">`+data.status+`</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-md-4 control-label">Iniciado:</label>
+                                                            <div class="col-md-8">
+                                                                <p class="form-control-static" atividade="iniciada">`+data.iniciada+`</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-md-4 control-label">Finalizado:</label>
+                                                            <div class="col-md-8">
+                                                                <p class="form-control-static" atividade="finalizada">`+data.finalizada+`</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-7 col-lg-8">
+                                            <small class="text-success">Título</small><br>
+                                            <h3 class="m-b" atividade="titulo">`+data.titulo+`</h3>
+                                            <small class="text-success">Descrição</small>
+                                            <p atividade="descricao">`+data.descricao+`</p>
+                                        </div>
+                                    </div>
+                                    <hr class="hr-line-solid">
+                                    <div class="row" atividade="comentario">
+                                        <span class="text-success">`+data.comentario_criado+` </span>- <strong>`+data.comentario_usuario+`</strong> `+data.comentario_status+`<br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>`;
                 $(".lista-atividades").prepend(card);
+                
+                atividades.push({
+                    "id": data.id,
+                    "status": data.status,
+                    "iniciada": data.iniciada_semformat,
+                    "finalizada": data.finalizada_semformat,
+                    "titulo": data.titulo,
+                    "descricao": data.descricao
+                });
+                somarBadge("cont-tab-atividade");
                 toastr["success"]('Atividade adicionada com sucesso !','Atividade');
+                $("#atividade-escolha").prepend($('<option>', {
+                    value: data.id,
+                    text: '#'+data.id+' - '+data.titulo
+                }));
 
             },
             error: function (data) {
                 console.log('Error:', data);
+                toastr["error"]('Atividade não pode ser editada !','Atividade');
+            }
+        });
+        e.preventDefault();
+        btn.ladda( 'stop' );
+    });
+    $('#atividade-editar').on("submit", function (e) {
+        e.preventDefault();        
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            }
+        });        
+        if(($('#escolha-final').val() == "Não definido") || ($('#escolha-final').val() == ""))
+        {
+            var d_finalizada = "nao";
+        } else {
+            var d_finalizada = $('#escolha-final').val();
+        }
+        var editarAtividade = {
+            id: $('#atividade-escolha').val(),
+            status: $('#escolha-status').val(),
+            iniciada: $('#escolha-inicio').val(),
+            finalizada: d_finalizada,
+            titulo: $('#escolha-titulo').val(),
+            descricao: $('#escolha-descricao').val(),
+            comentario: $('#escolha-comentario').val() == "" ? null : $('#escolha-comentario').val(),
+        };
+
+        $.ajax({
+            type: "POST",
+            url: "{{route('editar_atividade')}}",
+            data: editarAtividade,
+            dataType: 'json',
+            success: function (data) {
+
+                if(data.status == "NOK")
+                {
+                    toastr["warning"]('Nenhuma alteração feita!','Atividade');                    
+                } else
+                {
+                    if(data.atividade.status != null)
+                    {
+                        $("[atividade='"+data.atividade.id+"']").attr("class", "atividade "+data.atividade.cor);
+                        $("[atividade='"+data.atividade.id+"'] [atividade='status'").text(data.atividade.status);
+                    }
+                    if(data.atividade.iniciada != null)
+                    {
+                        $("[atividade='"+data.atividade.id+"'] [atividade='iniciada'").text(data.atividade.iniciada);
+                    }
+                    if(data.atividade.finalizada != null)
+                    {
+                        $("[atividade='"+data.atividade.id+"'] [atividade='finalizada'").text(data.atividade.finalizada);
+                    }
+                    if(data.atividade.titulo != null)
+                    {
+                        $("[atividade='"+data.atividade.id+"'] [atividade='titulo'").text(data.atividade.titulo);
+                    }
+                    if(data.atividade.descricao != null)
+                    {
+                        $("[atividade='"+data.atividade.id+"'] [atividade='descricao'").text(data.atividade.descricao);
+                    }
+                    $("[atividade='"+data.atividade.id+"'] [atividade='comentario'").append("<span class='text-success'>"+data.comentario.created_at+"</span> - <strong>"+data.comentario.usuario+"</strong> "+data.comentario.status+" "+(data.comentario.comentario == null ? "" : data.comentario.comentario)+"<br>");
+                    $('#escolha-comentario').val('');
+                    $.each(atividades, function(i, atividade) {
+                        if(atividade["id"] == data.atividade.id)
+                        {
+                            if(data.atividade.status != null){atividade["status"] = data.atividade.status}
+                            if(data.atividade.iniciada != null){atividade["iniciada"] = data.atividade.iniciada}
+                            if(data.atividade.finalizada != null){atividade["finalizada"] = data.atividade.finalizada}
+                            if(data.atividade.titulo != null){atividade["titulo"] = data.atividade.titulo}
+                            if(data.atividade.descricao != null){atividade["descricao"] = data.atividade.descricao}
+                        }
+                    });
+                    toastr["success"]('Atividade atualizada com sucesso!','Atividade');
+                }
+            },
+            error: function (data) {
+                console.log('Error:', data);
+                toastr["error"]('Atividade não pode ser editada !','Atividade');
+            }
+        });
+
+        
+    });
+
+    $("#atividade-escolha").on("change", function() {
+        atulizarCamposEditar(atividades, this.value);
+    });
+    
+    $('#mensagem-form-publica').on("submit", function (e) {
+        
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            }
+        });
+        var formData = {
+            mensagem: $('#mensagem-publica').val(),
+            tipo: "publica",
+            id_conserto: "{{$conserto->id}}",
+            id_usuario: "{{ Auth::user()->id }}"
+        };
+        $.ajax({
+            type: "POST",
+            url: "{{route('nova_conserto_mensagem')}}",
+            data: formData,
+            dataType: 'json',
+            success: function (data) {
+                inserirMensagem(data);
+                somarBadge("cont-tab-mensagem");
+                somarBadge("cont-badge-publica");
+                somarBadge("cont-badge-todas");
+                toastr["success"]('Mensagem enviada com sucesso !','Mensagem');
+            },
+            error: function (data) {
+                console.log('Error:', data);
+                toastr["error"]('Mensagem não pode ser enviada !','Mensagem');
             }
         });
         e.preventDefault();
     });
-
+    $('#mensagem-form-privada').on("submit", function (e) {
+        
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            }
+        });
+        var formData = {
+            mensagem: $('#mensagem-privada').val(),
+            tipo: "privada",
+            id_conserto: "{{$conserto->id}}",
+            id_usuario: "{{ Auth::user()->id }}"
+        }
+        $.ajax({
+            type: "POST",
+            url: "{{route('nova_conserto_mensagem')}}",
+            data: formData,
+            dataType: 'json',
+            success: function (data) {
+                inserirMensagem(data);
+                somarBadge("cont-tab-mensagem");
+                somarBadge("cont-badge-privada");
+                somarBadge("cont-badge-todas");
+                toastr["success"]('Mensagem enviada com sucesso !','Mensagem');
+            },
+            error: function (data) {
+                console.log('Error:', data);
+                toastr["error"]('Mensagem não pode ser enviada !','Mensagem');
+            }
+        });
+        e.preventDefault();
+    });
 
 }); /* / DOC READY */
 
@@ -641,8 +922,124 @@ $(document).ready(function(){
     });
 
 }
-
+function iniciarDateFields(){
+    $('.form_datetime').datetimepicker({
+        language:  'pt-BR',
+        format: "dd MM yyyy - hh:ii",
+        autoclose: true,
+        todayBtn: true,
+        minuteStep: 5,
+        todayHighlight: true,
+        pickerPosition: 'bottom-left'
+    });
+}
+function iniciarEditableFields(){
+    $.fn.editable.defaults.mode = 'inline';
+    $('#conserto-descricao').editable({
+        type: 'textarea',
+        title: 'Descrição'
+    });
+    $('#conserto-titulo').editable({
+        type: 'text',
+        title: 'Conserto'
+    });
+    $('#conserto-defeito').editable({
+        type: 'text',
+        title: 'Conserto'
+    });
+}
+function iniciarTooltipFields(){
+    $('[data-toggle="tooltip"]').tooltip();
+}
+function iniciarToastrOptions(){
+    toastr.options = {
+        "closeButton": true,
+        "progressBar": true,
+        "showDuration": "400",
+        "hideDuration": "1000",
+        "timeOut": "7000",
+        "extendedTimeOut": "1000"
+    };
+}
+function atulizarCamposEditar(atividades, id){
+    $.each(atividades, function(i, atividade) {
+        if(atividade["id"] == id)
+        {
+            $('#escolha-status').val(atividade["status"]);        
+            $('#escolha-inicio').val(atividade["iniciada"]);                     
+            $('[escolha="data-inicio"]').val(atividade["iniciada"]);                                   
+            $('#escolha-final').val(atividade["finalizada"] == null ? "Não definido" : atividade["finalizada"]);    
+            $('[escolha="data-final"]').val(atividade["finalizada"] == null ? "Não definido" : atividade["finalizada"]);       
+            $('#escolha-titulo').text(atividade["titulo"]);        
+            $('#escolha-titulo').val(atividade["titulo"]);        
+            $('#escolha-descricao').text(atividade["descricao"]);  
+            $('#escolha-descricao').val(atividade["descricao"]);  
+        }
+    }); 
+}
+function inserirMensagem(mensagem){
+    var ult = $("#tab-todas div[mensagem-tipo]:first");
+    var curta = mensagem.mensagem+`
+                <p><small class="pull-right">`+mensagem.criada+`</small></p>
+                <hr> `;
+    var inteira = `<div class="feed-element">
+                <img alt="image" class="img-circle pull-left" src="/media/avatars/`+mensagem.usuario.avatar+`">
+                <div class="media-body">
+                    <strong>`+mensagem.usuario.nome+`</strong> escreveu <br>
+                    <small class="text-muted"> Última mensagem `+mensagem.criada_diff+`</small>                                                            
+                </div>                                                        
+                <div class="mensagem-seta `+mensagem.tipo+`" mensagem-tipo="`+mensagem.tipo+`" mensagem-user="`+mensagem.usuario.id+`">                                                                        
+                    `+mensagem.mensagem+`
+                    <p><small class="pull-right">`+mensagem.criada+`</small></p>
+                </div>
+            </div>`;
+    var com_seta = `<div class="mensagem-seta `+mensagem.tipo+`" mensagem-tipo="`+mensagem.tipo+`" mensagem-user="`+mensagem.usuario.id+`">                                                                        
+                    `+mensagem.mensagem+`
+                    <p><small class="pull-right">`+mensagem.criada+`</small></p>
+                </div>
+            </div>`;
+    if (ult.attr("mensagem-user") == mensagem.usuario.id)
+    {
+        if (ult.attr("mensagem-tipo") == mensagem.tipo)
+        {            
+            ult.prepend(curta);
+        }
+        else{
+            ult.before(com_seta);
+            ult.attr("class", "mensagem "+ult.attr("mensagem-tipo"));
+        }
+        if($("#tab-"+mensagem.tipo+" div.mensagem-vazia").length == 1)
+        {
+            $("#tab-"+mensagem.tipo).html(inteira);
+        }
+        else {
+            if($("#tab-"+mensagem.tipo+" div[mensagem-tipo]:first").attr("mensagem-user") == mensagem.usuario.id)
+            {
+                $("#tab-"+mensagem.tipo+" div[mensagem-user]:first").prepend(curta);
+            } else {
+                $("#tab-"+mensagem.tipo).prepend(inteira);
+            }            
+        }        
+    }
+    else if ($("#tab-todas div.mensagem-vazia").length != 1)
+    {
+        $("#tab-todas").prepend(inteira);
+        if($("#tab-"+mensagem.tipo+" div.mensagem-vazia").length == 1)
+        {
+            $("#tab-"+mensagem.tipo).html(inteira);
+        }
+        else{
+            $("#tab-"+mensagem.tipo).prepend(inteira);
+        }        
+    }
+    else{
+        $("#tab-todas").html(inteira);
+        $("#tab-"+mensagem.tipo).html(inteira);
+    }    
+}
+function somarBadge(id){
+    var novovalor = parseInt($("#"+id).text()) + 1;
+    $("#"+id).text(novovalor);
+}
 </script>
-
-
 @stop
